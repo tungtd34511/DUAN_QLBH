@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,6 +76,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
             this.ssssToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,16 +97,16 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.customPanel1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.customPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.customPanel3, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(13, 35, 0, 0);
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
@@ -122,33 +122,22 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 247);
+            this.label2.Location = new System.Drawing.Point(16, 247);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(306, 30);
+            this.label2.Size = new System.Drawing.Size(326, 30);
             this.label2.TabIndex = 2;
-            this.label2.Text = "21 contributions in the last year";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pined";
+            this.label2.Text = "21 hoạt động trong năm vừa qua";
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 666);
+            this.label3.Location = new System.Drawing.Point(16, 666);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 30);
+            this.label3.Size = new System.Drawing.Size(104, 30);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Information";
+            this.label3.Text = "Thông tin";
             // 
             // customPanel1
             // 
@@ -160,11 +149,11 @@
             this.customPanel1.Controls.Add(this.tableLayoutPanel7);
             this.customPanel1.Controls.Add(this.tableLayoutPanel2);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel1.Location = new System.Drawing.Point(0, 302);
+            this.customPanel1.Location = new System.Drawing.Point(13, 302);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Padding = new System.Windows.Forms.Padding(25);
-            this.customPanel1.Size = new System.Drawing.Size(1270, 338);
+            this.customPanel1.Size = new System.Drawing.Size(1257, 338);
             this.customPanel1.TabIndex = 4;
             this.customPanel1.UnderlinedStyle = false;
             // 
@@ -223,7 +212,8 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(50, 41);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(43, 41);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -523,7 +513,7 @@
             this.customPanel2.BorderRadius = 10;
             this.customPanel2.BorderSize = 1;
             this.customPanel2.Controls.Add(this.richTextBox1);
-            this.customPanel2.Location = new System.Drawing.Point(0, 115);
+            this.customPanel2.Location = new System.Drawing.Point(13, 115);
             this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel2.Name = "customPanel2";
             this.customPanel2.Size = new System.Drawing.Size(810, 100);
@@ -550,10 +540,10 @@
             this.customPanel3.BorderSize = 1;
             this.customPanel3.Controls.Add(this.tableLayoutPanel4);
             this.customPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customPanel3.Location = new System.Drawing.Point(0, 722);
+            this.customPanel3.Location = new System.Drawing.Point(13, 722);
             this.customPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(1270, 373);
+            this.customPanel3.Size = new System.Drawing.Size(1257, 373);
             this.customPanel3.TabIndex = 6;
             this.customPanel3.UnderlinedStyle = false;
             // 
@@ -593,13 +583,13 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1270, 373);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1257, 373);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(172, 275);
+            this.label36.Location = new System.Drawing.Point(171, 275);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(136, 23);
             this.label36.TabIndex = 20;
@@ -608,7 +598,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(172, 235);
+            this.label35.Location = new System.Drawing.Point(171, 235);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(219, 23);
             this.label35.TabIndex = 19;
@@ -617,7 +607,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(172, 195);
+            this.label34.Location = new System.Drawing.Point(171, 195);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(100, 23);
             this.label34.TabIndex = 18;
@@ -626,7 +616,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(172, 155);
+            this.label33.Location = new System.Drawing.Point(171, 155);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(69, 23);
             this.label33.TabIndex = 17;
@@ -635,7 +625,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(172, 115);
+            this.label32.Location = new System.Drawing.Point(171, 115);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(96, 23);
             this.label32.TabIndex = 16;
@@ -648,7 +638,7 @@
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(38, 315);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 23);
+            this.label12.Size = new System.Drawing.Size(127, 23);
             this.label12.TabIndex = 13;
             this.label12.Text = "Địa chỉ:";
             // 
@@ -659,7 +649,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(38, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 23);
+            this.label4.Size = new System.Drawing.Size(127, 23);
             this.label4.TabIndex = 4;
             this.label4.Text = "Tên:";
             // 
@@ -670,7 +660,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(38, 75);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 23);
+            this.label6.Size = new System.Drawing.Size(127, 23);
             this.label6.TabIndex = 6;
             this.label6.Text = "Giới tính";
             // 
@@ -681,7 +671,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(38, 115);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 23);
+            this.label5.Size = new System.Drawing.Size(127, 23);
             this.label5.TabIndex = 7;
             this.label5.Text = "Ngày Sinh:";
             // 
@@ -692,7 +682,7 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(38, 155);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 23);
+            this.label7.Size = new System.Drawing.Size(127, 23);
             this.label7.TabIndex = 8;
             this.label7.Text = "Chức Vụ:";
             // 
@@ -703,7 +693,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(38, 195);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(128, 23);
+            this.label9.Size = new System.Drawing.Size(127, 23);
             this.label9.TabIndex = 10;
             this.label9.Text = "Số điện thoại:";
             // 
@@ -714,7 +704,7 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(38, 235);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 23);
+            this.label8.Size = new System.Drawing.Size(127, 23);
             this.label8.TabIndex = 9;
             this.label8.Text = "Email:";
             // 
@@ -725,14 +715,14 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(38, 275);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 23);
+            this.label11.Size = new System.Drawing.Size(127, 23);
             this.label11.TabIndex = 12;
             this.label11.Text = "Trạng thái";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(172, 35);
+            this.label30.Location = new System.Drawing.Point(171, 35);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(49, 23);
             this.label30.TabIndex = 14;
@@ -741,7 +731,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(172, 75);
+            this.label31.Location = new System.Drawing.Point(171, 75);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(47, 23);
             this.label31.TabIndex = 15;
@@ -750,11 +740,23 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(172, 315);
+            this.label37.Location = new System.Drawing.Point(171, 315);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(629, 23);
             this.label37.TabIndex = 21;
             this.label37.Text = "Số nhà 11. TDP Thượng 3, Phường Tây Tựu ,Quận Bắc Từ Liêm,Thành Phố Hà Nội";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(16, 62);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Ghim";
             // 
             // rjDropdownMenu1
             // 

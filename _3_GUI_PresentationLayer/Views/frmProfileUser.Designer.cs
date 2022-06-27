@@ -370,7 +370,7 @@
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 30;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton5.Location = new System.Drawing.Point(545, 3);
+            this.iconButton5.Location = new System.Drawing.Point(542, 3);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
@@ -393,7 +393,7 @@
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 30;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(341, 3);
+            this.iconButton6.Location = new System.Drawing.Point(338, 3);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
@@ -416,7 +416,7 @@
             this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton7.IconSize = 30;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton7.Location = new System.Drawing.Point(155, 3);
+            this.iconButton7.Location = new System.Drawing.Point(152, 3);
             this.iconButton7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.iconButton7.Name = "iconButton7";
             this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
@@ -443,7 +443,7 @@
             this.iconButton8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.iconButton8.Name = "iconButton8";
             this.iconButton8.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
-            this.iconButton8.Size = new System.Drawing.Size(155, 69);
+            this.iconButton8.Size = new System.Drawing.Size(152, 69);
             this.iconButton8.TabIndex = 3;
             this.iconButton8.Text = "Hồ sơ";
             this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -456,10 +456,10 @@
             this.panelDesktop2.BackColor = System.Drawing.Color.Gray;
             this.panelDesktop2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDesktop2.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelDesktop2.Location = new System.Drawing.Point(531, 68);
+            this.panelDesktop2.Location = new System.Drawing.Point(528, 68);
             this.panelDesktop2.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop2.Name = "panelDesktop2";
-            this.panelDesktop2.Size = new System.Drawing.Size(1389, 987);
+            this.panelDesktop2.Size = new System.Drawing.Size(1392, 987);
             this.panelDesktop2.TabIndex = 4;
             // 
             // panel5
@@ -502,7 +502,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 163F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(406, 717);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(406, 730);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // label10
@@ -511,9 +511,9 @@
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(3, 276);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 28);
+            this.label10.Size = new System.Drawing.Size(73, 28);
             this.label10.TabIndex = 8;
-            this.label10.Text = "Địa chỉ:";
+            this.label10.Text = "Địa chỉ";
             // 
             // label4
             // 
@@ -521,9 +521,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 29);
+            this.label4.Size = new System.Drawing.Size(50, 29);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Tên:";
+            this.label4.Text = "Tên";
             // 
             // textBox3
             // 
@@ -538,9 +538,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(3, 76);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 28);
+            this.label5.Size = new System.Drawing.Size(133, 28);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Số điện thoại:";
+            this.label5.Text = "Số điện thoại";
             // 
             // textBox4
             // 
@@ -610,9 +610,9 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(3, 197);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 28);
+            this.label9.Size = new System.Drawing.Size(103, 28);
             this.label9.TabIndex = 6;
-            this.label9.Text = "Ngày sinh:";
+            this.label9.Text = "Ngày sinh";
             // 
             // dateTimePicker1
             // 
@@ -626,7 +626,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.8705F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.1295F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel6.Controls.Add(this.vbButton5, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.vbButton6, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -648,9 +648,9 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.Location = new System.Drawing.Point(174, 3);
+            this.vbButton5.Location = new System.Drawing.Point(168, 3);
             this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(100, 37);
+            this.vbButton5.Size = new System.Drawing.Size(96, 37);
             this.vbButton5.TabIndex = 0;
             this.vbButton5.Text = "Lưu";
             this.vbButton5.TextColor = System.Drawing.Color.White;
@@ -667,7 +667,7 @@
             this.vbButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton6.ForeColor = System.Drawing.Color.Black;
-            this.vbButton6.Location = new System.Drawing.Point(280, 3);
+            this.vbButton6.Location = new System.Drawing.Point(270, 3);
             this.vbButton6.Name = "vbButton6";
             this.vbButton6.Size = new System.Drawing.Size(110, 37);
             this.vbButton6.TabIndex = 1;
@@ -782,7 +782,7 @@
             this.vbButton4.BackColor = System.Drawing.Color.White;
             this.vbButton4.BackgroundColor = System.Drawing.Color.White;
             this.vbButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.vbButton4.BorderColor = System.Drawing.Color.Gray;
+            this.vbButton4.BorderColor = System.Drawing.Color.Silver;
             this.vbButton4.BorderRadius = 33;
             this.vbButton4.BorderSize = 1;
             this.vbButton4.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -883,10 +883,10 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private CustomControl.CustomPanel customPanel1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private CustomControl.VBButton vbButton5;
         private CustomControl.VBButton vbButton6;
-        private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

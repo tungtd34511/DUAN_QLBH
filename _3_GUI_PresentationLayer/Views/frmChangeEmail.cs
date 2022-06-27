@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class frmChangePass : Form
+    public partial class frmChangeEmail : Form
     {
-        public frmChangePass()
+        public frmChangeEmail()
         {
             InitializeComponent();
         }

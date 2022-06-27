@@ -113,6 +113,7 @@ namespace _3_GUI_PresentationLayer.Views
         private void iconButton8_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RGBcolors.color3);
+            OpenchildForm(new frmProfile());
         }
 
         private void iconButton7_Click(object sender, EventArgs e)
@@ -123,11 +124,13 @@ namespace _3_GUI_PresentationLayer.Views
         private void iconButton6_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RGBcolors.color3);
+            OpenchildForm(new frmChangePass());
         }
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RGBcolors.color3);
+            OpenchildForm(new frmChangeEmail());
         }
 
         private void vbButton6_Click(object sender, EventArgs e)

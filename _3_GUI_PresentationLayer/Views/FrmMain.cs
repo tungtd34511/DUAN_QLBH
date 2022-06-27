@@ -22,6 +22,7 @@ namespace _3_GUI_PresentationLayer.Views
         {
             InitializeComponent();
             LoadCustomControl();
+            OpenchildForm(new frmProfileUser());
         }
         #region Custom lại các control
         private List<Control> _lstBtnThanhCongCu;
