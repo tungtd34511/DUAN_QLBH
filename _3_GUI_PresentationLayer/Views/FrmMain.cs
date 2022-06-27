@@ -125,11 +125,6 @@ namespace _3_GUI_PresentationLayer.Views
             rjDropdownMenu1.Show(button2, button2.Width, 47);
         }
 
-        private void button2_MouseHover(object sender, EventArgs e)
-        {
-            button2.ForeColor = Color.Gray;
-        }
-
         private void btn_Trangchu_Click(object sender, EventArgs e)
         {
             OpenchildForm(new frmProfileUser());
@@ -144,6 +139,16 @@ namespace _3_GUI_PresentationLayer.Views
         {
             button1.ForeColor = Color.White;
             button2.ForeColor = Color.White;
+        }
+
+        private void button2_MouseHover_1(object sender, EventArgs e)
+        {
+            button2.IconColor = Color.Gray;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            rjDropdownMenu1.Show(button2, button2.Width, 47);
         }
     }
 }

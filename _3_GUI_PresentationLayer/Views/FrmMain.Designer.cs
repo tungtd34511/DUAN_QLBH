@@ -38,7 +38,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button2 = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_SanPham = new System.Windows.Forms.Label();
             this.btn_HoaDon = new System.Windows.Forms.Label();
@@ -213,27 +213,24 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Emoji", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.IconChar = FontAwesome.Sharp.IconChar.CaretDown;
+            this.button2.IconColor = System.Drawing.Color.White;
+            this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button2.IconSize = 22;
             this.button2.Location = new System.Drawing.Point(271, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.button2.Size = new System.Drawing.Size(28, 52);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "▼";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover);
+            this.button2.TabIndex = 3;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover_1);
             // 
             // tableLayoutPanel6
             // 
@@ -380,7 +377,7 @@
             this.panelDesktop.Location = new System.Drawing.Point(0, 52);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1902, 983);
+            this.panelDesktop.Size = new System.Drawing.Size(1902, 933);
             this.panelDesktop.TabIndex = 4;
             // 
             // rjDropdownMenu1
@@ -427,13 +424,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1902, 1035);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmMain";
+            this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 50);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -471,9 +469,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
         private CustomControl.VBButton vbButton2;
         private System.Windows.Forms.TextBox textBox1;
+        private FontAwesome.Sharp.IconButton button2;
     }
 }

@@ -454,13 +454,13 @@
             this.vbButton5.UseVisualStyleBackColor = true;
             this.vbButton5.Click += new System.EventHandler(this.vbButton5_Click);
             // 
-            // Form2
+            // frmChangePass
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1371, 940);
             this.Controls.Add(this.panel1);
-            this.Name = "Form2";
+            this.Name = "frmChangePass";
             this.Padding = new System.Windows.Forms.Padding(0, 25, 80, 0);
             this.Text = "frmProfile";
             this.rjDropdownMenu1.ResumeLayout(false);

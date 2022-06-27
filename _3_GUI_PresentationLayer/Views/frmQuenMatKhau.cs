@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class Form1 : Form
+    public partial class frmQuenMatKhau : Form
     {
-        public Form1()
+        public frmQuenMatKhau()
         {
             InitializeComponent();
         }

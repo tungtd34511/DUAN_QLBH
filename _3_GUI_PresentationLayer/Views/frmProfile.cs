@@ -34,9 +34,9 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 VBButton button = new VBButton();
                 button.Name = i.ToString();
-                button.Width = 17;
-                button.Height = 17;
-                button.BorderRadius = 2;
+                button.Width = 14;
+                button.Height = 14;
+                button.BorderRadius = 3;
                 button.BackColor = Color.FromArgb(235, 237, 240);
                 button.BorderColor = Color.Silver;
                 button.BorderSize = 1;
@@ -59,8 +59,8 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 VBButton button = new VBButton();
                 button.Name = "bt"+ i.ToString();
-                button.Width = 17;
-                button.Height = 17;
+                button.Width = 14;
+                button.Height = 14;
                 button.BorderRadius = 3;
                 button.BackColor = Color.FromArgb(235, 237, 240);
                 button.BorderColor = Color.Silver;

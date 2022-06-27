@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\_1_DAL_DataAcessLayer\_1_DAL_DataAcessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

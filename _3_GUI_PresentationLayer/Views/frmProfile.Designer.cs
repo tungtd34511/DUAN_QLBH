@@ -314,7 +314,8 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(37, 106);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(28, 23);
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.label15.Size = new System.Drawing.Size(28, 26);
             this.label15.TabIndex = 2;
             this.label15.Text = "Fri";
             // 
@@ -322,9 +323,10 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(20, 68);
+            this.label14.Location = new System.Drawing.Point(20, 66);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 23);
+            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.label14.Size = new System.Drawing.Size(45, 26);
             this.label14.TabIndex = 1;
             this.label14.Text = "Thur";
             // 
@@ -332,9 +334,10 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 30);
+            this.label13.Location = new System.Drawing.Point(20, 27);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 23);
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.label13.Size = new System.Drawing.Size(45, 26);
             this.label13.TabIndex = 0;
             this.label13.Text = "Mon";
             // 
