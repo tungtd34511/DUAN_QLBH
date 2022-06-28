@@ -131,7 +131,7 @@
             this.vbButton2.BackColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
-            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.vbButton2.BorderRadius = 23;
             this.vbButton2.BorderSize = 0;

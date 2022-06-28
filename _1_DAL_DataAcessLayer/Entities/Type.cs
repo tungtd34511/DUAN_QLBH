@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace _1_DAL_DataAcessLayer.Entities
 {
-    [Table("PRICE")]
-    public class Price
+    [Table("TYPE")]
+    public class Type
     {
         [Key]
-        public int PriceId { get; set; }
-        public int GiaNhap { get; set; }
-        public int GiaBan { get; set; }
-        public int Sale { get; set; }
+        public int TypeId { get; set; }
+        public string Name { get; set; }
         public bool Status { get; set; }
     }
 }

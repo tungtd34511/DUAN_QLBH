@@ -12,12 +12,12 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Origin
     {
         [Key]
-        public Guid Id { get; set; }
-        [StringLength(25)]
-        public string ThuongHieu { get; set; }
+        public int OriginId { get; set; }
         [StringLength(25)]
         public string NoiSanXuat { get; set; }
         public int NamPhatHanh { get; set; }
         public DateTime NgayNhap { get; set; }
+        public int ThuongHieuid { get; set; }
+        public ThuongHieu ThuongHieu { get; set; }
     }
 }

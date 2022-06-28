@@ -12,12 +12,13 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Account
     {
         [Key]
-        public Guid Id { get; set; }
-        public string Email { get; set; }
+        public int AccountId { get; set; }
+        [StringLength(25)]
+        public string Acc { get; set; }
         [StringLength(25)]
         public string Pass { get; set; }
         public bool Status { get; set; }
-        [ForeignKey("UserID")]
-        public virtual User User { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

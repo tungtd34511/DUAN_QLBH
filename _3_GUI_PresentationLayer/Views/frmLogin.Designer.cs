@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panelDesktopLogin = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
@@ -36,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -125,7 +128,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Viner Hand ITC", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 289);
             this.label2.Name = "label2";
@@ -133,7 +136,7 @@
             this.label2.Size = new System.Drawing.Size(451, 126);
             this.label2.TabIndex = 6;
             this.label2.Tag = "";
-            this.label2.Text = "Name dự án";
+            this.label2.Text = "Tên dự án";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // vbButton2
@@ -141,24 +144,26 @@
             this.vbButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.vbButton2.BackColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundColor = System.Drawing.Color.White;
+            this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
+            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.vbButton2.BorderRadius = 100;
             this.vbButton2.BorderSize = 0;
             this.vbButton2.FlatAppearance.BorderSize = 0;
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton2.ForeColor = System.Drawing.Color.Black;
             this.vbButton2.Location = new System.Drawing.Point(128, 44);
             this.vbButton2.Name = "vbButton2";
             this.vbButton2.Size = new System.Drawing.Size(200, 200);
             this.vbButton2.TabIndex = 7;
-            this.vbButton2.Text = "LOGO";
             this.vbButton2.TextColor = System.Drawing.Color.Black;
             this.vbButton2.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.vbButton3);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -171,13 +176,45 @@
             this.panel1.Size = new System.Drawing.Size(458, 584);
             this.panel1.TabIndex = 1;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox2.Location = new System.Drawing.Point(255, 349);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.checkBox2.Size = new System.Drawing.Size(133, 22);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "Hiện mật khẩu";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // vbButton3
+            // 
+            this.vbButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.vbButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.vbButton3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.vbButton3.BorderRadius = 25;
+            this.vbButton3.BorderSize = 3;
+            this.vbButton3.FlatAppearance.BorderSize = 0;
+            this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton3.Font = new System.Drawing.Font("Constantia", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.vbButton3.ForeColor = System.Drawing.Color.White;
+            this.vbButton3.Location = new System.Drawing.Point(245, 379);
+            this.vbButton3.Name = "vbButton3";
+            this.vbButton3.Size = new System.Drawing.Size(188, 52);
+            this.vbButton3.TabIndex = 7;
+            this.vbButton3.Text = "Đăng ký";
+            this.vbButton3.TextColor = System.Drawing.Color.White;
+            this.vbButton3.UseVisualStyleBackColor = false;
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(216, 379);
+            this.checkBox1.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox1.Location = new System.Drawing.Point(71, 349);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.checkBox1.Size = new System.Drawing.Size(134, 24);
+            this.checkBox1.Size = new System.Drawing.Size(128, 22);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Remember me";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -185,11 +222,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Constantia", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(216, 406);
+            this.label3.Location = new System.Drawing.Point(266, 454);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 25);
+            this.label3.Size = new System.Drawing.Size(150, 23);
             this.label3.TabIndex = 5;
             this.label3.Text = "Quên mật khẩu ?";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -197,10 +234,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(152, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 41);
+            this.label1.Size = new System.Drawing.Size(159, 37);
             this.label1.TabIndex = 4;
             this.label1.Text = "Đăng nhập";
             // 
@@ -224,9 +261,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.61539F));
             this.tableLayoutPanel2.Controls.Add(this.iconButton1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.iconButton2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel3, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.iconButton2, 0, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -349,7 +386,7 @@
             this.vbButton1.BorderSize = 3;
             this.vbButton1.FlatAppearance.BorderSize = 0;
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.vbButton1.Font = new System.Drawing.Font("Constantia", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.vbButton1.Location = new System.Drawing.Point(-32, 379);
             this.vbButton1.Name = "vbButton1";
@@ -412,9 +449,11 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
-        private CustomControl.VBButton vbButton1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private CustomControl.VBButton vbButton3;
+        private CustomControl.VBButton vbButton1;
     }
 }
