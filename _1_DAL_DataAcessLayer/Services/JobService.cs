@@ -44,7 +44,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.Jobs.Remove(_lstJobs.FirstOrDefault(c=>c.JobId==id));
+            _qlbhContext.Jobs.Remove(_lstJobs.FirstOrDefault(c=>c.Id==id));
             _qlbhContext.SaveChanges();
             GetLstJobsFormDb();
             return "Xóa thành công!";

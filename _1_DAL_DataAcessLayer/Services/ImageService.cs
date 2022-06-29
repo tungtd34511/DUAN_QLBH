@@ -47,7 +47,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.Images.Remove(_lstImages.FirstOrDefault(c=>c.ImageId==id));
+            _qlbhContext.Images.Remove(_lstImages.FirstOrDefault(c=>c.Id==id));
             _qlbhContext.SaveChanges();
             GetLstImagesFormDb();
             return "Xóa thành công!";

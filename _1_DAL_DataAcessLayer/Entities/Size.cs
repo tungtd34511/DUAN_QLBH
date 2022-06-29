@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Size
     {
         [Key]
-        public int SizeId { get; set; }
+        public int Id { get; set; }
         public char Code { get; set; }
         [StringLength(35)]
         public string Name { get; set; }

@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class OrderDetail
     {
         [Key]
-        public int OrderDetailId { get; set; }
+        public int Id { get; set; }
         public int SoLuong { get; set; }
         public int OrderId { get; set; }
         public  Order Order { get; set; }

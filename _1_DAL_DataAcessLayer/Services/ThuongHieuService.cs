@@ -44,7 +44,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.ThuongHieus.Remove(_lstThuongHieus.FirstOrDefault(c=>c.ThuongHieuId == id));
+            _qlbhContext.ThuongHieus.Remove(_lstThuongHieus.FirstOrDefault(c=>c.Id == id));
             _qlbhContext.SaveChanges();
             GetLstThuongHieusFormDb();
             return "Xóa thành công!";

@@ -45,7 +45,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.Types.Remove(_lstTypes.FirstOrDefault(c=>c.TypeId == id));
+            _qlbhContext.Types.Remove(_lstTypes.FirstOrDefault(c=>c.Id == id));
             _qlbhContext.SaveChanges();
             GetLstTypesFormDb();
             return "Xóa thành công!";

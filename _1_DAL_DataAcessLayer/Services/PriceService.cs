@@ -44,7 +44,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.Prices.Remove(_lstPrices.FirstOrDefault(c=>c.PriceId == id));
+            _qlbhContext.Prices.Remove(_lstPrices.FirstOrDefault(c=>c.Id == id));
             _qlbhContext.SaveChanges();
             GetLstPricesFormDb();
             return "Xóa thành công!";

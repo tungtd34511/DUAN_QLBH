@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class ThuongHieu
     {
         [Key]
-        public int ThuongHieuId { get; set; }
+        public int Id { get; set; }
         [ StringLength(15)]
         public string Name { get; set; }
         public bool Status { get; set; }

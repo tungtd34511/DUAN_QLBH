@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Color
     {
         [Key]
-        public int ColorId { get; set; }
+        public int Id { get; set; }
         [StringLength(35)] 
         public string ColorCode { get; set; }
         [StringLength(35)]

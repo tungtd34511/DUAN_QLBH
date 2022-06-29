@@ -13,7 +13,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class ProductDetail
     {
         [Key]
-        public int ProductDetailId { get; set; }
+        public int Id { get; set; }
         public int SoLuong { get; set; }
         [StringLength(25)]
         public string QrCode { get; set; }
@@ -35,5 +35,7 @@ namespace _1_DAL_DataAcessLayer.Entities
         public Size Size { get; set; }
         public int TypeId { get; set; }
         public Type Type { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
     }
 }

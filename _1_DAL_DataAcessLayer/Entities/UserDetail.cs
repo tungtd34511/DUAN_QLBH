@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class UserDetail
     {
         [Key]
-        public int UserDetailId { get; set; }
+        public int Id { get; set; }
         public DateTime DateOfBirth { get; set; }
         [StringLength(45)]
         public string Email { get; set; }

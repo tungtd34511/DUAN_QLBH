@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         [StringLength(35)]
         public string Name { get; set; }
         public bool Status { get; set; }

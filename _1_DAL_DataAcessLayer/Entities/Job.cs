@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Job
     {
         [Key]
-        public int JobId { set; get; }
+        public int Id { set; get; }
         [StringLength(25)]
         public string Name { set; get; }
         [StringLength(5)]

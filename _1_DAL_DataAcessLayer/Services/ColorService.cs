@@ -44,7 +44,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Delete(int id)
         {
-            _qlbhContext.Colors.Remove(_lstColors.FirstOrDefault(c=>c.ColorId==id));
+            _qlbhContext.Colors.Remove(_lstColors.FirstOrDefault(c=>c.Id==id));
             _qlbhContext.SaveChanges();
             GetLstColorsFormDb();
             return "Xóa thành công!";

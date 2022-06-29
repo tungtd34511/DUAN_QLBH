@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Account
     {
         [Key]
-        public int AccountId { get; set; }
+        public int Id { get; set; }
         [StringLength(25)]
         public string Acc { get; set; }
         [StringLength(25)]

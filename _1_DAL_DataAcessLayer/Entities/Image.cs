@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Image
     {
         [Key]
-        public int ImageId { get; set; }
+        public int Id { get; set; }
         public string Path { get; set; }
         public bool Status { get; set; }
         public int ProducId { get; set; }

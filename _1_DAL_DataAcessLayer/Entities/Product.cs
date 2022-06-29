@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Entities
     public class Product
     {
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         [StringLength(35)]
         public string Name { get; set; }
         public bool Status { get; set; }

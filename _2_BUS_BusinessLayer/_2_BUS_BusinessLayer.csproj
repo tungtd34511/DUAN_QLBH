@@ -8,4 +8,11 @@
     <ProjectReference Include="..\_1_DAL_DataAcessLayer\_1_DAL_DataAcessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="IServices\" />
+    <Folder Include="Services\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+
 </Project>
