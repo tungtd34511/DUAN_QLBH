@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.vbButton6 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +45,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.vbButton1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -55,25 +58,60 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(422, 490);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 3;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.8705F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.1295F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+            this.tableLayoutPanel6.Controls.Add(this.vbButton1, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.vbButton6, 2, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 201);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(416, 43);
+            this.tableLayoutPanel6.TabIndex = 11;
+            // 
             // vbButton1
             // 
-            this.vbButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(31)))), ((int)(((byte)(36)))));
+            this.vbButton1.BorderColor = System.Drawing.Color.Silver;
             this.vbButton1.BorderRadius = 10;
-            this.vbButton1.BorderSize = 0;
+            this.vbButton1.BorderSize = 1;
             this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.Location = new System.Drawing.Point(321, 201);
+            this.vbButton1.Location = new System.Drawing.Point(171, 3);
             this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(98, 37);
-            this.vbButton1.TabIndex = 8;
-            this.vbButton1.Text = "Xác nhận";
+            this.vbButton1.Size = new System.Drawing.Size(91, 37);
+            this.vbButton1.TabIndex = 0;
+            this.vbButton1.Text = "Lưu";
             this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.UseVisualStyleBackColor = true;
+            this.vbButton1.UseVisualStyleBackColor = false;
+            // 
+            // vbButton6
+            // 
+            this.vbButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.vbButton6.BackColor = System.Drawing.Color.White;
+            this.vbButton6.BackgroundColor = System.Drawing.Color.White;
+            this.vbButton6.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton6.BorderRadius = 10;
+            this.vbButton6.BorderSize = 1;
+            this.vbButton6.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.vbButton6.ForeColor = System.Drawing.Color.Black;
+            this.vbButton6.Location = new System.Drawing.Point(303, 3);
+            this.vbButton6.Name = "vbButton6";
+            this.vbButton6.Size = new System.Drawing.Size(110, 37);
+            this.vbButton6.TabIndex = 1;
+            this.vbButton6.Text = "Thoát";
+            this.vbButton6.TextColor = System.Drawing.Color.Black;
+            this.vbButton6.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -139,6 +177,7 @@
             this.Text = "frmQuenMatKhau";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -151,7 +190,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label6;
-        private CustomControl.VBButton vbButton1;
         private CustomControl.VBButton vbButton5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton vbButton6;
     }
 }

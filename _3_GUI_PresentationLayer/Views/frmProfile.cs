@@ -3,71 +3,80 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xaml;
 using _3_GUI_PresentationLayer.CustomControl;
 
 namespace _3_GUI_PresentationLayer.Views
 {
     public partial class frmProfile : Form
     {
-        private Form currentchildForm;
         private List<Button> _lstBtnLessMore = new List<Button>();
+        DateTime now = new DateTime();
+        DateTime endDay = new DateTime();
+        private DayOfWeek day;
+        private int timetoSunday;
         public frmProfile()
         {
             InitializeComponent();
-            addHistory();
+            now = DateTime.Now;
+            addBtnHistory();
+            SetHistory();
         }
         //tinh history
-        public void addHistory()
+        public void SetHistory()
         {
-            Form frmday = new Form();
-            frmday.Name = "1";
-            frmday.Width = 90;
-            frmday.Height = 90;
-            Label labe31 = new Label();
-            label1.Name = "2";
-            labe31.Width = 500;
-            for (int i = 0; i < 364; i++)
+            List<string> lstMotnh = new List<string>()
+                {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            List<Label> lstLbl = new List<Label>();
+            endDay = now;
+            day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(endDay);
+            timetoSunday = DayOfWeek.Sunday - day < 0 ? 7 + DayOfWeek.Sunday - day : DayOfWeek.Sunday - day;
+            int countYear = now.Year - int.Parse(combox_year.Text);
+            if (countYear == 0)
             {
-                VBButton button = new VBButton();
-                button.Name = i.ToString();
-                button.Width = 14;
-                button.Height = 14;
-                button.BorderRadius = 3;
-                button.BackColor = Color.FromArgb(235, 237, 240);
-                button.BorderColor = Color.Silver;
-                button.BorderSize = 1;
-                tableLayoutPanel3.Controls.Add(button);
-                button.MouseUp += (o, e) =>
+                endDay = now;
+            }
+            else if(countYear == 1)
+            {
+                endDay = now.AddDays(-(52 * 7 - timetoSunday));
+            }
+            else
+            {
+                endDay = now.AddDays(-((52 * 7 - timetoSunday) + (countYear -1) * 364));
+            }
+            // ẩn btn thừa
+            
+            List<Panel> l = new List<Panel>();
+            for (int i = 1; i < 8; i++)
+            {
+                foreach (Control x in tableLayoutPanel3.Controls)
                 {
-                    labe31.Text = frmday.Location.ToString() + button.Location.ToString();
-                    frmday.Controls.Add(labe31);
-                    rjDropdownMenu1.Items[0].Text = button.Location.ToString();
-                    rjDropdownMenu1.Show(button, 0, 0);
-                    //vbButton1.Location = new Point(button.Location.X + 680, button.Location.Y + 513);
-                    //OpenchildForm(frmday);
-                };
-                //button.MouseLeave += (o, e) =>
-                //{
-                //    frmday.Hide();
-                //};
+                    if (x.Name == "panl_day" + "_" + i.ToString() + "_" + 52.ToString())
+                    {
+                        if (i - (7 - timetoSunday) > 1)
+                        {
+                            x.Controls[0].Visible = false;
+                        }
+                        l.Add((Panel)x);
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
+            //Hiện button bị ẩn khi đổi năm
+            if (countYear >= 1)
             {
-                VBButton button = new VBButton();
-                button.Name = "bt"+ i.ToString();
-                button.Width = 14;
-                button.Height = 14;
-                button.BorderRadius = 3;
-                button.BackColor = Color.FromArgb(235, 237, 240);
-                button.BorderColor = Color.Silver;
-                button.BorderSize = 1;
-                tableLayoutPanel7.Controls.Add(button);
-                _lstBtnLessMore.Add(button);
+                foreach (Panel x in l)
+                {
+                    x.Controls[0].Visible = true;
+                }
             }
+        
             // Load button tại vị trí less - more
             foreach (Button x in _lstBtnLessMore)
             {
@@ -88,22 +97,100 @@ namespace _3_GUI_PresentationLayer.Views
                     x.BackColor = Color.FromArgb(33 ,110 ,57);
                 }
             }
-        }
-        private void OpenchildForm(Form form)
-        {
-            if (currentchildForm != null)
+            //Set lbl Month
+            foreach (Control x in tbl_month.Controls)
             {
-                currentchildForm.Close();
+                if (x is Label)
+                {
+                    lstLbl.Add((Label)x);
+                }
             }
-            currentchildForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            //panelDay.Controls.Add(form);
-            //panelDay.Tag = form;
-            form.BringToFront();
-            form.Show();
+            if (endDay.Day > 20)
+            {
+                foreach (var x in lstLbl)
+                {
+                    x.TextAlign = ContentAlignment.BottomLeft;
+                }
+            }
+            else if (endDay.Day > 10)
+            {
+                foreach (var x in lstLbl)
+                {
+                    x.TextAlign = ContentAlignment.BottomCenter;
+                }
+            }
+            else
+            {
+                foreach (var x in lstLbl)
+                {
+                    x.TextAlign = ContentAlignment.BottomRight;
+                }
+            }
+            // Set name month
+            int j = endDay.Month;
+            foreach (var x in lstLbl)
+            {
+                j--;
+                if (j == -1)
+                {
+                    j = 11;
+                }
+                x.Text = lstMotnh[j];
+            }
+        }
 
+        public void addBtnHistory()
+        {
+            for (int i = 1; i <= 7; i++)
+            {
+                for (int k = 1; k <= 52; k++)
+                {
+                    VBButton button = new VBButton();
+                    button.Name = "btn_day" + "_" + i.ToString() + "_" + k.ToString();
+                    button.Width = 15;
+                    button.Height = 15;
+                    button.BorderRadius = 2;
+                    button.BackColor = Color.FromArgb(235, 237, 240);
+                    button.BorderSize = 1;
+                    button.BorderColor = Color.Gainsboro;
+                    Panel panel = new Panel();
+                    panel.Name = "panl_day" + "_" + i.ToString() + "_" + k.ToString();
+                    panel.Width = 20;
+                    panel.Height = 20;
+                    panel.BackColor = Color.Transparent;
+                    panel.Margin = new Padding(0);
+                    panel.Controls.Add(button);
+                    tableLayoutPanel3.Controls.Add(panel);
+                    button.MouseUp += (o, e) =>
+                    {
+                        //set time cho btnday
+                        //rjDropdownMenu1.Items[0].Text = button.Name;
+                        int rowlocation = int.Parse(button.Name.Split("_")[2]);
+                        int columnlocation = int.Parse(button.Name.Split("_")[3]);
+                        rjDropdownMenu1.Items[0].Text = endDay.AddDays(-((52 * 7 - timetoSunday + 1) - (7 * (columnlocation - 1) + rowlocation))).ToString()+button.Name.ToString();
+                        rjDropdownMenu1.Show(button, 0, 0);
+                    };
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                VBButton button = new VBButton();
+                button.Name = "bt" + i.ToString();
+                button.Width = 15;
+                button.Height = 15;
+                button.BorderRadius = 3;
+                button.BackColor = Color.FromArgb(235, 237, 240);
+                button.BorderSize = 1;
+                button.BorderColor = Color.Gainsboro;
+                button.Anchor = AnchorStyles.Bottom;
+                tableLayoutPanel7.Controls.Add(button);
+                _lstBtnLessMore.Add(button);
+            }
+        }
+
+        private void combox_year_TextChanged(object sender, EventArgs e)
+        {
+            SetHistory();
         }
     }
 }

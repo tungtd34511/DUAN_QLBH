@@ -54,11 +54,15 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.rjDropdownMenu1.SuspendLayout();
+            this.customPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -137,6 +141,8 @@
             this.vbButton2.BorderSize = 0;
             this.vbButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vbButton2.FlatAppearance.BorderSize = 0;
+            this.vbButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.vbButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.ForeColor = System.Drawing.Color.Black;
             this.vbButton2.Location = new System.Drawing.Point(20, 3);
@@ -200,6 +206,8 @@
             this.vbButton1.BorderSize = 0;
             this.vbButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vbButton1.FlatAppearance.BorderSize = 0;
+            this.vbButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.vbButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.ForeColor = System.Drawing.Color.Black;
             this.vbButton1.Location = new System.Drawing.Point(219, 3);
@@ -230,6 +238,7 @@
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover_1);
             // 
             // tableLayoutPanel6
@@ -336,6 +345,7 @@
             this.btn_ThanhToan.TabIndex = 4;
             this.btn_ThanhToan.Text = "Thanh Toán";
             this.btn_ThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_ThanhToan.Click += new System.EventHandler(this.btn_ThanhToan_Click);
             // 
             // btn_KhuyenMai
             // 
@@ -371,13 +381,14 @@
             // 
             // panelDesktop
             // 
+            this.panelDesktop.AllowDrop = true;
             this.panelDesktop.AutoScroll = true;
             this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDesktop.Location = new System.Drawing.Point(0, 52);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1902, 933);
+            this.panelDesktop.Size = new System.Drawing.Size(1902, 943);
             this.panelDesktop.TabIndex = 4;
             // 
             // rjDropdownMenu1
@@ -394,31 +405,72 @@
             this.rjDropdownMenu1.Name = "rjDropdownMenu1";
             this.rjDropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
             this.rjDropdownMenu1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rjDropdownMenu1.Size = new System.Drawing.Size(249, 100);
+            this.rjDropdownMenu1.Size = new System.Drawing.Size(257, 100);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(248, 24);
-            this.toolStripMenuItem2.Text = "Sign in á TungTDph16451";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 24);
+            this.toolStripMenuItem2.Text = "Sign in as TungTDPH16451";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(248, 24);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(256, 24);
             this.toolStripMenuItem3.Text = "You profile";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(248, 24);
-            this.toolStripMenuItem4.Text = "You His tỏy";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(256, 24);
+            this.toolStripMenuItem4.Text = "You History";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(248, 24);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(256, 24);
             this.toolStripMenuItem5.Text = "Logout";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel1.BorderRadius = 0;
+            this.customPanel1.BorderSize = 2;
+            this.customPanel1.Controls.Add(this.label2);
+            this.customPanel1.Controls.Add(this.label1);
+            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.customPanel1.Location = new System.Drawing.Point(0, 995);
+            this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(1902, 40);
+            this.customPanel1.TabIndex = 5;
+            this.customPanel1.UnderlinedStyle = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1273, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Time: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Trang chủ / Tùng / Hồ sơ";
             // 
             // FrmMain
             // 
@@ -426,12 +478,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmMain";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 50);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -444,6 +496,8 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.rjDropdownMenu1.ResumeLayout(false);
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -473,5 +527,8 @@
         private CustomControl.VBButton vbButton2;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton button2;
+        private CustomControl.CustomPanel customPanel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

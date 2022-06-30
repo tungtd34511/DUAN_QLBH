@@ -457,7 +457,7 @@
         private CustomControl.VBButton vbButton2;
         private CustomControl.VBButton vbButton1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private new System.Windows.Forms.Label ADA;
+        private System.Windows.Forms.Label ADA;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;

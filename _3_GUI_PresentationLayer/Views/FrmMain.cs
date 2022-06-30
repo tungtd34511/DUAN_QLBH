@@ -15,14 +15,14 @@ namespace _3_GUI_PresentationLayer.Views
     public partial class FrmMain : Form
     {
         //Fields
-        private Panel leftBoderbtn;
-
         private Form currentchildForm;
         public FrmMain()
         {
             InitializeComponent();
             LoadCustomControl();
-            OpenchildForm(new frmProfileUser());
+            OpenchildForm(new FrmmanHinhCho());
+            timer1.Start();
+            _btnAcctive = "";
         }
         #region Custom lại các control
         private List<Control> _lstBtnThanhCongCu;
@@ -92,14 +92,6 @@ namespace _3_GUI_PresentationLayer.Views
         {
             textBox1.Width = 340;
         }
-
-        private void panel1_Click(object sender, EventArgs e)
-        {
-            OpenchildForm(new frmProfileUser());
-            textBox1.Width = 340;
-            //pal_ChucNangPhu.Visible = true;
-            //pal_ChucNangPhu.Enabled = true;
-        }
         private void textBox1_MouseClick_1(object sender, MouseEventArgs e)
         {
             textBox1.BackColor = Color.White;
@@ -115,19 +107,15 @@ namespace _3_GUI_PresentationLayer.Views
             textBox1.PlaceholderText = "Search of jump to...";
             textBox1.Text = "";
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            rjDropdownMenu1.Show(button2,button2.Width, 47);
-        }
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            rjDropdownMenu1.Show(button2, button2.Width, 47);
+            OpenchildForm(new frmUser());
         }
 
         private void btn_Trangchu_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new frmProfileUser());
+            OpenchildForm(new FrmmanHinhCho());
         }
 
         private void button1_MouseHover(object sender, EventArgs e)
@@ -149,6 +137,20 @@ namespace _3_GUI_PresentationLayer.Views
         private void button2_Click_1(object sender, EventArgs e)
         {
             rjDropdownMenu1.Show(button2, button2.Width, 47);
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.IconColor = Color.White;
+        }
+
+        private void btn_ThanhToan_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(new frmBanHang());
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = "Time: " + DateTime.Now.ToString();
         }
     }
 }
