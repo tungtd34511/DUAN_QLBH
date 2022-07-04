@@ -39,8 +39,8 @@ namespace _3_GUI_PresentationLayer.Views
         public void OpenForm(Form form)
         {
             FrmMain frmMain = new FrmMain();
-            frmMain.ShowDialog();
-            this.Close();
+            this.Hide();
+            frmMain.Show();
         }
 
         private void vbButton1_Click(object sender, EventArgs e)
@@ -64,6 +64,7 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void label3_Click(object sender, EventArgs e)
         {
+            this.Controls.Remove(tableLayoutPanel3);
             OpenchildForm(new frmQuenMatKhau());
         }
     }

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI_PresentationLayer.CustomControl
 {
-    public class CustomPanel : System.Windows.Forms.Panel
+    public class CustomPanel : Panel
     {
-        private System.Windows.Forms.Panel panel;
+        private Panel panel = new Panel();
 
         private Color borderColor = Color.MediumSlateBlue;
         private Color borderFocusColor = Color.HotPink;
@@ -28,7 +28,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
             set
             {
                 borderColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -46,7 +46,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
                 if (value >= 1)
                 {
                     borderSize = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
             set
             {
                 underlinedStyle = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -80,7 +80,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
                 if (value >= 0)
                 {
                     borderRadius = value;
-                    this.Invalidate();//Redraw control
+                    Invalidate();//Redraw control
                 }
             }
         }
@@ -93,20 +93,20 @@ namespace _3_GUI_PresentationLayer.CustomControl
             if (borderRadius > 1)//Rounded TextBox
             {
                 //-Fields
-                var rectBorderSmooth = this.ClientRectangle;
+                var rectBorderSmooth = ClientRectangle;
                 var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
                 int smoothSize = borderSize > 0 ? borderSize : 1;
 
                 using (GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, borderRadius))
                 using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
-                using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
+                using (Pen penBorderSmooth = new Pen(Parent.BackColor, smoothSize))
                 using (Pen penBorder = new Pen(borderColor, borderSize))
                 {
                     //-Drawing
-                    this.Region = new Region(pathBorderSmooth);//Set the rounded region of UserControl
+                    Region = new Region(pathBorderSmooth);//Set the rounded region of UserControl
                     if (borderRadius > 15) SetTextBoxRoundedRegion();//Set the rounded region of TextBox component
                     graph.SmoothingMode = SmoothingMode.AntiAlias;
-                    penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
+                    penBorder.Alignment = PenAlignment.Center;
                     if (isFocused) penBorder.Color = borderFocusColor;
 
                     if (underlinedStyle) //Line Style
@@ -115,7 +115,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
                         graph.DrawPath(penBorderSmooth, pathBorderSmooth);
                         //Draw border
                         graph.SmoothingMode = SmoothingMode.None;
-                        graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                        graph.DrawLine(penBorder, 0, Height - 1, Width, Height - 1);
                     }
                     else //Normal Style
                     {

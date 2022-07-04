@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NAudio;
-using NAudio.Wave;
+using System.Windows.Media;
 
 namespace _3_GUI_PresentationLayer.Views
 {
@@ -17,11 +16,13 @@ namespace _3_GUI_PresentationLayer.Views
         public FrmmanHinhCho()
         {
             InitializeComponent();
-            //IWavePlayer waveOutDevice = new WaveOut();
-            //AudioFileReader audioFileReader = new AudioFileReader("Hadouken! - Ugly.mp3");
-
-            //waveOutDevice.Init(audioFileReader);
-            //waveOutDevice.Play();
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.SoundLocation = "C:\\Users\\taduy\\Desktop\\DUAN_QLBH\\_3_GUI_PresentationLayer\\Musics\\「Ｒａｉｎｙ Ｍｏｏｄ」(Persona 5 -Beneath the Mask-).wav";
+            player.PlayLooping();
+            this.Closed += (o, s) =>
+            {
+                player.Stop();
+            };
         }
     }
 }

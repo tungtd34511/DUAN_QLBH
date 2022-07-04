@@ -20,7 +20,7 @@ namespace _3_GUI_PresentationLayer.Views
         {
             InitializeComponent();
             LoadCustomControl();
-            OpenchildForm(new FrmmanHinhCho());
+            //OpenchildForm(new FrmmanHinhCho());
             timer1.Start();
             _btnAcctive = "";
         }

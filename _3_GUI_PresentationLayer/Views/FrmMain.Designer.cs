@@ -47,7 +47,6 @@
             this.btn_ThanhToan = new System.Windows.Forms.Label();
             this.btn_KhuyenMai = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panelDesktop = new System.Windows.Forms.Panel();
             this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,12 +56,15 @@
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.rjDropdownMenu1.SuspendLayout();
             this.customPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -379,18 +381,6 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick_1);
             // 
-            // panelDesktop
-            // 
-            this.panelDesktop.AllowDrop = true;
-            this.panelDesktop.AutoScroll = true;
-            this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDesktop.Location = new System.Drawing.Point(0, 52);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1902, 943);
-            this.panelDesktop.TabIndex = 4;
-            // 
             // rjDropdownMenu1
             // 
             this.rjDropdownMenu1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -472,21 +462,40 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Trang chủ / Tùng / Hồ sơ";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panelDesktop);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 52);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1902, 943);
+            this.panel2.TabIndex = 6;
+            // 
+            // panelDesktop
+            // 
+            this.panelDesktop.AutoScroll = true;
+            this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(0, 0);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(1902, 943);
+            this.panelDesktop.TabIndex = 5;
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.customPanel1);
-            this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmMain";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form_Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.FrmMain_Click);
             this.panel1.ResumeLayout(false);
@@ -498,6 +507,7 @@
             this.rjDropdownMenu1.ResumeLayout(false);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -517,7 +527,6 @@
         private System.Windows.Forms.Label btn_Trangchu;
         private System.Windows.Forms.Label btn_ThanhToan;
         private System.Windows.Forms.Label btn_KhuyenMai;
-        private System.Windows.Forms.Panel panelDesktop;
         private CustomControl.RJDropdownMenu rjDropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
@@ -530,5 +539,7 @@
         private CustomControl.CustomPanel customPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelDesktop;
     }
 }
