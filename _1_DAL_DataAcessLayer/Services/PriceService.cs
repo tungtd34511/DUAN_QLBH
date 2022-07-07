@@ -37,7 +37,8 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Update(Price price)
         {
-            _qlbhContext.Prices.Update(price);
+            var entry = _qlbhContext.Prices.First(e => e.Id == price.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(price);
             _qlbhContext.SaveChanges();
             GetLstPricesFormDb();
             return "Sửa thành công!";

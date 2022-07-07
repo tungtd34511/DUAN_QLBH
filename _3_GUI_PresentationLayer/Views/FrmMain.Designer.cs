@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
@@ -54,7 +52,6 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
@@ -66,38 +63,6 @@
             this.customPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 4;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel5.TabIndex = 0;
             // 
             // panel1
             // 
@@ -274,7 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SanPham.AutoSize = true;
             this.btn_SanPham.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_SanPham.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_SanPham.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_SanPham.ForeColor = System.Drawing.Color.White;
             this.btn_SanPham.Location = new System.Drawing.Point(229, 0);
             this.btn_SanPham.Name = "btn_SanPham";
@@ -282,6 +247,7 @@
             this.btn_SanPham.TabIndex = 2;
             this.btn_SanPham.Text = "Sản phẩm";
             this.btn_SanPham.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_SanPham.Click += new System.EventHandler(this.btn_SanPham_Click);
             // 
             // btn_HoaDon
             // 
@@ -290,7 +256,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_HoaDon.AutoSize = true;
             this.btn_HoaDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_HoaDon.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_HoaDon.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_HoaDon.ForeColor = System.Drawing.Color.White;
             this.btn_HoaDon.Location = new System.Drawing.Point(349, 0);
             this.btn_HoaDon.Name = "btn_HoaDon";
@@ -306,7 +272,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_nhanvien.AutoSize = true;
             this.btn_nhanvien.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_nhanvien.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_nhanvien.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_nhanvien.ForeColor = System.Drawing.Color.White;
             this.btn_nhanvien.Location = new System.Drawing.Point(116, 0);
             this.btn_nhanvien.Name = "btn_nhanvien";
@@ -322,7 +288,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Trangchu.AutoSize = true;
             this.btn_Trangchu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Trangchu.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.btn_Trangchu.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.btn_Trangchu.ForeColor = System.Drawing.Color.White;
             this.btn_Trangchu.Location = new System.Drawing.Point(3, 0);
             this.btn_Trangchu.Name = "btn_Trangchu";
@@ -339,7 +305,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_ThanhToan.AutoSize = true;
             this.btn_ThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_ThanhToan.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ThanhToan.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ThanhToan.ForeColor = System.Drawing.Color.White;
             this.btn_ThanhToan.Location = new System.Drawing.Point(469, 0);
             this.btn_ThanhToan.Name = "btn_ThanhToan";
@@ -356,7 +322,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_KhuyenMai.AutoSize = true;
             this.btn_KhuyenMai.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KhuyenMai.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_KhuyenMai.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_KhuyenMai.ForeColor = System.Drawing.Color.White;
             this.btn_KhuyenMai.Location = new System.Drawing.Point(589, 0);
             this.btn_KhuyenMai.Name = "btn_KhuyenMai";
@@ -431,25 +397,14 @@
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 0;
             this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.label2);
             this.customPanel1.Controls.Add(this.label1);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.customPanel1.Location = new System.Drawing.Point(0, 995);
+            this.customPanel1.Location = new System.Drawing.Point(0, 951);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Size = new System.Drawing.Size(1902, 40);
             this.customPanel1.TabIndex = 5;
             this.customPanel1.UnderlinedStyle = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1273, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Time: ";
             // 
             // label1
             // 
@@ -469,7 +424,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 52);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1902, 943);
+            this.panel2.Size = new System.Drawing.Size(1902, 899);
             this.panel2.TabIndex = 6;
             // 
             // panelDesktop
@@ -477,17 +432,18 @@
             this.panelDesktop.AutoScroll = true;
             this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panelDesktop.Location = new System.Drawing.Point(0, 0);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1902, 943);
+            this.panelDesktop.Size = new System.Drawing.Size(1902, 899);
             this.panelDesktop.TabIndex = 5;
             // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.ClientSize = new System.Drawing.Size(1902, 991);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.panel1);
@@ -513,8 +469,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -537,7 +491,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton button2;
         private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelDesktop;

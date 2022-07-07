@@ -37,7 +37,9 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Update(ThuongHieu thuongHieu)
         {
-            _qlbhContext.ThuongHieus.Update(thuongHieu);
+            var entry = _qlbhContext.ThuongHieus.First(e => e.Id == thuongHieu.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(thuongHieu);
+            //_qlbhContext.ThuongHieus.Update(thuongHieu);
             _qlbhContext.SaveChanges();
             GetLstThuongHieusFormDb();
             return "Sửa thành công!";

@@ -13,11 +13,11 @@ namespace _1_DAL_DataAcessLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(25)]
+        [StringLength(35)]
         public string NoiSanXuat { get; set; }
         public int NamPhatHanh { get; set; }
         public DateTime NgayNhap { get; set; }
-        public int ThuongHieuid { get; set; }
-        public ThuongHieu ThuongHieu { get; set; }
+        public int? ThuongHieuid { get; set; }
+        public virtual ThuongHieu ThuongHieu { get; set; }
     }
 }

@@ -341,7 +341,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 68);
+            this.panel1.Size = new System.Drawing.Size(1902, 50);
             this.panel1.TabIndex = 1;
             // 
             // panelMenu2
@@ -351,16 +351,16 @@
             this.panelMenu2.Controls.Add(this.iconButton6);
             this.panelMenu2.Controls.Add(this.iconButton7);
             this.panelMenu2.Controls.Add(this.iconButton8);
-            this.panelMenu2.Location = new System.Drawing.Point(530, -6);
+            this.panelMenu2.Location = new System.Drawing.Point(527, -2);
             this.panelMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.panelMenu2.Name = "panelMenu2";
             this.panelMenu2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.panelMenu2.Size = new System.Drawing.Size(718, 72);
+            this.panelMenu2.Size = new System.Drawing.Size(700, 52);
             this.panelMenu2.TabIndex = 0;
             // 
             // iconButton5
             // 
-            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconButton5.FlatAppearance.BorderSize = 0;
             this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton5.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -370,11 +370,10 @@
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 30;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton5.Location = new System.Drawing.Point(542, 3);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton5.Location = new System.Drawing.Point(533, 0);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
-            this.iconButton5.Size = new System.Drawing.Size(172, 69);
+            this.iconButton5.Size = new System.Drawing.Size(172, 50);
             this.iconButton5.TabIndex = 6;
             this.iconButton5.Text = "Đổi Email";
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -383,7 +382,7 @@
             // 
             // iconButton6
             // 
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconButton6.FlatAppearance.BorderSize = 0;
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -393,11 +392,11 @@
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 30;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(338, 3);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton6.Location = new System.Drawing.Point(329, 0);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
-            this.iconButton6.Size = new System.Drawing.Size(204, 69);
+            this.iconButton6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton6.Size = new System.Drawing.Size(204, 50);
             this.iconButton6.TabIndex = 5;
             this.iconButton6.Text = "Đổi mật khẩu";
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -406,7 +405,7 @@
             // 
             // iconButton7
             // 
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconButton7.FlatAppearance.BorderSize = 0;
             this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton7.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -416,11 +415,11 @@
             this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton7.IconSize = 30;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton7.Location = new System.Drawing.Point(152, 3);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton7.Location = new System.Drawing.Point(143, 0);
+            this.iconButton7.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
-            this.iconButton7.Size = new System.Drawing.Size(186, 69);
+            this.iconButton7.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton7.Size = new System.Drawing.Size(186, 50);
             this.iconButton7.TabIndex = 4;
             this.iconButton7.Text = "Hoạt động";
             this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -429,7 +428,7 @@
             // 
             // iconButton8
             // 
-            this.iconButton8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconButton8.FlatAppearance.BorderSize = 0;
             this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -439,11 +438,11 @@
             this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton8.IconSize = 30;
             this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton8.Location = new System.Drawing.Point(0, 3);
-            this.iconButton8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton8.Location = new System.Drawing.Point(-9, 0);
+            this.iconButton8.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Padding = new System.Windows.Forms.Padding(10, 15, 15, 12);
-            this.iconButton8.Size = new System.Drawing.Size(152, 69);
+            this.iconButton8.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.iconButton8.Size = new System.Drawing.Size(152, 50);
             this.iconButton8.TabIndex = 3;
             this.iconButton8.Text = "Hồ sơ";
             this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -456,10 +455,10 @@
             this.panelDesktop2.BackColor = System.Drawing.Color.Gray;
             this.panelDesktop2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDesktop2.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelDesktop2.Location = new System.Drawing.Point(528, 68);
+            this.panelDesktop2.Location = new System.Drawing.Point(510, 50);
             this.panelDesktop2.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop2.Name = "panelDesktop2";
-            this.panelDesktop2.Size = new System.Drawing.Size(1392, 987);
+            this.panelDesktop2.Size = new System.Drawing.Size(1392, 849);
             this.panelDesktop2.TabIndex = 4;
             // 
             // panel5
@@ -626,7 +625,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.8705F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.1295F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel6.Controls.Add(this.vbButton5, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.vbButton6, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -648,9 +647,9 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.Location = new System.Drawing.Point(149, 3);
+            this.vbButton5.Location = new System.Drawing.Point(143, 3);
             this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(83, 37);
+            this.vbButton5.Size = new System.Drawing.Size(80, 37);
             this.vbButton5.TabIndex = 0;
             this.vbButton5.Text = "Lưu";
             this.vbButton5.TextColor = System.Drawing.Color.White;
@@ -776,7 +775,7 @@
             this.vbButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton3.ForeColor = System.Drawing.Color.White;
-            this.vbButton3.Location = new System.Drawing.Point(101, 48);
+            this.vbButton3.Location = new System.Drawing.Point(101, 23);
             this.vbButton3.Name = "vbButton3";
             this.vbButton3.Size = new System.Drawing.Size(400, 400);
             this.vbButton3.TabIndex = 6;
@@ -800,7 +799,7 @@
             this.vbButton4.ForeColor = System.Drawing.Color.Black;
             this.vbButton4.Image = ((System.Drawing.Image)(resources.GetObject("vbButton4.Image")));
             this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton4.Location = new System.Drawing.Point(432, 357);
+            this.vbButton4.Location = new System.Drawing.Point(435, 336);
             this.vbButton4.Name = "vbButton4";
             this.vbButton4.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.vbButton4.Size = new System.Drawing.Size(66, 66);
@@ -812,10 +811,9 @@
             // 
             // frmUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1920, 1055);
+            this.ClientSize = new System.Drawing.Size(1902, 899);
             this.Controls.Add(this.vbButton4);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.vbButton3);

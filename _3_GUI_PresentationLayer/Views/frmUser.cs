@@ -43,7 +43,6 @@ namespace _3_GUI_PresentationLayer.Views
                 //Button
                 _currenButton = (IconButton)senderBtn;
                 _currenButton.IconColor = color;
-                _currenButton.TextImageRelation = TextImageRelation.TextBeforeImage;
                 _currenButton.Font = _font2;
                 //left boder 
                 _leftBoderbtn.Size = new Size(_currenButton.Width, 7);
@@ -64,13 +63,11 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 _currenButton.ForeColor = Color.Black;
                 _currenButton.IconColor = Color.Black;
-                _currenButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-                _currenButton.ImageAlign = ContentAlignment.BottomLeft;
                 _currenButton.Font = _font1;
             }
         }
         //function
-        private void OpenchildForm(Form form)
+        public void OpenchildForm(Form form)
         {
             if (_currentchildForm != null)
             {

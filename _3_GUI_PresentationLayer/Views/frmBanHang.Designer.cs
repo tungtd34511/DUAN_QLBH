@@ -37,7 +37,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.panl_OderCart = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tblOrderCart = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
@@ -74,7 +74,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.customPanel1.SuspendLayout();
+            this.panl_OderCart.SuspendLayout();
             this.panel3.SuspendLayout();
             this.customPanel3.SuspendLayout();
             this.customPanel2.SuspendLayout();
@@ -93,7 +93,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1902, 50);
+            this.panel1.Size = new System.Drawing.Size(1920, 50);
             this.panel1.TabIndex = 0;
             // 
             // iconButton8
@@ -184,7 +184,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1902, 893);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1920, 849);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel2
@@ -195,36 +195,36 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1414, 893);
+            this.panel2.Size = new System.Drawing.Size(1427, 849);
             this.panel2.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.AutoScroll = true;
-            this.panel4.Controls.Add(this.customPanel1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Controls.Add(this.panl_OderCart);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1414, 359);
+            this.panel4.Size = new System.Drawing.Size(1427, 290);
             this.panel4.TabIndex = 4;
             // 
-            // customPanel1
+            // panl_OderCart
             // 
-            this.customPanel1.AutoScroll = true;
-            this.customPanel1.BackColor = System.Drawing.Color.IndianRed;
-            this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel1.BorderRadius = 0;
-            this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.tblOrderCart);
-            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel1.Location = new System.Drawing.Point(0, 0);
-            this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(1414, 359);
-            this.customPanel1.TabIndex = 0;
-            this.customPanel1.UnderlinedStyle = false;
+            this.panl_OderCart.AutoScroll = true;
+            this.panl_OderCart.BackColor = System.Drawing.Color.IndianRed;
+            this.panl_OderCart.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.panl_OderCart.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.panl_OderCart.BorderRadius = 0;
+            this.panl_OderCart.BorderSize = 2;
+            this.panl_OderCart.Controls.Add(this.tblOrderCart);
+            this.panl_OderCart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panl_OderCart.Location = new System.Drawing.Point(0, 0);
+            this.panl_OderCart.Margin = new System.Windows.Forms.Padding(0);
+            this.panl_OderCart.Name = "panl_OderCart";
+            this.panl_OderCart.Size = new System.Drawing.Size(1427, 290);
+            this.panl_OderCart.TabIndex = 0;
+            this.panl_OderCart.UnderlinedStyle = false;
             // 
             // tblOrderCart
             // 
@@ -232,20 +232,17 @@
             this.tblOrderCart.BackColor = System.Drawing.Color.IndianRed;
             this.tblOrderCart.ColumnCount = 1;
             this.tblOrderCart.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblOrderCart.Dock = System.Windows.Forms.DockStyle.Top;
             this.tblOrderCart.Location = new System.Drawing.Point(0, 0);
             this.tblOrderCart.Margin = new System.Windows.Forms.Padding(0);
             this.tblOrderCart.Name = "tblOrderCart";
             this.tblOrderCart.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.tblOrderCart.RowCount = 7;
+            this.tblOrderCart.RowCount = 5;
+            this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tblOrderCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tblOrderCart.Size = new System.Drawing.Size(1393, 402);
+            this.tblOrderCart.Size = new System.Drawing.Size(1406, 290);
             this.tblOrderCart.TabIndex = 1;
             // 
             // panel3
@@ -253,9 +250,9 @@
             this.panel3.Controls.Add(this.customPanel3);
             this.panel3.Controls.Add(this.customPanel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 359);
+            this.panel3.Location = new System.Drawing.Point(0, 287);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1414, 534);
+            this.panel3.Size = new System.Drawing.Size(1427, 562);
             this.panel3.TabIndex = 3;
             // 
             // customPanel3
@@ -269,7 +266,7 @@
             this.customPanel3.Location = new System.Drawing.Point(0, 50);
             this.customPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(1414, 484);
+            this.customPanel3.Size = new System.Drawing.Size(1427, 512);
             this.customPanel3.TabIndex = 1;
             this.customPanel3.UnderlinedStyle = false;
             // 
@@ -291,7 +288,7 @@
             this.tbl_lstproduct.RowCount = 2;
             this.tbl_lstproduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tbl_lstproduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tbl_lstproduct.Size = new System.Drawing.Size(1414, 484);
+            this.tbl_lstproduct.Size = new System.Drawing.Size(1427, 512);
             this.tbl_lstproduct.TabIndex = 0;
             // 
             // customPanel2
@@ -309,7 +306,7 @@
             this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel2.Name = "customPanel2";
             this.customPanel2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.customPanel2.Size = new System.Drawing.Size(1414, 50);
+            this.customPanel2.Size = new System.Drawing.Size(1427, 50);
             this.customPanel2.TabIndex = 0;
             this.customPanel2.UnderlinedStyle = false;
             // 
@@ -442,7 +439,7 @@
             this.pan_ThanhToan.BorderSize = 2;
             this.pan_ThanhToan.Controls.Add(this.tableLayoutPanel6);
             this.pan_ThanhToan.Controls.Add(this.customPanel4);
-            this.pan_ThanhToan.Location = new System.Drawing.Point(1414, 0);
+            this.pan_ThanhToan.Location = new System.Drawing.Point(1427, 0);
             this.pan_ThanhToan.Margin = new System.Windows.Forms.Padding(0);
             this.pan_ThanhToan.Name = "pan_ThanhToan";
             this.pan_ThanhToan.Size = new System.Drawing.Size(483, 846);
@@ -668,7 +665,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1902, 943);
+            this.ClientSize = new System.Drawing.Size(1920, 899);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -679,8 +676,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.customPanel1.ResumeLayout(false);
-            this.customPanel1.PerformLayout();
+            this.panl_OderCart.ResumeLayout(false);
+            this.panl_OderCart.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.customPanel3.ResumeLayout(false);
             this.customPanel2.ResumeLayout(false);
@@ -704,7 +701,7 @@
         private CustomControl.CustomPanel customPanel3;
         private System.Windows.Forms.TableLayoutPanel tbl_lstproduct;
         private System.Windows.Forms.Panel panel4;
-        private CustomControl.CustomPanel customPanel1;
+        private CustomControl.CustomPanel panl_OderCart;
         private CustomControl.CustomPanel pan_ThanhToan;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label13;

@@ -400,12 +400,11 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(915, 584);
@@ -434,7 +433,6 @@
         private System.Windows.Forms.Panel panelDesktopLogin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
         private CustomControl.VBButton vbButton2;
@@ -455,5 +453,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private CustomControl.VBButton vbButton3;
         private CustomControl.VBButton vbButton1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -16,9 +16,9 @@ namespace _1_DAL_DataAcessLayer.Entities
         [StringLength(35)]
         public string Name { get; set; }
         public bool Status { get; set; }
-        public int JodId { set; get; }
-        public Job Job { get; set; }
-        public int UserDetailId { set; get; }
-        public UserDetail UserDetail { get; set; }
+        public int? RoleId { set; get; }
+        public virtual Role Role { get; set; }
+        public int? UserDetailId { set; get; }
+        public virtual UserDetail UserDetail { get; set; }
     }
 }

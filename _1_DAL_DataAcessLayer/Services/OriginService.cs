@@ -37,7 +37,9 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Update(Origin origin)
         {
-            _qlbhContext.Origins.Update(origin);
+            var entry = _qlbhContext.Origins.First(e => e.Id == origin.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(origin);
+            //_qlbhContext.Origins.Update(origin);
             _qlbhContext.SaveChanges();
             GetLstOriginsFormDb();
             return "Sửa thành công!";

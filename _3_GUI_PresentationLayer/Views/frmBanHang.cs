@@ -13,14 +13,14 @@ namespace _3_GUI_PresentationLayer.Views
             InitializeComponent();
             LoadDetail();
         }
-
-        private void LoadDetail()
+        public void LoadDetail()
         {
+            tbl_lstproduct.Controls.Clear();
             AddPanelProduct();
         }
         private void AddPanelProduct()
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 14; i++)
             {
                 //design panel
                 CustomPanel panel = new CustomPanel();
@@ -80,6 +80,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnPrice.FlatStyle = FlatStyle.Flat;
                 btnPrice.ForeColor = Color.White;
                 btnPrice.Location = new Point(0, 181);
+                btnPrice.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
                 btnPrice.Name = "button2_" + i.ToString();
                 btnPrice.Text = "293.000 VNĐ";
                 btnPrice.Height = 25;
@@ -157,7 +158,7 @@ namespace _3_GUI_PresentationLayer.Views
             lblName.Location = new Point(92, 4);
             lblName.Name = "lblName_" + i.ToString();
             lblName.Size = new Size(566, 41);
-            lblName.Text = "Áo Thun Waffle Cổ Tròn Ngắn Tay (Vàng_M)";
+            lblName.Text = "Áo Thun Waffle Cổ Tròn Ngắn Tay_Vàng_M";
             //Gia ban
             Label lblGiaBan = new Label();
             lblGiaBan.Anchor = AnchorStyles.None;
@@ -214,12 +215,12 @@ namespace _3_GUI_PresentationLayer.Views
                     //panl.Name = "panl" + i.ToString();
                     if (x.Name == "panl_" + btnDelete.Name.Split("_").Last())
                     {
-                        if (tblOrderCart.Controls.Count > 7)
+                        tblOrderCart.Controls.Remove((CustomPanel)x);
+                        if (tblOrderCart.Controls.Count > 4)
                         {
                             tblOrderCart.RowCount -= 1;
                             tblOrderCart.Height -= 56;
                         }
-                        tblOrderCart.Controls.Remove((CustomPanel)x);
                     }
                 }
             };
@@ -233,12 +234,16 @@ namespace _3_GUI_PresentationLayer.Views
             //
             panl.Controls.Add(tbl);
             //
-            if (tblOrderCart.Controls.Count > 7)
+            if (tblOrderCart.Controls.Count > 4)
             {
-                tblOrderCart.RowCount += 1;
                 tblOrderCart.Height += 56;
+                tblOrderCart.RowStyles.Add(new RowStyle(SizeType.Absolute, 56));
+                tblOrderCart.Controls.Add(panl);
             }
-            tblOrderCart.Controls.Add(panl);
+            else
+            {
+                tblOrderCart.Controls.Add(panl);
+            }
             i++;
         }
     }

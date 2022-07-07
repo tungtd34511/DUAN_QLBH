@@ -13,10 +13,11 @@ namespace _1_DAL_DataAcessLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(35)] 
+        [StringLength(15)] 
         public string ColorCode { get; set; }
-        [StringLength(35)]
+        [StringLength(25)]
         public string Name { get; set; }
         public bool Status { get; set; }
+        public int? ImageId { get; set; }
     }
 }

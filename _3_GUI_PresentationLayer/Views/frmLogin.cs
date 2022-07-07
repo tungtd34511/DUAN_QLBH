@@ -13,20 +13,23 @@ namespace _3_GUI_PresentationLayer.Views
     public partial class frmLogin : Form
     {
         //fields
-        private Form _currentchildForm;
+        private FrmMain _frmMain;
+        private Form _currentChildForm;
+        private frmWelcome _frmWelcome;
         // Constructor
         public frmLogin()
         {
             InitializeComponent();
+            _frmWelcome = new frmWelcome();
         }
         // function
         private void OpenchildForm(Form form)
         {
-            if (_currentchildForm != null)
+            if (_currentChildForm != null)
             {
-                _currentchildForm.Close();
+                _currentChildForm.Close();
             }
-            _currentchildForm = form;
+            _currentChildForm = form;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
@@ -38,34 +41,37 @@ namespace _3_GUI_PresentationLayer.Views
 
         public void OpenForm(Form form)
         {
-            FrmMain frmMain = new FrmMain();
+            
+            form.Show();
             this.Hide();
-            frmMain.Show();
         }
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            OpenchildForm(new frmWelcome());
-            this.StartPosition = FormStartPosition.CenterScreen;
+            OpenchildForm(_frmWelcome);
             timer1.Start();
+            
         }
-
-        private int i = 0;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            i++;
-            // Set time login (30 ms)
-            if (i == 30)
-            {
-                OpenForm(new FrmMain());
-            }
-        }
-
         private void label3_Click(object sender, EventArgs e)
         {
             this.Controls.Remove(tableLayoutPanel3);
             OpenchildForm(new frmQuenMatKhau());
+        }
+        //
+        private int _i = 0;
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            _i++;
+            if (_i == 1)
+            {
+                _frmMain = new FrmMain();
+            }
+            else if (_i == 15)
+            {
+                _frmMain.Show();
+                this.Hide();
+            }
         }
     }
 }

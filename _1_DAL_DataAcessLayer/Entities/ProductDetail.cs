@@ -14,28 +14,19 @@ namespace _1_DAL_DataAcessLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int SoLuong { get; set; }
-        [StringLength(25)]
+        [StringLength(15)]
         public string QrCode { get; set; }
-        [StringLength(25)]
-        public string Ver { get; set; }
-        [StringLength(25)]
+        [StringLength(505)]
         public string ChatLieu { get; set; }
-        [StringLength(100)]
-        public string MoTa { get; set; }
+        [StringLength(505)]
+        public string MoTaChiTiet { get; set; }
         public bool Sex { get; set; }
         public bool Status { get; set; }
-        public int ColorId { get; set; }
-        public  Color Color { get; set; }
-        public int PriceId { get; set; }
-        public Price Price { get; set; }
-        public int OriginId { get; set; }
-        public Origin Origin { get; set; }
-        public int SizeId { get; set; }
-        public Size Size { get; set; }
-        public int TypeId { get; set; }
-        public Type Type { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public int? CatergoryId { get; set; }
+        public virtual Catergory Catergory { get; set; }
+        public int? PriceId { get; set; }
+        public virtual Price Price { get; set; }
+        public int? OriginId { get; set; }
+        public virtual Origin Origin { get; set; }
     }
 }

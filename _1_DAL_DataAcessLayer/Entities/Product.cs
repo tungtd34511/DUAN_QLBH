@@ -16,5 +16,7 @@ namespace _1_DAL_DataAcessLayer.Entities
         [StringLength(35)]
         public string Name { get; set; }
         public bool Status { get; set; }
+        public int? ProductDetailId { get; set; }
+        public virtual ProductDetail ProductDetail { get; set; }
     }
 }

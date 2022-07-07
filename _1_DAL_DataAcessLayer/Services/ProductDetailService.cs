@@ -12,6 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class ProductDetailService : IProductDetailService
     {
         private List<ProductDetail> _lstProductDetails;
+        private int _a;
         private QLBHContext _qlbhContext;
         public ProductDetailService()
         {
@@ -37,14 +38,16 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Update(ProductDetail productDetail)
         {
-            _qlbhContext.ProductDetails.Update(productDetail);
+            var entry = _qlbhContext.ProductDetails.First(e => e.Id == productDetail.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(productDetail);
             _qlbhContext.SaveChanges();
             GetLstProductDetailsFormDb();
             return "Sửa thành công!";
         }
         public string Delete(int id)
         {
-            _qlbhContext.ProductDetails.Remove(_lstProductDetails.FirstOrDefault(c=>c.Id == id));
+            int c = _lstProductDetails.FindIndex(c => c.Id == id);
+            _qlbhContext.ProductDetails.Remove(_qlbhContext.ProductDetails.ToList()[c]);
             _qlbhContext.SaveChanges();
             GetLstProductDetailsFormDb();
             return "Xóa thành công!";

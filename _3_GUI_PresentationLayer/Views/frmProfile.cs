@@ -80,19 +80,19 @@ namespace _3_GUI_PresentationLayer.Views
             // Load button tại vị trí less - more
             foreach (Button x in _lstBtnLessMore)
             {
-                if (x.Name == "bt1")
+                if (x.Name == "bt_1")
                 {
                     x.BackColor = Color.FromArgb(155, 233, 168);
                 }
-                if (x.Name == "bt2")
+                if (x.Name == "bt_2")
                 {
                     x.BackColor = Color.FromArgb(64,196,99);
                 }
-                if (x.Name == "bt3")
+                if (x.Name == "bt_3")
                 {
                     x.BackColor = Color.FromArgb(48,161,78);
                 }
-                if (x.Name == "bt4")
+                if (x.Name == "bt_4")
                 {
                     x.BackColor = Color.FromArgb(33 ,110 ,57);
                 }
@@ -146,19 +146,27 @@ namespace _3_GUI_PresentationLayer.Views
                 for (int k = 1; k <= 52; k++)
                 {
                     VBButton button = new VBButton();
-                    button.Name = "btn_day" + "_" + i.ToString() + "_" + k.ToString();
-                    button.Width = 15;
-                    button.Height = 15;
-                    button.BorderRadius = 2;
                     button.BackColor = Color.FromArgb(235, 237, 240);
-                    button.BorderSize = 1;
+                    button.BackgroundColor = Color.FromArgb(235, 237, 240);
                     button.BorderColor = Color.Gainsboro;
+                    button.BorderRadius = 3;
+                    button.BorderSize = 1;
+                    button.FlatAppearance.BorderSize = 0;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.ForeColor = Color.White;
+                    button.Location = new Point(2, 2);
+                    button.Margin = new Padding(2);
+                    button.Name = "btn_day" + "_" + i.ToString() + "_" + k.ToString();
+                    button.Size = new Size(16, 16);
+                    button.Text = "";
+                    button.TextColor = Color.White;
+                    button.UseVisualStyleBackColor = false;
                     Panel panel = new Panel();
-                    panel.Name = "panl_day" + "_" + i.ToString() + "_" + k.ToString();
-                    panel.Width = 20;
-                    panel.Height = 20;
-                    panel.BackColor = Color.Transparent;
+                    panel.Location = new Point(0, 0);
                     panel.Margin = new Padding(0);
+                    panel.Name = "panl_day" + "_" + i.ToString() + "_" + k.ToString();
+                    panel.Size = new Size(20, 20);
+                    panel.BackColor = Color.Transparent;
                     panel.Controls.Add(button);
                     tableLayoutPanel3.Controls.Add(panel);
                     button.MouseUp += (o, e) =>
@@ -175,14 +183,21 @@ namespace _3_GUI_PresentationLayer.Views
             for (int i = 0; i < 5; i++)
             {
                 VBButton button = new VBButton();
-                button.Name = "bt" + i.ToString();
-                button.Width = 15;
-                button.Height = 15;
-                button.BorderRadius = 3;
                 button.BackColor = Color.FromArgb(235, 237, 240);
-                button.BorderSize = 1;
+                button.BackgroundColor = Color.FromArgb(235, 237, 240);
                 button.BorderColor = Color.Gainsboro;
-                button.Anchor = AnchorStyles.Bottom;
+                button.BorderRadius = 3;
+                button.BorderSize = 1;
+                button.FlatAppearance.BorderSize = 0;
+                button.FlatStyle = FlatStyle.Flat;
+                button.ForeColor = Color.White;
+                button.Location = new Point(2, 2);
+                button.Margin = new Padding(2);
+                button.Name = "bt" + "_" + i.ToString();
+                button.Size = new Size(16, 16);
+                button.Text = "";
+                button.TextColor = Color.White;
+                button.UseVisualStyleBackColor = false;
                 tableLayoutPanel7.Controls.Add(button);
                 _lstBtnLessMore.Add(button);
             }

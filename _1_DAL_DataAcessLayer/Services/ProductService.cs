@@ -37,7 +37,9 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public string Update(Product product)
         {
-            _qlbhContext.Products.Update(product);
+            var entry = _qlbhContext.Products.First(e => e.Id == product.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(product);
+            //_qlbhContext.Update(product);
             _qlbhContext.SaveChanges();
             GetLstProductsFormDb();
             return "Sửa thành công!";
