@@ -1,26 +1,50 @@
-﻿using _3_GUI_PresentationLayer.CustomControl;
+﻿using System;
+using System.Collections.Generic;
+using _3_GUI_PresentationLayer.CustomControl;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using _2_BUS_BusinessLayer.Models;
+using _2_BUS_BusinessLayer.Services;
 
 namespace _3_GUI_PresentationLayer.Views
 {
     public partial class frmBanHang : Form
     {
+        private int _indexUpdateDetail;
+        private int _lastindex;
+        private int _lstDetailIndex;
         private int i =0;
+        private QLSanPhamService _qlSanPhamService;
+        private List<SanPham> _lstSanPhamsShow;
+
         public frmBanHang()
         {
             InitializeComponent();
+            _qlSanPhamService = new QLSanPhamService();
+            _lastindex = _qlSanPhamService.GetLstSanPhams().Count / 13;
+            _indexUpdateDetail = new int();
+            _lstSanPhamsShow = new List<SanPham>();
+            _lstDetailIndex = 0;
+            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
+            {
+                try
+                {
+                    _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
+                }
+                finally{}
+            }
+            //
             LoadDetail();
         }
         public void LoadDetail()
         {
             tbl_lstproduct.Controls.Clear();
-            AddPanelProduct();
+            AddPanelProduct(_lstSanPhamsShow);
         }
-        private void AddPanelProduct()
+        private void AddPanelProduct(List<SanPham> list)
         {
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 //design panel
                 CustomPanel panel = new CustomPanel();
@@ -29,8 +53,7 @@ namespace _3_GUI_PresentationLayer.Views
                 panel.BorderRadius = 10;
                 panel.BorderColor = Color.White;
                 panel.Dock = DockStyle.Fill;
-                Image img = Image.FromFile(
-                    "C:\\Users\\taduy\\Desktop\\DUAN_QLBH\\_3_GUI_PresentationLayer\\Images\\vngoods_41_447733.jpg");
+                Image img = Image.FromFile(list[i].Images[0].Path);
                 Bitmap img1 = new Bitmap(img, new Size(180, 180));
                 Bitmap img2 = new Bitmap(img, new Size(202, 202));
                 panel.BackgroundImage = img1;
@@ -65,10 +88,11 @@ namespace _3_GUI_PresentationLayer.Views
                 btnName.FlatAppearance.BorderSize = 0;
                 btnName.FlatStyle = FlatStyle.Flat;
                 btnName.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-                btnName.Text = "Áo Thun Waffle Cổ Tròn Ngắn Tay";
+                btnName.Text = list[i].Product.Name;
                 btnName.Height = 25;
                 btnName.FlatAppearance.MouseOverBackColor = Color.White;
                 btnName.Margin = new Padding(3);
+                btnName.AutoSize = true;
                 //
                 ////Color myColor = Color.FromArgb(100, Color.Blue);
                 ////label1.BackColor = myColor;
@@ -82,7 +106,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnPrice.Location = new Point(0, 181);
                 btnPrice.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
                 btnPrice.Name = "button2_" + i.ToString();
-                btnPrice.Text = "293.000 VNĐ";
+                btnPrice.Text = string.Format("{0:#,##0}", list[i].Price.GiaBan.ToString()) + " VNĐ";
                 btnPrice.Height = 25;
                 //
                 panel.Controls.Add(btnPrice);
@@ -246,5 +270,6 @@ namespace _3_GUI_PresentationLayer.Views
             }
             i++;
         }
+        
     }
 }

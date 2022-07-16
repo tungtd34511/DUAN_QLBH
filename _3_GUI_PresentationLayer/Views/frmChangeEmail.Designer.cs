@@ -248,6 +248,7 @@
             this.vbButton2.Text = "Gửi mã";
             this.vbButton2.TextColor = System.Drawing.Color.White;
             this.vbButton2.UseVisualStyleBackColor = false;
+            this.vbButton2.Click += new System.EventHandler(this.vbButton2_Click);
             // 
             // tableLayoutPanel6
             // 

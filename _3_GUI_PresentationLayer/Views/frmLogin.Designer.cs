@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cbox_HienMatKhau = new System.Windows.Forms.CheckBox();
             this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,12 +47,12 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_Acc = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Pass = new System.Windows.Forms.TextBox();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.btn_Login = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelDesktopLogin.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -112,6 +112,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.tableLayoutPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel3.BackgroundImage")));
+            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
@@ -128,15 +130,16 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Viner Hand ITC", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Viner Hand ITC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(3, 289);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
             this.label2.Size = new System.Drawing.Size(451, 126);
             this.label2.TabIndex = 6;
             this.label2.Tag = "";
-            this.label2.Text = "Egale";
+            this.label2.Text = "“Fashions fade, style is eternal”– Yves Saint Laurent.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // vbButton2
@@ -145,10 +148,10 @@
             this.vbButton2.BackColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
-            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.vbButton2.BorderColor = System.Drawing.Color.Black;
             this.vbButton2.BorderRadius = 100;
-            this.vbButton2.BorderSize = 0;
+            this.vbButton2.BorderSize = 1;
             this.vbButton2.FlatAppearance.BorderSize = 0;
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.ForeColor = System.Drawing.Color.Black;
@@ -162,13 +165,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.cbox_HienMatKhau);
             this.panel1.Controls.Add(this.vbButton3);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.customPanel2);
-            this.panel1.Controls.Add(this.vbButton1);
+            this.panel1.Controls.Add(this.btn_Login);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(457, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -176,17 +179,18 @@
             this.panel1.Size = new System.Drawing.Size(458, 584);
             this.panel1.TabIndex = 1;
             // 
-            // checkBox2
+            // cbox_HienMatKhau
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(255, 349);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.checkBox2.Size = new System.Drawing.Size(133, 22);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Hiện mật khẩu";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbox_HienMatKhau.AutoSize = true;
+            this.cbox_HienMatKhau.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbox_HienMatKhau.Location = new System.Drawing.Point(245, 349);
+            this.cbox_HienMatKhau.Name = "cbox_HienMatKhau";
+            this.cbox_HienMatKhau.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.cbox_HienMatKhau.Size = new System.Drawing.Size(133, 22);
+            this.cbox_HienMatKhau.TabIndex = 8;
+            this.cbox_HienMatKhau.Text = "Hiện mật khẩu";
+            this.cbox_HienMatKhau.UseVisualStyleBackColor = true;
+            this.cbox_HienMatKhau.CheckedChanged += new System.EventHandler(this.cbox_HienMatKhau_CheckedChanged);
             // 
             // vbButton3
             // 
@@ -211,12 +215,12 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(71, 349);
+            this.checkBox1.Location = new System.Drawing.Point(29, 349);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.checkBox1.Size = new System.Drawing.Size(128, 22);
+            this.checkBox1.Size = new System.Drawing.Size(127, 22);
             this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Remember me";
+            this.checkBox1.Text = "Lưu tài khoản";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -294,7 +298,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txt_Acc);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(71, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -315,20 +319,21 @@
             this.button1.TabIndex = 7;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txt_Acc
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(0, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(380, 45);
-            this.textBox1.TabIndex = 3;
+            this.txt_Acc.BackColor = System.Drawing.Color.White;
+            this.txt_Acc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Acc.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Acc.Location = new System.Drawing.Point(0, 10);
+            this.txt_Acc.MaxLength = 25;
+            this.txt_Acc.Name = "txt_Acc";
+            this.txt_Acc.Size = new System.Drawing.Size(380, 45);
+            this.txt_Acc.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txt_Pass);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(71, 61);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
@@ -349,15 +354,17 @@
             this.button2.TabIndex = 8;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txt_Pass
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(0, 10);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(380, 45);
-            this.textBox2.TabIndex = 4;
+            this.txt_Pass.BackColor = System.Drawing.Color.White;
+            this.txt_Pass.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Pass.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Pass.Location = new System.Drawing.Point(0, 10);
+            this.txt_Pass.MaxLength = 25;
+            this.txt_Pass.Name = "txt_Pass";
+            this.txt_Pass.PasswordChar = '●';
+            this.txt_Pass.Size = new System.Drawing.Size(380, 45);
+            this.txt_Pass.TabIndex = 4;
             // 
             // iconButton2
             // 
@@ -377,26 +384,26 @@
             this.iconButton2.TabIndex = 1;
             this.iconButton2.UseVisualStyleBackColor = true;
             // 
-            // vbButton1
+            // btn_Login
             // 
-            this.vbButton1.BackColor = System.Drawing.Color.White;
-            this.vbButton1.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.BorderRadius = 25;
-            this.vbButton1.BorderSize = 3;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.Font = new System.Drawing.Font("Constantia", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.Location = new System.Drawing.Point(-32, 379);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.vbButton1.Size = new System.Drawing.Size(188, 52);
-            this.vbButton1.TabIndex = 2;
-            this.vbButton1.Text = "Đăng nhập";
-            this.vbButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.UseVisualStyleBackColor = false;
-            this.vbButton1.Click += new System.EventHandler(this.vbButton1_Click);
+            this.btn_Login.BackColor = System.Drawing.Color.White;
+            this.btn_Login.BackgroundColor = System.Drawing.Color.White;
+            this.btn_Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.btn_Login.BorderRadius = 25;
+            this.btn_Login.BorderSize = 3;
+            this.btn_Login.FlatAppearance.BorderSize = 0;
+            this.btn_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Login.Font = new System.Drawing.Font("Constantia", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.btn_Login.Location = new System.Drawing.Point(-32, 379);
+            this.btn_Login.Name = "btn_Login";
+            this.btn_Login.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_Login.Size = new System.Drawing.Size(188, 52);
+            this.btn_Login.TabIndex = 2;
+            this.btn_Login.Text = "Đăng nhập";
+            this.btn_Login.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.btn_Login.UseVisualStyleBackColor = false;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // timer1
             // 
@@ -409,9 +416,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(915, 584);
             this.Controls.Add(this.panelDesktopLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
+            this.Text = "EGALE";
             this.panelDesktopLogin.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.customPanel1.ResumeLayout(false);
@@ -446,13 +454,13 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_Acc;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox txt_Pass;
+        private System.Windows.Forms.CheckBox cbox_HienMatKhau;
         private CustomControl.VBButton vbButton3;
-        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton btn_Login;
         private System.Windows.Forms.Timer timer1;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class frmQuenMatKhau : Form
+    public partial class FrmForgotPassword : Form
     {
-        public frmQuenMatKhau()
+        public FrmForgotPassword()
         {
             InitializeComponent();
         }

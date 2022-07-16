@@ -47,11 +47,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_oldPass = new System.Windows.Forms.TextBox();
+            this.txt_newPass = new System.Windows.Forms.TextBox();
+            this.txt_confirmPass = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.btn_Luu = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton8 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
@@ -281,9 +281,9 @@
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBox3, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.textBox2, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.txt_oldPass, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txt_newPass, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txt_confirmPass, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 6);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(58, 45);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -332,27 +332,33 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Nhập lại mật khẩu mới";
             // 
-            // textBox1
+            // txt_oldPass
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 27);
-            this.textBox1.TabIndex = 7;
+            this.txt_oldPass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_oldPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_oldPass.Location = new System.Drawing.Point(3, 49);
+            this.txt_oldPass.Name = "txt_oldPass";
+            this.txt_oldPass.PasswordChar = '●';
+            this.txt_oldPass.Size = new System.Drawing.Size(628, 34);
+            this.txt_oldPass.TabIndex = 7;
             // 
-            // textBox3
+            // txt_newPass
             // 
-            this.textBox3.Location = new System.Drawing.Point(3, 141);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(628, 27);
-            this.textBox3.TabIndex = 9;
+            this.txt_newPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_newPass.Location = new System.Drawing.Point(3, 141);
+            this.txt_newPass.Name = "txt_newPass";
+            this.txt_newPass.PasswordChar = '●';
+            this.txt_newPass.Size = new System.Drawing.Size(628, 34);
+            this.txt_newPass.TabIndex = 9;
             // 
-            // textBox2
+            // txt_confirmPass
             // 
-            this.textBox2.Location = new System.Drawing.Point(3, 233);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(628, 27);
-            this.textBox2.TabIndex = 10;
+            this.txt_confirmPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_confirmPass.Location = new System.Drawing.Point(3, 233);
+            this.txt_confirmPass.Name = "txt_confirmPass";
+            this.txt_confirmPass.PasswordChar = '●';
+            this.txt_confirmPass.Size = new System.Drawing.Size(628, 34);
+            this.txt_confirmPass.TabIndex = 10;
             // 
             // tableLayoutPanel1
             // 
@@ -360,7 +366,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.89243F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.10757F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel1.Controls.Add(this.vbButton1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_Luu, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.vbButton8, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 284);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -369,24 +375,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 43);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
-            // vbButton1
+            // btn_Luu
             // 
-            this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(31)))), ((int)(((byte)(36)))));
-            this.vbButton1.BorderRadius = 10;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.Location = new System.Drawing.Point(389, 3);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(98, 37);
-            this.vbButton1.TabIndex = 0;
-            this.vbButton1.Text = "Lưu";
-            this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.UseVisualStyleBackColor = false;
+            this.btn_Luu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.btn_Luu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.btn_Luu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(31)))), ((int)(((byte)(36)))));
+            this.btn_Luu.BorderRadius = 10;
+            this.btn_Luu.BorderSize = 0;
+            this.btn_Luu.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_Luu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Luu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_Luu.ForeColor = System.Drawing.Color.White;
+            this.btn_Luu.Location = new System.Drawing.Point(389, 3);
+            this.btn_Luu.Name = "btn_Luu";
+            this.btn_Luu.Size = new System.Drawing.Size(98, 37);
+            this.btn_Luu.TabIndex = 0;
+            this.btn_Luu.Text = "Lưu";
+            this.btn_Luu.TextColor = System.Drawing.Color.White;
+            this.btn_Luu.UseVisualStyleBackColor = false;
             // 
             // vbButton8
             // 
@@ -500,11 +506,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_oldPass;
+        private System.Windows.Forms.TextBox txt_newPass;
+        private System.Windows.Forms.TextBox txt_confirmPass;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton btn_Luu;
         private CustomControl.VBButton vbButton8;
         private System.Windows.Forms.Label label6;
     }

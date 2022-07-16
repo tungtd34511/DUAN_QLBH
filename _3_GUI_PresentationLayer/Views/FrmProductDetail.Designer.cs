@@ -1,4 +1,6 @@
-﻿namespace _3_GUI_PresentationLayer.Views
+﻿using System.Drawing;
+
+namespace _3_GUI_PresentationLayer.Views
 {
     partial class FrmProductDetail
     {
@@ -33,21 +35,18 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.button9 = new System.Windows.Forms.Button();
+            this.btn_Down = new FontAwesome.Sharp.IconButton();
             this.btn_Up = new FontAwesome.Sharp.IconButton();
-            this.panl_lstImg1 = new System.Windows.Forms.Panel();
+            this.panl_lstImg = new System.Windows.Forms.Panel();
             this.tbl_lstMiniImg = new System.Windows.Forms.TableLayoutPanel();
-            this.img_mini2 = new System.Windows.Forms.Panel();
-            this.img_3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panl_MenuImg2 = new System.Windows.Forms.Panel();
-            this.btn_Next = new FontAwesome.Sharp.IconButton();
+            this.button10 = new System.Windows.Forms.Button();
             this.lbl_indexImg = new System.Windows.Forms.Label();
-            this.btn_Prev = new FontAwesome.Sharp.IconButton();
             this.panl_Img = new System.Windows.Forms.Panel();
-            this.tbl_lstImg = new System.Windows.Forms.TableLayoutPanel();
-            this.img2 = new System.Windows.Forms.Panel();
-            this.img = new System.Windows.Forms.Panel();
+            this.btn_Prev = new FontAwesome.Sharp.IconButton();
+            this.btn_Next = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.lbl_GiaBan = new System.Windows.Forms.Label();
@@ -82,13 +81,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.btn_nameColor = new System.Windows.Forms.Button();
+            this.tbl_lstVer = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -100,21 +93,22 @@
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.txt_TongQuan = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_Sua = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btn_Status = new FontAwesome.Sharp.IconButton();
+            this.lblName = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panl_lstImg1.SuspendLayout();
-            this.tbl_lstMiniImg.SuspendLayout();
+            this.panl_lstImg.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panl_MenuImg2.SuspendLayout();
             this.panl_Img.SuspendLayout();
-            this.tbl_lstImg.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -126,23 +120,22 @@
             this.panel3.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.customPanel2.SuspendLayout();
             this.panel12.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.customPanel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel14, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -177,7 +170,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panl_lstImg1);
+            this.panel2.Controls.Add(this.panl_lstImg);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -188,7 +181,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.iconButton2);
+            this.panel4.Controls.Add(this.button9);
+            this.panel4.Controls.Add(this.btn_Down);
             this.panel4.Controls.Add(this.btn_Up);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 499);
@@ -197,21 +191,35 @@
             this.panel4.Size = new System.Drawing.Size(150, 26);
             this.panel4.TabIndex = 4;
             // 
-            // iconButton2
+            // button9
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton2.IconSize = 25;
-            this.iconButton2.Location = new System.Drawing.Point(82, 1);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(48, 26);
-            this.iconButton2.TabIndex = 7;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.button9.BackColor = System.Drawing.Color.DarkGray;
+            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(0, 0);
+            this.button9.Margin = new System.Windows.Forms.Padding(0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(150, 2);
+            this.button9.TabIndex = 1;
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // btn_Down
+            // 
+            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Down.FlatAppearance.BorderSize = 0;
+            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Down.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
+            this.btn_Down.IconColor = System.Drawing.Color.Black;
+            this.btn_Down.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_Down.IconSize = 20;
+            this.btn_Down.Location = new System.Drawing.Point(90, 5);
+            this.btn_Down.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Down.Name = "btn_Down";
+            this.btn_Down.Size = new System.Drawing.Size(40, 18);
+            this.btn_Down.TabIndex = 7;
+            this.btn_Down.UseVisualStyleBackColor = false;
+            this.btn_Down.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // btn_Up
             // 
@@ -221,23 +229,25 @@
             this.btn_Up.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
             this.btn_Up.IconColor = System.Drawing.Color.Black;
             this.btn_Up.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btn_Up.IconSize = 24;
-            this.btn_Up.Location = new System.Drawing.Point(9, 0);
+            this.btn_Up.IconSize = 20;
+            this.btn_Up.Location = new System.Drawing.Point(20, 5);
             this.btn_Up.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Up.Name = "btn_Up";
-            this.btn_Up.Size = new System.Drawing.Size(48, 26);
+            this.btn_Up.Size = new System.Drawing.Size(40, 18);
             this.btn_Up.TabIndex = 6;
             this.btn_Up.UseVisualStyleBackColor = false;
+            this.btn_Up.Click += new System.EventHandler(this.btn_Up_Click);
             // 
-            // panl_lstImg1
+            // panl_lstImg
             // 
-            this.panl_lstImg1.Controls.Add(this.tbl_lstMiniImg);
-            this.panl_lstImg1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panl_lstImg1.Location = new System.Drawing.Point(0, 0);
-            this.panl_lstImg1.Margin = new System.Windows.Forms.Padding(0);
-            this.panl_lstImg1.Name = "panl_lstImg1";
-            this.panl_lstImg1.Size = new System.Drawing.Size(150, 500);
-            this.panl_lstImg1.TabIndex = 2;
+            this.panl_lstImg.BackColor = System.Drawing.Color.White;
+            this.panl_lstImg.Controls.Add(this.tbl_lstMiniImg);
+            this.panl_lstImg.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panl_lstImg.Location = new System.Drawing.Point(0, 0);
+            this.panl_lstImg.Margin = new System.Windows.Forms.Padding(0);
+            this.panl_lstImg.Name = "panl_lstImg";
+            this.panl_lstImg.Size = new System.Drawing.Size(150, 500);
+            this.panl_lstImg.TabIndex = 2;
             // 
             // tbl_lstMiniImg
             // 
@@ -245,44 +255,14 @@
             this.tbl_lstMiniImg.ColumnCount = 2;
             this.tbl_lstMiniImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tbl_lstMiniImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.Controls.Add(this.img_mini2, 1, 0);
-            this.tbl_lstMiniImg.Controls.Add(this.img_3, 0, 0);
-            this.tbl_lstMiniImg.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbl_lstMiniImg.Location = new System.Drawing.Point(0, 0);
             this.tbl_lstMiniImg.Margin = new System.Windows.Forms.Padding(0);
             this.tbl_lstMiniImg.Name = "tbl_lstMiniImg";
             this.tbl_lstMiniImg.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.tbl_lstMiniImg.RowCount = 7;
+            this.tbl_lstMiniImg.RowCount = 1;
             this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tbl_lstMiniImg.Size = new System.Drawing.Size(150, 497);
+            this.tbl_lstMiniImg.Size = new System.Drawing.Size(150, 71);
             this.tbl_lstMiniImg.TabIndex = 0;
-            // 
-            // img_mini2
-            // 
-            this.img_mini2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.img_mini2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img_mini2.Location = new System.Drawing.Point(76, 1);
-            this.img_mini2.Margin = new System.Windows.Forms.Padding(1);
-            this.img_mini2.Name = "img_mini2";
-            this.img_mini2.Size = new System.Drawing.Size(69, 69);
-            this.img_mini2.TabIndex = 4;
-            // 
-            // img_3
-            // 
-            this.img_3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.img_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.img_3.Location = new System.Drawing.Point(5, 1);
-            this.img_3.Margin = new System.Windows.Forms.Padding(1);
-            this.img_3.Name = "img_3";
-            this.img_3.Size = new System.Drawing.Size(69, 69);
-            this.img_3.TabIndex = 3;
             // 
             // panel1
             // 
@@ -297,10 +277,9 @@
             // 
             // panl_MenuImg2
             // 
-            this.panl_MenuImg2.BackColor = System.Drawing.Color.Transparent;
-            this.panl_MenuImg2.Controls.Add(this.btn_Next);
+            this.panl_MenuImg2.BackColor = System.Drawing.SystemColors.Control;
+            this.panl_MenuImg2.Controls.Add(this.button10);
             this.panl_MenuImg2.Controls.Add(this.lbl_indexImg);
-            this.panl_MenuImg2.Controls.Add(this.btn_Prev);
             this.panl_MenuImg2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panl_MenuImg2.Location = new System.Drawing.Point(0, 499);
             this.panl_MenuImg2.Margin = new System.Windows.Forms.Padding(0);
@@ -308,51 +287,33 @@
             this.panl_MenuImg2.Size = new System.Drawing.Size(500, 26);
             this.panl_MenuImg2.TabIndex = 3;
             // 
-            // btn_Next
+            // button10
             // 
-            this.btn_Next.BackColor = System.Drawing.Color.LightGray;
-            this.btn_Next.FlatAppearance.BorderSize = 0;
-            this.btn_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Next.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
-            this.btn_Next.IconColor = System.Drawing.Color.Black;
-            this.btn_Next.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btn_Next.IconSize = 30;
-            this.btn_Next.Location = new System.Drawing.Point(419, 1);
-            this.btn_Next.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(48, 26);
-            this.btn_Next.TabIndex = 6;
-            this.btn_Next.UseVisualStyleBackColor = false;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            this.button10.BackColor = System.Drawing.Color.DarkGray;
+            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(0, 0);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(500, 2);
+            this.button10.TabIndex = 7;
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // lbl_indexImg
             // 
             this.lbl_indexImg.AutoSize = true;
-            this.lbl_indexImg.Location = new System.Drawing.Point(19, 1);
+            this.lbl_indexImg.Location = new System.Drawing.Point(0, 7);
             this.lbl_indexImg.Name = "lbl_indexImg";
             this.lbl_indexImg.Size = new System.Drawing.Size(39, 20);
             this.lbl_indexImg.TabIndex = 4;
             this.lbl_indexImg.Text = "1/11";
             // 
-            // btn_Prev
-            // 
-            this.btn_Prev.BackColor = System.Drawing.Color.LightGray;
-            this.btn_Prev.FlatAppearance.BorderSize = 0;
-            this.btn_Prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Prev.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            this.btn_Prev.IconColor = System.Drawing.Color.Black;
-            this.btn_Prev.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btn_Prev.IconSize = 30;
-            this.btn_Prev.Location = new System.Drawing.Point(331, 0);
-            this.btn_Prev.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Prev.Name = "btn_Prev";
-            this.btn_Prev.Size = new System.Drawing.Size(48, 26);
-            this.btn_Prev.TabIndex = 5;
-            this.btn_Prev.UseVisualStyleBackColor = false;
-            // 
             // panl_Img
             // 
-            this.panl_Img.Controls.Add(this.tbl_lstImg);
+            this.panl_Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panl_Img.Controls.Add(this.btn_Prev);
+            this.panl_Img.Controls.Add(this.btn_Next);
             this.panl_Img.Dock = System.Windows.Forms.DockStyle.Top;
             this.panl_Img.Location = new System.Drawing.Point(0, 0);
             this.panl_Img.Margin = new System.Windows.Forms.Padding(0);
@@ -360,38 +321,39 @@
             this.panl_Img.Size = new System.Drawing.Size(500, 500);
             this.panl_Img.TabIndex = 2;
             // 
-            // tbl_lstImg
+            // btn_Prev
             // 
-            this.tbl_lstImg.ColumnCount = 2;
-            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tbl_lstImg.Controls.Add(this.img2, 1, 0);
-            this.tbl_lstImg.Controls.Add(this.img, 0, 0);
-            this.tbl_lstImg.Location = new System.Drawing.Point(0, 0);
-            this.tbl_lstImg.Margin = new System.Windows.Forms.Padding(0);
-            this.tbl_lstImg.Name = "tbl_lstImg";
-            this.tbl_lstImg.RowCount = 1;
-            this.tbl_lstImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tbl_lstImg.Size = new System.Drawing.Size(1000, 500);
-            this.tbl_lstImg.TabIndex = 1;
+            this.btn_Prev.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_Prev.FlatAppearance.BorderSize = 0;
+            this.btn_Prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Prev.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btn_Prev.IconColor = System.Drawing.Color.Black;
+            this.btn_Prev.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_Prev.IconSize = 30;
+            this.btn_Prev.Location = new System.Drawing.Point(10, 225);
+            this.btn_Prev.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Prev.Name = "btn_Prev";
+            this.btn_Prev.Size = new System.Drawing.Size(50, 50);
+            this.btn_Prev.TabIndex = 5;
+            this.btn_Prev.UseVisualStyleBackColor = false;
+            this.btn_Prev.Click += new System.EventHandler(this.btn_Prev_Click);
             // 
-            // img2
+            // btn_Next
             // 
-            this.img2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img2.Location = new System.Drawing.Point(500, 0);
-            this.img2.Margin = new System.Windows.Forms.Padding(0);
-            this.img2.Name = "img2";
-            this.img2.Size = new System.Drawing.Size(500, 500);
-            this.img2.TabIndex = 1;
-            // 
-            // img
-            // 
-            this.img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img.Location = new System.Drawing.Point(0, 0);
-            this.img.Margin = new System.Windows.Forms.Padding(0);
-            this.img.Name = "img";
-            this.img.Size = new System.Drawing.Size(500, 500);
-            this.img.TabIndex = 0;
+            this.btn_Next.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_Next.FlatAppearance.BorderSize = 0;
+            this.btn_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Next.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btn_Next.IconColor = System.Drawing.Color.Black;
+            this.btn_Next.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_Next.IconSize = 30;
+            this.btn_Next.Location = new System.Drawing.Point(440, 225);
+            this.btn_Next.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Next.Name = "btn_Next";
+            this.btn_Next.Size = new System.Drawing.Size(50, 50);
+            this.btn_Next.TabIndex = 6;
+            this.btn_Next.UseVisualStyleBackColor = false;
+            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -801,7 +763,7 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.tableLayoutPanel7);
+            this.panel13.Controls.Add(this.tbl_lstVer);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(10, 227);
             this.panel13.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
@@ -809,108 +771,25 @@
             this.panel13.Size = new System.Drawing.Size(436, 298);
             this.panel13.TabIndex = 8;
             // 
-            // tableLayoutPanel7
+            // tbl_lstVer
             // 
-            this.tableLayoutPanel7.ColumnCount = 1;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, -1);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 6;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(419, 264);
-            this.tableLayoutPanel7.TabIndex = 0;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel8.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel8.ColumnCount = 4;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel8.Controls.Add(this.label14, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.label12, 3, 0);
-            this.tableLayoutPanel8.Controls.Add(this.label13, 2, 0);
-            this.tableLayoutPanel8.Controls.Add(this.customPanel2, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(419, 44);
-            this.tableLayoutPanel8.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(3, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(17, 20);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "1";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(380, 12);
-            this.label12.Margin = new System.Windows.Forms.Padding(3, 0, 7, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 20);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "200";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(268, 12);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(22, 20);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "M";
-            // 
-            // customPanel2
-            // 
-            this.customPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.customPanel2.BackColor = System.Drawing.Color.PapayaWhip;
-            this.customPanel2.BorderColor = System.Drawing.Color.Transparent;
-            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel2.BorderRadius = 0;
-            this.customPanel2.BorderSize = 1;
-            this.customPanel2.Controls.Add(this.btn_nameColor);
-            this.customPanel2.Location = new System.Drawing.Point(58, 3);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(172, 38);
-            this.customPanel2.TabIndex = 6;
-            this.customPanel2.UnderlinedStyle = false;
-            // 
-            // btn_nameColor
-            // 
-            this.btn_nameColor.BackColor = System.Drawing.Color.White;
-            this.btn_nameColor.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_nameColor.FlatAppearance.BorderSize = 0;
-            this.btn_nameColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_nameColor.Location = new System.Drawing.Point(44, 0);
-            this.btn_nameColor.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_nameColor.Name = "btn_nameColor";
-            this.btn_nameColor.Size = new System.Drawing.Size(128, 38);
-            this.btn_nameColor.TabIndex = 0;
-            this.btn_nameColor.Text = "Vàng 81";
-            this.btn_nameColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_nameColor.UseVisualStyleBackColor = false;
+            this.tbl_lstVer.BackColor = System.Drawing.Color.White;
+            this.tbl_lstVer.ColumnCount = 1;
+            this.tbl_lstVer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tbl_lstVer.Location = new System.Drawing.Point(0, 0);
+            this.tbl_lstVer.Margin = new System.Windows.Forms.Padding(0);
+            this.tbl_lstVer.Name = "tbl_lstVer";
+            this.tbl_lstVer.RowCount = 8;
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tbl_lstVer.Size = new System.Drawing.Size(419, 299);
+            this.tbl_lstVer.TabIndex = 0;
             // 
             // panel12
             // 
@@ -924,6 +803,7 @@
             // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel5.ColumnCount = 4;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
@@ -938,7 +818,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(419, 44);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(419, 49);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label11
@@ -946,7 +826,8 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(261, 24);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(261, 29);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 20);
             this.label11.TabIndex = 5;
@@ -957,7 +838,8 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(342, 24);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(342, 29);
             this.label10.Margin = new System.Windows.Forms.Padding(3, 0, 7, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 20);
@@ -969,7 +851,8 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(3, 24);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(3, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 20);
             this.label9.TabIndex = 3;
@@ -980,7 +863,8 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(58, 24);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(58, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 20);
             this.label8.TabIndex = 2;
@@ -1056,23 +940,13 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Tổng quan:";
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(3, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(383, 32);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Áo Thun Waffle Cổ Tròn Ngắn Tay";
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel3.Controls.Add(this.vbButton1, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Sua, 2, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 563);
@@ -1085,22 +959,22 @@
             // vbButton1
             // 
             this.vbButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.vbButton1.BackColor = System.Drawing.Color.White;
-            this.vbButton1.BackgroundColor = System.Drawing.Color.White;
+            this.vbButton1.BackColor = System.Drawing.Color.Red;
+            this.vbButton1.BackgroundColor = System.Drawing.Color.Red;
             this.vbButton1.BorderColor = System.Drawing.Color.Silver;
             this.vbButton1.BorderRadius = 5;
             this.vbButton1.BorderSize = 1;
             this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.vbButton1.ForeColor = System.Drawing.Color.Black;
-            this.vbButton1.Location = new System.Drawing.Point(1400, 0);
+            this.vbButton1.ForeColor = System.Drawing.Color.White;
+            this.vbButton1.Location = new System.Drawing.Point(1308, 0);
             this.vbButton1.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(80, 31);
+            this.vbButton1.Size = new System.Drawing.Size(172, 31);
             this.vbButton1.TabIndex = 13;
-            this.vbButton1.Text = "Xóa";
-            this.vbButton1.TextColor = System.Drawing.Color.Black;
+            this.vbButton1.Text = "Ngừng kinh doanh";
+            this.vbButton1.TextColor = System.Drawing.Color.White;
             this.vbButton1.UseVisualStyleBackColor = false;
             // 
             // btn_Sua
@@ -1115,7 +989,7 @@
             this.btn_Sua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Sua.ForeColor = System.Drawing.Color.White;
-            this.btn_Sua.Location = new System.Drawing.Point(1271, 0);
+            this.btn_Sua.Location = new System.Drawing.Point(1211, 0);
             this.btn_Sua.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(80, 31);
@@ -1124,6 +998,72 @@
             this.btn_Sua.TextColor = System.Drawing.Color.White;
             this.btn_Sua.UseVisualStyleBackColor = false;
             this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.iconButton2);
+            this.panel14.Controls.Add(this.btn_Status);
+            this.panel14.Controls.Add(this.lblName);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(0, 0);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1500, 35);
+            this.panel14.TabIndex = 3;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.AutoSize = true;
+            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconButton2.IconColor = System.Drawing.Color.Red;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 28;
+            this.iconButton2.Location = new System.Drawing.Point(548, 0);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(117, 35);
+            this.iconButton2.TabIndex = 3;
+            this.iconButton2.Text = "btn_sale";
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = true;
+            // 
+            // btn_Status
+            // 
+            this.btn_Status.AutoSize = true;
+            this.btn_Status.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Status.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Status.FlatAppearance.BorderSize = 0;
+            this.btn_Status.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_Status.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Status.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_Status.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btn_Status.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.btn_Status.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Status.IconSize = 35;
+            this.btn_Status.Location = new System.Drawing.Point(383, 0);
+            this.btn_Status.Name = "btn_Status";
+            this.btn_Status.Size = new System.Drawing.Size(165, 35);
+            this.btn_Status.TabIndex = 2;
+            this.btn_Status.Text = "btn_TrangThai";
+            this.btn_Status.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Status.UseVisualStyleBackColor = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblName.Location = new System.Drawing.Point(0, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(383, 32);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Áo Thun Waffle Cổ Tròn Ngắn Tay";
             // 
             // label6
             // 
@@ -1146,17 +1086,14 @@
             this.Name = "FrmProductDetail";
             this.Text = "FrmProductDetail";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panl_lstImg1.ResumeLayout(false);
-            this.tbl_lstMiniImg.ResumeLayout(false);
+            this.panl_lstImg.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panl_MenuImg2.ResumeLayout(false);
             this.panl_MenuImg2.PerformLayout();
             this.panl_Img.ResumeLayout(false);
-            this.tbl_lstImg.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1176,10 +1113,6 @@
             this.panel3.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
-            this.customPanel2.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
@@ -1187,6 +1120,8 @@
             this.tableLayoutPanel6.PerformLayout();
             this.customPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1194,24 +1129,19 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panl_Img;
-        private System.Windows.Forms.TableLayoutPanel tbl_lstImg;
-        private System.Windows.Forms.Panel img2;
-        private System.Windows.Forms.Panel img;
         private System.Windows.Forms.Panel panl_MenuImg2;
         private FontAwesome.Sharp.IconButton btn_Next;
         private FontAwesome.Sharp.IconButton btn_Prev;
         private System.Windows.Forms.Label lbl_indexImg;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btn_Down;
         private FontAwesome.Sharp.IconButton btn_Up;
-        private System.Windows.Forms.Panel panl_lstImg1;
+        private System.Windows.Forms.Panel panl_lstImg;
         private System.Windows.Forms.TableLayoutPanel tbl_lstMiniImg;
-        private System.Windows.Forms.Panel img_3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lbl_1;
         private System.Windows.Forms.Label lbl2;
@@ -1251,12 +1181,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private CustomControl.CustomPanel customPanel2;
+        private System.Windows.Forms.TableLayoutPanel tbl_lstVer;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label11;
@@ -1264,10 +1189,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Panel img_mini2;
-        private System.Windows.Forms.Button btn_nameColor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private CustomControl.VBButton btn_Sua;
         private CustomControl.VBButton vbButton1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Panel panel14;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btn_Status;
+        private System.Windows.Forms.Label lblName;
     }
 }

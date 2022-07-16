@@ -50,12 +50,37 @@ namespace _2_BUS_BusinessLayer.Services
             return _sanPhams;
         }
 
+        public string AddCatergory(Catergory catergory)
+        {
+            return _catergoryService.Add(catergory);
+        }
+        public string AddOrigin(Origin origin)
+        {
+            return _originService.Add(origin);
+        }
         public List<ProductDetail> GetProductDetails()
         {
             return _productDetailService.GetLstProductDetails();
         }
+        public List<Origin> GetOrigins()
+        {
+            return _originService.GetLstOrigins();
+        }
+        public List<Size> GetSizes()
+        {
+            return _sizeService.GetLstSizes();
+        }
+        public List<Catergory> GetListCatergory()
+        {
+            return _catergoryService.GetLstCatergorys();
+        }
+        public List<ThuongHieu> GetListThuongHieus()
+        {
+            return _thuongHieuService.GetLstThuongHieus();
+        }
         public void GetLstSanPhamsFormDAL()
         {
+            _sanPhams = new List<SanPham>();
             var sanphams = from a in _productService.GetLstProducts()
                 join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
                 join c in _verService.GetLstVers() on b.Id equals c.ProductDetailId
@@ -220,17 +245,15 @@ namespace _2_BUS_BusinessLayer.Services
         }
         public string UpdateSanPham(SanPham sanPham)
         {
-            sanPham.Origin.ThuongHieu = sanPham.ThuongHieu;
             sanPham.ProductDetail.Origin = sanPham.Origin;
+            sanPham.ProductDetail.OriginId = sanPham.Origin.Id;
             sanPham.ProductDetail.Price = sanPham.Price;
             sanPham.ProductDetail.Origin = sanPham.Origin;
             sanPham.ProductDetail.Catergory = sanPham.Catergory;
+            sanPham.ProductDetail.CatergoryId = sanPham.Catergory.Id;
             sanPham.Product.ProductDetail = sanPham.ProductDetail;
             //
-            _thuongHieuService.Update(sanPham.ThuongHieu);
-            _originService.Update(sanPham.Origin);
             _priceService.Update(sanPham.Price);
-            _catergoryService.Update(sanPham.Catergory);
             _productDetailService.Update(sanPham.ProductDetail);
             _productService.Update(sanPham.Product);
             GetLstSanPhamsFormDAL();

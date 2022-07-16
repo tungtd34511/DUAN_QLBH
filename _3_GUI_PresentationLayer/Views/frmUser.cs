@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _2_BUS_BusinessLayer.Models;
+using _2_BUS_BusinessLayer.Services;
 using _3_GUI_PresentationLayer.CustomControl;
 using FontAwesome.Sharp;
 
@@ -19,28 +21,52 @@ namespace _3_GUI_PresentationLayer.Views
         private Font _font1;
         private Font _font2;
         private Form _currentchildForm;
+        private NguoiDung _nguoiDung;
+
+        private NguoiDungService _nguoiDungService;
         //Struct
-        private struct RGBcolors
+        private struct RgBcolors
         {
             public static Color color3 = Color.FromArgb(253, 138, 114);
         }
-        public frmUser()
+        public frmUser(NguoiDung nguoiDung)
         {
+            _nguoiDungService = new NguoiDungService();
+            _nguoiDung = new NguoiDung();
+            _nguoiDung = nguoiDung;
             InitializeComponent();
             _leftBoderbtn = new CustomPanel();
             tableLayoutPanel3.Visible = false;
             panelMenu2.Controls.Add(_leftBoderbtn);
-            ActiveButton(iconButton8, RGBcolors.color3);
+            ActiveButton(iconButton8, RgBcolors.color3);
             _font1 = iconButton1.Font;
             _font2 = iconButton2.Font;
-            OpenchildForm(new frmProfile());
+            _currenButton = new IconButton();
+            _currentchildForm = new Form();
+            LoadThongTin(_nguoiDung);
+            //
+            ActiveButton(iconButton8, RgBcolors.color3);
+            OpenchildForm(new frmProfile(_nguoiDung));
+        }
+
+        public void LoadThongTin(NguoiDung nguoiDung)
+        {
+            img_User.BackgroundImage = Image.FromFile(nguoiDung.UserDetail.Image);
+            txt_lastName.Text = nguoiDung.User.Name.Split(" ").LastOrDefault();
+            txt_Email.Text = nguoiDung.UserDetail.Email.Split("@").FirstOrDefault();
+            txt_Name.Text = nguoiDung.User.Name;
+            txt_SoDT.Text = nguoiDung.UserDetail.PhoneNumber;
+            rbtn_nam.Checked = nguoiDung.UserDetail.Sex;
+            rbtn_nu.Checked = rbtn_nam.Checked == false ? true : false;
+            txt_DiaChi.Text = nguoiDung.UserDetail.Address;
+            date_NgaySinh.Value = nguoiDung.UserDetail.DateOfBirth;
         }
         private void ActiveButton(object senderBtn, Color color)
         {
             DisableButton();
-            if (senderBtn != null)
+            //Button
+            if (_currenButton != null)
             {
-                //Button
                 _currenButton = (IconButton)senderBtn;
                 _currenButton.IconColor = color;
                 _currenButton.Font = _font2;
@@ -69,10 +95,7 @@ namespace _3_GUI_PresentationLayer.Views
         //function
         public void OpenchildForm(Form form)
         {
-            if (_currentchildForm != null)
-            {
-                _currentchildForm.Close();
-            }
+            _currentchildForm.Close();
             _currentchildForm = form;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
@@ -108,24 +131,30 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void iconButton8_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBcolors.color3);
-            OpenchildForm(new frmProfile());
+            ActiveButton(sender, RgBcolors.color3);
+            OpenchildForm(new frmProfile(_nguoiDung));
         }
 
         private void iconButton7_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBcolors.color3);
+            ActiveButton(sender, RgBcolors.color3);
         }
 
         private void iconButton6_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBcolors.color3);
+            ActiveButton(sender, RgBcolors.color3);
+            frmChangePass frmChangePass = new frmChangePass();
+            frmChangePass.GetBtnLuu().Click += (o, s) =>
+            {
+                _nguoiDung.Account.Pass = frmChangePass.GetMatKhauMoi();
+                MessageBox.Show(_nguoiDungService.DoiMatKhau(_nguoiDung));
+            };
             OpenchildForm(new frmChangePass());
         }
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, RGBcolors.color3);
+            ActiveButton(sender, RgBcolors.color3);
             OpenchildForm(new frmChangeEmail());
         }
 
@@ -134,19 +163,6 @@ namespace _3_GUI_PresentationLayer.Views
             tableLayoutPanel3.Visible = false;
             tableLayoutPanel4.Visible = true;
         }
-
-        private void frmProfileUser_MouseCaptureChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void frmProfileUser_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void frmProfileUser_MouseCaptureChanged_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("sassa");
-        }
+        
     }
 }

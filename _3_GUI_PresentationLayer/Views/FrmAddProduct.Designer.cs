@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddProduct));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,31 +42,26 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_GiaBan = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.panl_lstImg = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.img_3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.btn_AddVer = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label7 = new System.Windows.Forms.Label();
             this.panl_lstVer = new System.Windows.Forms.Panel();
             this.tbl_lstVer = new System.Windows.Forms.TableLayoutPanel();
-            this.tbl_Ver = new System.Windows.Forms.TableLayoutPanel();
-            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.btn_nameColor = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panl_lstImg = new System.Windows.Forms.Panel();
+            this.tbl_lstImg = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txt_Sex = new System.Windows.Forms.TextBox();
+            this.rbtn_Nu = new System.Windows.Forms.RadioButton();
+            this.rbtn_Nam = new System.Windows.Forms.RadioButton();
             this.button8 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txt_ProductName = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_QRCode = new FontAwesome.Sharp.IconButton();
             this.txt_QrCode = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -76,12 +70,14 @@
             this.lbl_1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.txt_ThuongHieu = new System.Windows.Forms.TextBox();
+            this.txt_ThuongHieu = new System.Windows.Forms.ComboBox();
+            this.btn_AddThuongHieu = new FontAwesome.Sharp.IconButton();
             this.button6 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txt_CatergoryName = new System.Windows.Forms.TextBox();
+            this.btn_AddCatergory = new FontAwesome.Sharp.IconButton();
             this.button5 = new System.Windows.Forms.Button();
+            this.txt_CatergoryName = new System.Windows.Forms.ComboBox();
             this.lbl3 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -99,13 +95,10 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panl_lstImg.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panl_lstVer.SuspendLayout();
-            this.tbl_lstVer.SuspendLayout();
-            this.tbl_Ver.SuspendLayout();
-            this.customPanel2.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panl_lstImg.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -120,6 +113,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -159,9 +153,9 @@
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panl_lstImg, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel7, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.panl_lstVer, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.panel11, 0, 1);
             this.tableLayoutPanel3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(649, 12);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -209,13 +203,15 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.Location = new System.Drawing.Point(472, 95);
+            this.vbButton5.Location = new System.Drawing.Point(460, 95);
+            this.vbButton5.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.vbButton5.Name = "vbButton5";
             this.vbButton5.Size = new System.Drawing.Size(153, 37);
             this.vbButton5.TabIndex = 1;
             this.vbButton5.Text = "Chọn ảnh";
             this.vbButton5.TextColor = System.Drawing.Color.White;
             this.vbButton5.UseVisualStyleBackColor = false;
+            this.vbButton5.Click += new System.EventHandler(this.vbButton5_Click);
             // 
             // label6
             // 
@@ -257,7 +253,7 @@
             this.panel1.Location = new System.Drawing.Point(102, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(372, 45);
+            this.panel1.Size = new System.Drawing.Size(511, 45);
             this.panel1.TabIndex = 12;
             // 
             // txt_GiaNhap
@@ -270,8 +266,9 @@
             this.txt_GiaNhap.Margin = new System.Windows.Forms.Padding(0);
             this.txt_GiaNhap.Name = "txt_GiaNhap";
             this.txt_GiaNhap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_GiaNhap.Size = new System.Drawing.Size(372, 23);
+            this.txt_GiaNhap.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaNhap.TabIndex = 2;
+            this.txt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaNhap_KeyPress);
             // 
             // button1
             // 
@@ -282,7 +279,7 @@
             this.button1.Location = new System.Drawing.Point(0, 43);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(372, 2);
+            this.button1.Size = new System.Drawing.Size(511, 2);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -293,7 +290,7 @@
             this.panel2.Location = new System.Drawing.Point(102, 45);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 45);
+            this.panel2.Size = new System.Drawing.Size(511, 45);
             this.panel2.TabIndex = 13;
             // 
             // txt_GiaBan
@@ -306,8 +303,9 @@
             this.txt_GiaBan.Margin = new System.Windows.Forms.Padding(0);
             this.txt_GiaBan.Name = "txt_GiaBan";
             this.txt_GiaBan.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_GiaBan.Size = new System.Drawing.Size(372, 23);
+            this.txt_GiaBan.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaBan.TabIndex = 1;
+            this.txt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaBan_KeyPress);
             // 
             // button7
             // 
@@ -318,59 +316,16 @@
             this.button7.Location = new System.Drawing.Point(0, 43);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(372, 2);
+            this.button7.Size = new System.Drawing.Size(511, 2);
             this.button7.TabIndex = 0;
             this.button7.UseVisualStyleBackColor = false;
-            // 
-            // panl_lstImg
-            // 
-            this.panl_lstImg.BackColor = System.Drawing.Color.IndianRed;
-            this.panl_lstImg.Controls.Add(this.tableLayoutPanel6);
-            this.panl_lstImg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panl_lstImg.Location = new System.Drawing.Point(0, 135);
-            this.panl_lstImg.Margin = new System.Windows.Forms.Padding(0);
-            this.panl_lstImg.Name = "panl_lstImg";
-            this.panl_lstImg.Size = new System.Drawing.Size(628, 204);
-            this.panl_lstImg.TabIndex = 1;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 6;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.Controls.Add(this.img_3, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(612, 204);
-            this.tableLayoutPanel6.TabIndex = 0;
-            // 
-            // img_3
-            // 
-            this.img_3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.img_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_3.BackgroundImage")));
-            this.img_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.img_3.Location = new System.Drawing.Point(3, 2);
-            this.img_3.Margin = new System.Windows.Forms.Padding(2);
-            this.img_3.Name = "img_3";
-            this.img_3.Size = new System.Drawing.Size(95, 100);
-            this.img_3.TabIndex = 4;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.24204F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.75797F));
-            this.tableLayoutPanel7.Controls.Add(this.vbButton1, 0, 0);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.92357F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.07643F));
+            this.tableLayoutPanel7.Controls.Add(this.btn_AddVer, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 339);
@@ -381,25 +336,27 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(628, 45);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
-            // vbButton1
+            // btn_AddVer
             // 
-            this.vbButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.BorderRadius = 5;
-            this.vbButton1.BorderSize = 1;
-            this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.Location = new System.Drawing.Point(472, 5);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(153, 37);
-            this.vbButton1.TabIndex = 10;
-            this.vbButton1.Text = "Thêm phiên bản";
-            this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.UseVisualStyleBackColor = false;
+            this.btn_AddVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_AddVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.btn_AddVer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.btn_AddVer.BorderColor = System.Drawing.Color.Silver;
+            this.btn_AddVer.BorderRadius = 5;
+            this.btn_AddVer.BorderSize = 1;
+            this.btn_AddVer.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_AddVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddVer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_AddVer.ForeColor = System.Drawing.Color.White;
+            this.btn_AddVer.Location = new System.Drawing.Point(460, 5);
+            this.btn_AddVer.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
+            this.btn_AddVer.Name = "btn_AddVer";
+            this.btn_AddVer.Size = new System.Drawing.Size(153, 37);
+            this.btn_AddVer.TabIndex = 10;
+            this.btn_AddVer.Text = "Thêm phiên bản";
+            this.btn_AddVer.TextColor = System.Drawing.Color.White;
+            this.btn_AddVer.UseVisualStyleBackColor = false;
+            this.btn_AddVer.Click += new System.EventHandler(this.btn_AddVer_Click);
             // 
             // label7
             // 
@@ -414,9 +371,9 @@
             // 
             // panl_lstVer
             // 
+            this.panl_lstVer.AutoScroll = true;
             this.panl_lstVer.BackColor = System.Drawing.Color.White;
             this.panl_lstVer.Controls.Add(this.tbl_lstVer);
-            this.panl_lstVer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panl_lstVer.Location = new System.Drawing.Point(0, 384);
             this.panl_lstVer.Margin = new System.Windows.Forms.Padding(0);
             this.panl_lstVer.Name = "panl_lstVer";
@@ -425,10 +382,11 @@
             // 
             // tbl_lstVer
             // 
+            this.tbl_lstVer.AutoSize = true;
+            this.tbl_lstVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.tbl_lstVer.ColumnCount = 1;
             this.tbl_lstVer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tbl_lstVer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_lstVer.Controls.Add(this.tbl_Ver, 0, 0);
             this.tbl_lstVer.Location = new System.Drawing.Point(0, 0);
             this.tbl_lstVer.Margin = new System.Windows.Forms.Padding(0);
             this.tbl_lstVer.Name = "tbl_lstVer";
@@ -440,112 +398,50 @@
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tbl_lstVer.Size = new System.Drawing.Size(612, 336);
+            this.tbl_lstVer.Size = new System.Drawing.Size(612, 341);
             this.tbl_lstVer.TabIndex = 0;
             // 
-            // tbl_Ver
+            // panel11
             // 
-            this.tbl_Ver.ColumnCount = 5;
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
-            this.tbl_Ver.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tbl_Ver.Controls.Add(this.customPanel2, 2, 0);
-            this.tbl_Ver.Controls.Add(this.button10, 0, 0);
-            this.tbl_Ver.Controls.Add(this.textBox3, 4, 0);
-            this.tbl_Ver.Controls.Add(this.textBox1, 3, 0);
-            this.tbl_Ver.Controls.Add(this.panel10, 1, 0);
-            this.tbl_Ver.Location = new System.Drawing.Point(4, 3);
-            this.tbl_Ver.Name = "tbl_Ver";
-            this.tbl_Ver.RowCount = 1;
-            this.tbl_Ver.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tbl_Ver.Size = new System.Drawing.Size(605, 50);
-            this.tbl_Ver.TabIndex = 0;
+            this.panel11.Controls.Add(this.panl_lstImg);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 135);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(628, 204);
+            this.panel11.TabIndex = 4;
             // 
-            // customPanel2
+            // panl_lstImg
             // 
-            this.customPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.customPanel2.BackColor = System.Drawing.Color.PapayaWhip;
-            this.customPanel2.BorderColor = System.Drawing.Color.Transparent;
-            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel2.BorderRadius = 0;
-            this.customPanel2.BorderSize = 1;
-            this.customPanel2.Controls.Add(this.btn_nameColor);
-            this.customPanel2.Location = new System.Drawing.Point(152, 0);
-            this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(139, 50);
-            this.customPanel2.TabIndex = 7;
-            this.customPanel2.UnderlinedStyle = false;
+            this.panl_lstImg.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panl_lstImg.AutoScroll = true;
+            this.panl_lstImg.BackColor = System.Drawing.Color.White;
+            this.panl_lstImg.Controls.Add(this.tbl_lstImg);
+            this.panl_lstImg.Location = new System.Drawing.Point(0, 0);
+            this.panl_lstImg.Margin = new System.Windows.Forms.Padding(0);
+            this.panl_lstImg.Name = "panl_lstImg";
+            this.panl_lstImg.Size = new System.Drawing.Size(633, 204);
+            this.panl_lstImg.TabIndex = 2;
             // 
-            // btn_nameColor
+            // tbl_lstImg
             // 
-            this.btn_nameColor.BackColor = System.Drawing.Color.White;
-            this.btn_nameColor.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_nameColor.FlatAppearance.BorderSize = 0;
-            this.btn_nameColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_nameColor.Location = new System.Drawing.Point(48, 0);
-            this.btn_nameColor.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_nameColor.Name = "btn_nameColor";
-            this.btn_nameColor.Size = new System.Drawing.Size(91, 50);
-            this.btn_nameColor.TabIndex = 0;
-            this.btn_nameColor.Text = "Vàng 81";
-            this.btn_nameColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_nameColor.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Red;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(0, 0);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(50, 50);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Xóa";
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(466, 5);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "Số lượng";
-            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox3.Size = new System.Drawing.Size(100, 39);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(309, 5);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Size";
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(100, 39);
-            this.textBox1.TabIndex = 2;
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel10.BackColor = System.Drawing.Color.LightGray;
-            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
-            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel10.Location = new System.Drawing.Point(79, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(50, 50);
-            this.panel10.TabIndex = 1;
+            this.tbl_lstImg.AutoSize = true;
+            this.tbl_lstImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbl_lstImg.ColumnCount = 6;
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.Location = new System.Drawing.Point(0, 0);
+            this.tbl_lstImg.Margin = new System.Windows.Forms.Padding(0);
+            this.tbl_lstImg.Name = "tbl_lstImg";
+            this.tbl_lstImg.RowCount = 2;
+            this.tbl_lstImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tbl_lstImg.Size = new System.Drawing.Size(612, 204);
+            this.tbl_lstImg.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -609,26 +505,37 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txt_Sex);
+            this.panel3.Controls.Add(this.rbtn_Nu);
+            this.panel3.Controls.Add(this.rbtn_Nam);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Location = new System.Drawing.Point(130, 180);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(477, 45);
+            this.panel3.Size = new System.Drawing.Size(498, 45);
             this.panel3.TabIndex = 13;
             // 
-            // txt_Sex
+            // rbtn_Nu
             // 
-            this.txt_Sex.BackColor = System.Drawing.Color.White;
-            this.txt_Sex.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Sex.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_Sex.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Sex.Location = new System.Drawing.Point(0, 20);
-            this.txt_Sex.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Sex.Name = "txt_Sex";
-            this.txt_Sex.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Sex.Size = new System.Drawing.Size(477, 23);
-            this.txt_Sex.TabIndex = 3;
+            this.rbtn_Nu.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.rbtn_Nu.AutoSize = true;
+            this.rbtn_Nu.Location = new System.Drawing.Point(103, 18);
+            this.rbtn_Nu.Name = "rbtn_Nu";
+            this.rbtn_Nu.Size = new System.Drawing.Size(50, 24);
+            this.rbtn_Nu.TabIndex = 2;
+            this.rbtn_Nu.TabStop = true;
+            this.rbtn_Nu.Text = "Nữ";
+            this.rbtn_Nu.UseVisualStyleBackColor = true;
+            // 
+            // rbtn_Nam
+            // 
+            this.rbtn_Nam.AutoSize = true;
+            this.rbtn_Nam.Location = new System.Drawing.Point(9, 18);
+            this.rbtn_Nam.Name = "rbtn_Nam";
+            this.rbtn_Nam.Size = new System.Drawing.Size(62, 24);
+            this.rbtn_Nam.TabIndex = 1;
+            this.rbtn_Nam.TabStop = true;
+            this.rbtn_Nam.Text = "Nam";
+            this.rbtn_Nam.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -639,7 +546,7 @@
             this.button8.Location = new System.Drawing.Point(0, 43);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(477, 2);
+            this.button8.Size = new System.Drawing.Size(498, 2);
             this.button8.TabIndex = 0;
             this.button8.UseVisualStyleBackColor = false;
             // 
@@ -650,7 +557,7 @@
             this.panel7.Location = new System.Drawing.Point(130, 90);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(477, 45);
+            this.panel7.Size = new System.Drawing.Size(498, 45);
             this.panel7.TabIndex = 11;
             // 
             // txt_ProductName
@@ -663,7 +570,7 @@
             this.txt_ProductName.Margin = new System.Windows.Forms.Padding(0);
             this.txt_ProductName.Name = "txt_ProductName";
             this.txt_ProductName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ProductName.Size = new System.Drawing.Size(477, 23);
+            this.txt_ProductName.Size = new System.Drawing.Size(498, 23);
             this.txt_ProductName.TabIndex = 3;
             // 
             // button4
@@ -675,32 +582,49 @@
             this.button4.Location = new System.Drawing.Point(0, 43);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(477, 2);
+            this.button4.Size = new System.Drawing.Size(498, 2);
             this.button4.TabIndex = 0;
             this.button4.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.btn_QRCode);
             this.panel6.Controls.Add(this.txt_QrCode);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Location = new System.Drawing.Point(130, 45);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(477, 45);
+            this.panel6.Size = new System.Drawing.Size(498, 45);
             this.panel6.TabIndex = 11;
+            // 
+            // btn_QRCode
+            // 
+            this.btn_QRCode.BackColor = System.Drawing.Color.Transparent;
+            this.btn_QRCode.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_QRCode.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.btn_QRCode.IconColor = System.Drawing.Color.Black;
+            this.btn_QRCode.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_QRCode.IconSize = 40;
+            this.btn_QRCode.Location = new System.Drawing.Point(458, 0);
+            this.btn_QRCode.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_QRCode.Name = "btn_QRCode";
+            this.btn_QRCode.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btn_QRCode.Size = new System.Drawing.Size(40, 43);
+            this.btn_QRCode.TabIndex = 4;
+            this.btn_QRCode.UseVisualStyleBackColor = false;
+            this.btn_QRCode.Click += new System.EventHandler(this.btn_QRCode_Click);
             // 
             // txt_QrCode
             // 
             this.txt_QrCode.BackColor = System.Drawing.Color.White;
             this.txt_QrCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_QrCode.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txt_QrCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_QrCode.Location = new System.Drawing.Point(0, 20);
             this.txt_QrCode.Margin = new System.Windows.Forms.Padding(0);
             this.txt_QrCode.Name = "txt_QrCode";
             this.txt_QrCode.PlaceholderText = "Mã QR tự động";
             this.txt_QrCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_QrCode.Size = new System.Drawing.Size(477, 23);
+            this.txt_QrCode.Size = new System.Drawing.Size(298, 23);
             this.txt_QrCode.TabIndex = 3;
             // 
             // button3
@@ -712,7 +636,7 @@
             this.button3.Location = new System.Drawing.Point(0, 43);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(477, 2);
+            this.button3.Size = new System.Drawing.Size(498, 2);
             this.button3.TabIndex = 0;
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -723,7 +647,7 @@
             this.panel5.Location = new System.Drawing.Point(130, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(477, 45);
+            this.panel5.Size = new System.Drawing.Size(498, 45);
             this.panel5.TabIndex = 11;
             // 
             // txt_ProductId
@@ -738,7 +662,7 @@
             this.txt_ProductId.PlaceholderText = "Mã sản phẩm tự động";
             this.txt_ProductId.ReadOnly = true;
             this.txt_ProductId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ProductId.Size = new System.Drawing.Size(477, 23);
+            this.txt_ProductId.Size = new System.Drawing.Size(498, 23);
             this.txt_ProductId.TabIndex = 3;
             // 
             // button2
@@ -750,7 +674,7 @@
             this.button2.Location = new System.Drawing.Point(0, 43);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(477, 2);
+            this.button2.Size = new System.Drawing.Size(498, 2);
             this.button2.TabIndex = 0;
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -779,25 +703,45 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.txt_ThuongHieu);
+            this.panel9.Controls.Add(this.btn_AddThuongHieu);
             this.panel9.Controls.Add(this.button6);
             this.panel9.Location = new System.Drawing.Point(130, 225);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(477, 45);
+            this.panel9.Size = new System.Drawing.Size(498, 45);
             this.panel9.TabIndex = 13;
             // 
             // txt_ThuongHieu
             // 
-            this.txt_ThuongHieu.BackColor = System.Drawing.Color.White;
-            this.txt_ThuongHieu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ThuongHieu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_ThuongHieu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_ThuongHieu.Location = new System.Drawing.Point(0, 21);
-            this.txt_ThuongHieu.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_ThuongHieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt_ThuongHieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txt_ThuongHieu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_ThuongHieu.FormattingEnabled = true;
+            this.txt_ThuongHieu.ItemHeight = 28;
+            this.txt_ThuongHieu.Location = new System.Drawing.Point(0, 8);
             this.txt_ThuongHieu.Name = "txt_ThuongHieu";
-            this.txt_ThuongHieu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ThuongHieu.Size = new System.Drawing.Size(477, 23);
+            this.txt_ThuongHieu.Size = new System.Drawing.Size(458, 36);
             this.txt_ThuongHieu.TabIndex = 2;
+            // 
+            // btn_AddThuongHieu
+            // 
+            this.btn_AddThuongHieu.BackColor = System.Drawing.Color.Transparent;
+            this.btn_AddThuongHieu.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_AddThuongHieu.FlatAppearance.BorderSize = 0;
+            this.btn_AddThuongHieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddThuongHieu.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btn_AddThuongHieu.IconColor = System.Drawing.Color.Black;
+            this.btn_AddThuongHieu.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_AddThuongHieu.IconSize = 30;
+            this.btn_AddThuongHieu.Location = new System.Drawing.Point(458, 0);
+            this.btn_AddThuongHieu.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_AddThuongHieu.Name = "btn_AddThuongHieu";
+            this.btn_AddThuongHieu.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btn_AddThuongHieu.Size = new System.Drawing.Size(40, 44);
+            this.btn_AddThuongHieu.TabIndex = 6;
+            this.btn_AddThuongHieu.UseVisualStyleBackColor = false;
+            this.btn_AddThuongHieu.Click += new System.EventHandler(this.btn_AddThuongHieu_Click);
             // 
             // button6
             // 
@@ -808,7 +752,7 @@
             this.button6.Location = new System.Drawing.Point(0, 44);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(477, 1);
+            this.button6.Size = new System.Drawing.Size(498, 1);
             this.button6.TabIndex = 0;
             this.button6.UseVisualStyleBackColor = false;
             // 
@@ -825,26 +769,33 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.txt_CatergoryName);
+            this.panel8.Controls.Add(this.btn_AddCatergory);
             this.panel8.Controls.Add(this.button5);
+            this.panel8.Controls.Add(this.txt_CatergoryName);
             this.panel8.Location = new System.Drawing.Point(130, 135);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(477, 45);
+            this.panel8.Size = new System.Drawing.Size(498, 45);
             this.panel8.TabIndex = 12;
             // 
-            // txt_CatergoryName
+            // btn_AddCatergory
             // 
-            this.txt_CatergoryName.BackColor = System.Drawing.Color.White;
-            this.txt_CatergoryName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_CatergoryName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_CatergoryName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_CatergoryName.Location = new System.Drawing.Point(0, 20);
-            this.txt_CatergoryName.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_CatergoryName.Name = "txt_CatergoryName";
-            this.txt_CatergoryName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_CatergoryName.Size = new System.Drawing.Size(477, 23);
-            this.txt_CatergoryName.TabIndex = 3;
+            this.btn_AddCatergory.BackColor = System.Drawing.Color.Transparent;
+            this.btn_AddCatergory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_AddCatergory.FlatAppearance.BorderSize = 0;
+            this.btn_AddCatergory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddCatergory.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btn_AddCatergory.IconColor = System.Drawing.Color.Black;
+            this.btn_AddCatergory.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_AddCatergory.IconSize = 30;
+            this.btn_AddCatergory.Location = new System.Drawing.Point(458, 0);
+            this.btn_AddCatergory.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_AddCatergory.Name = "btn_AddCatergory";
+            this.btn_AddCatergory.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btn_AddCatergory.Size = new System.Drawing.Size(40, 43);
+            this.btn_AddCatergory.TabIndex = 1;
+            this.btn_AddCatergory.UseVisualStyleBackColor = false;
+            this.btn_AddCatergory.Click += new System.EventHandler(this.btn_AddCatergory_Click);
             // 
             // button5
             // 
@@ -855,9 +806,20 @@
             this.button5.Location = new System.Drawing.Point(0, 43);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(477, 2);
+            this.button5.Size = new System.Drawing.Size(498, 2);
             this.button5.TabIndex = 0;
             this.button5.UseVisualStyleBackColor = false;
+            // 
+            // txt_CatergoryName
+            // 
+            this.txt_CatergoryName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt_CatergoryName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txt_CatergoryName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_CatergoryName.FormattingEnabled = true;
+            this.txt_CatergoryName.Location = new System.Drawing.Point(0, 9);
+            this.txt_CatergoryName.Name = "txt_CatergoryName";
+            this.txt_CatergoryName.Size = new System.Drawing.Size(458, 36);
+            this.txt_CatergoryName.TabIndex = 5;
             // 
             // lbl3
             // 
@@ -911,7 +873,7 @@
             // 
             // txt_ChatLieu
             // 
-            this.txt_ChatLieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.txt_ChatLieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txt_ChatLieu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ChatLieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_ChatLieu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -964,6 +926,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.vbButton3);
             this.panel4.Controls.Add(this.vbButton2);
             this.panel4.Location = new System.Drawing.Point(0, 803);
@@ -984,7 +947,7 @@
             this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton3.ForeColor = System.Drawing.Color.Black;
-            this.vbButton3.Location = new System.Drawing.Point(1166, 3);
+            this.vbButton3.Location = new System.Drawing.Point(1182, 4);
             this.vbButton3.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton3.Name = "vbButton3";
             this.vbButton3.Size = new System.Drawing.Size(80, 37);
@@ -992,6 +955,7 @@
             this.vbButton3.Text = "Hủy";
             this.vbButton3.TextColor = System.Drawing.Color.Black;
             this.vbButton3.UseVisualStyleBackColor = false;
+            this.vbButton3.Click += new System.EventHandler(this.vbButton3_Click);
             // 
             // vbButton2
             // 
@@ -1005,7 +969,7 @@
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton2.ForeColor = System.Drawing.Color.White;
-            this.vbButton2.Location = new System.Drawing.Point(1058, 4);
+            this.vbButton2.Location = new System.Drawing.Point(1083, 4);
             this.vbButton2.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton2.Name = "vbButton2";
             this.vbButton2.Size = new System.Drawing.Size(80, 37);
@@ -1017,10 +981,10 @@
             // 
             // FrmAddProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1282, 853);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "FrmAddProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAddProduct";
@@ -1034,15 +998,13 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panl_lstImg.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.panl_lstVer.ResumeLayout(false);
-            this.tbl_lstVer.ResumeLayout(false);
-            this.tbl_Ver.ResumeLayout(false);
-            this.tbl_Ver.PerformLayout();
-            this.customPanel2.ResumeLayout(false);
+            this.panl_lstVer.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panl_lstImg.ResumeLayout(false);
+            this.panl_lstImg.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1054,9 +1016,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.customPanel1.ResumeLayout(false);
             this.customPanel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1101,34 +1061,31 @@
         private System.Windows.Forms.TextBox txt_GiaBan;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txt_GiaNhap;
-        private System.Windows.Forms.TextBox txt_ThuongHieu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txt_Sex;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox txt_ProductName;
         private System.Windows.Forms.TextBox txt_QrCode;
         private System.Windows.Forms.TextBox txt_ProductId;
-        private System.Windows.Forms.TextBox txt_CatergoryName;
         private CustomControl.VBButton vbButton5;
-        private System.Windows.Forms.Panel panl_lstImg;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Panel img_3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton btn_AddVer;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
         private CustomControl.VBButton vbButton3;
         private CustomControl.VBButton vbButton2;
         private System.Windows.Forms.Panel panl_lstVer;
         private System.Windows.Forms.TableLayoutPanel tbl_lstVer;
-        private System.Windows.Forms.TableLayoutPanel tbl_Ver;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel10;
-        private CustomControl.CustomPanel customPanel2;
-        private System.Windows.Forms.Button btn_nameColor;
         private System.Windows.Forms.RichTextBox txt_ChatLieu;
+        private FontAwesome.Sharp.IconButton btn_QRCode;
+        private FontAwesome.Sharp.IconButton btn_AddCatergory;
+        private FontAwesome.Sharp.IconButton btn_AddThuongHieu;
+        private System.Windows.Forms.ComboBox txt_ThuongHieu;
+        private System.Windows.Forms.ComboBox txt_CatergoryName;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panl_lstImg;
+        private System.Windows.Forms.TableLayoutPanel tbl_lstImg;
+        private System.Windows.Forms.RadioButton rbtn_Nu;
+        private System.Windows.Forms.RadioButton rbtn_Nam;
     }
 }

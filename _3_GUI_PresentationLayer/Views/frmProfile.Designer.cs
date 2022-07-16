@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
+            this.ssssToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -54,15 +57,15 @@
             this.lbl_month2 = new System.Windows.Forms.Label();
             this.lbl_month1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.txt_Note = new System.Windows.Forms.RichTextBox();
+            this.customPanel4 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
+            this.txt_Status = new System.Windows.Forms.Label();
+            this.txt_Email = new System.Windows.Forms.Label();
+            this.txt_PhoneNumber = new System.Windows.Forms.Label();
+            this.txt_ChucVu = new System.Windows.Forms.Label();
+            this.txt_NgaySinh = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,27 +74,60 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
+            this.txt_Name = new System.Windows.Forms.Label();
+            this.txt_GioiTinh = new System.Windows.Forms.Label();
+            this.txt_DiaChi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.combox_year = new System.Windows.Forms.ComboBox();
-            this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
-            this.ssssToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.rjDropdownMenu1.SuspendLayout();
             this.customPanel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.customPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tbl_month.SuspendLayout();
-            this.customPanel2.SuspendLayout();
             this.customPanel3.SuspendLayout();
+            this.customPanel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.rjDropdownMenu1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // rjDropdownMenu1
+            // 
+            this.rjDropdownMenu1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.rjDropdownMenu1.IsMainMenu = false;
+            this.rjDropdownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ssssToolStripMenuItem});
+            this.rjDropdownMenu1.MenuItemHeight = 25;
+            this.rjDropdownMenu1.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.rjDropdownMenu1.Name = "rjDropdownMenu1";
+            this.rjDropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
+            this.rjDropdownMenu1.Size = new System.Drawing.Size(103, 28);
+            this.rjDropdownMenu1.Text = "Hoạt động ngày 26/6/2022";
+            // 
+            // ssssToolStripMenuItem
+            // 
+            this.ssssToolStripMenuItem.Name = "ssssToolStripMenuItem";
+            this.ssssToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.ssssToolStripMenuItem.Text = "ssss";
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.AutoScroll = true;
+            this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel1.BorderRadius = 0;
+            this.customPanel1.BorderSize = 2;
+            this.customPanel1.Controls.Add(this.tableLayoutPanel1);
+            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customPanel1.Location = new System.Drawing.Point(0, 0);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(1371, 802);
+            this.customPanel1.TabIndex = 1;
+            this.customPanel1.UnderlinedStyle = false;
             // 
             // tableLayoutPanel1
             // 
@@ -99,9 +135,9 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.customPanel1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.customPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.customPanel3, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.customPanel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.customPanel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.customPanel4, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -117,7 +153,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1270, 1127);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label3
             // 
@@ -130,23 +166,23 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Thông tin";
             // 
-            // customPanel1
+            // customPanel2
             // 
-            this.customPanel1.BackColor = System.Drawing.Color.White;
-            this.customPanel1.BorderColor = System.Drawing.Color.Silver;
-            this.customPanel1.BorderFocusColor = System.Drawing.Color.White;
-            this.customPanel1.BorderRadius = 11;
-            this.customPanel1.BorderSize = 1;
-            this.customPanel1.Controls.Add(this.tableLayoutPanel7);
-            this.customPanel1.Controls.Add(this.tableLayoutPanel2);
-            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel1.Location = new System.Drawing.Point(13, 302);
-            this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Padding = new System.Windows.Forms.Padding(25);
-            this.customPanel1.Size = new System.Drawing.Size(1257, 338);
-            this.customPanel1.TabIndex = 4;
-            this.customPanel1.UnderlinedStyle = false;
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderColor = System.Drawing.Color.Silver;
+            this.customPanel2.BorderFocusColor = System.Drawing.Color.White;
+            this.customPanel2.BorderRadius = 11;
+            this.customPanel2.BorderSize = 1;
+            this.customPanel2.Controls.Add(this.tableLayoutPanel7);
+            this.customPanel2.Controls.Add(this.tableLayoutPanel2);
+            this.customPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customPanel2.Location = new System.Drawing.Point(13, 302);
+            this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.Padding = new System.Windows.Forms.Padding(25);
+            this.customPanel2.Size = new System.Drawing.Size(1257, 338);
+            this.customPanel2.TabIndex = 4;
+            this.customPanel2.UnderlinedStyle = false;
             // 
             // tableLayoutPanel7
             // 
@@ -197,7 +233,7 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tbl_month, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(43, 41);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(52, 54);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -506,46 +542,46 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1041, 142);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // customPanel2
-            // 
-            this.customPanel2.BorderColor = System.Drawing.Color.Silver;
-            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel2.BorderRadius = 10;
-            this.customPanel2.BorderSize = 1;
-            this.customPanel2.Controls.Add(this.richTextBox1);
-            this.customPanel2.Location = new System.Drawing.Point(13, 98);
-            this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(810, 100);
-            this.customPanel2.TabIndex = 5;
-            this.customPanel2.UnderlinedStyle = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.White;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(804, 94);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
             // customPanel3
             // 
-            this.customPanel3.AutoSize = true;
             this.customPanel3.BorderColor = System.Drawing.Color.Silver;
             this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel3.BorderRadius = 10;
             this.customPanel3.BorderSize = 1;
-            this.customPanel3.Controls.Add(this.tableLayoutPanel4);
-            this.customPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customPanel3.Location = new System.Drawing.Point(13, 722);
+            this.customPanel3.Controls.Add(this.txt_Note);
+            this.customPanel3.Location = new System.Drawing.Point(13, 98);
             this.customPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Padding = new System.Windows.Forms.Padding(3);
-            this.customPanel3.Size = new System.Drawing.Size(1257, 379);
-            this.customPanel3.TabIndex = 6;
+            this.customPanel3.Size = new System.Drawing.Size(810, 100);
+            this.customPanel3.TabIndex = 5;
             this.customPanel3.UnderlinedStyle = false;
+            // 
+            // txt_Note
+            // 
+            this.txt_Note.BackColor = System.Drawing.Color.White;
+            this.txt_Note.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Note.Location = new System.Drawing.Point(3, 3);
+            this.txt_Note.Name = "txt_Note";
+            this.txt_Note.Size = new System.Drawing.Size(804, 94);
+            this.txt_Note.TabIndex = 0;
+            this.txt_Note.Text = "";
+            // 
+            // customPanel4
+            // 
+            this.customPanel4.AutoSize = true;
+            this.customPanel4.BorderColor = System.Drawing.Color.Silver;
+            this.customPanel4.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel4.BorderRadius = 10;
+            this.customPanel4.BorderSize = 1;
+            this.customPanel4.Controls.Add(this.tableLayoutPanel4);
+            this.customPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customPanel4.Location = new System.Drawing.Point(13, 722);
+            this.customPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.customPanel4.Name = "customPanel4";
+            this.customPanel4.Padding = new System.Windows.Forms.Padding(3);
+            this.customPanel4.Size = new System.Drawing.Size(1257, 379);
+            this.customPanel4.TabIndex = 6;
+            this.customPanel4.UnderlinedStyle = false;
             // 
             // tableLayoutPanel4
             // 
@@ -554,11 +590,11 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.23418F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.76582F));
-            this.tableLayoutPanel4.Controls.Add(this.label36, 1, 6);
-            this.tableLayoutPanel4.Controls.Add(this.label35, 1, 5);
-            this.tableLayoutPanel4.Controls.Add(this.label34, 1, 4);
-            this.tableLayoutPanel4.Controls.Add(this.label33, 1, 3);
-            this.tableLayoutPanel4.Controls.Add(this.label32, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.txt_Status, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.txt_Email, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.txt_PhoneNumber, 1, 4);
+            this.tableLayoutPanel4.Controls.Add(this.txt_ChucVu, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.txt_NgaySinh, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.label12, 0, 7);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label6, 0, 1);
@@ -567,9 +603,9 @@
             this.tableLayoutPanel4.Controls.Add(this.label9, 0, 4);
             this.tableLayoutPanel4.Controls.Add(this.label8, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.label11, 0, 6);
-            this.tableLayoutPanel4.Controls.Add(this.label30, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label31, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.label37, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.txt_Name, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txt_GioiTinh, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.txt_DiaChi, 1, 7);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -586,50 +622,50 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1251, 373);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // label36
+            // txt_Status
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(170, 275);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(136, 23);
-            this.label36.TabIndex = 20;
-            this.label36.Text = "Đang hoạt động";
+            this.txt_Status.AutoSize = true;
+            this.txt_Status.Location = new System.Drawing.Point(170, 275);
+            this.txt_Status.Name = "txt_Status";
+            this.txt_Status.Size = new System.Drawing.Size(136, 23);
+            this.txt_Status.TabIndex = 20;
+            this.txt_Status.Text = "Đang hoạt động";
             // 
-            // label35
+            // txt_Email
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(170, 235);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(219, 23);
-            this.label35.TabIndex = 19;
-            this.label35.Text = "tungtdph16451@fpt.edu.vn";
+            this.txt_Email.AutoSize = true;
+            this.txt_Email.Location = new System.Drawing.Point(170, 235);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(219, 23);
+            this.txt_Email.TabIndex = 19;
+            this.txt_Email.Text = "tungtdph16451@fpt.edu.vn";
             // 
-            // label34
+            // txt_PhoneNumber
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(170, 195);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(100, 23);
-            this.label34.TabIndex = 18;
-            this.label34.Text = "0976909518";
+            this.txt_PhoneNumber.AutoSize = true;
+            this.txt_PhoneNumber.Location = new System.Drawing.Point(170, 195);
+            this.txt_PhoneNumber.Name = "txt_PhoneNumber";
+            this.txt_PhoneNumber.Size = new System.Drawing.Size(100, 23);
+            this.txt_PhoneNumber.TabIndex = 18;
+            this.txt_PhoneNumber.Text = "0976909518";
             // 
-            // label33
+            // txt_ChucVu
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(170, 155);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(69, 23);
-            this.label33.TabIndex = 17;
-            this.label33.Text = "Quản lý";
+            this.txt_ChucVu.AutoSize = true;
+            this.txt_ChucVu.Location = new System.Drawing.Point(170, 155);
+            this.txt_ChucVu.Name = "txt_ChucVu";
+            this.txt_ChucVu.Size = new System.Drawing.Size(69, 23);
+            this.txt_ChucVu.TabIndex = 17;
+            this.txt_ChucVu.Text = "Quản lý";
             // 
-            // label32
+            // txt_NgaySinh
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(170, 115);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(96, 23);
-            this.label32.TabIndex = 16;
-            this.label32.Text = "24/11/2000";
+            this.txt_NgaySinh.AutoSize = true;
+            this.txt_NgaySinh.Location = new System.Drawing.Point(170, 115);
+            this.txt_NgaySinh.Name = "txt_NgaySinh";
+            this.txt_NgaySinh.Size = new System.Drawing.Size(96, 23);
+            this.txt_NgaySinh.TabIndex = 16;
+            this.txt_NgaySinh.Text = "24/11/2000";
             // 
             // label12
             // 
@@ -719,32 +755,32 @@
             this.label11.TabIndex = 12;
             this.label11.Text = "Trạng thái";
             // 
-            // label30
+            // txt_Name
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(170, 35);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(49, 23);
-            this.label30.TabIndex = 14;
-            this.label30.Text = "Tùng";
+            this.txt_Name.AutoSize = true;
+            this.txt_Name.Location = new System.Drawing.Point(170, 35);
+            this.txt_Name.Name = "txt_Name";
+            this.txt_Name.Size = new System.Drawing.Size(49, 23);
+            this.txt_Name.TabIndex = 14;
+            this.txt_Name.Text = "Tùng";
             // 
-            // label31
+            // txt_GioiTinh
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(170, 75);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(47, 23);
-            this.label31.TabIndex = 15;
-            this.label31.Text = "Nam";
+            this.txt_GioiTinh.AutoSize = true;
+            this.txt_GioiTinh.Location = new System.Drawing.Point(170, 75);
+            this.txt_GioiTinh.Name = "txt_GioiTinh";
+            this.txt_GioiTinh.Size = new System.Drawing.Size(47, 23);
+            this.txt_GioiTinh.TabIndex = 15;
+            this.txt_GioiTinh.Text = "Nam";
             // 
-            // label37
+            // txt_DiaChi
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(170, 315);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(629, 23);
-            this.label37.TabIndex = 21;
-            this.label37.Text = "Số nhà 11. TDP Thượng 3, Phường Tây Tựu ,Quận Bắc Từ Liêm,Thành Phố Hà Nội";
+            this.txt_DiaChi.AutoSize = true;
+            this.txt_DiaChi.Location = new System.Drawing.Point(170, 315);
+            this.txt_DiaChi.Name = "txt_DiaChi";
+            this.txt_DiaChi.Size = new System.Drawing.Size(629, 23);
+            this.txt_DiaChi.TabIndex = 21;
+            this.txt_DiaChi.Text = "Số nhà 11. TDP Thượng 3, Phường Tây Tựu ,Quận Bắc Từ Liêm,Thành Phố Hà Nội";
             // 
             // label1
             // 
@@ -799,40 +835,21 @@
             this.combox_year.Size = new System.Drawing.Size(151, 31);
             this.combox_year.TabIndex = 4;
             this.combox_year.Text = "2022";
-            this.combox_year.TextChanged += new System.EventHandler(this.combox_year_TextChanged);
-            // 
-            // rjDropdownMenu1
-            // 
-            this.rjDropdownMenu1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.rjDropdownMenu1.IsMainMenu = false;
-            this.rjDropdownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ssssToolStripMenuItem});
-            this.rjDropdownMenu1.MenuItemHeight = 25;
-            this.rjDropdownMenu1.MenuItemTextColor = System.Drawing.Color.Empty;
-            this.rjDropdownMenu1.Name = "rjDropdownMenu1";
-            this.rjDropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
-            this.rjDropdownMenu1.Size = new System.Drawing.Size(103, 28);
-            this.rjDropdownMenu1.Text = "Hoạt động ngày 26/6/2022";
-            // 
-            // ssssToolStripMenuItem
-            // 
-            this.ssssToolStripMenuItem.Name = "ssssToolStripMenuItem";
-            this.ssssToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
-            this.ssssToolStripMenuItem.Text = "ssss";
+            this.combox_year.TextChanged += new System.EventHandler(this.combox_year_TextChanged_1);
             // 
             // frmProfile
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1371, 802);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.customPanel1);
             this.Name = "frmProfile";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 80, 0);
             this.Text = "frmProfile";
+            this.rjDropdownMenu1.ResumeLayout(false);
+            this.customPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.customPanel1.ResumeLayout(false);
+            this.customPanel2.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -840,37 +857,28 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tbl_month.ResumeLayout(false);
             this.tbl_month.PerformLayout();
-            this.customPanel2.ResumeLayout(false);
             this.customPanel3.ResumeLayout(false);
-            this.customPanel3.PerformLayout();
+            this.customPanel4.ResumeLayout(false);
+            this.customPanel4.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            this.rjDropdownMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private CustomControl.RJDropdownMenu rjDropdownMenu1;
+        private System.Windows.Forms.ToolStripMenuItem ssssToolStripMenuItem;
         private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label3;
         private CustomControl.CustomPanel customPanel2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private CustomControl.CustomPanel customPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -888,22 +896,30 @@
         private System.Windows.Forms.Label lbl_month3;
         private System.Windows.Forms.Label lbl_month2;
         private System.Windows.Forms.Label lbl_month1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label37;
-        private CustomControl.RJDropdownMenu rjDropdownMenu1;
-        private System.Windows.Forms.ToolStripMenuItem ssssToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private CustomControl.CustomPanel customPanel3;
+        private System.Windows.Forms.RichTextBox txt_Note;
+        private CustomControl.CustomPanel customPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label txt_Status;
+        private System.Windows.Forms.Label txt_Email;
+        private System.Windows.Forms.Label txt_PhoneNumber;
+        private System.Windows.Forms.Label txt_ChucVu;
+        private System.Windows.Forms.Label txt_NgaySinh;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label txt_Name;
+        private System.Windows.Forms.Label txt_GioiTinh;
+        private System.Windows.Forms.Label txt_DiaChi;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox combox_year;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

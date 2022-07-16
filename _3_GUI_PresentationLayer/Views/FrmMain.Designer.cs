@@ -35,7 +35,7 @@
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.img_user = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.button2 = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_SanPham = new System.Windows.Forms.Label();
@@ -50,17 +50,14 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.rjDropdownMenu1.SuspendLayout();
-            this.customPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +99,7 @@
             this.vbButton2.BackColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundColor = System.Drawing.Color.White;
             this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
-            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.vbButton2.BorderRadius = 23;
             this.vbButton2.BorderSize = 0;
@@ -127,7 +124,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.vbButton1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.img_user, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel3.ForeColor = System.Drawing.Color.White;
@@ -161,30 +158,30 @@
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
             // 
-            // vbButton1
+            // img_user
             // 
-            this.vbButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vbButton1.BackColor = System.Drawing.Color.White;
-            this.vbButton1.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton1.BackgroundImage")));
-            this.vbButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.vbButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton1.BorderRadius = 23;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.vbButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.ForeColor = System.Drawing.Color.Black;
-            this.vbButton1.Location = new System.Drawing.Point(219, 3);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(46, 46);
-            this.vbButton1.TabIndex = 2;
-            this.vbButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.vbButton1.TextColor = System.Drawing.Color.Black;
-            this.vbButton1.UseVisualStyleBackColor = false;
-            this.vbButton1.Click += new System.EventHandler(this.vbButton1_Click);
+            this.img_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.img_user.BackColor = System.Drawing.Color.White;
+            this.img_user.BackgroundColor = System.Drawing.Color.White;
+            this.img_user.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_user.BackgroundImage")));
+            this.img_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.img_user.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.img_user.BorderRadius = 23;
+            this.img_user.BorderSize = 0;
+            this.img_user.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.img_user.FlatAppearance.BorderSize = 0;
+            this.img_user.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.img_user.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.img_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.img_user.ForeColor = System.Drawing.Color.Black;
+            this.img_user.Location = new System.Drawing.Point(219, 3);
+            this.img_user.Name = "img_user";
+            this.img_user.Size = new System.Drawing.Size(46, 46);
+            this.img_user.TabIndex = 2;
+            this.img_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.img_user.TextColor = System.Drawing.Color.Black;
+            this.img_user.UseVisualStyleBackColor = false;
+            this.img_user.Click += new System.EventHandler(this.vbButton1_Click);
             // 
             // button2
             // 
@@ -387,36 +384,6 @@
             this.toolStripMenuItem5.Size = new System.Drawing.Size(256, 24);
             this.toolStripMenuItem5.Text = "Logout";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // customPanel1
-            // 
-            this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel1.BorderRadius = 0;
-            this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.label1);
-            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.customPanel1.Location = new System.Drawing.Point(0, 951);
-            this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(1902, 40);
-            this.customPanel1.TabIndex = 5;
-            this.customPanel1.UnderlinedStyle = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Trang chủ / Tùng / Hồ sơ";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panelDesktop);
@@ -424,7 +391,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 52);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1902, 899);
+            this.panel2.Size = new System.Drawing.Size(1902, 939);
             this.panel2.TabIndex = 6;
             // 
             // panelDesktop
@@ -436,8 +403,12 @@
             this.panelDesktop.Location = new System.Drawing.Point(0, 0);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1902, 899);
+            this.panelDesktop.Size = new System.Drawing.Size(1902, 939);
             this.panelDesktop.TabIndex = 5;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmMain
             // 
@@ -445,13 +416,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1902, 991);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_Main";
+            this.Text = "EGALE";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.FrmMain_Click);
             this.panel1.ResumeLayout(false);
@@ -461,8 +432,6 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.rjDropdownMenu1.ResumeLayout(false);
-            this.customPanel1.ResumeLayout(false);
-            this.customPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -473,7 +442,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button button1;
-        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton img_user;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label btn_SanPham;
         private System.Windows.Forms.Label btn_HoaDon;
@@ -486,13 +455,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.Timer timer1;
         private CustomControl.VBButton vbButton2;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton button2;
-        private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelDesktop;
+        private System.Windows.Forms.Timer timer1;
     }
 }

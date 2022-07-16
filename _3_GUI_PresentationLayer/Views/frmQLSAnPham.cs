@@ -33,19 +33,5 @@ namespace _3_GUI_PresentationLayer.Views
             form.BringToFront();
             form.Show();
         }
-        private void iconButton5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconButton6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconButton8_Click(object sender, EventArgs e)
-        {
-            OpenchildForm(new FrmListProduct());
-        }
     }
 }

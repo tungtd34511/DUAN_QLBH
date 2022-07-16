@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xaml;
+using _2_BUS_BusinessLayer.Models;
 using _3_GUI_PresentationLayer.CustomControl;
 
 namespace _3_GUI_PresentationLayer.Views
@@ -22,12 +23,29 @@ namespace _3_GUI_PresentationLayer.Views
         DateTime endDay = new DateTime();
         private DayOfWeek day;
         private int timetoSunday;
-        public frmProfile()
+        private NguoiDung _nguoiDung;
+        public frmProfile(NguoiDung nguoiDung)
         {
             InitializeComponent();
             now = DateTime.Now;
             addBtnHistory();
             SetHistory();
+            _nguoiDung = new NguoiDung();
+            _nguoiDung = nguoiDung;
+            LoadUserDetail(_nguoiDung);
+        }
+
+        public void LoadUserDetail(NguoiDung nguoiDung)
+        {
+            txt_Note.Text = nguoiDung.UserDetail.Note;
+            txt_Name.Text = nguoiDung.User.Name;
+            txt_Email.Text = nguoiDung.UserDetail.Email;
+            txt_ChucVu.Text = nguoiDung.Role.Name;
+            txt_DiaChi.Text = nguoiDung.UserDetail.Address;
+            txt_PhoneNumber.Text = nguoiDung.UserDetail.PhoneNumber;
+            txt_GioiTinh.Text = nguoiDung.UserDetail.Sex == true ? "Nam" : "Nữ";
+            txt_Status.Text = nguoiDung.User.Status == true ? "Đang hoạt động" : "Ngừng hoạt động";
+            txt_NgaySinh.Text = nguoiDung.UserDetail.DateOfBirth.ToString().Split(" ").First();
         }
         //tinh history
         public void SetHistory()
@@ -202,8 +220,7 @@ namespace _3_GUI_PresentationLayer.Views
                 _lstBtnLessMore.Add(button);
             }
         }
-
-        private void combox_year_TextChanged(object sender, EventArgs e)
+        private void combox_year_TextChanged_1(object sender, EventArgs e)
         {
             SetHistory();
         }

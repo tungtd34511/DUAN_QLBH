@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _2_BUS_BusinessLayer.Models;
 using _3_GUI_PresentationLayer.CustomControl;
 
 namespace _3_GUI_PresentationLayer.Views
@@ -18,20 +19,23 @@ namespace _3_GUI_PresentationLayer.Views
         private Form _currentchildForm;
         private frmQLSAnPham _frmQlsAnPham;
         private frmBanHang _frmBanHang;
-        private frmUser _frmUser;
+        //
+        private NguoiDung _nguoiDung;
 
-        public FrmMain()
+        public FrmMain(NguoiDung nguoiDung)
         {
             InitializeComponent();
             LoadCustomControl();
+            _frmQlsAnPham = new frmQLSAnPham();
+            _frmQlsAnPham.OpenchildForm(new FrmListProduct());
+            _frmBanHang = new frmBanHang();
+            _lstBtnThanhCongCu = new List<Control>();
+            _nguoiDung = new NguoiDung();
+            _nguoiDung = nguoiDung;
             _currentchildForm = new Form();
             _btnAcctive = "";
             //
-            _frmQlsAnPham = new frmQLSAnPham();
-            _frmBanHang = new frmBanHang();
-            _frmUser = new frmUser();
-            //
-            timer1.Start();
+            img_user.BackgroundImage = Image.FromFile(_nguoiDung.UserDetail.Image);
         }
 
         #region Custom lại các control
@@ -49,27 +53,22 @@ namespace _3_GUI_PresentationLayer.Views
             foreach (Control c in tableLayoutPanel6.Controls)
             {
                 _lstBtnThanhCongCu.Add(c);
-                c.MouseHover += (o, sender) =>
-                {
-                    c.Font = font1;
-                };
-                c.MouseLeave += (o, sender) =>
-                {
-                    c.Font = font2;
-                };
+                c.MouseHover += (o, sender) => { c.Font = font1; };
+                c.MouseLeave += (o, sender) => { c.Font = font2; };
                 c.Click += (o, sender) =>
                 {
                     _btnAcctive = c.Name;
-                    activeButton();
+                    ActiveButton();
                 };
             }
 
             // làm sáng trang chủ  hiện tại
             _btnAcctive = btn_Trangchu.Name;
-            activeButton();
+            ActiveButton();
+            // tim
         }
 
-        public void activeButton()
+        public void ActiveButton()
         {
             foreach (var c in _lstBtnThanhCongCu)
             {
@@ -127,7 +126,7 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            OpenchildForm(_frmUser);
+            OpenchildForm(new frmUser(_nguoiDung));
         }
 
         private void btn_Trangchu_Click(object sender, EventArgs e)
@@ -166,31 +165,28 @@ namespace _3_GUI_PresentationLayer.Views
             OpenchildForm(_frmBanHang);
         }
 
-        private List<int> _listLoadInfo = new List<int>() {0, 0, 0};
-        public int j = 0;
+        private void btn_SanPham_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(_frmQlsAnPham);
+        }
+
+        private int j = 0;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             j++;
-            if (j % 5 == 0)
+            if (j % 3 == 0)
             {
                 if (_currentchildForm != _frmQlsAnPham)
                 {
                     _frmQlsAnPham.OpenchildForm(new FrmListProduct());
                 }
-                else if (_currentchildForm != _frmQlsAnPham)
+                else if (_currentchildForm != _frmBanHang)
                 {
                     _frmBanHang.LoadDetail();
                 }
-                else if (_currentchildForm != _frmUser)
-                {
-                    _frmUser.OpenchildForm(new frmProfile());
-                }
                 timer1.Stop();
             }
-        }
-        private void btn_SanPham_Click(object sender, EventArgs e)
-        {
-            OpenchildForm(_frmQlsAnPham);
         }
     }
 }

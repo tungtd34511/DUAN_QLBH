@@ -56,25 +56,25 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_Name = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_SoDT = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbtn_nam = new System.Windows.Forms.RadioButton();
+            this.rbtn_nu = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.date_NgaySinh = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton6 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txt_DiaChi = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txt_Email = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.txt_lastName = new System.Windows.Forms.Label();
+            this.img_User = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panelMenu.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -365,7 +365,7 @@
             this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton5.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.iconButton5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.MailBulk;
             this.iconButton5.IconColor = System.Drawing.Color.Black;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 30;
@@ -410,7 +410,7 @@
             this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton7.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.iconButton7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.History;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
             this.iconButton7.IconColor = System.Drawing.Color.Black;
             this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton7.IconSize = 30;
@@ -478,12 +478,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 7);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox3, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txt_Name, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.textBox4, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.txt_SoDT, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label9, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.date_NgaySinh, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 0, 9);
             this.tableLayoutPanel3.Controls.Add(this.customPanel1, 0, 8);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -524,12 +524,12 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Tên";
             // 
-            // textBox3
+            // txt_Name
             // 
-            this.textBox3.Location = new System.Drawing.Point(3, 32);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(382, 34);
-            this.textBox3.TabIndex = 1;
+            this.txt_Name.Location = new System.Drawing.Point(3, 32);
+            this.txt_Name.Name = "txt_Name";
+            this.txt_Name.Size = new System.Drawing.Size(382, 34);
+            this.txt_Name.TabIndex = 1;
             // 
             // label5
             // 
@@ -541,12 +541,12 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Số điện thoại";
             // 
-            // textBox4
+            // txt_SoDT
             // 
-            this.textBox4.Location = new System.Drawing.Point(3, 111);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(382, 34);
-            this.textBox4.TabIndex = 4;
+            this.txt_SoDT.Location = new System.Drawing.Point(3, 111);
+            this.txt_SoDT.Name = "txt_SoDT";
+            this.txt_SoDT.Size = new System.Drawing.Size(382, 34);
+            this.txt_SoDT.TabIndex = 4;
             // 
             // tableLayoutPanel5
             // 
@@ -555,8 +555,8 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
             this.tableLayoutPanel5.Controls.Add(this.label8, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.radioButton1, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.radioButton2, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.rbtn_nam, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.rbtn_nu, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 151);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -578,30 +578,30 @@
             this.label8.Text = "Giới tính:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // radioButton1
+            // rbtn_nam
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(115, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.radioButton1.Size = new System.Drawing.Size(75, 37);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nam";
-            this.radioButton1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbtn_nam.AutoSize = true;
+            this.rbtn_nam.Location = new System.Drawing.Point(115, 3);
+            this.rbtn_nam.Name = "rbtn_nam";
+            this.rbtn_nam.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.rbtn_nam.Size = new System.Drawing.Size(75, 37);
+            this.rbtn_nam.TabIndex = 1;
+            this.rbtn_nam.TabStop = true;
+            this.rbtn_nam.Text = "Nam";
+            this.rbtn_nam.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rbtn_nam.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbtn_nu
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(227, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.radioButton2.Size = new System.Drawing.Size(60, 37);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nữ";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbtn_nu.AutoSize = true;
+            this.rbtn_nu.Location = new System.Drawing.Point(227, 3);
+            this.rbtn_nu.Name = "rbtn_nu";
+            this.rbtn_nu.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.rbtn_nu.Size = new System.Drawing.Size(60, 37);
+            this.rbtn_nu.TabIndex = 2;
+            this.rbtn_nu.TabStop = true;
+            this.rbtn_nu.Text = "Nữ";
+            this.rbtn_nu.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -613,12 +613,12 @@
             this.label9.TabIndex = 6;
             this.label9.Text = "Ngày sinh";
             // 
-            // dateTimePicker1
+            // date_NgaySinh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 232);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(382, 34);
-            this.dateTimePicker1.TabIndex = 7;
+            this.date_NgaySinh.Location = new System.Drawing.Point(3, 232);
+            this.date_NgaySinh.Name = "date_NgaySinh";
+            this.date_NgaySinh.Size = new System.Drawing.Size(382, 34);
+            this.date_NgaySinh.TabIndex = 7;
             // 
             // tableLayoutPanel6
             // 
@@ -682,7 +682,7 @@
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 12;
             this.customPanel1.BorderSize = 1;
-            this.customPanel1.Controls.Add(this.richTextBox1);
+            this.customPanel1.Controls.Add(this.txt_DiaChi);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(0, 318);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -692,20 +692,20 @@
             this.customPanel1.TabIndex = 11;
             this.customPanel1.UnderlinedStyle = false;
             // 
-            // richTextBox1
+            // txt_DiaChi
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.EnableAutoDragDrop = true;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox1.Size = new System.Drawing.Size(382, 157);
-            this.richTextBox1.TabIndex = 10;
-            this.richTextBox1.Text = "";
+            this.txt_DiaChi.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_DiaChi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_DiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_DiaChi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_DiaChi.EnableAutoDragDrop = true;
+            this.txt_DiaChi.Location = new System.Drawing.Point(3, 3);
+            this.txt_DiaChi.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_DiaChi.Name = "txt_DiaChi";
+            this.txt_DiaChi.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txt_DiaChi.Size = new System.Drawing.Size(382, 157);
+            this.txt_DiaChi.TabIndex = 10;
+            this.txt_DiaChi.Text = "";
             // 
             // tableLayoutPanel4
             // 
@@ -713,9 +713,9 @@
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.txt_Email, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.button1, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txt_lastName, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -726,16 +726,16 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(388, 158);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
-            // label7
+            // txt_Email
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(96)))), ((int)(((byte)(106)))));
-            this.label7.Location = new System.Drawing.Point(3, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(203, 41);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "tungtdph16451";
+            this.txt_Email.AutoSize = true;
+            this.txt_Email.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(96)))), ((int)(((byte)(106)))));
+            this.txt_Email.Location = new System.Drawing.Point(3, 52);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(203, 41);
+            this.txt_Email.TabIndex = 1;
+            this.txt_Email.Text = "tungtdph16451";
             // 
             // button1
             // 
@@ -752,35 +752,35 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label6
+            // txt_lastName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 52);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Tùng";
+            this.txt_lastName.AutoSize = true;
+            this.txt_lastName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_lastName.Location = new System.Drawing.Point(3, 0);
+            this.txt_lastName.Name = "txt_lastName";
+            this.txt_lastName.Size = new System.Drawing.Size(114, 52);
+            this.txt_lastName.TabIndex = 0;
+            this.txt_lastName.Text = "Tùng";
             // 
-            // vbButton3
+            // img_User
             // 
-            this.vbButton3.BackColor = System.Drawing.Color.White;
-            this.vbButton3.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton3.BackgroundImage")));
-            this.vbButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.vbButton3.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton3.BorderRadius = 200;
-            this.vbButton3.BorderSize = 1;
-            this.vbButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.vbButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton3.ForeColor = System.Drawing.Color.White;
-            this.vbButton3.Location = new System.Drawing.Point(101, 23);
-            this.vbButton3.Name = "vbButton3";
-            this.vbButton3.Size = new System.Drawing.Size(400, 400);
-            this.vbButton3.TabIndex = 6;
-            this.vbButton3.TextColor = System.Drawing.Color.White;
-            this.vbButton3.UseVisualStyleBackColor = false;
+            this.img_User.BackColor = System.Drawing.Color.White;
+            this.img_User.BackgroundColor = System.Drawing.Color.White;
+            this.img_User.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_User.BackgroundImage")));
+            this.img_User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.img_User.BorderColor = System.Drawing.Color.Silver;
+            this.img_User.BorderRadius = 200;
+            this.img_User.BorderSize = 1;
+            this.img_User.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.img_User.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.img_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.img_User.ForeColor = System.Drawing.Color.White;
+            this.img_User.Location = new System.Drawing.Point(101, 23);
+            this.img_User.Name = "img_User";
+            this.img_User.Size = new System.Drawing.Size(400, 400);
+            this.img_User.TabIndex = 6;
+            this.img_User.TextColor = System.Drawing.Color.White;
+            this.img_User.UseVisualStyleBackColor = false;
             // 
             // vbButton4
             // 
@@ -816,14 +816,12 @@
             this.ClientSize = new System.Drawing.Size(1902, 899);
             this.Controls.Add(this.vbButton4);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.vbButton3);
+            this.Controls.Add(this.img_User);
             this.Controls.Add(this.panelDesktop2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUser";
             this.Text = "frmProfileUser";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmProfileUser_Paint);
-            this.MouseCaptureChanged += new System.EventHandler(this.frmProfileUser_MouseCaptureChanged_1);
             this.panelMenu.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -871,25 +869,25 @@
         private System.Windows.Forms.Panel panelDesktop2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label txt_lastName;
+        private System.Windows.Forms.Label txt_Email;
         private System.Windows.Forms.Button button1;
-        private CustomControl.VBButton vbButton3;
+        private CustomControl.VBButton img_User;
         private CustomControl.VBButton vbButton4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_Name;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_SoDT;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbtn_nam;
+        private System.Windows.Forms.RadioButton rbtn_nu;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker date_NgaySinh;
         private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txt_DiaChi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private CustomControl.VBButton vbButton5;
         private CustomControl.VBButton vbButton6;
