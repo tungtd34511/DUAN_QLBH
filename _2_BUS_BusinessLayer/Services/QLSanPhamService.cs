@@ -9,6 +9,7 @@ using _1_DAL_DataAcessLayer.Entities;
 using _1_DAL_DataAcessLayer.IServices;
 using _1_DAL_DataAcessLayer.Services;
 using _2_BUS_BusinessLayer.Models;
+using _2_BUS_BusinessLayer.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
@@ -29,6 +30,7 @@ namespace _2_BUS_BusinessLayer.Services
         //
         private List<SanPham> _sanPhams;
         //
+        private XuatFile _xuatFile;
         public QLSanPhamService()
         {
             _productService = new ProductService();
@@ -42,8 +44,14 @@ namespace _2_BUS_BusinessLayer.Services
             _catergoryService = new CatergoryService();
             _priceService = new PriceService();
             //
-            _sanPhams = new List<SanPham>();
             GetLstSanPhamsFormDAL();
+            //
+            _xuatFile = new XuatFile();
+        }
+
+        public string XuatFileExcel(string title, string filePath, List<SanPham> list)
+        {
+            return _xuatFile.Export_to_Excel(title, filePath, list);
         }
         public List<SanPham> GetLstSanPhams()
         {
@@ -56,11 +64,10 @@ namespace _2_BUS_BusinessLayer.Services
         }
         public string AddOrigin(Origin origin)
         {
-            return _originService.Add(origin);
-        }
-        public List<ProductDetail> GetProductDetails()
-        {
-            return _productDetailService.GetLstProductDetails();
+            string result = _originService.Add(origin);
+            //Cập nhật list thương hiệu
+            _thuongHieuService.GetLstThuongHieusFormDb();
+            return result;
         }
         public List<Origin> GetOrigins()
         {
@@ -81,167 +88,69 @@ namespace _2_BUS_BusinessLayer.Services
         public void GetLstSanPhamsFormDAL()
         {
             _sanPhams = new List<SanPham>();
-            var sanphams = from a in _productService.GetLstProducts()
-                join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
-                join c in _verService.GetLstVers() on b.Id equals c.ProductDetailId
-                join d in _colorService.GetLstColors() on c.ColorId equals d.Id
-                join e in _sizeService.GetLstSizes() on c.SizeId equals e.Id
-                join f in _imageService.GetLstImages() on a.Id equals f.ProductId
-                join g in _originService.GetLstOrigins() on b.OriginId equals g.Id
-                join h in _thuongHieuService.GetLstThuongHieus() on g.ThuongHieuid equals h.Id
-                join i in _catergoryService.GetLstCatergorys() on b.CatergoryId equals i.Id
-                join k in _priceService.GetLstPrices() on b.PriceId equals k.Id
-                select new
-                {
-                    product = a,
-                    productDetail = b,
-                    ver = c,
-                    color = d,
-                    size = e,
-                    image = f,
-                    origin = g,
-                    thuongHieu = h,
-                    catergory = i,
-                    price = k,
-                };
-            //Lọc lấy list<list<ver>>>
-            List<List<Ver>> lstListVer = new List<List<Ver>>();
-            foreach (var x in sanphams.Select(c=>c.product.ProductDetailId).Distinct())
-            {
-                List<Ver> list = new List<Ver>();
-                foreach (var b in sanphams.Select(c=>c.ver).Distinct().Where(d=>d.ProductDetailId==x))
-                {
-                    list.Add(b);
-                }
-                lstListVer.Add(list);
-            }
-            List<List<Image>> lstListImage = new List<List<Image>>();
-            foreach (var x in sanphams.Select(c => c.product).Distinct())
-            {
-                List<Image> list = new List<Image>();
-                foreach (var b in sanphams.Select(c => c.image).Distinct())
-                {
-                    if (x.Id == b.ProductId)
-                    {
-                        list.Add(b);
-                    }
-                }
-                lstListImage.Add(list);
-            }
-            List<List<Color>> lstListColor = new List<List<Color>>();
-            foreach (var x in sanphams.Select(c => c.product).Distinct())
-            {
-                List<Color> list = new List<Color>();
-                foreach (var b in sanphams.Select(c=>c.ver).Distinct())
-                {
-                    if (x.ProductDetailId == b.ProductDetailId)
-                    {
-                        foreach (var c in sanphams.Select(c => c.color).Distinct())
-                        {
-                            if (c.Id == b.ColorId)
-                            {
-                                list.Add(c);
-                            }
-                        }
-                    }
-                }
-                lstListColor.Add(list);
-            }
-            List<List<Size>> lstListSize = new List<List<Size>>();
-            foreach (var x in sanphams.Select(c => c.product).Distinct())
-            {
-                List<Size> list = new List<Size>();
-                foreach (var b in sanphams.Select(c => c.ver).Distinct())
-                {
-                    if (x.ProductDetailId == b.ProductDetailId)
-                    {
-                        foreach (var c in sanphams.Select(c => c.size).Distinct())
-                        {
-                            if (c.Id == b.SizeId)
-                            {
-                                list.Add(c);
-                            }
-                        }
-                    }
-                }
-                lstListSize.Add(list);
-            }
-            //product = a,
-            // productDetail = b,
-            // origin = g,
-            // thuongHieu = h,
-            // catergory = i,
-            // price = k,
-            for (int i = 0; i < sanphams.Select(c => c.product).Distinct().ToList().Count; i++)
+            for (int i = 0; i < _productService.GetLstProducts().Count; i++)
             {
                 SanPham sanPham = new SanPham();
-                sanPham.Product = sanphams.Select(c => c.product).Distinct().ToList()[i];
-                sanPham.ProductDetail = sanphams.Select(c => c.productDetail).Distinct().ToList()[i];
-                sanPham.Origin = sanphams.Select(c => c.origin).FirstOrDefault(c=>c.Id==sanPham.ProductDetail.OriginId);
-                sanPham.ThuongHieu = sanphams.Select(c => c.thuongHieu).FirstOrDefault(c => c.Id == sanPham.Origin.ThuongHieuid);
-                sanPham.Catergory = sanphams.Select(c => c.catergory).FirstOrDefault(c=>c.Id==sanPham.ProductDetail.CatergoryId);
-                sanPham.Price = sanphams.Select(c => c.price).ToList()[i];
-                sanPham.Images = lstListImage[i];
-                sanPham.Vers = lstListVer[i];
-                sanPham.Colors = lstListColor[i];
-                sanPham.Sizes = lstListSize[i];
+                sanPham.Product = _productService.GetLstProducts()[i];
+                sanPham.ProductDetail = _productDetailService.GetLstProductDetails()
+                    .FirstOrDefault(c => c.Id == sanPham.Product.ProductDetailId);
+                sanPham.Origin = _originService.GetLstOrigins()
+                    .FirstOrDefault(c => c.Id == sanPham.ProductDetail.OriginId);
+                sanPham.ThuongHieu = _thuongHieuService.GetLstThuongHieus()
+                    .FirstOrDefault(c => c.Id == sanPham.Origin.ThuongHieuid);
+                sanPham.Catergory = _catergoryService.GetLstCatergorys()
+                    .FirstOrDefault(c => c.Id == sanPham.ProductDetail.CatergoryId);
+                sanPham.Price = _priceService.GetLstPrices().FirstOrDefault(c=>c.Id==sanPham.ProductDetail.PriceId);
+                sanPham.Images = new List<Image>();
+                foreach (var x in _imageService.GetLstImages().Where(c=>c.ProductId==sanPham.Product.Id))
+                {
+                  sanPham.Images.Add(x);  
+                }
+                sanPham.Vers = new List<Ver>();
+                foreach (var x in _verService.GetLstVers().Where(c => c.ProductDetailId == sanPham.ProductDetail.Id))
+                {
+                    sanPham.Vers.Add(x);
+                }
+                sanPham.Colors = new List<Color>();
+                foreach (var x in sanPham.Vers.Select(c=>c.ColorId).Distinct())
+                {
+                    sanPham.Colors.Add(_colorService.GetLstColors().FirstOrDefault(c=>c.Id==x));
+                }
+                sanPham.Sizes= new List<Size>();
+                foreach (var x in sanPham.Vers.Select(c => c.SizeId).Distinct())
+                {
+                    sanPham.Sizes.Add(_sizeService.GetLstSizes().FirstOrDefault(c => c.Id == x));
+                }
                 _sanPhams.Add(sanPham);
             }
         }
-
-        public List<SanPham> GetSanPhams()
-        {
-            return _sanPhams;
-        }
+        
         public string AddSanPham(SanPham sanPham)
         {
-            try
+            sanPham.ProductDetail.QrCode = (_sanPhams.LastOrDefault().Product.Id + 1).ToString();
+            sanPham.ProductDetail.Origin = sanPham.Origin;
+            sanPham.ProductDetail.OriginId = sanPham.Origin.Id;
+            sanPham.ProductDetail.Price = sanPham.Price;
+            sanPham.ProductDetail.Origin = sanPham.Origin;
+            sanPham.ProductDetail.Catergory = sanPham.Catergory;
+            sanPham.ProductDetail.CatergoryId = sanPham.Catergory.Id;
+            sanPham.Product.ProductDetail = sanPham.ProductDetail;
+            //
+            _priceService.Add(sanPham.Price);
+            _productDetailService.Add(sanPham.ProductDetail);
+            foreach (var x in sanPham.Vers)
             {
-                sanPham.Product.Status = true;
-                //sanPham.Product.ProductDetail = new ProductDetail(){QrCode = "1",ChatLieu = "2222",MoTaChiTiet = "3",Sex = true,Status = true};
-                _productService.Update(sanPham.Product);
-                Image img1 = new Image() { Path = "123", Status = true };
-                Image img2 = new Image() { Path = "12sâs3", Status = true };
-                img1.Product = sanPham.Product;
-                img2.Product = sanPham.Product;
-                _imageService.Update(img1);
-                _imageService.Update(img2);
-                //_productDetailService.Add(sanPham.ProductDetail);
-                //foreach (var x in sanPham.Vers)
-                //{
-                //    _verService.Add(x);
-                //}
-                //foreach (var x in sanPham.Colors)
-                //{
-                //    if (_colorService.GetLstColors().Select(c => c.Id).ToList().LastOrDefault() < x.Id)
-                //    {
-                //        _colorService.Add(x);
-                //    }
-                //}
-                //foreach (var x in sanPham.Sizes)
-                //{
-                //    if (_sizeService.GetLstSizes().Select(c => c.Id).ToList().LastOrDefault() < x.Id)
-                //    {
-                //        _sizeService.Add(x);
-                //    }
-                //}
-                //foreach (var x in sanPham.Images)
-                //{
-                //    if (_imageService.GetLstImages().Select(c => c.Id).ToList().LastOrDefault() < x.Id)
-                //    {
-                //        _imageService.Add(x);
-                //    }
-                //}
-                //_originService.Add(sanPham.Origin);
-                //_thuongHieuService.Add(sanPham.ThuongHieu);
-                //_catergoryService.Add(sanPham.Catergory);
-                //_priceService.Add(sanPham.Price);
-                return "Thêm sản phẩm thành công!";
+                x.ProductDetail = sanPham.ProductDetail;
+                _verService.Add(x);
             }
-            catch (Exception e)
+            _productService.Add(sanPham.Product);
+            foreach (var x in sanPham.Images)
             {
-                return e.ToString();
+                _imageService.Add(x);
             }
+            GetLstSanPhamsFormDAL();
+            return "Thêm sản phẩm thành công!";
+            
         }
         public string UpdateSanPham(SanPham sanPham)
         {
@@ -255,7 +164,41 @@ namespace _2_BUS_BusinessLayer.Services
             //
             _priceService.Update(sanPham.Price);
             _productDetailService.Update(sanPham.ProductDetail);
+            foreach (var x in sanPham.Colors)
+            {
+                try
+                {
+                    _colorService.Update(x);
+                }
+                catch
+                {
+                    _colorService.Add(x);
+                }
+            }
+            foreach (var x in sanPham.Vers)
+            {
+                x.ProductDetail = sanPham.ProductDetail;
+                try
+                {
+                    _verService.Update(x);
+                }
+                catch
+                {
+                    _verService.Add(x);
+                }
+            }
             _productService.Update(sanPham.Product);
+            foreach (var x in sanPham.Images)
+            {
+                try
+                {
+                    _imageService.Update(x);
+                }
+                catch
+                {
+                    _imageService.Add(x);
+                }
+            }
             GetLstSanPhamsFormDAL();
             return "Cập nhật sản phẩm thành công!";
         }

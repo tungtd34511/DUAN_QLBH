@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txt_Email = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_Sua = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,52 +60,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(458, 584);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txt_Email);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 133);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 50, 0, 50);
-            this.panel1.Size = new System.Drawing.Size(450, 298);
-            this.panel1.TabIndex = 0;
-            // 
-            // txt_Email
-            // 
-            this.txt_Email.BackColor = System.Drawing.Color.White;
-            this.txt_Email.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Email.Location = new System.Drawing.Point(0, 198);
-            this.txt_Email.Multiline = true;
-            this.txt_Email.Name = "txt_Email";
-            this.txt_Email.PlaceholderText = " Mời nhập email";
-            this.txt_Email.Size = new System.Drawing.Size(450, 50);
-            this.txt_Email.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.CausesValidation = false;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(0, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 64);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Vui lòng nhập email để\r\ntìm kiếm tài khoản của bạn.";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(4, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(299, 37);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tìm tài khoản của bạn";
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -113,7 +67,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tableLayoutPanel3.Controls.Add(this.vbButton1, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Sua, 2, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 492);
@@ -135,6 +89,9 @@
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vbButton1.ForeColor = System.Drawing.Color.Black;
+            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton1.IconColor = System.Drawing.Color.Black;
+            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton1.Location = new System.Drawing.Point(355, 0);
             this.vbButton1.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton1.Name = "vbButton1";
@@ -156,6 +113,9 @@
             this.btn_Sua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Sua.ForeColor = System.Drawing.Color.White;
+            this.btn_Sua.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btn_Sua.IconColor = System.Drawing.Color.Black;
+            this.btn_Sua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Sua.Location = new System.Drawing.Point(207, 0);
             this.btn_Sua.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Sua.Name = "btn_Sua";
@@ -164,6 +124,52 @@
             this.btn_Sua.Text = "Gửi mật khẩu";
             this.btn_Sua.TextColor = System.Drawing.Color.White;
             this.btn_Sua.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txt_Email);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(4, 133);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 50, 0, 50);
+            this.panel1.Size = new System.Drawing.Size(450, 298);
+            this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.CausesValidation = false;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(0, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(310, 64);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Vui lòng nhập email để\r\ntìm kiếm tài khoản của bạn.";
+            // 
+            // txt_Email
+            // 
+            this.txt_Email.BackColor = System.Drawing.Color.White;
+            this.txt_Email.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Email.Location = new System.Drawing.Point(0, 198);
+            this.txt_Email.Multiline = true;
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.PlaceholderText = " Mời nhập email";
+            this.txt_Email.Size = new System.Drawing.Size(450, 50);
+            this.txt_Email.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(4, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(299, 37);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tìm tài khoản của bạn";
             // 
             // FrmForgotPassword
             // 
@@ -176,9 +182,9 @@
             this.Text = "FrmForgotPassword";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public OriginService()
         {
-            _lstOrigins = new List<Origin>();
             _qlbhContext = new QLBHContext();
             GetLstOriginsFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstOriginsFormDb()
         {
+            _lstOrigins = new List<Origin>();
             _lstOrigins = _qlbhContext.Origins.ToList();
         }
         public string Add(Origin origin)
         {
-            _qlbhContext.Origins.Add(origin);
+            _qlbhContext.Origins.Update(origin);
             _qlbhContext.SaveChanges();
             GetLstOriginsFormDb();
             return "Thêm thành công!";

@@ -8,9 +8,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using FontAwesome.Sharp;
+
 namespace _3_GUI_PresentationLayer.CustomControl
 {
-    public class VBButton : Button
+    public class VBButton : IconButton
     {
         //Fields
         private int borderSize = 0;

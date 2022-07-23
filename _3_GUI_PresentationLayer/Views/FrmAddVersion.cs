@@ -4,13 +4,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.Models;
 using _3_GUI_PresentationLayer.CustomControl;
 using Accessibility;
 using FontAwesome.Sharp;
+using Color = System.Drawing.Color;
+using Image = System.Drawing.Image;
+using Size = System.Drawing.Size;
 
 namespace _3_GUI_PresentationLayer.Views
 {
@@ -18,11 +23,14 @@ namespace _3_GUI_PresentationLayer.Views
     {
         private Image _image;
         private SanPham _sanPham;
+        private List<Ver> _vers;
+        private _1_DAL_DataAcessLayer.Entities.Image _imgDal = new _1_DAL_DataAcessLayer.Entities.Image();
         List<_1_DAL_DataAcessLayer.Entities.Size> _sizeList;
         public FrmAddVersion(SanPham sanPham,List<_1_DAL_DataAcessLayer.Entities.Size> list)
         {
             InitializeComponent();
             _sanPham = sanPham;
+            _vers = new List<Ver>();
             _sizeList = new List<_1_DAL_DataAcessLayer.Entities.Size>();
             _sizeList = list;
             dropdown_lstIMG.Items.Clear();
@@ -46,7 +54,14 @@ namespace _3_GUI_PresentationLayer.Views
         private void dropdown_lstIMG_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             pic_Product.Image = Image.FromFile(_sanPham.Images[dropdown_lstIMG.Items.IndexOf(e.ClickedItem)].Path);
-            _image = Image.FromFile(_sanPham.Images[dropdown_lstIMG.Items.IndexOf(e.ClickedItem)].Path);
+            _imgDal = _sanPham.Images[dropdown_lstIMG.Items.IndexOf(e.ClickedItem)];
+            _image = Image.FromFile(_imgDal.Path);
+            //
+            if (pic_Product.Image != null)
+            {
+                _status = true;
+                pan_IMGZOOM.BackgroundImage = new Bitmap(_image, 5000, 5000);
+            }
         }
         //Hiện ảnh khi chọn ảnh
         private void vbButton2_Click(object sender, EventArgs e)
@@ -135,6 +150,7 @@ namespace _3_GUI_PresentationLayer.Views
             txtSoLuong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtSoLuong.ForeColor = Color.Black;
             txtSoLuong.Name = "lblStt_" + i.ToString();
+            txtSoLuong.Text = "1";
             txtSoLuong.Size = new Size(40, 20);
             //
             tblSize.Controls.Add(btnDelete, 0, 0);
@@ -146,7 +162,37 @@ namespace _3_GUI_PresentationLayer.Views
             //
             i++;
         }
-
+        // Lấy button lưu
+        public VBButton GetBtnLuu()
+        {
+            return btn_Sua;
+        }
+        public List<Ver> GetVers()
+        {
+            _1_DAL_DataAcessLayer.Entities.Color color = new _1_DAL_DataAcessLayer.Entities.Color()
+            {
+                ColorCode = txt_MaHex.Text,
+                ImagePath = pic_Product.Image != null ? (_imgDal.Path) : "",
+                Name = txt_ColorName.Text,
+                Status = true
+            };
+            foreach (Control item in tbl_lstSizeSoLuong.Controls)
+            {
+                _1_DAL_DataAcessLayer.Entities.Size size = new _1_DAL_DataAcessLayer.Entities.Size();
+                size = _sizeList.FirstOrDefault(c => c.Code == ((TableLayoutPanel) item).Controls[2].Text);
+                Ver ver = new Ver()
+                {
+                    Color = color,
+                    Size = size,
+                    SoLuong = int.Parse(((TableLayoutPanel) item).Controls[3].Text),
+                    SizeId = size.Id,
+                    Status = true
+                };
+                _vers.Add(ver);
+            }
+            return _vers;
+        }
+        //
         private void btn_AddSize_Click(object sender, EventArgs e)
         {
             AddSize();
@@ -154,11 +200,23 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void txt_MaHex_TextChanged(object sender, EventArgs e)
         {
-            if (txt_MaHex.Text != null && txt_MaHex.Text != "")
+            try
             {
-                btn_Color.BackColor =
-                    ColorTranslator.FromHtml(
-                        txt_MaHex.Text);
+                if (_status = false)
+                {
+                    txt_R.Text = btn_Color.BackColor.R.ToString();
+                    txt_G.Text = btn_Color.BackColor.G.ToString();
+                    txt_B.Text = btn_Color.BackColor.B.ToString();
+                }
+            }
+            finally
+            {
+                if (txt_MaHex.Text != null && txt_MaHex.Text != "")
+                {
+                    btn_Color.BackColor =
+                        ColorTranslator.FromHtml(
+                            txt_MaHex.Text);
+                }
             }
         }
         private void txt_G_TextChanged(object sender, EventArgs e)
@@ -190,11 +248,9 @@ namespace _3_GUI_PresentationLayer.Views
         private bool _status = false;
         private void btn_Chon_Click_1(object sender, EventArgs e)
         {
-            if (pic_Product.Image != null)
-            {
-                _status = true;
-                pan_IMGZOOM.BackgroundImage = new Bitmap(_image, 5000, 5000);
-            }
+            colorDialog1.ShowDialog();
+            btn_Color.BackgroundColor = colorDialog1.Color;
+            colorDialog1.Dispose();
         }
 
         private void pic_Product_Click(object sender, EventArgs e)
@@ -208,17 +264,23 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Point cp = PointToClient(Cursor.Position); // Get cursor's position according to form's area
-            pan_IMGZOOM.Location = new Point((cp.X - 11) * (5000 / 294) * (-1), (cp.Y - 106) * (5000 / 294) * (-1));
-            //
-            Bitmap b = new Bitmap(new Bitmap(_image, 5000, 5000));
-            double a = 5000 / 294;
-            int x = (int) ((cp.X - 11) * a);
-            int y = (int)((cp.Y - 106) * a);
-            Color c = b.GetPixel(x, y);
-            txt_R.Text = c.R.ToString();
-            txt_G.Text = c.G.ToString();
-            txt_B.Text = c.B.ToString();
+            try
+            {
+                Point cp = PointToClient(Cursor.Position); // Get cursor's position according to form's area
+                pan_IMGZOOM.Location = new Point((cp.X - 11) * (5000 / 294) * (-1), (cp.Y - 106) * (5000 / 294) * (-1));
+                //
+                Bitmap b = new Bitmap(new Bitmap(_image, 5000, 5000));
+                double a = 5000 / 294;
+                int x = (int) ((cp.X - 11) * a);
+                int y = (int)((cp.Y - 106) * a);
+                Color c = b.GetPixel(x, y);
+                txt_R.Text = c.R.ToString();
+                txt_G.Text = c.G.ToString();
+                txt_B.Text = c.B.ToString();
+            }
+            catch
+            {
+            }
         }
 
         private void pic_Product_MouseLeave(object sender, EventArgs e)

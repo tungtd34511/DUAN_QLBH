@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWelcome));
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.txt_welcome = new System.Windows.Forms.Label();
             this.img_User = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txt_welcome = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -45,7 +45,7 @@
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 0;
             this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.panel1);
+            this.customPanel1.Controls.Add(this.tableLayoutPanel1);
             this.customPanel1.Controls.Add(this.img_User);
             this.customPanel1.Controls.Add(this.pictureBox1);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -55,6 +55,18 @@
             this.customPanel1.Size = new System.Drawing.Size(440, 537);
             this.customPanel1.TabIndex = 0;
             this.customPanel1.UnderlinedStyle = false;
+            // 
+            // txt_welcome
+            // 
+            this.txt_welcome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_welcome.AutoSize = true;
+            this.txt_welcome.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.txt_welcome.Location = new System.Drawing.Point(115, 41);
+            this.txt_welcome.Name = "txt_welcome";
+            this.txt_welcome.Size = new System.Drawing.Size(209, 37);
+            this.txt_welcome.TabIndex = 4;
+            this.txt_welcome.Text = "Cin chào, Tùng";
+            this.txt_welcome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // img_User
             // 
@@ -79,23 +91,17 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // txt_welcome
+            // tableLayoutPanel1
             // 
-            this.txt_welcome.AutoSize = true;
-            this.txt_welcome.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txt_welcome.Location = new System.Drawing.Point(136, 20);
-            this.txt_welcome.Name = "txt_welcome";
-            this.txt_welcome.Size = new System.Drawing.Size(209, 37);
-            this.txt_welcome.TabIndex = 4;
-            this.txt_welcome.Text = "Cin chào, Tùng";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txt_welcome);
-            this.panel1.Location = new System.Drawing.Point(0, 283);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 92);
-            this.panel1.TabIndex = 7;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.txt_welcome, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 280);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 120);
+            this.tableLayoutPanel1.TabIndex = 7;
             // 
             // frmWelcome
             // 
@@ -107,8 +113,8 @@
             this.Text = "frmWelcome";
             this.customPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,6 +125,6 @@
         private System.Windows.Forms.Label txt_welcome;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControl.CustomPanel img_User;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

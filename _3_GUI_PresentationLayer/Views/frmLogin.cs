@@ -2,6 +2,7 @@
 using _2_BUS_BusinessLayer.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,6 +19,7 @@ namespace _3_GUI_PresentationLayer.Views
         private LoginService _loginService;
         public frmLogin()
         {
+            
             InitializeComponent();
             //
             _loginService = new LoginService();
@@ -26,7 +28,18 @@ namespace _3_GUI_PresentationLayer.Views
             //
             txt_Acc.Text = "Taduytung99";
             txt_Pass.Text = "Taduytung123";
+            //Banner
+            FormBanner banner1 = new FormBanner();
+            banner1.TopLevel = false;
+            banner1.Dock = DockStyle.None;
+            panl_Banner.Controls.Add(banner1);
+            banner1.Location = new Point(0, 0);
+            banner1.BringToFront();
+            banner1.Show();
         }
+        // Chạy banner
+        
+
         // function
         private void OpenchildForm(Form form)
         { 
@@ -60,7 +73,6 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Controls.Remove(tableLayoutPanel3);
             OpenchildForm(new FrmForgotPassword());
         }
         //
@@ -75,6 +87,8 @@ namespace _3_GUI_PresentationLayer.Views
             else if (_i == 15)
             {
                 _frmMain.Show();
+                //Load thong tin form cho fomr main
+                _frmMain.GetTimer().Start();
                 this.Hide();
             }
         }

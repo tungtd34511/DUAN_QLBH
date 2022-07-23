@@ -21,33 +21,37 @@ namespace _3_GUI_PresentationLayer.Views
     public partial class FrmAddProduct : Form
     {
         private SanPham _sanPham;
-        private QLSanPhamService _qlSanPhamService;
-
-        public FrmAddProduct()
+        QLSanPhamService _sanPhamService;
+        //
+        public FrmAddProduct(QLSanPhamService qlSanPhamService)
         {
+            _sanPhamService = qlSanPhamService;
             InitializeComponent();
-            //
-            _qlSanPhamService = new QLSanPhamService();
             //
             _sanPham = new SanPham()
             {
-                Catergory = new Catergory(), Colors = new List<Color>(), Images = new List<Image>(),
-                Origin = new Origin(), Price = new Price(), Product = new Product(),
-                ProductDetail = new ProductDetail(), Sizes = new List<Size>(), ThuongHieu = new ThuongHieu(),
+                Catergory = new Catergory(),
+                Colors = new List<Color>(),
+                Images = new List<Image>(),
+                Origin = new Origin(),
+                Price = new Price(),
+                Product = new Product(),
+                ProductDetail = new ProductDetail(),
+                Sizes = new List<Size>(),
+                ThuongHieu = new ThuongHieu(),
                 Vers = new List<Ver>()
             };
-            foreach (var x in _qlSanPhamService.GetListThuongHieus().Select(c => c.Name))
-            {
-                txt_ThuongHieu.Items.Add(x);
-            }
             LoadComboboxCatergory();
+            txt_CatergoryName.SelectedIndex = 0;
+            //
             LoadComboboxThuongHieu();
+            txt_ThuongHieu.SelectedIndex = 0;
         }
         //LoadCmbox_CaterGory
         public void LoadComboboxCatergory()
         {
             txt_CatergoryName.Items.Clear();
-            foreach (var x in _qlSanPhamService.GetListCatergory().Select(c => c.Name))
+            foreach (var x in _sanPhamService.GetListCatergory().Select(c => c.Name))
             {
                 txt_CatergoryName.Items.Add(x);
             }
@@ -56,7 +60,7 @@ namespace _3_GUI_PresentationLayer.Views
         public void LoadComboboxThuongHieu()
         {
             txt_ThuongHieu.Items.Clear();
-            foreach (var x in _qlSanPhamService.GetListThuongHieus().Select(c => c.Name))
+            foreach (var x in _sanPhamService.GetListThuongHieus().Select(c => c.Name))
             {
                 txt_ThuongHieu.Items.Add(x);
             }
@@ -64,14 +68,17 @@ namespace _3_GUI_PresentationLayer.Views
         public SanPham GetSanPham()
         {
             _sanPham.Product.Name = txt_ProductName.Text;
-            _sanPham.Origin = _qlSanPhamService.GetOrigins()
-                .FirstOrDefault(c => c.ThuongHieuid == _qlSanPhamService.GetListThuongHieus().FirstOrDefault(d=>d.Name==txt_ThuongHieu.Text).Id);
+            _sanPham.Origin = _sanPhamService.GetOrigins()
+                .FirstOrDefault(c => c.ThuongHieuid == _sanPhamService.GetListThuongHieus().FirstOrDefault(d=>d.Name==txt_ThuongHieu.Text).Id);
             _sanPham.ProductDetail.Sex = rbtn_Nam.Checked == true ? true : false;
             if (txt_CatergoryName.Text != null && txt_CatergoryName.Text != "")
             {
-                _sanPham.Catergory = _qlSanPhamService.GetListCatergory()
+                _sanPham.Catergory = _sanPhamService.GetListCatergory()
                     .FirstOrDefault(c => c.Name == txt_CatergoryName.Text);
             }
+
+            _sanPham.ThuongHieu = _sanPhamService.GetListThuongHieus()
+                .FirstOrDefault(c => c.Id == _sanPham.Origin.ThuongHieuid);
             _sanPham.ProductDetail.ChatLieu = txt_ChatLieu.Text;
             _sanPham.ProductDetail.MoTaChiTiet = txt_TongQuan.Text;
             _sanPham.Price.GiaBan = decimal.Parse(txt_GiaBan.Text);
@@ -172,7 +179,7 @@ namespace _3_GUI_PresentationLayer.Views
                     btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
                     btnDelete.ForeColor = System.Drawing.Color.White;
                     btnDelete.Margin = new Padding(0);
-                    btnDelete.Name = "btnDelete";
+                    btnDelete.Name = "btnDelete_"+i.ToString();
                     btnDelete.Size = new System.Drawing.Size(45, 45);
                     btnDelete.Location = new Point(28, 28);
                     btnDelete.Text = "Xóa";
@@ -191,7 +198,32 @@ namespace _3_GUI_PresentationLayer.Views
                     {
                         if (MessageBox.Show("Bạn có muốn xóa ảnh ?") == DialogResult.OK)
                         {
-                            panl.Visible = false;
+                            int index = int.Parse(btnDelete.Name.Split("_").LastOrDefault());
+                            if (_sanPham.Images[index].Product!=null)
+                            {
+                                // xóa cấc ảnh mới được tạo luôn nếu chưa được lưu vào DB
+                                try
+                                {
+                                    _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path).ImagePath =
+                                        "";
+                                }
+                                finally
+                                {
+                                    AddTableListVersion();
+                                    _sanPham.Images.RemoveAt(index);
+                                    AddTableListImage();
+                                }
+                            }
+                            else
+                            {
+                                // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
+                                _sanPham.Images[index].ProductId = null;
+                                // xóa image khỏi color
+                                _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path).ImagePath =
+                                    "";
+                                AddTableListVersion();
+                                panl.Visible = false;
+                            }
                         }
                     };
                     //
@@ -232,6 +264,8 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 try
                 {
+                    Ver ver = _sanPham.Vers[i];
+                    int? id = ver.ColorId;
                     // 
                     // tblVer
                     // 
@@ -259,32 +293,46 @@ namespace _3_GUI_PresentationLayer.Views
                     btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
                     btnDelete.ForeColor = System.Drawing.Color.White;
                     btnDelete.Margin = new Padding(0);
-                    btnDelete.Name = "btnDelete";
+                    btnDelete.Name = "btnDelete_"+i.ToString();
                     btnDelete.Size = new System.Drawing.Size(45, 45);
                     btnDelete.Text = "Xóa";
                     btnDelete.UseVisualStyleBackColor = false;
-                    btnDelete.Click += (o, s) => { tblVer.Visible = false; };
+                    btnDelete.Click += (o, s) =>
+                    {
+                        int index = int.Parse(btnDelete.Name.Split("_").LastOrDefault());
+                        if (_sanPham.Vers[index].Color != null)
+                        {
+                            // xóa ver mới được tạo luôn nếu chưa được lưu vào DB
+                            _sanPham.Vers.RemoveAt(index);
+                            AddTableListVersion();
+                        }
+                        else
+                        {
+                            // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
+                            _sanPham.Vers[index].ProductDetailId = null;
+                            tblVer.Visible = false;
+                        }
+                    };
                     //
                     Panel panlImg = new Panel();
                     panlImg.Anchor = AnchorStyles.None;
                     panlImg.BackColor = System.Drawing.Color.LightGray;
-                    int? ImageId = _sanPham.Colors.FirstOrDefault(d => d.Id == _sanPham.Vers[i].ColorId).ImageId;
                     var path = "";
+                    try
                     {
-                        try
+                        path = _sanPham.Colors
+                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                            .ImagePath;
+                        if (path != null && path != "")
                         {
-
-                            if (_sanPham.Images.FirstOrDefault(c => c.Id == ImageId) != null)
-                            {
-                                path = _sanPham.Images.FirstOrDefault(c => c.Id == ImageId).Path;
-                                System.Drawing.Image Image1 = System.Drawing.Image.FromFile(path);
-                                panlImg.BackgroundImage = Image1;
-                            }
+                            System.Drawing.Image Image1 = System.Drawing.Image.FromFile(path);
+                            panlImg.BackgroundImage = Image1;
                         }
-                        finally
-                        {
 
-                        }
+                    }
+                    catch
+                    {
+                        panlImg.BackgroundImage = null;
                     }
                     panlImg.BackgroundImageLayout = ImageLayout.Zoom;
                     panlImg.Margin = new Padding(0);
@@ -299,7 +347,9 @@ namespace _3_GUI_PresentationLayer.Views
                     btnName.Margin = new Padding(0);
                     btnName.Name = "btnName_" + i.ToString();
                     btnName.Size = new System.Drawing.Size(91, 50);
-                    btnName.Text = _sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId).Name;
+                    btnName.Text = _sanPham.Colors
+                        .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                        .Name;
                     btnName.TextAlign = ContentAlignment.MiddleLeft;
                     btnName.UseVisualStyleBackColor = false;
                     // panlColor
@@ -308,9 +358,10 @@ namespace _3_GUI_PresentationLayer.Views
                     try
                     {
                         panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors
-                            .FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId).ColorCode);
+                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                            .ColorCode);
                     }
-                    finally { panlColor.BackColor = System.Drawing.Color.LightGray; btnName.Text = "Unknown"; }
+                    catch { panlColor.BackColor = System.Drawing.Color.LightGray; btnName.Text = "Unknown"; }
 
                     panlColor.BorderColor = System.Drawing.Color.Transparent;
                     panlColor.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -328,7 +379,7 @@ namespace _3_GUI_PresentationLayer.Views
                     txtSize.Margin = new Padding(0);
                     txtSize.Name = "txtSize_" + i.ToString();
                     txtSize.PlaceholderText = "Size";
-                    txtSize.Text = _sanPham.Sizes.FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId).Code.ToString();
+                    txtSize.Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId).Code.ToString();
                     txtSize.RightToLeft = RightToLeft.Yes;
                     txtSize.Size = new System.Drawing.Size(100, 39);
                     txtSize.ReadOnly = true;
@@ -383,6 +434,7 @@ namespace _3_GUI_PresentationLayer.Views
                     {
                         t = true;
                         MessageBox.Show("Ảnh đã tồn tại trong danh sách!");
+                        break;
                     }
                 }
 
@@ -401,10 +453,10 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void btn_AddCatergory_Click(object sender, EventArgs e)
         {
-            FrmAddCatergory frmAddCatergory = new FrmAddCatergory(_qlSanPhamService.GetListCatergory());
+            FrmAddCatergory frmAddCatergory = new FrmAddCatergory(_sanPhamService.GetListCatergory());
             frmAddCatergory.GetBtnSave().Click += (o, s) =>
             {
-                MessageBox.Show(_qlSanPhamService.AddCatergory(frmAddCatergory.GetCatergory()));
+                MessageBox.Show(_sanPhamService.AddCatergory(frmAddCatergory.GetCatergory()));
                 LoadComboboxCatergory();
                 txt_CatergoryName.SelectedIndex = txt_CatergoryName.Items.Count - 1;
                 frmAddCatergory.Close();
@@ -417,10 +469,6 @@ namespace _3_GUI_PresentationLayer.Views
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-            }
-            else
-            {
-                MessageBox.Show("Giá trị nhập vào phải là một số nguyên dương!");
             }
         }
 
@@ -435,7 +483,18 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void btn_AddVer_Click(object sender, EventArgs e)
         {
-            FrmAddVersion frmAddVer = new FrmAddVersion(_sanPham,_qlSanPhamService.GetSizes());
+            FrmAddVersion frmAddVer = new FrmAddVersion(_sanPham,_sanPhamService.GetSizes());
+            frmAddVer.GetBtnLuu().Click += (sender, e) =>
+            {
+                List<Ver> list = frmAddVer.GetVers();
+                foreach (var ver in list)
+                {
+                    _sanPham.Vers.Add(ver);
+                }
+                _sanPham.Colors.Add(list[0].Color);
+                frmAddVer.Close();
+                AddTableListVersion();
+            };
             frmAddVer.ShowDialog();
         }
         // thêm thương hiệu
@@ -444,12 +503,22 @@ namespace _3_GUI_PresentationLayer.Views
             FrmAddOrigin frmAddOrigin = new FrmAddOrigin();
             frmAddOrigin.GetBtnSave().Click += (o, s) =>
             {
-                MessageBox.Show(_qlSanPhamService.AddOrigin(frmAddOrigin.GetOrigin()));
+                MessageBox.Show(_sanPhamService.AddOrigin(frmAddOrigin.GetOrigin()));
                 LoadComboboxThuongHieu();
                 txt_ThuongHieu.SelectedIndex = txt_ThuongHieu.Items.Count - 1;
                 frmAddOrigin.Close();
             };
             frmAddOrigin.ShowDialog();
+        }
+
+        private void txt_GiaNhap_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_GiaNhap.Text = "";
+        }
+
+        private void txt_GiaBan_MouseClick(object sender, EventArgs e)
+        {
+            txt_GiaBan.Text = "";
         }
     }
 }

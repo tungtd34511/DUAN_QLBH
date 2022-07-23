@@ -25,25 +25,36 @@ namespace _3_GUI_PresentationLayer.Views
     {
         private SanPham _sanPham;
         private Panel _activeImg;
-        private QLSanPhamService _qlSanPhamService;
         private int _indexImgZoom;
+        //delegate
         public FrmListProduct.SendSatus send;
-        public FrmProductDetail(SanPham sanPham, FrmListProduct.SendSatus sender)
+        private QLSanPhamService _qlSanPhamService ;
+        public FrmProductDetail(SanPham sanPham, FrmListProduct.SendSatus sender,QLSanPhamService service)
         {
             InitializeComponent();
             //
-            _qlSanPhamService = new QLSanPhamService();
+            _qlSanPhamService = service;
+            //
             _activeImg = new Panel();
             //
             _sanPham = new SanPham();
             _sanPham = sanPham;
             // load thong tin
-            LoadThongTin(_sanPham);
+            if (_sanPham.Product != null)
+            {
+                LoadThongTin(_sanPham);
+            }
             //set delegate
             send = sender;
             SetUpLayout();
         }
 
+        public void UpdateData(SanPham sanPham)
+        {
+            _sanPham = sanPham;
+            LoadThongTin(_sanPham);
+        }
+        // construc tor khi update
         public void SetUpLayout()
         {
             btn_Next.BackColor = Color.FromArgb(100, Color.Gainsboro);
@@ -99,9 +110,9 @@ namespace _3_GUI_PresentationLayer.Views
 
             try
             {
-                foreach (var x in sanPham.Images.Select(x=>x.Path))
+                foreach (var x in sanPham.Images.Select(x => x.Path))
                 {
-                
+
                     Image img = Image.FromFile(x);
                     Bitmap img2 = new Bitmap(img, new Size(69, 69));
                     Panel miniImage = new Panel();
@@ -110,7 +121,7 @@ namespace _3_GUI_PresentationLayer.Views
                     miniImage.BorderStyle = BorderStyle.None;
                     miniImage.Location = new Point(5, 1);
                     miniImage.Margin = new Padding(1);
-                    miniImage.Name = "miniImage_"+indexImage.ToString();
+                    miniImage.Name = "miniImage_" + indexImage.ToString();
                     miniImage.Size = new Size(69, 69);
                     miniImage.BackgroundImage = img2;
                     miniImage.Click += (o, s) =>
@@ -124,9 +135,13 @@ namespace _3_GUI_PresentationLayer.Views
                     //
                     indexImage += 1;
                 }
+
                 panl_Img.BackgroundImage = Image.FromFile(_sanPham.Images[0].Path);
             }
-            finally{}
+            catch
+            {
+                panl_Img.BackgroundImage = null;
+            }
             if (tbl_lstMiniImg.Controls.Count > 0)
             {
                 AcctiveMiniImg((Panel)tbl_lstMiniImg.Controls[0]);
@@ -135,7 +150,6 @@ namespace _3_GUI_PresentationLayer.Views
             //
             lbl_indexImg.Text = (_indexImgZoom+1).ToString() + "/" + _sanPham.Images.Count.ToString();
             //
-            tbl_lstVer.Controls.Clear();
             AddTblVer();
         }
 
@@ -152,20 +166,16 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            FrmAddProduct FrmEdit = new FrmAddProduct();
+            FrmAddProduct FrmEdit = new FrmAddProduct(_qlSanPhamService);
             FrmEdit.GetLabelNameFrm().Text = "Sửa sản phẩm";
             FrmEdit.LoadThongTin(_sanPham);
             //
             FrmEdit.GetBtnLuu().Click += (o, s) =>
             {
                 MessageBox.Show(_qlSanPhamService.UpdateSanPham(FrmEdit.GetSanPham()));
-                FrmEdit.Close();
-            };
-            FrmEdit.Closing += (o, s) =>
-            {
                 send(_sanPham.Product.Id);
-                _qlSanPhamService.GetLstSanPhamsFormDAL();
-                LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c => c.Product.Id == _sanPham.Product.Id));
+                LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c=>c.Product.Id==FrmEdit.GetSanPham().Product.Id));
+                FrmEdit.Close();
             };
             FrmEdit.ShowDialog();
         }
@@ -199,7 +209,8 @@ namespace _3_GUI_PresentationLayer.Views
 
         public void AddTblVer()
         {
-            for(int i =0;i< _sanPham.Vers.Count;i++)
+            tbl_lstVer.Controls.Clear();
+            for (int i =0;i< _sanPham.Vers.Count;i++)
             {
                 TableLayoutPanel tblVer = new TableLayoutPanel();
                 tblVer.Anchor = AnchorStyles.Top;
@@ -245,7 +256,7 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId).ColorCode);
                 }
-                catch (Exception e)
+                catch
                 {
                     panlColor.BackColor = Color.LightGray;
                     btnColorName.Text = "Unknown";

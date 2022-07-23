@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _1_DAL_DataAcessLayer.Entities
@@ -12,5 +13,7 @@ namespace _1_DAL_DataAcessLayer.Entities
         public string Name { set; get; }
         public int SalePercent { set; get; }
         public bool Status { set; get; }
+        public DateTime Started { get; set; }
+        public DateTime Finished { get; set; }
     }
 }

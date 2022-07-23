@@ -1,4 +1,6 @@
-﻿namespace _3_GUI_PresentationLayer.Views
+﻿using System.Windows.Forms;
+
+namespace _3_GUI_PresentationLayer.Views
 {
     partial class FrmAddProduct
     {
@@ -113,13 +115,14 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -139,6 +142,7 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 53);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -203,6 +207,9 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
+            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton5.IconColor = System.Drawing.Color.Black;
+            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton5.Location = new System.Drawing.Point(460, 95);
             this.vbButton5.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.vbButton5.Name = "vbButton5";
@@ -268,6 +275,8 @@
             this.txt_GiaNhap.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_GiaNhap.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaNhap.TabIndex = 2;
+            this.txt_GiaNhap.Text = "0";
+            this.txt_GiaNhap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_GiaNhap_MouseClick);
             this.txt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaNhap_KeyPress);
             // 
             // button1
@@ -305,6 +314,8 @@
             this.txt_GiaBan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_GiaBan.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaBan.TabIndex = 1;
+            this.txt_GiaBan.Text = "0";
+            this.txt_GiaBan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_GiaBan_MouseClick);
             this.txt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaBan_KeyPress);
             // 
             // button7
@@ -348,6 +359,9 @@
             this.btn_AddVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_AddVer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_AddVer.ForeColor = System.Drawing.Color.White;
+            this.btn_AddVer.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btn_AddVer.IconColor = System.Drawing.Color.Black;
+            this.btn_AddVer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_AddVer.Location = new System.Drawing.Point(460, 5);
             this.btn_AddVer.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.btn_AddVer.Name = "btn_AddVer";
@@ -377,7 +391,7 @@
             this.panl_lstVer.Location = new System.Drawing.Point(0, 384);
             this.panl_lstVer.Margin = new System.Windows.Forms.Padding(0);
             this.panl_lstVer.Name = "panl_lstVer";
-            this.panl_lstVer.Size = new System.Drawing.Size(628, 341);
+            this.panl_lstVer.Size = new System.Drawing.Size(628, 338);
             this.panl_lstVer.TabIndex = 3;
             // 
             // tbl_lstVer
@@ -398,7 +412,7 @@
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tbl_lstVer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tbl_lstVer.Size = new System.Drawing.Size(612, 341);
+            this.tbl_lstVer.Size = new System.Drawing.Size(612, 338);
             this.tbl_lstVer.TabIndex = 0;
             // 
             // panel11
@@ -426,7 +440,7 @@
             // tbl_lstImg
             // 
             this.tbl_lstImg.AutoSize = true;
-            this.tbl_lstImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbl_lstImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.tbl_lstImg.ColumnCount = 6;
             this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tbl_lstImg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
@@ -916,9 +930,11 @@
             // 
             // lblName
             // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(3, 0);
+            this.lblName.Location = new System.Drawing.Point(15, 4);
+            this.lblName.Margin = new System.Windows.Forms.Padding(15, 0, 3, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(253, 45);
             this.lblName.TabIndex = 1;
@@ -926,7 +942,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.vbButton3);
             this.panel4.Controls.Add(this.vbButton2);
             this.panel4.Location = new System.Drawing.Point(0, 803);
@@ -942,11 +958,15 @@
             this.vbButton3.BackgroundColor = System.Drawing.Color.White;
             this.vbButton3.BorderColor = System.Drawing.Color.Black;
             this.vbButton3.BorderRadius = 5;
-            this.vbButton3.BorderSize = 1;
+            this.vbButton3.BorderSize = 0;
             this.vbButton3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton3.FlatAppearance.BorderSize = 0;
             this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton3.ForeColor = System.Drawing.Color.Black;
+            this.vbButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton3.IconColor = System.Drawing.Color.Black;
+            this.vbButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton3.Location = new System.Drawing.Point(1182, 4);
             this.vbButton3.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton3.Name = "vbButton3";
@@ -964,11 +984,15 @@
             this.vbButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.vbButton2.BorderColor = System.Drawing.Color.Silver;
             this.vbButton2.BorderRadius = 5;
-            this.vbButton2.BorderSize = 1;
+            this.vbButton2.BorderSize = 0;
             this.vbButton2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton2.FlatAppearance.BorderSize = 0;
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton2.ForeColor = System.Drawing.Color.White;
+            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton2.IconColor = System.Drawing.Color.Black;
+            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton2.Location = new System.Drawing.Point(1083, 4);
             this.vbButton2.Margin = new System.Windows.Forms.Padding(0);
             this.vbButton2.Name = "vbButton2";
@@ -1059,7 +1083,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox txt_GiaBan;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txt_GiaNhap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
@@ -1087,5 +1110,6 @@
         private System.Windows.Forms.TableLayoutPanel tbl_lstImg;
         private System.Windows.Forms.RadioButton rbtn_Nu;
         private System.Windows.Forms.RadioButton rbtn_Nam;
+        private System.Windows.Forms.Label lblName;
     }
 }

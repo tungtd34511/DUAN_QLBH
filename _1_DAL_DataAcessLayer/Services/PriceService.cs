@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public PriceService()
         {
-            _lstPrices = new List<Price>();
             _qlbhContext = new QLBHContext();
             GetLstPricesFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstPricesFormDb()
         {
+            _lstPrices = new List<Price>();
             _lstPrices = _qlbhContext.Prices.ToList();
         }
         public string Add(Price price)
         {
-            _qlbhContext.Prices.Add(price);
+            _qlbhContext.Prices.Update(price);
             _qlbhContext.SaveChanges();
             GetLstPricesFormDb();
             return "Thêm thành công!";

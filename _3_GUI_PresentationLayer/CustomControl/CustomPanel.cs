@@ -20,8 +20,6 @@ namespace _3_GUI_PresentationLayer.CustomControl
         private bool isFocused = false;
 
         private int borderRadius = 0;
-
-
         public Color BorderColor
         {
             get { return borderColor; }

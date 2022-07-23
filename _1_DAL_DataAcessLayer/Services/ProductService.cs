@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public ProductService()
         {
-            _lstProducts = new List<Product>();
             _qlbhContext = new QLBHContext();
             GetLstProductsFormDb();
         }
@@ -26,11 +25,13 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstProductsFormDb()
         {
+            _lstProducts = new List<Product>();
             _lstProducts = _qlbhContext.Products.ToList();
+            int a = 1;
         }
         public string Add(Product product)
         {
-            _qlbhContext.Products.Add(product);
+            _qlbhContext.Products.Update(product);
             _qlbhContext.SaveChanges();
             GetLstProductsFormDb();
             return "Thêm thành công!";
@@ -39,7 +40,6 @@ namespace _1_DAL_DataAcessLayer.Services
         {
             var entry = _qlbhContext.Products.First(e => e.Id == product.Id);
             _qlbhContext.Entry(entry).CurrentValues.SetValues(product);
-            //_qlbhContext.Update(product);
             _qlbhContext.SaveChanges();
             GetLstProductsFormDb();
             return "Sửa thành công!";

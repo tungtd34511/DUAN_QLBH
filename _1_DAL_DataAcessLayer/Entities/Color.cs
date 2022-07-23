@@ -18,6 +18,6 @@ namespace _1_DAL_DataAcessLayer.Entities
         [StringLength(25)]
         public string Name { get; set; }
         public bool Status { get; set; }
-        public int? ImageId { get; set; }
+        public string ImagePath { get; set; }
     }
 }

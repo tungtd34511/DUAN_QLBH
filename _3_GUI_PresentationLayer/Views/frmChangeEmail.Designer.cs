@@ -133,6 +133,9 @@
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton1.ForeColor = System.Drawing.Color.White;
+            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton1.IconColor = System.Drawing.Color.Black;
+            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton1.Location = new System.Drawing.Point(394, 3);
             this.vbButton1.Name = "vbButton1";
             this.vbButton1.Size = new System.Drawing.Size(98, 37);
@@ -152,6 +155,9 @@
             this.vbButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton8.ForeColor = System.Drawing.Color.Black;
+            this.vbButton8.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton8.IconColor = System.Drawing.Color.Black;
+            this.vbButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton8.Location = new System.Drawing.Point(511, 3);
             this.vbButton8.Name = "vbButton8";
             this.vbButton8.Size = new System.Drawing.Size(110, 37);
@@ -241,6 +247,9 @@
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton2.ForeColor = System.Drawing.Color.White;
+            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton2.IconColor = System.Drawing.Color.Black;
+            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton2.Location = new System.Drawing.Point(533, 13);
             this.vbButton2.Name = "vbButton2";
             this.vbButton2.Size = new System.Drawing.Size(98, 37);
@@ -288,6 +297,9 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
+            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton5.IconColor = System.Drawing.Color.Black;
+            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton5.Location = new System.Drawing.Point(297, 3);
             this.vbButton5.Name = "vbButton5";
             this.vbButton5.Size = new System.Drawing.Size(98, 37);

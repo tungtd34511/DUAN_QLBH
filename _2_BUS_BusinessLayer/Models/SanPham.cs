@@ -15,12 +15,13 @@ namespace _2_BUS_BusinessLayer.Models
         private ThuongHieu _thuongHieu;
         private Catergory _catergory;
         private Price _price;
+        private Sale _sale;
 
         public SanPham()
         {
 
         }
-        public SanPham(Product product, ProductDetail productDetail, List<Ver> vers, List<Color> colors, List<Size> sizes, List<Image> images, Origin origin, ThuongHieu thuongHieu, Catergory catergory, Price price)
+        public SanPham(Product product, ProductDetail productDetail, List<Ver> vers, List<Color> colors, List<Size> sizes, List<Image> images, Origin origin, ThuongHieu thuongHieu, Catergory catergory, Price price, Sale sale)
         {
             _product = product;
             _productDetail = productDetail;
@@ -32,6 +33,7 @@ namespace _2_BUS_BusinessLayer.Models
             _thuongHieu = thuongHieu;
             _catergory = catergory;
             _price = price;
+            _sale = sale;
         }
 
         public Product Product
@@ -92,6 +94,11 @@ namespace _2_BUS_BusinessLayer.Models
         {
             get => _price;
             set => _price = value;
+        }
+        public Sale Sale
+        {
+            get => _sale;
+            set => _sale = value;
         }
     }
 }

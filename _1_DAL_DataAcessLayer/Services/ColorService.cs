@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public ColorService()
         {
-            _lstColors = new List<Color>();
             _qlbhContext = new QLBHContext();
             GetLstColorsFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstColorsFormDb()
         {
+            _lstColors = new List<Color>();
             _lstColors = _qlbhContext.Colors.ToList();
         }
         public string Add(Color color)
         {
-            _qlbhContext.Colors.Add(color);
+            _qlbhContext.Colors.Update(color);
             _qlbhContext.SaveChanges();
             GetLstColorsFormDb();
             return "Thêm thành công!";

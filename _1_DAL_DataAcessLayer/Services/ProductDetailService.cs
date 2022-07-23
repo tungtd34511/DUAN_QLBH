@@ -12,11 +12,9 @@ namespace _1_DAL_DataAcessLayer.Services
     public class ProductDetailService : IProductDetailService
     {
         private List<ProductDetail> _lstProductDetails;
-        private int _a;
         private QLBHContext _qlbhContext;
         public ProductDetailService()
         {
-            _lstProductDetails = new List<ProductDetail>();
             _qlbhContext = new QLBHContext();
             GetLstProductDetailsFormDb();
         }
@@ -27,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstProductDetailsFormDb()
         {
+            _lstProductDetails = new List<ProductDetail>();
             _lstProductDetails = _qlbhContext.ProductDetails.ToList();
         }
         public string Add(ProductDetail productDetail)
         {
-            _qlbhContext.ProductDetails.Add(productDetail);
+            _qlbhContext.ProductDetails.Update(productDetail);
             _qlbhContext.SaveChanges();
             GetLstProductDetailsFormDb();
             return "Thêm thành công!";

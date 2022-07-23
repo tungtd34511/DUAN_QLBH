@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public SizeService()
         {
-            _lstSizes = new List<Size>();
             _qlbhContext = new QLBHContext();
             GetLstSizesFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstSizesFormDb()
         {
+            _lstSizes = new List<Size>();
             _lstSizes = _qlbhContext.Sizes.ToList();
         }
         public string Add(Size size)
         {
-            _qlbhContext.Sizes.Add(size);
+            _qlbhContext.Sizes.Update(size);
             _qlbhContext.SaveChanges();
             GetLstSizesFormDb();
             return "Thêm thành công!";

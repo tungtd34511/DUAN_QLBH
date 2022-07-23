@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public ThuongHieuService()
         {
-            _lstThuongHieus = new List<ThuongHieu>();
             _qlbhContext = new QLBHContext();
             GetLstThuongHieusFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstThuongHieusFormDb()
         {
+            _lstThuongHieus = new List<ThuongHieu>();
             _lstThuongHieus = _qlbhContext.ThuongHieus.ToList();
         }
         public string Add(ThuongHieu thuongHieu)
         {
-            _qlbhContext.ThuongHieus.Add(thuongHieu);
+            _qlbhContext.ThuongHieus.Update(thuongHieu);
             _qlbhContext.SaveChanges();
             GetLstThuongHieusFormDb();
             return "Thêm thành công!";
@@ -39,7 +39,6 @@ namespace _1_DAL_DataAcessLayer.Services
         {
             var entry = _qlbhContext.ThuongHieus.First(e => e.Id == thuongHieu.Id);
             _qlbhContext.Entry(entry).CurrentValues.SetValues(thuongHieu);
-            //_qlbhContext.ThuongHieus.Update(thuongHieu);
             _qlbhContext.SaveChanges();
             GetLstThuongHieusFormDb();
             return "Sửa thành công!";

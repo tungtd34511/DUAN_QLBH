@@ -10,8 +10,8 @@ using _1_DAL_DataAcessLayer.DatabaseContext;
 namespace _1_DAL_DataAcessLayer.Migrations
 {
     [DbContext(typeof(QLBHContext))]
-    [Migration("20220629001824_QLBH1.2")]
-    partial class QLBH12
+    [Migration("20220719055644_QLBH_2.1")]
+    partial class QLBH_21
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Account", b =>
                 {
-                    b.Property<int>("AccountId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -39,29 +39,22 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UserId1")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("AccountId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("ACCOUNT");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Color", b =>
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Activity", b =>
                 {
-                    b.Property<int>("ColorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("ColorCode")
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(35)
@@ -70,14 +63,90 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("ColorId");
+                    b.HasKey("Id");
+
+                    b.ToTable("ACTIVITY");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.ActivityHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("ActivityId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ACTIVITY_HISTORY");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Catergory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("MaNhomCha")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CATERGORY");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ColorCode")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
 
                     b.ToTable("COLOR");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Image", b =>
                 {
-                    b.Property<int>("ImageId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -85,52 +154,25 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProducId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("ImageId");
+                    b.Property<int?>("VerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("IMAGE");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Job", b =>
-                {
-                    b.Property<int>("JobId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("KeyWord")
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Note")
-                        .HasMaxLength(55)
-                        .HasColumnType("nvarchar(55)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("JobId");
-
-                    b.ToTable("JOB");
-                });
-
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -138,10 +180,10 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -150,21 +192,21 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.OrderDetail", b =>
                 {
-                    b.Property<int>("OrderDetailId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderDetailId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
@@ -175,7 +217,7 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Origin", b =>
                 {
-                    b.Property<int>("OriginId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -187,13 +229,13 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NoiSanXuat")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
 
-                    b.Property<int>("ThuongHieuid")
+                    b.Property<int?>("ThuongHieuid")
                         .HasColumnType("int");
 
-                    b.HasKey("OriginId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ThuongHieuid");
 
@@ -202,43 +244,50 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Price", b =>
                 {
-                    b.Property<int>("PriceId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("GiaBan")
-                        .HasColumnType("int");
+                    b.Property<decimal>("GiaBan")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("GiaNhap")
-                        .HasColumnType("int");
+                    b.Property<decimal>("GiaNhap")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Sale")
+                    b.Property<int?>("SaleId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("PriceId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("SaleId");
 
                     b.ToTable("PRICE");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
+                        .HasMaxLength(105)
+                        .HasColumnType("nvarchar(105)");
+
+                    b.Property<int?>("ProductDetailId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductDetailId");
 
                     b.ToTable("PRODUCT");
                 });
@@ -250,76 +299,54 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("CatergoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ChatLieu")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(505)
+                        .HasColumnType("nvarchar(505)");
 
-                    b.Property<int>("ColorId")
+                    b.Property<string>("MoTaChiTiet")
+                        .HasMaxLength(505)
+                        .HasColumnType("nvarchar(505)");
+
+                    b.Property<int?>("OriginId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MoTa")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("OriginId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PriceId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("PriceId")
                         .HasColumnType("int");
 
                     b.Property<string>("QrCode")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<bool>("Sex")
                         .HasColumnType("bit");
 
-                    b.Property<int>("SizeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SoLuong")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ver")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ColorId");
+                    b.HasIndex("CatergoryId");
 
                     b.HasIndex("OriginId");
 
                     b.HasIndex("PriceId");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SizeId");
-
-                    b.HasIndex("TypeId");
-
                     b.ToTable("PRODUCT_DETAIL");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Size", b =>
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Role", b =>
                 {
-                    b.Property<int>("SizeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                    b.Property<string>("Key")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(35)
@@ -328,60 +355,64 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("SizeId");
+                    b.HasKey("Id");
 
-                    b.ToTable("SIZE");
+                    b.ToTable("ROLL");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.ThuongHieu", b =>
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Sale", b =>
                 {
-                    b.Property<int>("ThuongHieuId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<DateTime>("Finished")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
+                        .HasMaxLength(55)
+                        .HasColumnType("nvarchar(55)");
+
+                    b.Property<int>("SalePercent")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Started")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SALE");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("ThuongHieuId");
+                    b.HasKey("Id");
 
-                    b.ToTable("THUONGHIEU");
+                    b.ToTable("SIZE");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Type", b =>
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.ThuongHieu", b =>
                 {
-                    b.Property<int>("TypeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("TypeId");
-
-                    b.ToTable("TYPE");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JodId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasMaxLength(35)
@@ -390,12 +421,34 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserDetailId")
+                    b.HasKey("Id");
+
+                    b.ToTable("THUONGHIEU");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
+
+                    b.Property<int?>("RoleId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
-                    b.HasIndex("JobId");
+                    b.Property<int?>("UserDetailId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.HasIndex("UserDetailId");
 
@@ -404,7 +457,7 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.UserDetail", b =>
                 {
-                    b.Property<int>("UserDetailId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -417,16 +470,16 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasMaxLength(55)
+                        .HasColumnType("nvarchar(55)");
 
                     b.Property<string>("Image")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(305)
+                        .HasColumnType("nvarchar(305)");
 
                     b.Property<string>("Note")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(305)
+                        .HasColumnType("nvarchar(305)");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(15)
@@ -438,16 +491,64 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("UserDetailId");
+                    b.HasKey("Id");
 
                     b.ToTable("USER_DETAIL");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Ver", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ProductDetailId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("VER");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Account", b =>
                 {
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.ActivityHistory", b =>
+                {
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Activity", "Activity")
+                        .WithMany()
+                        .HasForeignKey("ActivityId");
+
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Activity");
 
                     b.Navigation("User");
                 });
@@ -465,9 +566,7 @@ namespace _1_DAL_DataAcessLayer.Migrations
                 {
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -476,15 +575,11 @@ namespace _1_DAL_DataAcessLayer.Migrations
                 {
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Order");
 
@@ -495,79 +590,84 @@ namespace _1_DAL_DataAcessLayer.Migrations
                 {
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.ThuongHieu", "ThuongHieu")
                         .WithMany()
-                        .HasForeignKey("ThuongHieuid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ThuongHieuid");
 
                     b.Navigation("ThuongHieu");
                 });
 
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Price", b =>
+                {
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Sale", "Sale")
+                        .WithMany()
+                        .HasForeignKey("SaleId");
+
+                    b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Product", b =>
+                {
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.ProductDetail", "ProductDetail")
+                        .WithMany()
+                        .HasForeignKey("ProductDetailId");
+
+                    b.Navigation("ProductDetail");
+                });
+
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.ProductDetail", b =>
                 {
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Color", "Color")
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Catergory", "Catergory")
                         .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CatergoryId");
 
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Origin", "Origin")
                         .WithMany()
-                        .HasForeignKey("OriginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OriginId");
 
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Price", "Price")
                         .WithMany()
-                        .HasForeignKey("PriceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PriceId");
 
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Type", "Type")
-                        .WithMany()
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color");
+                    b.Navigation("Catergory");
 
                     b.Navigation("Origin");
 
                     b.Navigation("Price");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Size");
-
-                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.User", b =>
                 {
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Job", "Job")
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Role", "Role")
                         .WithMany()
-                        .HasForeignKey("JobId");
+                        .HasForeignKey("RoleId");
 
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.UserDetail", "UserDetail")
                         .WithMany()
-                        .HasForeignKey("UserDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserDetailId");
 
-                    b.Navigation("Job");
+                    b.Navigation("Role");
 
                     b.Navigation("UserDetail");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Ver", b =>
+                {
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId");
+
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.ProductDetail", "ProductDetail")
+                        .WithMany()
+                        .HasForeignKey("ProductDetailId");
+
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId");
+
+                    b.Navigation("Color");
+
+                    b.Navigation("ProductDetail");
+
+                    b.Navigation("Size");
                 });
 #pragma warning restore 612, 618
         }

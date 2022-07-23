@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public CatergoryService()
         {
-            _lstCatergorys = new List<Catergory>();
             _qlbhContext = new QLBHContext();
             GetLstCatergorysFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstCatergorysFormDb()
         {
+            _lstCatergorys = new List<Catergory>();
             _lstCatergorys = _qlbhContext.Catergories.ToList();
         }
         public string Add(Catergory catergory)
         {
-            _qlbhContext.Catergories.Add(catergory);
+            _qlbhContext.Catergories.Update(catergory);
             _qlbhContext.SaveChanges();
             GetLstCatergorysFormDb();
             return "Thêm thành công!";

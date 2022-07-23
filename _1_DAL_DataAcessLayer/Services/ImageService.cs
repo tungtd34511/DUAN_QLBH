@@ -12,13 +12,10 @@ namespace _1_DAL_DataAcessLayer.Services
 {
     public class ImageService : IImageService
     {
-        private Image _image;
         private List<Image> _lstImages;
         private QLBHContext _qlbhContext;
         public ImageService()
         {
-            _image = new Image();
-            _lstImages = new List<Image>();
             _qlbhContext = new QLBHContext();
             GetLstImagesFormDb();
         }
@@ -29,18 +26,20 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstImagesFormDb()
         {
+            _lstImages = new List<Image>();
             _lstImages = _qlbhContext.Images.ToList();
         }
         public string Add(Image image)
         {
-            _qlbhContext.Images.Add(image);
+            _qlbhContext.Images.Update(image);
             _qlbhContext.SaveChanges();
             GetLstImagesFormDb();
             return "Thêm thành công!";
         }
         public string Update(Image image)
         {
-            _qlbhContext.Images.Update(image);
+            var entry = _qlbhContext.Images.First(e => e.Id == image.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(image);
             _qlbhContext.SaveChanges();
             GetLstImagesFormDb();
             return "Sửa thành công!";

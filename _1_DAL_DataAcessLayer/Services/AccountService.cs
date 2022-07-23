@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public AccountService()
         {
-            _lstAccounts = new List<Account>();
             _qlbhContext = new QLBHContext();
             GetLstAccountsFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstAccountsFormDb()
         {
+            _lstAccounts = new List<Account>();
             _lstAccounts = _qlbhContext.Accounts.ToList();
         }
         public string Add(Account account)
         {
-            _qlbhContext.Accounts.Add(account);
+            _qlbhContext.Accounts.Update(account);
             _qlbhContext.SaveChanges();
             GetLstAccountsFormDb();
             return "Thêm thành công!";

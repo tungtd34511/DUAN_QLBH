@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public RollService()
         {
-            _lstRolls = new List<Role>();
             _qlbhContext = new QLBHContext();
             GetLstRollsFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstRollsFormDb()
         {
+            _lstRolls = new List<Role>();
             _lstRolls = _qlbhContext.Rolls.ToList();
         }
         public string Add(Role roll)
         {
-            _qlbhContext.Rolls.Add(roll);
+            _qlbhContext.Rolls.Update(roll);
             _qlbhContext.SaveChanges();
             GetLstRollsFormDb();
             return "Thêm thành công!";

@@ -12,7 +12,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public VerService()
         {
-            _lstVers = new List<Ver>();
             _qlbhContext = new QLBHContext();
             GetLstVersFormDb();
         }
@@ -23,18 +22,20 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstVersFormDb()
         {
+            _lstVers = new List<Ver>();
             _lstVers = _qlbhContext.Vers.ToList();
         }
         public string Add(Ver ver)
         {
-            _qlbhContext.Vers.Add(ver);
+            _qlbhContext.Vers.Update(ver);
             _qlbhContext.SaveChanges();
             GetLstVersFormDb();
             return "Thêm thành công!";
         }
         public string Update(Ver ver)
         {
-            _qlbhContext.Vers.Update(ver);
+            var entry = _qlbhContext.Vers.First(e => e.Id == ver.Id);
+            _qlbhContext.Entry(entry).CurrentValues.SetValues(ver);
             _qlbhContext.SaveChanges();
             GetLstVersFormDb();
             return "Sửa thành công!";

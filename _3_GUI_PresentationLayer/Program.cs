@@ -19,6 +19,7 @@ namespace _3_GUI_PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
+            //1820, 991
         }
     }
 }

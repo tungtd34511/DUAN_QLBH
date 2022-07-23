@@ -20,6 +20,7 @@ namespace _3_GUI_PresentationLayer.Views
     {
         //tạo delegate để nhận trạng thái form và reload form
         public delegate void SendSatus(int ProductId);
+
         private int _productIdUpdate;
         private int _indexUpdateDetail;
         private int _lastindex;
@@ -27,34 +28,41 @@ namespace _3_GUI_PresentationLayer.Views
         //
         private QLSanPhamService _qlSanPhamService;
         private List<SanPham> _lstSanPhamsShow;
+        // CHức năng thêm sản phẩm
         public FrmListProduct()
         {
             InitializeComponent();
             _qlSanPhamService = new QLSanPhamService();
-            _lastindex = _qlSanPhamService.GetLstSanPhams().Count/14;
             _indexUpdateDetail = new int();
             _lstSanPhamsShow = new List<SanPham>();
+            LoadThongTin();
+        }
+        /// <summary>
+        /// reload lại thông tin cho form
+        /// </summary>
+        public void LoadThongTin()
+        {
             _lstDetailIndex = 0;
-            for (int i = _lstDetailIndex*14; i < (_lstDetailIndex+1) * 14; i++)
+            _lastindex = _qlSanPhamService.GetLstSanPhams().Count / 14;
+            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
             {
                 try
                 {
                     _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
                 }
-                finally{}
+                finally { }
             }
             AddProduct(_lstSanPhamsShow);
-            txt_lstShowIndex.Text = (_lstDetailIndex+1).ToString();
-            lbl_lastIndex.Text = "/"+(_lastindex+1).ToString();
+            txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
+            lbl_lastIndex.Text = "/" + (_lastindex + 1).ToString();
             //
             AddTblLoc();
         }
         private void SetValue(int value)
         {
             _productIdUpdate = value;
-            _qlSanPhamService.GetLstSanPhamsFormDAL();
             _lstSanPhamsShow = new List<SanPham>();
-            for (int i = _lstDetailIndex * 13; i < (_lstDetailIndex + 1) * 13; i++)
+            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
             {
                 try
                 {
@@ -65,12 +73,22 @@ namespace _3_GUI_PresentationLayer.Views
 
                 }
             }
+            // cập nhật tên sản phẩm
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[5].Text =
                     _lstSanPhamsShow[_indexUpdateDetail].Product.Name;
+            // cập nật giá bán
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[6].Text =
                 string.Format("{0:#,##0}", _lstSanPhamsShow[_indexUpdateDetail].Price.GiaBan.ToString()) + " VNĐ";
+            //cập nhật giá nhâp
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[7].Text =
                 string.Format("{0:#,##0}", _lstSanPhamsShow[_indexUpdateDetail].Price.GiaNhap.ToString()) + " VNĐ";
+            int sum = 0;
+            foreach (var x in _lstSanPhamsShow[_indexUpdateDetail].Vers)
+            {
+                sum += x.SoLuong;
+            }
+            //cập nhật số lượng
+            tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[8].Text = sum.ToString();
         }
         //Load tbl_Product
         private void AddProduct(List<SanPham> list)
@@ -110,7 +128,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblProduct.Dock = DockStyle.Top;
                 tblProduct.Location = new Point(0, 0);
                 tblProduct.Margin = new Padding(0);
-                tblProduct.Name = "tbl_Product";
+                tblProduct.Name = "tbl_Product_"+i.ToString();
                 tblProduct.RowCount = 1;
                 tblProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
                 tblProduct.Size = new Size(1510, 50);
@@ -120,9 +138,9 @@ namespace _3_GUI_PresentationLayer.Views
                 }
                 else
                 {
-                    tblProduct.BackColor = Color.FromArgb(227, 227, 227);
+                    tblProduct.BackColor = Color.FromArgb(100,220, 220, 220);
                 }
-                //btnMoRong
+                    //btnMoRong
                 IconButton btnMoRong = new IconButton();
                 btnMoRong.Anchor = AnchorStyles.Left;
                 btnMoRong.FlatAppearance.BorderSize = 0;
@@ -134,7 +152,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnMoRong.Location = new Point(3, 10);
                 btnMoRong.Name = "btnMoRong_"+i.ToString();
                 btnMoRong.Padding = new Padding(0, 7, 0, 0);
-                btnMoRong.Size = new Size(50, 29);
+                btnMoRong.Size = new Size(50, 40);
                 btnMoRong.UseVisualStyleBackColor = true;
                 btnMoRong.Click += (o, s) =>
                 {
@@ -150,8 +168,13 @@ namespace _3_GUI_PresentationLayer.Views
                     int index = int.Parse(btnMoRong.Name.Split("_").Last());
                     if (tbl_lstProduct.Controls[index].Height <300)
                     {
+                        tbl_lstProduct.Height += 600;
+                        tbl_lstProduct.RowStyles[index].Height += 600;
+                        tbl_lstProduct.Controls[index].Height += 600;
                         //form detail
-                        FrmProductDetail frmProductDetail = new FrmProductDetail(_lstSanPhamsShow[index], SetValue);
+                        FrmProductDetail frmProductDetail =
+                            new FrmProductDetail(_lstSanPhamsShow[index], SetValue, _qlSanPhamService);
+                        frmProductDetail.UpdateData(_lstSanPhamsShow[index]);
                         frmProductDetail.Name = "formDetail_" + index.ToString();
                         frmProductDetail.TopLevel = false;
                         frmProductDetail.Dock = DockStyle.Bottom;
@@ -159,10 +182,6 @@ namespace _3_GUI_PresentationLayer.Views
                         {
                             _indexUpdateDetail = int.Parse(frmProductDetail.Name.Split("_").Last());
                         };
-                        //
-                        tbl_lstProduct.Height += 600;
-                        tbl_lstProduct.RowStyles[index].Height += 600;
-                        tbl_lstProduct.Controls[index].Height += 600;
                         //
                         frmProductDetail.BringToFront();
                         tbl_lstProduct.Controls[index].Controls.Add(frmProductDetail);
@@ -184,7 +203,6 @@ namespace _3_GUI_PresentationLayer.Views
                     else
                     {
                         //
-                        tbl_lstProduct.Controls[index].Controls[1].Visible = false;
                         tbl_lstProduct.Controls[index].Controls.RemoveAt(1);
                         //
                         tbl_lstProduct.Controls[index].Height -= 600;
@@ -199,6 +217,7 @@ namespace _3_GUI_PresentationLayer.Views
                 cbx.AutoSize = true;
                 cbx.Location = new Point(75, 16);
                 cbx.Name = "cbox_" + i.ToString();
+                cbx.Checked = checkBox1.Checked;
                 cbx.Size = new Size(18, 17);
                 cbx.UseVisualStyleBackColor = true;
                 //lblStt
@@ -218,11 +237,15 @@ namespace _3_GUI_PresentationLayer.Views
                 btnImg.BackColor = Color.Transparent;
                 try
                 {
-                    Image img = Image.FromFile(_lstSanPhamsShow[i].Images.First().Path);
+                    string path = _lstSanPhamsShow[i].Images.First().Path;
+                    Image img = Image.FromFile(path);
                     Bitmap img1 = new Bitmap(img, new Size(44, 44));
                     btnImg.BackgroundImage = img1;
                 }
-                finally{}
+                catch
+                {
+                    btnImg.BackgroundImage = null;
+                }
                 btnImg.BackgroundImageLayout = ImageLayout.Zoom;
                 btnImg.FlatAppearance.BorderSize = 0;
                 btnImg.FlatStyle = FlatStyle.Flat;
@@ -338,7 +361,31 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            FrmAddProduct frmAddProduct = new FrmAddProduct();
+            FrmAddProduct frmAddProduct = new FrmAddProduct(_qlSanPhamService);
+            frmAddProduct.GetBtnLuu().Click += (o, s) =>
+            {
+                SanPham sanPham = new SanPham();
+                sanPham = frmAddProduct.GetSanPham();
+                //Mặc định mở bán cho sản phẩm mới được thêm
+                sanPham.Product.Status = true;
+                MessageBox.Show(_qlSanPhamService.AddSanPham(sanPham));
+                txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
+                _lstSanPhamsShow = new List<SanPham>();
+                _lastindex = _qlSanPhamService.GetLstSanPhams().Count / 14;
+                for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
+                {
+                    try
+                    {
+                        _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                AddProduct(_lstSanPhamsShow);
+                frmAddProduct.Close();
+            };
             frmAddProduct.ShowDialog();
         }
         private void btn_last_Click(object sender, EventArgs e)
@@ -430,8 +477,8 @@ namespace _3_GUI_PresentationLayer.Views
             List<string> lstStr2 = new List<string>() { "Nam", "Nữ"};
             List<string> lstStr3 = new List<string>()
             {
-                "Dưới 199.000 VND", "199.000 VND - 299.000 VND", "299.000 VND - 399.000 VND",
-                "399.000 VND - 499.000 VND", "499.000 VND - 799.000 VND", "799.000 VND - 999.000 VND", "Trên 1 triệu"
+                "Dưới 199.000 VND", "199.000  - 299.000 VND", "299.000 - 399.000 VND",
+                "399.000 - 499.000 VND", "499.000 - 799.000 VND", "799.000 - 999.000 VND", "Trên 1 triệu"
             };
             List<string> lstStr4 = _qlSanPhamService.GetListCatergory().Select(c => c.Name).ToList();
             List<string> lstStr5 = new List<string>() {"Đang mở bán", "Ngừng kinh doanh"};
@@ -440,37 +487,39 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 //panl
                 CustomPanel panlPrice = new CustomPanel();
-                panlPrice.BackColor = Color.White;
-                panlPrice.BorderColor = Color.Black;
+                panlPrice.BackColor = SystemColors.Control;
+                panlPrice.BorderColor = SystemColors.Control;
                 panlPrice.BorderFocusColor = Color.HotPink;
-                panlPrice.BorderRadius = 10;
+                panlPrice.BorderRadius = 5;
                 panlPrice.BorderSize = 1;
                 panlPrice.Margin = new Padding(0, 0, 0, 0);
                 panlPrice.Padding = new Padding(2,2,1,5);
                 panlPrice.Dock = DockStyle.Top;
                 panlPrice.Name = "panlPrice_"+i.ToString();
-                panl_LocDS.AutoSize = true;
                 //table
                 TableLayoutPanel tblPrice = new TableLayoutPanel();
                 tblPrice.ColumnCount = 1;
                 tblPrice.Dock = DockStyle.Top;
-                tblPrice.BackColor = Color.White;
+                tblPrice.BackColor = SystemColors.Control;
+                tblPrice.Location = new Point(0, 0);
                 tblPrice.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 tblPrice.Name = "tblPrice_"+i.ToString();
                 tblPrice.RowCount = 1;
                 tblPrice.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-                tblPrice.AutoSize = true;
                 //Head tblSex
                 TableLayoutPanel head = new TableLayoutPanel();
-                head.BackColor = Color.Black;
-                head.ColumnCount = 2;
+                head.BackColor = Color.FromArgb(90, 76, 219);
+                head.ForeColor = Color.White;
+                head.ColumnCount = 3;
                 head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
                 head.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+                head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
                 head.Dock = DockStyle.Top;
                 head.Location = new Point(0, 0);
                 head.Margin = new Padding(0);
                 head.Name = "head_"+i.ToString();
                 head.RowCount = 1;
+                head.Height = 50;
                 head.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
                 // check đầu table
                 CheckBox check1 = new CheckBox();
@@ -488,10 +537,23 @@ namespace _3_GUI_PresentationLayer.Views
                 Name.Name = "Name_".ToString();
                 Name.Text = lstStr1[i];
                 //
+                IconButton btnMoRong = new IconButton();
+                btnMoRong.Anchor = AnchorStyles.Right;
+                btnMoRong.FlatAppearance.BorderSize = 0;
+                btnMoRong.FlatStyle = FlatStyle.Flat;
+                btnMoRong.IconChar = IconChar.AngleDown;
+                btnMoRong.IconColor = Color.Black;
+                btnMoRong.IconFont = IconFont.Auto;
+                btnMoRong.IconSize = 30;
+                btnMoRong.Location = new Point(3, 10);
+                btnMoRong.Name = "btnMoRong_" + i.ToString();
+                btnMoRong.Padding = new Padding(0, 7, 0, 0);
+                btnMoRong.Size = new Size(50, 50);
+                btnMoRong.UseVisualStyleBackColor = true;
+                //
                 head.Controls.Add(check1, 0, 0);
                 head.Controls.Add(Name, 1, 0);
-                //
-                tblPrice.Controls.Add(head);
+                head.Controls.Add(btnMoRong, 2, 0);
                 // Các check box trong table
                 for (int j = 0; j < _lst[i].Count; j++)
                 {
@@ -504,15 +566,58 @@ namespace _3_GUI_PresentationLayer.Views
                     check2.Name = "checkBox_"+i.ToString()+"/"+j.ToString();
                     check2.Text = "   "+ _lst[i][j];
                     //
-                    tblPrice.RowCount += 1;
-                    tblPrice.Height += 40;
-                    tblPrice.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-                    tblPrice.Controls.Add(check2,0,j+1);
+                    tblPrice.Controls.Add(check2,0,j);
                 }
-                panlPrice.Controls.Add(tblPrice);
-                panlPrice.Height = tblPrice.Height + 7;
+                tblPrice.Height = tblPrice.Controls.Count * 40 + 10;
                 //
-                panl_LocDS.Controls.Add(panlPrice);
+                btnMoRong.Click += (o, s) =>
+                {
+                    if (panlPrice.Height > 58)
+                    {
+                        tblPrice.Visible = false;
+                        panlPrice.Height = 58;
+                        btnMoRong.IconChar = IconChar.AngleDown;
+                    }
+                    else
+                    {
+                        panlPrice.Height = tblPrice.Height + 58;
+                        btnMoRong.IconChar = IconChar.AngleUp;
+                        tblPrice.Visible = true;
+                    }
+                };
+                panlPrice.Controls.Add(tblPrice);
+                panlPrice.Controls.Add(head);
+                panlPrice.Height =  58;
+                //
+                tbl_Loc.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tbl_Loc.Controls.Add(panlPrice);
+            }
+        }
+
+        private void btn_XuatFile_Click(object sender, EventArgs e)
+        {
+            string filePath = "";
+            // tạo SaveFileDialog để lưu file excel
+            SaveFileDialog dialog = new SaveFileDialog();
+
+            // chỉ lọc ra các file có định dạng Excel
+            dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+
+            // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                filePath = dialog.FileName;
+            }
+
+            // nếu đường dẫn null hoặc rỗng thì báo không hợp lệ và return hàm
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Đường dẫn  không hợp lệ");
+                return;
+            }
+            else
+            {
+                MessageBox.Show(_qlSanPhamService.XuatFileExcel("DS",filePath,_qlSanPhamService.GetLstSanPhams()));
             }
         }
     }

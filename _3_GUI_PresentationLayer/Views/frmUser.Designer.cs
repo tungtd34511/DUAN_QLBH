@@ -341,7 +341,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1902, 50);
+            this.panel1.Size = new System.Drawing.Size(1820, 50);
             this.panel1.TabIndex = 1;
             // 
             // panelMenu2
@@ -351,11 +351,11 @@
             this.panelMenu2.Controls.Add(this.iconButton6);
             this.panelMenu2.Controls.Add(this.iconButton7);
             this.panelMenu2.Controls.Add(this.iconButton8);
-            this.panelMenu2.Location = new System.Drawing.Point(527, -2);
+            this.panelMenu2.Location = new System.Drawing.Point(427, -2);
             this.panelMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.panelMenu2.Name = "panelMenu2";
             this.panelMenu2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.panelMenu2.Size = new System.Drawing.Size(700, 52);
+            this.panelMenu2.Size = new System.Drawing.Size(718, 52);
             this.panelMenu2.TabIndex = 0;
             // 
             // iconButton5
@@ -370,7 +370,7 @@
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 30;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton5.Location = new System.Drawing.Point(533, 0);
+            this.iconButton5.Location = new System.Drawing.Point(542, 0);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(172, 50);
@@ -392,7 +392,7 @@
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 30;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(329, 0);
+            this.iconButton6.Location = new System.Drawing.Point(338, 0);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -415,7 +415,7 @@
             this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton7.IconSize = 30;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton7.Location = new System.Drawing.Point(143, 0);
+            this.iconButton7.Location = new System.Drawing.Point(152, 0);
             this.iconButton7.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton7.Name = "iconButton7";
             this.iconButton7.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -438,7 +438,7 @@
             this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton8.IconSize = 30;
             this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton8.Location = new System.Drawing.Point(-9, 0);
+            this.iconButton8.Location = new System.Drawing.Point(0, 0);
             this.iconButton8.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton8.Name = "iconButton8";
             this.iconButton8.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -455,10 +455,10 @@
             this.panelDesktop2.BackColor = System.Drawing.Color.Gray;
             this.panelDesktop2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDesktop2.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelDesktop2.Location = new System.Drawing.Point(510, 50);
+            this.panelDesktop2.Location = new System.Drawing.Point(428, 50);
             this.panelDesktop2.Margin = new System.Windows.Forms.Padding(0);
             this.panelDesktop2.Name = "panelDesktop2";
-            this.panelDesktop2.Size = new System.Drawing.Size(1392, 849);
+            this.panelDesktop2.Size = new System.Drawing.Size(1392, 941);
             this.panelDesktop2.TabIndex = 4;
             // 
             // panel5
@@ -467,7 +467,7 @@
             this.panel5.AutoScroll = true;
             this.panel5.Controls.Add(this.tableLayoutPanel3);
             this.panel5.Controls.Add(this.tableLayoutPanel4);
-            this.panel5.Location = new System.Drawing.Point(101, 454);
+            this.panel5.Location = new System.Drawing.Point(12, 445);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(409, 589);
             this.panel5.TabIndex = 7;
@@ -775,7 +775,7 @@
             this.img_User.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.img_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.img_User.ForeColor = System.Drawing.Color.White;
-            this.img_User.Location = new System.Drawing.Point(101, 23);
+            this.img_User.Location = new System.Drawing.Point(12, 12);
             this.img_User.Name = "img_User";
             this.img_User.Size = new System.Drawing.Size(400, 400);
             this.img_User.TabIndex = 6;
@@ -799,7 +799,7 @@
             this.vbButton4.ForeColor = System.Drawing.Color.Black;
             this.vbButton4.Image = ((System.Drawing.Image)(resources.GetObject("vbButton4.Image")));
             this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton4.Location = new System.Drawing.Point(435, 336);
+            this.vbButton4.Location = new System.Drawing.Point(328, 314);
             this.vbButton4.Name = "vbButton4";
             this.vbButton4.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.vbButton4.Size = new System.Drawing.Size(66, 66);
@@ -813,7 +813,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1902, 899);
+            this.ClientSize = new System.Drawing.Size(1820, 991);
             this.Controls.Add(this.vbButton4);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.img_User);

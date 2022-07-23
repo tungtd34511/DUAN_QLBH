@@ -15,7 +15,6 @@ namespace _1_DAL_DataAcessLayer.Services
         private QLBHContext _qlbhContext;
         public UserDetailService()
         {
-            _lstUserDetails = new List<UserDetail>();
             _qlbhContext = new QLBHContext();
             GetLstUserDetailsFormDb();
         }
@@ -26,11 +25,12 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstUserDetailsFormDb()
         {
+            _lstUserDetails = new List<UserDetail>();
             _lstUserDetails = _qlbhContext.UserDetails.ToList();
         }
         public string Add(UserDetail userDetail)
         {
-            _qlbhContext.UserDetails.Add(userDetail);
+            _qlbhContext.UserDetails.Update(userDetail);
             _qlbhContext.SaveChanges();
             GetLstUserDetailsFormDb();
             return "Thêm thành công!";
