@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class RollService : IRollService
     {
         private List<Role> _lstRolls;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public RollService()
         {
             _qlbhContext = new QLBHContext();

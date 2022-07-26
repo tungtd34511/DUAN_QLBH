@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class ProductService : IProductService
     {
         private List<Product> _lstProducts;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public ProductService()
         {
             _qlbhContext = new QLBHContext();
@@ -27,7 +27,6 @@ namespace _1_DAL_DataAcessLayer.Services
         {
             _lstProducts = new List<Product>();
             _lstProducts = _qlbhContext.Products.ToList();
-            int a = 1;
         }
         public string Add(Product product)
         {

@@ -279,6 +279,9 @@
             this.vtn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vtn_cancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vtn_cancel.ForeColor = System.Drawing.Color.Black;
+            this.vtn_cancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vtn_cancel.IconColor = System.Drawing.Color.Black;
+            this.vtn_cancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vtn_cancel.Location = new System.Drawing.Point(392, 33);
             this.vtn_cancel.Margin = new System.Windows.Forms.Padding(0);
             this.vtn_cancel.Name = "vtn_cancel";
@@ -300,6 +303,9 @@
             this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Save.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Save.ForeColor = System.Drawing.Color.White;
+            this.btn_Save.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btn_Save.IconColor = System.Drawing.Color.Black;
+            this.btn_Save.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Save.Location = new System.Drawing.Point(293, 33);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Save.Name = "btn_Save";
@@ -313,6 +319,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.lblName.Location = new System.Drawing.Point(3, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(290, 45);

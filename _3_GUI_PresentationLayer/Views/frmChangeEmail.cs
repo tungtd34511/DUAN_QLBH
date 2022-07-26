@@ -35,7 +35,7 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void vbButton2_Click(object sender, EventArgs e)
         {
-            _sentMail.SendMailGoogleSmtp("tungtdph16451@fpt.edu.vn","taduytung24112000@gmail.com","sdsd","dssd", "tungtdph16451@fpt.edu.vn", "Taduytung123");
+            SentMail.SendMailGoogleSmtp("tungtdph16451@fpt.edu.vn","taduytung24112000@gmail.com","sdsd","dssd", "tungtdph16451@fpt.edu.vn", "Taduytung123");
         }
     }
 }

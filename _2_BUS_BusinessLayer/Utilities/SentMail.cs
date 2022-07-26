@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Spire.Email;
 using Spire.Email.IMap;
 using Spire.Email.Smtp;
-using System;
 using MailMessage = Spire.Email.MailMessage;
 using SmtpClient = Spire.Email.Smtp.SmtpClient;
 using MailAddress = Spire.Email.MailAddress;
@@ -19,15 +18,16 @@ namespace _2_BUS_BusinessLayer.Utilities
 {
     public class SentMail
     {
-        public string SendMailGoogleSmtp(string _from, string _to, string _subject,
-            string _body, string _gmailsend, string _gmailpassword)
+        public static string SendMailGoogleSmtp(string _from, string _to, string _subject,
+            string body, string gmailsend, string gmailpassword)
         {
-            MailAddress addressFrom = new MailAddress(_from, "EGALE SHOP");
-            MailAddress addressTo = new MailAddress(_to);
-            MailMessage message = new MailMessage(addressFrom, addressTo);
-
-            message.Date = DateTime.Now;
-            message.Subject = _subject;
+            MailAddress addressFrom = new(_from, "EGALE SHOP");
+            MailAddress addressTo = new(_to);
+            MailMessage message = new(addressFrom, addressTo)
+            {
+                Date = DateTime.Now,
+                Subject = _subject
+            };
 
             #region EmailBody
 
@@ -264,7 +264,7 @@ namespace _2_BUS_BusinessLayer.Utilities
                             <td style=""overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:'Cabin',sans-serif;"" align=""left"">
 
                               <div style=""line-height: 160%; text-align: center; word-wrap: break-word;"">
-                                <p style=""line-height: 160%; font-size: 14px;""><span style=""font-size: 22px; line-height: 35.2px;"">"+_body+ @"</span></p>
+                                <p style=""line-height: 160%; font-size: 14px;""><span style=""font-size: 22px; line-height: 35.2px;"">"+body+ @"</span></p>
                               </div>
 
                             </td>
@@ -455,18 +455,20 @@ namespace _2_BUS_BusinessLayer.Utilities
 
             message.BodyHtml = htmlString;
 
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
-            client.Username = _gmailsend;
-            client.Password = _gmailpassword;
-            client.ConnectionProtocols = ConnectionProtocols.Ssl;
+            SmtpClient client = new()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                Username = gmailsend,
+                Password = gmailpassword,
+                ConnectionProtocols = ConnectionProtocols.Ssl
+            };
             try
             {
                 client.SendOne(message);
                 return "Gửi mã xác nhận thành công, mã xác nhận sẽ gửi vào mail mới của bạn vui lòng kiểm tra !";
             }
-            catch (Exception e)
+            catch
             {
                 return "Gửi mã thất bại !";
             }

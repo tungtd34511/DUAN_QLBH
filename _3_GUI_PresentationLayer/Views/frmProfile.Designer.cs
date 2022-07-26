@@ -1,6 +1,6 @@
 ﻿namespace _3_GUI_PresentationLayer.Views
 {
-    partial class frmProfile
+    partial class FrmProfile
     {
         /// <summary>
         /// Required designer variable.
@@ -77,10 +77,12 @@
             this.txt_Name = new System.Windows.Forms.Label();
             this.txt_GioiTinh = new System.Windows.Forms.Label();
             this.txt_DiaChi = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.combox_year = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.rjDropdownMenu1.SuspendLayout();
             this.customPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -93,6 +95,7 @@
             this.customPanel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rjDropdownMenu1
@@ -138,8 +141,8 @@
             this.tableLayoutPanel1.Controls.Add(this.customPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.customPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.customPanel4, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -544,6 +547,7 @@
             // 
             // customPanel3
             // 
+            this.customPanel3.BackColor = System.Drawing.Color.White;
             this.customPanel3.BorderColor = System.Drawing.Color.Silver;
             this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel3.BorderRadius = 10;
@@ -560,9 +564,9 @@
             // 
             this.txt_Note.BackColor = System.Drawing.Color.White;
             this.txt_Note.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Note.Location = new System.Drawing.Point(3, 3);
+            this.txt_Note.Location = new System.Drawing.Point(6, 3);
             this.txt_Note.Name = "txt_Note";
-            this.txt_Note.Size = new System.Drawing.Size(804, 94);
+            this.txt_Note.Size = new System.Drawing.Size(796, 94);
             this.txt_Note.TabIndex = 0;
             this.txt_Note.Text = "";
             // 
@@ -782,18 +786,6 @@
             this.txt_DiaChi.TabIndex = 21;
             this.txt_DiaChi.Text = "Số nhà 11. TDP Thượng 3, Phường Tây Tựu ,Quận Bắc Từ Liêm,Thành Phố Hà Nội";
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(16, 45);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ghim";
-            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
@@ -835,7 +827,49 @@
             this.combox_year.Size = new System.Drawing.Size(151, 31);
             this.combox_year.TabIndex = 4;
             this.combox_year.Text = "2022";
-            this.combox_year.TextChanged += new System.EventHandler(this.combox_year_TextChanged_1);
+            this.combox_year.TextChanged += new System.EventHandler(this.Combox_year_TextChanged_1);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.vbButton1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(16, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(807, 57);
+            this.panel1.TabIndex = 8;
+            // 
+            // vbButton1
+            // 
+            this.vbButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.vbButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.vbButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.vbButton1.BorderRadius = 5;
+            this.vbButton1.BorderSize = 0;
+            this.vbButton1.FlatAppearance.BorderSize = 0;
+            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton1.ForeColor = System.Drawing.Color.White;
+            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton1.IconColor = System.Drawing.Color.Black;
+            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.vbButton1.Location = new System.Drawing.Point(722, 13);
+            this.vbButton1.Name = "vbButton1";
+            this.vbButton1.Size = new System.Drawing.Size(85, 40);
+            this.vbButton1.TabIndex = 2;
+            this.vbButton1.Text = "Lưu";
+            this.vbButton1.TextColor = System.Drawing.Color.White;
+            this.vbButton1.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(-3, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 30);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ghi Chú";
             // 
             // frmProfile
             // 
@@ -843,7 +877,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1371, 802);
             this.Controls.Add(this.customPanel1);
-            this.Name = "frmProfile";
+            this.Name = "FrmProfile";
             this.Text = "frmProfile";
             this.rjDropdownMenu1.ResumeLayout(false);
             this.customPanel1.ResumeLayout(false);
@@ -864,6 +898,8 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -917,9 +953,11 @@
         private System.Windows.Forms.Label txt_Name;
         private System.Windows.Forms.Label txt_GioiTinh;
         private System.Windows.Forms.Label txt_DiaChi;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox combox_year;
+        private System.Windows.Forms.Panel panel1;
+        private CustomControl.VBButton vbButton1;
+        private System.Windows.Forms.Label label1;
     }
 }

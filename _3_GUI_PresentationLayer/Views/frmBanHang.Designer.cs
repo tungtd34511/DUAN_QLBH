@@ -1,6 +1,6 @@
 ﻿namespace _3_GUI_PresentationLayer.Views
 {
-    partial class frmBanHang
+    partial class FrmBanHang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tbl_lstproduct = new System.Windows.Forms.TableLayoutPanel();
             this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -61,7 +61,6 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -69,6 +68,9 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.customPanel4 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -90,6 +92,7 @@
             this.pan_ThanhToan.SuspendLayout();
             this.customPanel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.customPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,8 +112,8 @@
             // 
             // vbButton2
             // 
-            this.vbButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.vbButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.vbButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.vbButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.vbButton2.BorderRadius = 5;
             this.vbButton2.BorderSize = 0;
@@ -203,7 +206,7 @@
             this.vbButton1.Name = "vbButton1";
             this.vbButton1.Size = new System.Drawing.Size(205, 33);
             this.vbButton1.TabIndex = 1;
-            this.vbButton1.Text = "Hóa đơn 1";
+            this.vbButton1.Text = "Hóa đơn new 1";
             this.vbButton1.TextColor = System.Drawing.Color.Black;
             this.vbButton1.UseVisualStyleBackColor = false;
             // 
@@ -322,6 +325,7 @@
             this.tbl_lstproduct.Location = new System.Drawing.Point(0, 0);
             this.tbl_lstproduct.Margin = new System.Windows.Forms.Padding(0);
             this.tbl_lstproduct.Name = "tbl_lstproduct";
+            this.tbl_lstproduct.Padding = new System.Windows.Forms.Padding(1, 4, 0, 0);
             this.tbl_lstproduct.RowCount = 2;
             this.tbl_lstproduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tbl_lstproduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -335,7 +339,7 @@
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 0;
             this.customPanel2.BorderSize = 2;
-            this.customPanel2.Controls.Add(this.iconButton7);
+            this.customPanel2.Controls.Add(this.vbButton3);
             this.customPanel2.Controls.Add(this.textBox7);
             this.customPanel2.Controls.Add(this.tableLayoutPanel11);
             this.customPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -347,18 +351,26 @@
             this.customPanel2.TabIndex = 0;
             this.customPanel2.UnderlinedStyle = false;
             // 
-            // iconButton7
+            // vbButton3
             // 
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.iconButton7.IconColor = System.Drawing.Color.Black;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.Location = new System.Drawing.Point(649, 3);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(0);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.iconButton7.Size = new System.Drawing.Size(47, 47);
-            this.iconButton7.TabIndex = 2;
-            this.iconButton7.UseVisualStyleBackColor = true;
+            this.vbButton3.BackColor = System.Drawing.Color.White;
+            this.vbButton3.BackgroundColor = System.Drawing.Color.White;
+            this.vbButton3.BorderColor = System.Drawing.Color.White;
+            this.vbButton3.BorderRadius = 5;
+            this.vbButton3.BorderSize = 0;
+            this.vbButton3.FlatAppearance.BorderSize = 0;
+            this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton3.ForeColor = System.Drawing.Color.White;
+            this.vbButton3.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.vbButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.vbButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.vbButton3.Location = new System.Drawing.Point(697, 2);
+            this.vbButton3.Name = "vbButton3";
+            this.vbButton3.Padding = new System.Windows.Forms.Padding(1, 4, 0, 0);
+            this.vbButton3.Size = new System.Drawing.Size(46, 46);
+            this.vbButton3.TabIndex = 2;
+            this.vbButton3.TextColor = System.Drawing.Color.White;
+            this.vbButton3.UseVisualStyleBackColor = false;
             // 
             // textBox7
             // 
@@ -457,6 +469,7 @@
             // textBox6
             // 
             this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox6.Location = new System.Drawing.Point(103, 11);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(44, 27);
@@ -564,7 +577,6 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.40215F));
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.label8, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.textBox2, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.textBox1, 1, 1);
@@ -572,6 +584,7 @@
             this.tableLayoutPanel6.Controls.Add(this.textBox4, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.textBox5, 1, 4);
             this.tableLayoutPanel6.Controls.Add(this.label12, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.panel5, 1, 3);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 96);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -608,19 +621,6 @@
             this.label8.Size = new System.Drawing.Size(157, 31);
             this.label8.TabIndex = 4;
             this.label8.Text = "Khách cần trả:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.textBox2.Location = new System.Drawing.Point(190, 282);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox2.Size = new System.Drawing.Size(188, 43);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.Text = "0";
             // 
             // label6
             // 
@@ -712,6 +712,38 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Tiền thừa :";
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Location = new System.Drawing.Point(192, 248);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(183, 74);
+            this.panel5.TabIndex = 17;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.textBox2.Location = new System.Drawing.Point(0, 35);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBox2.Size = new System.Drawing.Size(183, 36);
+            this.textBox2.TabIndex = 10;
+            this.textBox2.Text = "0";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 71);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(183, 3);
+            this.panel6.TabIndex = 0;
+            // 
             // customPanel4
             // 
             this.customPanel4.BackColor = System.Drawing.Color.White;
@@ -731,7 +763,6 @@
             this.customPanel4.Size = new System.Drawing.Size(382, 91);
             this.customPanel4.TabIndex = 0;
             this.customPanel4.UnderlinedStyle = false;
-            this.customPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.customPanel4_Paint);
             // 
             // button1
             // 
@@ -754,7 +785,7 @@
             this.textBox3.PlaceholderText = "Khách Hàng";
             this.textBox3.Size = new System.Drawing.Size(251, 40);
             this.textBox3.TabIndex = 1;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
             // 
             // iconButton1
             // 
@@ -778,9 +809,9 @@
             this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
             this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(326, 23);
+            this.iconButton2.Location = new System.Drawing.Point(325, 35);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(50, 50);
+            this.iconButton2.Size = new System.Drawing.Size(50, 42);
             this.iconButton2.TabIndex = 2;
             this.iconButton2.UseVisualStyleBackColor = false;
             // 
@@ -870,6 +901,8 @@
             this.customPanel1.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.customPanel4.ResumeLayout(false);
             this.customPanel4.PerformLayout();
             this.ResumeLayout(false);
@@ -903,7 +936,6 @@
         private CustomControl.VBButton vbButton1;
         private System.Windows.Forms.TableLayoutPanel tblOrderCart;
         private CustomControl.CustomPanel customPanel2;
-        private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private FontAwesome.Sharp.IconButton iconButton3;
@@ -925,5 +957,8 @@
         private System.Windows.Forms.TextBox textBox8;
         private CustomControl.VBButton vbButton2;
         private System.Windows.Forms.Label label1;
+        private CustomControl.VBButton vbButton3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
     }
 }

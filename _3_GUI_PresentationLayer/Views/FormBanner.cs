@@ -25,12 +25,12 @@ namespace _3_GUI_PresentationLayer.Views
         public void Loadbanner()
         {
             //TEXT
-            List<string> list = new List<string>()
+            List<string> list = new()
             {
                 "Thời Trang", "Sẽ Phai Mờ!", "Nhưng,", "Phong Cách", "Là Bất Tận!", "Chào Mừng Đến Với EGALE SHOP!"
             };
-            Timer t2 = new Timer();
-            Timer t3 = new Timer();
+            Timer t2 = new();
+            Timer t3 = new();
             
             int i = 0;
             int j = 1;
@@ -47,8 +47,17 @@ namespace _3_GUI_PresentationLayer.Views
                 //    {
                         if (i < list.Count)
                         {
-                            string txt = list[i].Substring(0, j) + "_";
-                            SetText(txt);
+                            if (j == list[i].Length)
+                            {
+                                string txt1 = list[i].Substring(0, j);
+                                SetText(txt1);
+
+                            }
+                            else
+                            {
+                                string txt2 = list[i].Substring(0, j) + "_";
+                                SetText(txt2);
+                            }
                             j++;
                             if (j > list[i].Length)
                             {
@@ -76,7 +85,7 @@ namespace _3_GUI_PresentationLayer.Views
                     m++;
                 }
                 else if(m>0){
-                    if (m % 15 == 0)
+                    if (m % 10 == 0)
                     {
                         t2.Start();
                     }}

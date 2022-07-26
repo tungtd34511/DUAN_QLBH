@@ -128,9 +128,9 @@
             this.pic_Product.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_Product.TabIndex = 3;
             this.pic_Product.TabStop = false;
-            this.pic_Product.Click += new System.EventHandler(this.pic_Product_Click);
-            this.pic_Product.MouseLeave += new System.EventHandler(this.pic_Product_MouseLeave);
-            this.pic_Product.MouseHover += new System.EventHandler(this.pic_Product_MouseHover);
+            this.pic_Product.Click += new System.EventHandler(this.Pic_Product_Click);
+            this.pic_Product.MouseLeave += new System.EventHandler(this.Pic_Product_MouseLeave);
+            this.pic_Product.MouseHover += new System.EventHandler(this.Pic_Product_MouseHover);
             // 
             // tableLayoutPanel2
             // 
@@ -171,7 +171,7 @@
             this.btn_ChonAnh.Text = "Chọn ảnh";
             this.btn_ChonAnh.TextColor = System.Drawing.Color.White;
             this.btn_ChonAnh.UseVisualStyleBackColor = false;
-            this.btn_ChonAnh.Click += new System.EventHandler(this.vbButton2_Click);
+            this.btn_ChonAnh.Click += new System.EventHandler(this.VbButton2_Click);
             // 
             // btn_Chon
             // 
@@ -195,7 +195,7 @@
             this.btn_Chon.Text = "Chọn màu";
             this.btn_Chon.TextColor = System.Drawing.Color.White;
             this.btn_Chon.UseVisualStyleBackColor = false;
-            this.btn_Chon.Click += new System.EventHandler(this.btn_Chon_Click_1);
+            this.btn_Chon.Click += new System.EventHandler(this.Btn_Chon_Click_1);
             // 
             // label6
             // 
@@ -340,7 +340,7 @@
             this.btn_AddSize.Text = "Thêm";
             this.btn_AddSize.TextColor = System.Drawing.Color.White;
             this.btn_AddSize.UseVisualStyleBackColor = false;
-            this.btn_AddSize.Click += new System.EventHandler(this.btn_AddSize_Click);
+            this.btn_AddSize.Click += new System.EventHandler(this.Btn_AddSize_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -379,7 +379,7 @@
             this.txt_G.Size = new System.Drawing.Size(73, 39);
             this.txt_G.TabIndex = 18;
             this.txt_G.Text = "0";
-            this.txt_G.TextChanged += new System.EventHandler(this.txt_G_TextChanged);
+            this.txt_G.TextChanged += new System.EventHandler(this.Txt_G_TextChanged);
             // 
             // panel2
             // 
@@ -403,7 +403,7 @@
             this.txt_MaHex.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_MaHex.Size = new System.Drawing.Size(142, 34);
             this.txt_MaHex.TabIndex = 3;
-            this.txt_MaHex.TextChanged += new System.EventHandler(this.txt_MaHex_TextChanged);
+            this.txt_MaHex.TextChanged += new System.EventHandler(this.Txt_MaHex_TextChanged);
             // 
             // label3
             // 
@@ -478,7 +478,7 @@
             this.txt_R.Size = new System.Drawing.Size(74, 39);
             this.txt_R.TabIndex = 17;
             this.txt_R.Text = "0";
-            this.txt_R.TextChanged += new System.EventHandler(this.txt_R_TextChanged);
+            this.txt_R.TextChanged += new System.EventHandler(this.Txt_R_TextChanged);
             // 
             // txt_B
             // 
@@ -489,7 +489,7 @@
             this.txt_B.Size = new System.Drawing.Size(75, 39);
             this.txt_B.TabIndex = 19;
             this.txt_B.Text = "0";
-            this.txt_B.TextChanged += new System.EventHandler(this.txt_B_TextChanged);
+            this.txt_B.TextChanged += new System.EventHandler(this.Txt_B_TextChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -597,7 +597,7 @@
             this.dropdown_lstIMG.PrimaryColor = System.Drawing.Color.Empty;
             this.dropdown_lstIMG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dropdown_lstIMG.Size = new System.Drawing.Size(61, 4);
-            this.dropdown_lstIMG.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropdown_lstIMG_ItemClicked);
+            this.dropdown_lstIMG.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Dropdown_lstIMG_ItemClicked);
             // 
             // vbButton3
             // 
@@ -649,7 +649,7 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // FrmAddVersion
             // 

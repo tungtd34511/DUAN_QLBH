@@ -21,7 +21,7 @@ namespace _3_GUI_PresentationLayer.Views
     public partial class FrmAddProduct : Form
     {
         private SanPham _sanPham;
-        QLSanPhamService _sanPhamService;
+        private readonly QLSanPhamService _sanPhamService;
         //
         public FrmAddProduct(QLSanPhamService qlSanPhamService)
         {
@@ -42,10 +42,18 @@ namespace _3_GUI_PresentationLayer.Views
                 Vers = new List<Ver>()
             };
             LoadComboboxCatergory();
-            txt_CatergoryName.SelectedIndex = 0;
-            //
+            if (txt_CatergoryName.Items.Count>0)
+            {
+                txt_CatergoryName.SelectedIndex = 0;
+            }
+            
+
             LoadComboboxThuongHieu();
-            txt_ThuongHieu.SelectedIndex = 0;
+            if (txt_ThuongHieu.Items.Count > 0)
+            {
+                txt_ThuongHieu.SelectedIndex = 0;
+            }
+            
         }
         //LoadCmbox_CaterGory
         public void LoadComboboxCatergory()
@@ -53,7 +61,14 @@ namespace _3_GUI_PresentationLayer.Views
             txt_CatergoryName.Items.Clear();
             foreach (var x in _sanPhamService.GetListCatergory().Select(c => c.Name))
             {
-                txt_CatergoryName.Items.Add(x);
+                try
+                {
+                    txt_CatergoryName.Items.Add(x);
+                }
+                catch 
+                {
+                    continue;
+                }
             }
         }
         //LoadCmbox_ThuongHieu
@@ -62,23 +77,30 @@ namespace _3_GUI_PresentationLayer.Views
             txt_ThuongHieu.Items.Clear();
             foreach (var x in _sanPhamService.GetListThuongHieus().Select(c => c.Name))
             {
-                txt_ThuongHieu.Items.Add(x);
+                try
+                {
+                    txt_ThuongHieu.Items.Add(x);
+                }
+                catch
+                {
+                    continue;
+                }
             }
         }
         public SanPham GetSanPham()
         {
             _sanPham.Product.Name = txt_ProductName.Text;
             _sanPham.Origin = _sanPhamService.GetOrigins()
-                .FirstOrDefault(c => c.ThuongHieuid == _sanPhamService.GetListThuongHieus().FirstOrDefault(d=>d.Name==txt_ThuongHieu.Text).Id);
-            _sanPham.ProductDetail.Sex = rbtn_Nam.Checked == true ? true : false;
-            if (txt_CatergoryName.Text != null && txt_CatergoryName.Text != "")
+                .FirstOrDefault(c => c.ThuongHieuid == _sanPhamService.GetListThuongHieus().FirstOrDefault(d=>d.Name==txt_ThuongHieu.Text)!.Id);
+            _sanPham.ProductDetail.Sex = rbtn_Nam.Checked;
+            if (!string.IsNullOrEmpty(txt_CatergoryName.Text))
             {
                 _sanPham.Catergory = _sanPhamService.GetListCatergory()
                     .FirstOrDefault(c => c.Name == txt_CatergoryName.Text);
             }
 
             _sanPham.ThuongHieu = _sanPhamService.GetListThuongHieus()
-                .FirstOrDefault(c => c.Id == _sanPham.Origin.ThuongHieuid);
+                .FirstOrDefault(c => _sanPham.Origin != null && c.Id == _sanPham.Origin.ThuongHieuid);
             _sanPham.ProductDetail.ChatLieu = txt_ChatLieu.Text;
             _sanPham.ProductDetail.MoTaChiTiet = txt_TongQuan.Text;
             _sanPham.Price.GiaBan = decimal.Parse(txt_GiaBan.Text);
@@ -96,7 +118,7 @@ namespace _3_GUI_PresentationLayer.Views
             return vbButton2;
         }
 
-        private void vbButton2_Click(object sender, EventArgs e)
+        private void VbButton2_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(_qlSanPhamService.AddSanPham(GetSanPham()));
         }
@@ -111,7 +133,7 @@ namespace _3_GUI_PresentationLayer.Views
                 txt_QrCode.Text = sanPham.ProductDetail.QrCode.ToString();
                 txt_ThuongHieu.Text = sanPham.ThuongHieu.Name;
                 rbtn_Nam.Checked = sanPham.ProductDetail.Sex;
-                rbtn_Nu.Checked = rbtn_Nam.Checked == false ? true : false;
+                rbtn_Nu.Checked = !rbtn_Nam.Checked;
                 txt_CatergoryName.Text = sanPham.Catergory.Name;
                 txt_ChatLieu.Text = sanPham.ProductDetail.ChatLieu;
                 txt_TongQuan.Text = sanPham.ProductDetail.MoTaChiTiet;
@@ -128,40 +150,40 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_QRCode_Click(object sender, EventArgs e)
+        private void Btn_QRCode_Click(object sender, EventArgs e)
         {
             if (txt_QrCode.Text != "")
             {
-                Form frmQR = new Form();
-                frmQR.StartPosition = FormStartPosition.CenterScreen;
-                frmQR.BringToFront();
-                frmQR.Size = new System.Drawing.Size(600, 650);
-                Panel panl = new Panel();
+                Form frmQr = new();
+                frmQr.StartPosition = FormStartPosition.CenterScreen;
+                frmQr.BringToFront();
+                frmQr.Size = new System.Drawing.Size(600, 650);
+                Panel panl = new();
                 panl.Size = new System.Drawing.Size(500, 500);
                 panl.BackgroundImage = QRCodeWriter.CreateQrCode(txt_QrCode.Text, 500).ToImage();
                 panl.Location = new Point(50, 20);
-                frmQR.Controls.Add(panl);
-                Button btnExit = new Button();
+                frmQr.Controls.Add(panl);
+                Button btnExit = new();
                 btnExit.Text = "Thoát";
                 btnExit.Size = new System.Drawing.Size(100, 50);
                 btnExit.Location = new Point(450, 540);
-                frmQR.Controls.Add(btnExit);
-                btnExit.Click += (s, o) => { frmQR.Close(); };
-                frmQR.ShowDialog();
+                frmQr.Controls.Add(btnExit);
+                btnExit.Click += (s, o) => { frmQr.Close(); };
+                frmQr.ShowDialog();
             }
         }
 
         public void AddTableListImage()
         {
             tbl_lstImg.Controls.Clear();
-            for (int i = 0; i < _sanPham.Images.Count; i++)
+            for (var i = 0; i < _sanPham.Images.Count; i++)
             {
                 try
                 {
-                    Panel panl = new Panel();
+                    Panel panl = new();
                     panl.BackColor = SystemColors.ActiveBorder;
                     System.Drawing.Image img = System.Drawing.Image.FromFile(_sanPham.Images[i].Path);
-                    Bitmap img1 = new Bitmap(img, new System.Drawing.Size(100, 100));
+                    Bitmap img1 = new(img, new System.Drawing.Size(100, 100));
                     panl.BackgroundImage = img1;
                     panl.BackgroundImageLayout = ImageLayout.Zoom;
                     panl.BorderStyle = BorderStyle.None;
@@ -169,7 +191,7 @@ namespace _3_GUI_PresentationLayer.Views
                     panl.Name = "panl_" + i.ToString();
                     panl.Size = new System.Drawing.Size(100, 100);
                     //
-                    VBButton btnDelete = new VBButton();
+                    VBButton btnDelete = new();
                     btnDelete.BorderSize = 0;
                     btnDelete.BorderRadius = 5;
                     btnDelete.Anchor = AnchorStyles.None;
@@ -190,21 +212,21 @@ namespace _3_GUI_PresentationLayer.Views
                     panl.Controls.Add(btnDelete);
                     tbl_lstImg.Controls.Add(panl);
                     //
-                    bool b1 = false;
+                    var b1 = false;
                     //
                     btnDelete.MouseHover += (o, s) => { b1 = true; };
                     btnDelete.MouseLeave += (o, s) => { b1 = false; };
                     btnDelete.Click += (o, s) =>
                     {
-                        if (MessageBox.Show("Bạn có muốn xóa ảnh ?") == DialogResult.OK)
+                        if (MessageBox.Show(@"Bạn có muốn xóa ảnh ?") == DialogResult.OK)
                         {
-                            int index = int.Parse(btnDelete.Name.Split("_").LastOrDefault());
+                            var index = int.Parse(btnDelete.Name.Split("_").LastOrDefault()!);
                             if (_sanPham.Images[index].Product!=null)
                             {
                                 // xóa cấc ảnh mới được tạo luôn nếu chưa được lưu vào DB
                                 try
                                 {
-                                    _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path).ImagePath =
+                                    _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path)!.ImagePath =
                                         "";
                                 }
                                 finally
@@ -219,7 +241,7 @@ namespace _3_GUI_PresentationLayer.Views
                                 // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
                                 _sanPham.Images[index].ProductId = null;
                                 // xóa image khỏi color
-                                _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path).ImagePath =
+                                _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path)!.ImagePath =
                                     "";
                                 AddTableListVersion();
                                 panl.Visible = false;
@@ -230,13 +252,13 @@ namespace _3_GUI_PresentationLayer.Views
                     panl.MouseHover += (o, s) => { btnDelete.Visible = true; };
                     panl.MouseLeave += (o, s) =>
                     {
-                        int t = 0;
-                        Timer timer1 = new Timer();
+                        var t = 0;
+                        Timer timer1 = new();
                         timer1.Tick += (sender, args) =>
                         {
                             if (t > 5)
                             {
-                                if (b1 == true)
+                                if (b1)
                                 {
                                     btnDelete.Visible = true;
                                 }
@@ -260,16 +282,16 @@ namespace _3_GUI_PresentationLayer.Views
         public void AddTableListVersion()
         {
             tbl_lstVer.Controls.Clear();
-            for (int i = 0; i < _sanPham.Vers.Count; i++)
+            for (var i = 0; i < _sanPham.Vers.Count; i++)
             {
                 try
                 {
                     Ver ver = _sanPham.Vers[i];
-                    int? id = ver.ColorId;
+                    var id = ver.ColorId;
                     // 
                     // tblVer
                     // 
-                    TableLayoutPanel tblVer = new TableLayoutPanel();
+                    TableLayoutPanel tblVer = new();
                     tblVer.ColumnCount = 5;
                     tblVer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
                     tblVer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96F));
@@ -283,7 +305,7 @@ namespace _3_GUI_PresentationLayer.Views
                     tblVer.Size = new System.Drawing.Size(605, 50);
                     tblVer.BackColor = System.Drawing.Color.White;
                     // btnDelete
-                    VBButton btnDelete = new VBButton();
+                    VBButton btnDelete = new();
                     btnDelete.BorderSize = 0;
                     btnDelete.BorderRadius = 5;
                     btnDelete.Anchor = AnchorStyles.None;
@@ -299,7 +321,7 @@ namespace _3_GUI_PresentationLayer.Views
                     btnDelete.UseVisualStyleBackColor = false;
                     btnDelete.Click += (o, s) =>
                     {
-                        int index = int.Parse(btnDelete.Name.Split("_").LastOrDefault());
+                        var index = int.Parse(btnDelete.Name.Split("_").LastOrDefault() ?? string.Empty);
                         if (_sanPham.Vers[index].Color != null)
                         {
                             // xóa ver mới được tạo luôn nếu chưa được lưu vào DB
@@ -314,32 +336,32 @@ namespace _3_GUI_PresentationLayer.Views
                         }
                     };
                     //
-                    Panel panlImg = new Panel();
-                    panlImg.Anchor = AnchorStyles.None;
-                    panlImg.BackColor = System.Drawing.Color.LightGray;
+                    Panel panImg = new();
+                    panImg.Anchor = AnchorStyles.None;
+                    panImg.BackColor = System.Drawing.Color.LightGray;
                     var path = "";
                     try
                     {
                         path = _sanPham.Colors
-                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)!
                             .ImagePath;
-                        if (path != null && path != "")
+                        if (!string.IsNullOrEmpty(path))
                         {
-                            System.Drawing.Image Image1 = System.Drawing.Image.FromFile(path);
-                            panlImg.BackgroundImage = Image1;
+                            System.Drawing.Image image1 = System.Drawing.Image.FromFile(path);
+                            panImg.BackgroundImage = image1;
                         }
 
                     }
                     catch
                     {
-                        panlImg.BackgroundImage = null;
+                        panImg.BackgroundImage = null;
                     }
-                    panlImg.BackgroundImageLayout = ImageLayout.Zoom;
-                    panlImg.Margin = new Padding(0);
-                    panlImg.Name = "panlImg_" + i.ToString();
-                    panlImg.Size = new System.Drawing.Size(50, 50);
+                    panImg.BackgroundImageLayout = ImageLayout.Zoom;
+                    panImg.Margin = new Padding(0);
+                    panImg.Name = "panlImg_" + i.ToString();
+                    panImg.Size = new System.Drawing.Size(50, 50);
                     //btnName
-                    Button btnName = new Button();
+                    Button btnName = new();
                     btnName.BackColor = System.Drawing.Color.White;
                     btnName.Dock = DockStyle.Right;
                     btnName.FlatAppearance.BorderSize = 0;
@@ -348,20 +370,20 @@ namespace _3_GUI_PresentationLayer.Views
                     btnName.Name = "btnName_" + i.ToString();
                     btnName.Size = new System.Drawing.Size(91, 50);
                     btnName.Text = _sanPham.Colors
-                        .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                        .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)!
                         .Name;
                     btnName.TextAlign = ContentAlignment.MiddleLeft;
                     btnName.UseVisualStyleBackColor = false;
                     // panlColor
-                    CustomPanel panlColor = new CustomPanel();
+                    CustomPanel panlColor = new();
                     panlColor.Anchor = ((AnchorStyles) ((AnchorStyles.Bottom | AnchorStyles.Left)));
                     try
                     {
                         panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors
-                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)
+                            .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)!
                             .ColorCode);
                     }
-                    catch { panlColor.BackColor = System.Drawing.Color.LightGray; btnName.Text = "Unknown"; }
+                    catch { panlColor.BackColor = System.Drawing.Color.LightGray; btnName.Text = @"Unknown"; }
 
                     panlColor.BorderColor = System.Drawing.Color.Transparent;
                     panlColor.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -372,60 +394,60 @@ namespace _3_GUI_PresentationLayer.Views
                     panlColor.Size = new System.Drawing.Size(139, 50);
                     panlColor.UnderlinedStyle = false;
                     //txtSize
-                    TextBox txtSize = new TextBox();
+                    TextBox txtSize = new();
                     txtSize.Anchor = AnchorStyles.None;
                     txtSize.BackColor = System.Drawing.Color.White;
                     txtSize.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
                     txtSize.Margin = new Padding(0);
                     txtSize.Name = "txtSize_" + i.ToString();
-                    txtSize.PlaceholderText = "Size";
-                    txtSize.Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId).Code.ToString();
+                    txtSize.PlaceholderText = @"Kích cỡ";
+                    txtSize.Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString();
                     txtSize.RightToLeft = RightToLeft.Yes;
                     txtSize.Size = new System.Drawing.Size(100, 39);
                     txtSize.ReadOnly = true;
+                    txtSize.BorderStyle = BorderStyle.FixedSingle;
                     //txtSoLuong
-                    TextBox txtSoLuong = new TextBox();
+                    TextBox txtSoLuong = new();
                     txtSoLuong.Anchor = AnchorStyles.None;
                     txtSoLuong.BackColor = System.Drawing.Color.White;
                     txtSoLuong.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
                     txtSoLuong.ForeColor = System.Drawing.Color.Black;
                     txtSoLuong.Margin = new Padding(0);
                     txtSoLuong.Name = "txtSoLuong_" + i.ToString();
-                    txtSoLuong.PlaceholderText = "Số lượng";
+                    txtSoLuong.PlaceholderText = @"Số lượng";
                     txtSoLuong.Text = _sanPham.Vers[i].SoLuong.ToString();
                     txtSoLuong.RightToLeft = RightToLeft.Yes;
                     txtSoLuong.Size = new System.Drawing.Size(100, 39);
                     txtSoLuong.ReadOnly = true;
+                    txtSize.BorderStyle = BorderStyle.FixedSingle;
                     //
                     //
                     panlColor.Controls.Add(btnName);
                     //
                     tblVer.Controls.Add(btnDelete, 0, 0);
-                    tblVer.Controls.Add(panlImg, 1, 0);
+                    tblVer.Controls.Add(panImg, 1, 0);
                     tblVer.Controls.Add(panlColor, 2, 0);
                     tblVer.Controls.Add(txtSize, 3, 0);
                     tblVer.Controls.Add(txtSoLuong, 4, 0);
                     //
                     tbl_lstVer.Controls.Add(tblVer);
                 }
-                finally
-                {
-                }
+                catch{continue;}
             }
         }
 
-        private void vbButton3_Click(object sender, EventArgs e)
+        private void VbButton3_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         // Chọn ảnh
-        private void vbButton5_Click(object sender, EventArgs e)
+        private void VbButton5_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            OpenFileDialog opnfd = new();
+            opnfd.Filter = @"Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
             //kiểm tra ảnh đã tồn tại chưa'
-            bool t = false;
+            var t = false;
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
                 foreach (var x in _sanPham.Images.Select(c => c.Path))
@@ -433,14 +455,14 @@ namespace _3_GUI_PresentationLayer.Views
                     if (x == opnfd.FileName)
                     {
                         t = true;
-                        MessageBox.Show("Ảnh đã tồn tại trong danh sách!");
+                        MessageBox.Show(@"Ảnh đã tồn tại trong danh sách!");
                         break;
                     }
                 }
 
                 if (t == false)
                 {
-                    MessageBox.Show("Thêm ảnh thành công!");
+                    MessageBox.Show(@"Thêm ảnh thành công!");
                     _sanPham.Images.Add(new Image()
                     {
                         Path = opnfd.FileName, Product = _sanPham.Product, ProductId = _sanPham.Product.Id,
@@ -451,9 +473,9 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_AddCatergory_Click(object sender, EventArgs e)
+        private void Btn_AddCatergory_Click(object sender, EventArgs e)
         {
-            FrmAddCatergory frmAddCatergory = new FrmAddCatergory(_sanPhamService.GetListCatergory());
+            FrmAddCatergory frmAddCatergory = new(_sanPhamService.GetListCatergory());
             frmAddCatergory.GetBtnSave().Click += (o, s) =>
             {
                 MessageBox.Show(_sanPhamService.AddCatergory(frmAddCatergory.GetCatergory()));
@@ -472,18 +494,18 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void txt_GiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_GiaNhap_KeyPress(object sender, KeyPressEventArgs e)
         {
             ChiNhapSo(sender,e);
         }
 
-        private void txt_GiaBan_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_GiaBan_KeyPress(object sender, KeyPressEventArgs e)
         {
             ChiNhapSo(sender, e);
         }
-        private void btn_AddVer_Click(object sender, EventArgs e)
+        private void Btn_AddVer_Click(object sender, EventArgs e)
         {
-            FrmAddVersion frmAddVer = new FrmAddVersion(_sanPham,_sanPhamService.GetSizes());
+            FrmAddVersion frmAddVer = new(_sanPham,_sanPhamService.GetSizes());
             frmAddVer.GetBtnLuu().Click += (sender, e) =>
             {
                 List<Ver> list = frmAddVer.GetVers();
@@ -498,9 +520,9 @@ namespace _3_GUI_PresentationLayer.Views
             frmAddVer.ShowDialog();
         }
         // thêm thương hiệu
-        private void btn_AddThuongHieu_Click(object sender, EventArgs e)
+        private void Btn_AddThuongHieu_Click(object sender, EventArgs e)
         {
-            FrmAddOrigin frmAddOrigin = new FrmAddOrigin();
+            FrmAddOrigin frmAddOrigin = new();
             frmAddOrigin.GetBtnSave().Click += (o, s) =>
             {
                 MessageBox.Show(_sanPhamService.AddOrigin(frmAddOrigin.GetOrigin()));
@@ -511,12 +533,12 @@ namespace _3_GUI_PresentationLayer.Views
             frmAddOrigin.ShowDialog();
         }
 
-        private void txt_GiaNhap_MouseClick(object sender, MouseEventArgs e)
+        private void Txt_GiaNhap_MouseClick(object sender, MouseEventArgs e)
         {
             txt_GiaNhap.Text = "";
         }
 
-        private void txt_GiaBan_MouseClick(object sender, EventArgs e)
+        private void Txt_GiaBan_MouseClick(object sender, EventArgs e)
         {
             txt_GiaBan.Text = "";
         }

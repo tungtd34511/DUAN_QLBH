@@ -28,7 +28,7 @@ namespace _3_GUI_PresentationLayer.Views
         private int _indexImgZoom;
         //delegate
         public FrmListProduct.SendSatus send;
-        private QLSanPhamService _qlSanPhamService ;
+        private readonly QLSanPhamService _qlSanPhamService ;
         public FrmProductDetail(SanPham sanPham, FrmListProduct.SendSatus sender,QLSanPhamService service)
         {
             InitializeComponent();
@@ -114,8 +114,8 @@ namespace _3_GUI_PresentationLayer.Views
                 {
 
                     Image img = Image.FromFile(x);
-                    Bitmap img2 = new Bitmap(img, new Size(69, 69));
-                    Panel miniImage = new Panel();
+                    Bitmap img2 = new(img, new Size(69, 69));
+                    Panel miniImage = new();
                     miniImage.BackColor = SystemColors.ActiveBorder;
                     miniImage.BackgroundImageLayout = ImageLayout.Zoom;
                     miniImage.BorderStyle = BorderStyle.None;
@@ -153,7 +153,7 @@ namespace _3_GUI_PresentationLayer.Views
             AddTblVer();
         }
 
-        private void btn_Next_Click(object sender, EventArgs e)
+        private void Btn_Next_Click(object sender, EventArgs e)
         {
             if (_indexImgZoom < _sanPham.Images.Count-1)
             {
@@ -164,9 +164,9 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_Sua_Click(object sender, EventArgs e)
+        private void Btn_Sua_Click(object sender, EventArgs e)
         {
-            FrmAddProduct FrmEdit = new FrmAddProduct(_qlSanPhamService);
+            FrmAddProduct FrmEdit = new(_qlSanPhamService);
             FrmEdit.GetLabelNameFrm().Text = "Sửa sản phẩm";
             FrmEdit.LoadThongTin(_sanPham);
             //
@@ -174,13 +174,13 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 MessageBox.Show(_qlSanPhamService.UpdateSanPham(FrmEdit.GetSanPham()));
                 send(_sanPham.Product.Id);
-                LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c=>c.Product.Id==FrmEdit.GetSanPham().Product.Id));
+                LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c=>c.Product.Id==FrmEdit.GetSanPham().Product.Id)!);
                 FrmEdit.Close();
             };
             FrmEdit.ShowDialog();
         }
 
-        private void btn_Prev_Click(object sender, EventArgs e)
+        private void Btn_Prev_Click(object sender, EventArgs e)
         {
             if (_indexImgZoom > 0)
             {
@@ -191,7 +191,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_Up_Click(object sender, EventArgs e)
+        private void Btn_Up_Click(object sender, EventArgs e)
         {
             if (tbl_lstMiniImg.Height > panl_lstImg.Height && tbl_lstMiniImg.Location.Y < 0&& tbl_lstMiniImg.Location.Y >= (tbl_lstMiniImg.RowCount-7) * (-71))
             {
@@ -199,7 +199,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
+        private void IconButton2_Click(object sender, EventArgs e)
         {
             if (tbl_lstMiniImg.Height > panl_lstImg.Height && tbl_lstMiniImg.Location.Y <= 0 && tbl_lstMiniImg.Location.Y > (tbl_lstMiniImg.RowCount - 7) * (-71))
             {
@@ -212,7 +212,7 @@ namespace _3_GUI_PresentationLayer.Views
             tbl_lstVer.Controls.Clear();
             for (int i =0;i< _sanPham.Vers.Count;i++)
             {
-                TableLayoutPanel tblVer = new TableLayoutPanel();
+                TableLayoutPanel tblVer = new();
                 tblVer.Anchor = AnchorStyles.Top;
                 tblVer.BackColor = Color.White;
                 tblVer.ColumnCount = 4;
@@ -227,7 +227,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblVer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
                 tblVer.Size = new Size(419, 44);
                 //
-                Label lblStt = new Label();
+                Label lblStt = new();
                 lblStt.Anchor = AnchorStyles.Left;
                 lblStt.AutoSize = true;
                 lblStt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -236,7 +236,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblStt.Size = new Size(17, 20);
                 lblStt.Text = (i+1).ToString();
                 //
-                Button btnColorName = new Button();
+                Button btnColorName = new();
                 btnColorName.BackColor = Color.White;
                 btnColorName.Dock = DockStyle.Right;
                 btnColorName.FlatAppearance.BorderSize = 0;
@@ -245,21 +245,21 @@ namespace _3_GUI_PresentationLayer.Views
                 btnColorName.Margin = new Padding(0);
                 btnColorName.Name = "btnColorName";
                 btnColorName.Size = new Size(128, 38);
-                btnColorName.Text = _sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId).Name;
+                btnColorName.Text = _sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId)!.Name;
                 btnColorName.TextAlign = ContentAlignment.MiddleLeft;
                 btnColorName.UseVisualStyleBackColor = false;
                 //
-                CustomPanel panlColor = new CustomPanel();
+                CustomPanel panlColor = new ();
                 panlColor.Anchor = AnchorStyles.None;
                 panlColor.BackColor = Color.LightGray;
                 try
                 {
-                    panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId).ColorCode);
+                    panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors.FirstOrDefault(c => c.Id == _sanPham.Vers[i].ColorId)!.ColorCode);
                 }
                 catch
                 {
                     panlColor.BackColor = Color.LightGray;
-                    btnColorName.Text = "Unknown";
+                    btnColorName.Text = @"Unknown";
                 }
                 panlColor.BorderColor = Color.Transparent;
                 panlColor.BorderFocusColor = Color.HotPink;
@@ -271,15 +271,15 @@ namespace _3_GUI_PresentationLayer.Views
                 panlColor.Size = new Size(172, 38);
                 panlColor.UnderlinedStyle = false;
                 //
-                Label lblSize = new Label();
+                Label lblSize = new();
                 lblSize.Anchor = AnchorStyles.None;
                 lblSize.AutoSize = true;
                 lblSize.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
                 lblSize.Location = new Point(268, 12);
                 lblSize.Name = "lblSize_"+i.ToString();
                 lblSize.Size = new Size(22, 20);
-                lblSize.Text = _sanPham.Sizes.FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId).Code.ToString();
-                Label lblSoLuong = new Label();
+                lblSize.Text = _sanPham.Sizes.FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString();
+                Label lblSoLuong = new();
                 lblSoLuong.Anchor = AnchorStyles.Right;
                 lblSoLuong.AutoSize = true;
                 lblSoLuong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);

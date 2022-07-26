@@ -17,8 +17,8 @@ namespace _3_GUI_PresentationLayer.Views
 {
     public partial class FrmAddCatergory : Form
     {
-        private Catergory _catergory;
-        List<Catergory> _listCatergory;
+        private readonly  Catergory _catergory;
+        private readonly List<Catergory> _listCatergory;
         public FrmAddCatergory(List<Catergory> listCatergory)
         {
             InitializeComponent();
@@ -35,9 +35,9 @@ namespace _3_GUI_PresentationLayer.Views
         {
             _catergory.Name = txt_Name.Text;
             _catergory.Status = true;
-            if (txt_FatherName.Text != null && txt_FatherName.Text != "")
+            if (!string.IsNullOrEmpty(txt_FatherName.Text))
             {
-                _catergory.MaNhomCha = _listCatergory.Find(c => c.Name == txt_FatherName.Text).Id;
+                _catergory.MaNhomCha = _listCatergory.FirstOrDefault(c => c.Name == txt_FatherName.Text)!.Id;
             }
             return _catergory;
         }

@@ -14,11 +14,11 @@ namespace _3_GUI_PresentationLayer.Views
 {
     public partial class FrmAddOrigin : Form
     {
-        private Origin _origin;
+        private readonly Origin _origin;
         public FrmAddOrigin()
         {
             InitializeComponent();
-            _origin = new Origin();
+            _origin = new ();
             _origin.ThuongHieu = new ThuongHieu();
         }
         public Origin GetOrigin()

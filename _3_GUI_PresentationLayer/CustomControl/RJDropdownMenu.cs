@@ -17,7 +17,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
         private Color menuItemTextColor = Color.Empty;//No color, The default color is set in the MenuRenderer class
         private Color primaryColor = Color.Empty;//No color, The default color is set in the MenuRenderer class
 
-        private Bitmap menuItemHeaderSize;
+        private Bitmap? menuItemHeaderSize;
 
         //Constructor
         public RJDropdownMenu(IContainer container)

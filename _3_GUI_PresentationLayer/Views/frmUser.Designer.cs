@@ -1,6 +1,6 @@
 ﻿namespace _3_GUI_PresentationLayer.Views
 {
-    partial class frmUser
+    partial class FrmUser
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUser));
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -216,7 +216,9 @@
             this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton2.ForeColor = System.Drawing.Color.Black;
-            this.vbButton2.Image = ((System.Drawing.Image)(resources.GetObject("vbButton2.Image")));
+            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton2.IconColor = System.Drawing.Color.Black;
+            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.vbButton2.Location = new System.Drawing.Point(462, 319);
             this.vbButton2.Name = "vbButton2";
@@ -237,6 +239,9 @@
             this.vbButton1.BorderSize = 1;
             this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton1.ForeColor = System.Drawing.Color.White;
+            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton1.IconColor = System.Drawing.Color.Black;
+            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton1.Location = new System.Drawing.Point(113, 52);
             this.vbButton1.Name = "vbButton1";
             this.vbButton1.Size = new System.Drawing.Size(400, 400);
@@ -378,7 +383,7 @@
             this.iconButton5.Text = "Đổi Email";
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton5.UseVisualStyleBackColor = true;
-            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
+            this.iconButton5.Click += new System.EventHandler(this.IconButton5_Click);
             // 
             // iconButton6
             // 
@@ -401,7 +406,7 @@
             this.iconButton6.Text = "Đổi mật khẩu";
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton6.UseVisualStyleBackColor = true;
-            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            this.iconButton6.Click += new System.EventHandler(this.IconButton6_Click);
             // 
             // iconButton7
             // 
@@ -424,7 +429,7 @@
             this.iconButton7.Text = "Hoạt động";
             this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton7.UseVisualStyleBackColor = true;
-            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
+            this.iconButton7.Click += new System.EventHandler(this.IconButton7_Click);
             // 
             // iconButton8
             // 
@@ -447,7 +452,7 @@
             this.iconButton8.Text = "Hồ sơ";
             this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton8.UseVisualStyleBackColor = true;
-            this.iconButton8.Click += new System.EventHandler(this.iconButton8_Click);
+            this.iconButton8.Click += new System.EventHandler(this.IconButton8_Click);
             // 
             // panelDesktop2
             // 
@@ -647,6 +652,9 @@
             this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton5.ForeColor = System.Drawing.Color.White;
+            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton5.IconColor = System.Drawing.Color.Black;
+            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton5.Location = new System.Drawing.Point(143, 3);
             this.vbButton5.Name = "vbButton5";
             this.vbButton5.Size = new System.Drawing.Size(80, 37);
@@ -667,6 +675,9 @@
             this.vbButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton6.ForeColor = System.Drawing.Color.Black;
+            this.vbButton6.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton6.IconColor = System.Drawing.Color.Black;
+            this.vbButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton6.Location = new System.Drawing.Point(269, 3);
             this.vbButton6.Name = "vbButton6";
             this.vbButton6.Size = new System.Drawing.Size(110, 37);
@@ -674,7 +685,7 @@
             this.vbButton6.Text = "Thoát";
             this.vbButton6.TextColor = System.Drawing.Color.Black;
             this.vbButton6.UseVisualStyleBackColor = false;
-            this.vbButton6.Click += new System.EventHandler(this.vbButton6_Click);
+            this.vbButton6.Click += new System.EventHandler(this.VbButton6_Click);
             // 
             // customPanel1
             // 
@@ -743,6 +754,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(3, 107);
             this.button1.Name = "button1";
@@ -750,7 +762,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Chỉnh sửa hồ sơ";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // txt_lastName
             // 
@@ -775,6 +787,9 @@
             this.img_User.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.img_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.img_User.ForeColor = System.Drawing.Color.White;
+            this.img_User.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.img_User.IconColor = System.Drawing.Color.Black;
+            this.img_User.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.img_User.Location = new System.Drawing.Point(12, 12);
             this.img_User.Name = "img_User";
             this.img_User.Size = new System.Drawing.Size(400, 400);
@@ -797,7 +812,9 @@
             this.vbButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton4.ForeColor = System.Drawing.Color.Black;
-            this.vbButton4.Image = ((System.Drawing.Image)(resources.GetObject("vbButton4.Image")));
+            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton4.IconColor = System.Drawing.Color.Black;
+            this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.vbButton4.Location = new System.Drawing.Point(328, 314);
             this.vbButton4.Name = "vbButton4";
@@ -806,8 +823,8 @@
             this.vbButton4.TabIndex = 8;
             this.vbButton4.TextColor = System.Drawing.Color.Black;
             this.vbButton4.UseVisualStyleBackColor = false;
-            this.vbButton4.MouseLeave += new System.EventHandler(this.vbButton4_MouseLeave);
-            this.vbButton4.MouseHover += new System.EventHandler(this.vbButton4_MouseHover);
+            this.vbButton4.MouseLeave += new System.EventHandler(this.VbButton4_MouseLeave);
+            this.vbButton4.MouseHover += new System.EventHandler(this.VbButton4_MouseHover);
             // 
             // frmUser
             // 

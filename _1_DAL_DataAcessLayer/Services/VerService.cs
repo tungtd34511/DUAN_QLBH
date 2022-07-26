@@ -9,7 +9,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class VerService :IVerService
     {
         private List<Ver> _lstVers;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public VerService()
         {
             _qlbhContext = new QLBHContext();

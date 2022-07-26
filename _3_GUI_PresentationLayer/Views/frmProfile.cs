@@ -16,19 +16,19 @@ using _3_GUI_PresentationLayer.CustomControl;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class frmProfile : Form
+    public partial class FrmProfile : Form
     {
-        private List<Button> _lstBtnLessMore = new List<Button>();
-        DateTime now = new DateTime();
-        DateTime endDay = new DateTime();
-        private DayOfWeek day;
-        private int timetoSunday;
-        private NguoiDung _nguoiDung;
-        public frmProfile(NguoiDung nguoiDung)
+        private readonly List<Button> _lstBtnLessMore = new();
+        private readonly DateTime _now = new();
+        private DateTime _endDay = new();
+        private DayOfWeek _day;
+        private int _timetoSunday;
+        private readonly NguoiDung _nguoiDung;
+        public FrmProfile(NguoiDung nguoiDung)
         {
             InitializeComponent();
-            now = DateTime.Now;
-            addBtnHistory();
+            _now = DateTime.Now;
+            AddBtnHistory();
             SetHistory();
             _nguoiDung = new NguoiDung();
             _nguoiDung = nguoiDung;
@@ -50,35 +50,35 @@ namespace _3_GUI_PresentationLayer.Views
         //tinh history
         public void SetHistory()
         {
-            List<string> lstMotnh = new List<string>()
+            List<string> lstMotnh = new()
                 {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-            List<Label> lstLbl = new List<Label>();
-            endDay = now;
-            day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(endDay);
-            timetoSunday = DayOfWeek.Sunday - day < 0 ? 7 + DayOfWeek.Sunday - day : DayOfWeek.Sunday - day;
-            int countYear = now.Year - int.Parse(combox_year.Text);
+            List<Label> lstLbl = new();
+            _endDay = _now;
+            _day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(_endDay);
+            _timetoSunday = DayOfWeek.Sunday - _day < 0 ? 7 + DayOfWeek.Sunday - _day : DayOfWeek.Sunday - _day;
+            int countYear = _now.Year - int.Parse(combox_year.Text);
             if (countYear == 0)
             {
-                endDay = now;
+                _endDay = _now;
             }
             else if(countYear == 1)
             {
-                endDay = now.AddDays(-(52 * 7 - timetoSunday));
+                _endDay = _now.AddDays(-(52 * 7 - _timetoSunday));
             }
             else
             {
-                endDay = now.AddDays(-((52 * 7 - timetoSunday) + (countYear -1) * 364));
+                _endDay = _now.AddDays(-((52 * 7 - _timetoSunday) + (countYear -1) * 364));
             }
             // ẩn btn thừa
             
-            List<Panel> l = new List<Panel>();
+            List<Panel> l = new();
             for (int i = 1; i < 8; i++)
             {
                 foreach (Control x in tableLayoutPanel3.Controls)
                 {
                     if (x.Name == "panl_day" + "_" + i.ToString() + "_" + 52.ToString())
                     {
-                        if (i - (7 - timetoSunday) > 1)
+                        if (i - (7 - _timetoSunday) > 1)
                         {
                             x.Controls[0].Visible = false;
                         }
@@ -118,19 +118,19 @@ namespace _3_GUI_PresentationLayer.Views
             //Set lbl Month
             foreach (Control x in tbl_month.Controls)
             {
-                if (x is Label)
+                if (x is Label label)
                 {
-                    lstLbl.Add((Label)x);
+                    lstLbl.Add(label);
                 }
             }
-            if (endDay.Day > 20)
+            if (_endDay.Day > 20)
             {
                 foreach (var x in lstLbl)
                 {
                     x.TextAlign = ContentAlignment.BottomLeft;
                 }
             }
-            else if (endDay.Day > 10)
+            else if (_endDay.Day > 10)
             {
                 foreach (var x in lstLbl)
                 {
@@ -145,7 +145,7 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
             // Set name month
-            int j = endDay.Month;
+            int j = _endDay.Month;
             foreach (var x in lstLbl)
             {
                 j--;
@@ -157,13 +157,13 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        public void addBtnHistory()
+        public void AddBtnHistory()
         {
             for (int i = 1; i <= 7; i++)
             {
                 for (int k = 1; k <= 52; k++)
                 {
-                    VBButton button = new VBButton();
+                    VBButton button = new();
                     button.BackColor = Color.FromArgb(235, 237, 240);
                     button.BackgroundColor = Color.FromArgb(235, 237, 240);
                     button.BorderColor = Color.Gainsboro;
@@ -179,7 +179,7 @@ namespace _3_GUI_PresentationLayer.Views
                     button.Text = "";
                     button.TextColor = Color.White;
                     button.UseVisualStyleBackColor = false;
-                    Panel panel = new Panel();
+                    Panel panel = new();
                     panel.Location = new Point(0, 0);
                     panel.Margin = new Padding(0);
                     panel.Name = "panl_day" + "_" + i.ToString() + "_" + k.ToString();
@@ -193,14 +193,14 @@ namespace _3_GUI_PresentationLayer.Views
                         //rjDropdownMenu1.Items[0].Text = button.Name;
                         int rowlocation = int.Parse(button.Name.Split("_")[2]);
                         int columnlocation = int.Parse(button.Name.Split("_")[3]);
-                        rjDropdownMenu1.Items[0].Text = endDay.AddDays(-((52 * 7 - timetoSunday + 1) - (7 * (columnlocation - 1) + rowlocation))).ToString()+button.Name.ToString();
+                        rjDropdownMenu1.Items[0].Text = _endDay.AddDays(-((52 * 7 - _timetoSunday + 1) - (7 * (columnlocation - 1) + rowlocation))).ToString()+button.Name.ToString();
                         rjDropdownMenu1.Show(button, 0, 0);
                     };
                 }
             }
             for (int i = 0; i < 5; i++)
             {
-                VBButton button = new VBButton();
+                VBButton button = new();
                 button.BackColor = Color.FromArgb(235, 237, 240);
                 button.BackgroundColor = Color.FromArgb(235, 237, 240);
                 button.BorderColor = Color.Gainsboro;
@@ -220,7 +220,7 @@ namespace _3_GUI_PresentationLayer.Views
                 _lstBtnLessMore.Add(button);
             }
         }
-        private void combox_year_TextChanged_1(object sender, EventArgs e)
+        private void Combox_year_TextChanged_1(object sender, EventArgs e)
         {
             SetHistory();
         }

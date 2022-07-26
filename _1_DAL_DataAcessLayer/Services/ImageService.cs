@@ -13,7 +13,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class ImageService : IImageService
     {
         private List<Image> _lstImages;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public ImageService()
         {
             _qlbhContext = new QLBHContext();

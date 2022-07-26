@@ -8,7 +8,6 @@ namespace _1_DAL_DataAcessLayer.Entities
     {
         [Key]
         public int Id { set; get; }
-        [StringLength(35)]
         public string Name { set; get; }
         public bool Status { set; get; }
     }

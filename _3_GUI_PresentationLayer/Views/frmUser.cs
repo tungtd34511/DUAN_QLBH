@@ -14,22 +14,22 @@ using FontAwesome.Sharp;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class frmUser : Form
+    public partial class FrmUser : Form
     {
         private IconButton _currenButton;
-        private CustomPanel _leftBoderbtn;
-        private Font _font1;
-        private Font _font2;
+        private readonly CustomPanel _leftBoderbtn;
+        private readonly Font _font1;
+        private readonly Font _font2;
         private Form _currentchildForm;
-        private NguoiDung _nguoiDung;
+        private readonly NguoiDung _nguoiDung;
 
-        private NguoiDungService _nguoiDungService;
+        private readonly NguoiDungService _nguoiDungService;
         //Struct
         private struct RgBcolors
         {
-            public static Color color3 = Color.FromArgb(253, 138, 114);
+            public static readonly Color color3 = Color.FromArgb(253, 138, 114);
         }
-        public frmUser(NguoiDung nguoiDung)
+        public FrmUser(NguoiDung nguoiDung)
         {
             _nguoiDungService = new NguoiDungService();
             _nguoiDung = new NguoiDung();
@@ -46,7 +46,7 @@ namespace _3_GUI_PresentationLayer.Views
             LoadThongTin(_nguoiDung);
             //
             ActiveButton(iconButton8, RgBcolors.color3);
-            OpenchildForm(new frmProfile(_nguoiDung));
+            OpenchildForm(new FrmProfile(_nguoiDung));
         }
 
         public void LoadThongTin(NguoiDung nguoiDung)
@@ -57,7 +57,7 @@ namespace _3_GUI_PresentationLayer.Views
             txt_Name.Text = nguoiDung.User.Name;
             txt_SoDT.Text = nguoiDung.UserDetail.PhoneNumber;
             rbtn_nam.Checked = nguoiDung.UserDetail.Sex;
-            rbtn_nu.Checked = rbtn_nam.Checked == false ? true : false;
+            rbtn_nu.Checked = !rbtn_nam.Checked ;
             txt_DiaChi.Text = nguoiDung.UserDetail.Address;
             date_NgaySinh.Value = nguoiDung.UserDetail.DateOfBirth;
         }
@@ -107,19 +107,19 @@ namespace _3_GUI_PresentationLayer.Views
 
         }
         //Event
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             tableLayoutPanel3.Visible = true;
             tableLayoutPanel4.Visible = false;
         }
 
-        private void vbButton4_MouseLeave(object sender, EventArgs e)
+        private void VbButton4_MouseLeave(object sender, EventArgs e)
         {
             vbButton4.Width = 66;
             vbButton4.Text = "";
         }
 
-        private void vbButton4_MouseHover(object sender, EventArgs e)
+        private void VbButton4_MouseHover(object sender, EventArgs e)
         {
             while (vbButton4.Width < 200)
             {
@@ -129,21 +129,21 @@ namespace _3_GUI_PresentationLayer.Views
             vbButton4.Text = "   Chỉnh sửa";
         }
 
-        private void iconButton8_Click(object sender, EventArgs e)
+        private void IconButton8_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RgBcolors.color3);
-            OpenchildForm(new frmProfile(_nguoiDung));
+            OpenchildForm(new FrmProfile(_nguoiDung));
         }
 
-        private void iconButton7_Click(object sender, EventArgs e)
+        private void IconButton7_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RgBcolors.color3);
         }
 
-        private void iconButton6_Click(object sender, EventArgs e)
+        private void IconButton6_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RgBcolors.color3);
-            frmChangePass frmChangePass = new frmChangePass();
+            frmChangePass frmChangePass = new();
             frmChangePass.GetBtnLuu().Click += (o, s) =>
             {
                 _nguoiDung.Account.Pass = frmChangePass.GetMatKhauMoi();
@@ -152,13 +152,13 @@ namespace _3_GUI_PresentationLayer.Views
             OpenchildForm(new frmChangePass());
         }
 
-        private void iconButton5_Click(object sender, EventArgs e)
+        private void IconButton5_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, RgBcolors.color3);
             OpenchildForm(new frmChangeEmail());
         }
 
-        private void vbButton6_Click(object sender, EventArgs e)
+        private void VbButton6_Click(object sender, EventArgs e)
         {
             tableLayoutPanel3.Visible = false;
             tableLayoutPanel4.Visible = true;

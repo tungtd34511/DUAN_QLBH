@@ -17,15 +17,17 @@ namespace _3_GUI_PresentationLayer.Views
 {
     public partial class FrmMain : Form
     {
+        private const int StartIndex = 4;
+
         //Fields
         private Form _currentchildForm;
-        private FrmListProduct _frmQlsAnPham;
-        private frmBanHang _frmBanHang;
+        private FrmListProduct? _frmQlsAnPham;
+        private FrmBanHang? _frmBanHang;
         private CustomButton2 _btnAcctive;
         // Nhóm button và panel menu lại
-        List<CustomButton2> _panelList;
+        readonly List<CustomButton2> _panelList;
         //
-        private NguoiDung _nguoiDung;
+        private readonly NguoiDung _nguoiDung;
 
         public FrmMain(NguoiDung nguoiDung)
         {
@@ -56,7 +58,7 @@ namespace _3_GUI_PresentationLayer.Views
             //
             iconButton1.BackColor = Color.FromArgb(230, 22, 24, 34);
             // vị trí của tilte
-            List<int> ListLocation = new List<int>() { 185, 255, 325, 395, 465, 535, 923 };
+            List<int> lstLocation = new() { 185, 255, 325, 395, 465, 535, 923 };
             // đổ dữ liệu cho list panel
             for (int i = 2; i < tbl_Menu.Controls.Count; i++)
             {
@@ -71,26 +73,26 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 Color color1 = Color.FromArgb( (int)(22*1.25), (int)(27 * 1.25), (int)(34*1.25));
                 CustomButton2 custom = _panelList[i];
-                custom.IconButton.MouseHover += (o, e) =>
+                custom.IconButton!.MouseHover += (o, e) =>
                 {
                     if (custom != _btnAcctive)
                     {
-                        custom.CustomPanel.BackColor = color1;
+                        custom.CustomPanel!.BackColor = color1;
                         custom.IconButton.ForeColor = Color.FromArgb(90, 76, 219);
                         custom.IconButton.IconColor = Color.FromArgb(90, 76, 219);
                     }
                     if (panl_menu.Width < 400)
                     {
                         btn_title.Visible = true;
-                        btn_title.Text = custom.IconButton.Text.Substring(4, custom.IconButton.Text.Length - 4);
-                        btn_title.Location = new Point(102, ListLocation[_panelList.FindIndex(c => c == custom)]);
+                        btn_title.Text = custom.IconButton.Text[StartIndex..^0];
+                        btn_title.Location = new Point(102, lstLocation[_panelList.FindIndex(c => c == custom)]);
                     }
                 };
                 custom.IconButton.MouseLeave += (o, e) =>
                 {
                     if (custom!=_btnAcctive)
                     {
-                        custom.CustomPanel.BackColor = Color.Transparent;
+                        custom.CustomPanel!.BackColor = Color.Transparent;
                         custom.IconButton.ForeColor = Color.White;
                         custom.IconButton.IconColor = Color.White;
                     }
@@ -102,22 +104,31 @@ namespace _3_GUI_PresentationLayer.Views
                 };
                 custom.IconButton.Click += (o, e) =>
                 {
-                    _btnAcctive.CustomPanel.BackColor = Color.Transparent;
-                    _btnAcctive.IconButton.ForeColor = Color.White;
+                    _btnAcctive.CustomPanel!.BackColor = Color.Transparent;
+                    _btnAcctive.IconButton!.ForeColor = Color.White;
                     _btnAcctive.IconButton.IconColor = Color.White;
                     _btnAcctive = custom;
-                    _btnAcctive.CustomPanel.BackColor = Color.White;
+                    _btnAcctive.CustomPanel!.BackColor = Color.White;
                     _btnAcctive.IconButton.ForeColor = Color.FromArgb(90, 76, 219);
                     _btnAcctive.IconButton.IconColor = Color.FromArgb(90, 76, 219);
                 };
             }
-            _btnAcctive.CustomPanel.BackColor = Color.Transparent;
-            _btnAcctive.IconButton.ForeColor = Color.White;
-            _btnAcctive.IconButton.IconColor = Color.White;
-            _btnAcctive = _panelList[0];
-            _btnAcctive.CustomPanel.BackColor = Color.White;
-            _btnAcctive.IconButton.ForeColor = Color.FromArgb(90, 76, 219);
-            _btnAcctive.IconButton.IconColor = Color.FromArgb(90, 76, 219);
+
+            if (_btnAcctive.CustomPanel != null)
+            {
+                _btnAcctive.CustomPanel.BackColor = Color.Transparent;
+                _btnAcctive.IconButton!.ForeColor = Color.White;
+                _btnAcctive.IconButton.IconColor = Color.White;
+                _btnAcctive = _panelList[0];
+                _btnAcctive.CustomPanel!.BackColor = Color.White;
+            }
+
+            if (_btnAcctive.IconButton != null)
+            {
+                _btnAcctive.IconButton.ForeColor = Color.FromArgb(90, 76, 219);
+                _btnAcctive.IconButton.IconColor = Color.FromArgb(90, 76, 219);
+            }
+
             // 
         }
         private void OpenchildForm(Form form)
@@ -158,28 +169,28 @@ namespace _3_GUI_PresentationLayer.Views
         #endregion
         
 
-        private void vbButton1_Click(object sender, EventArgs e)
+        private void VbButton1_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new frmUser(_nguoiDung));
+            OpenchildForm(new FrmUser(_nguoiDung));
         }
-        private void button2_MouseHover_1(object sender, EventArgs e)
+        private void Button2_MouseHover_1(object sender, EventArgs e)
         {
             button2.IconColor = Color.Gray;
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void Button2_Click_1(object sender, EventArgs e)
         {
             rjDropdownMenu1.Show(button2, button2.Width, 47);
         }
         //
-        private void button2_MouseLeave(object sender, EventArgs e)
+        private void Button2_MouseLeave(object sender, EventArgs e)
         {
             button2.IconColor = Color.White;
         }
 
         private int j = 0;
-        private List<bool> b = new List<bool>(){false, false};
-        private void timer1_Tick(object sender, EventArgs e)
+        private readonly List<bool> b = new(){false, false};
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             j++;
             if (j % 2 == 0)
@@ -191,7 +202,7 @@ namespace _3_GUI_PresentationLayer.Views
                 }
                 if (b[1] == false)
                 {
-                    _frmBanHang = new frmBanHang();
+                    _frmBanHang = new FrmBanHang();
                     b[1] = true;
                 }
 
@@ -203,7 +214,7 @@ namespace _3_GUI_PresentationLayer.Views
         }
         
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void IconButton1_Click(object sender, EventArgs e)
         {
             if (panl_menu.Width < 400)
             {
@@ -226,24 +237,29 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_Trangchu_Click_1(object sender, EventArgs e)
+        private void Btn_Trangchu_Click_1(object sender, EventArgs e)
         {
             //OpenchildForm(new FrmmanHinhCho());
         }
 
-        private void btn_SanPham_Click_1(object sender, EventArgs e)
+        private void Btn_SanPham_Click_1(object sender, EventArgs e)
         {
-            OpenchildForm(_frmQlsAnPham);
+            if (_frmQlsAnPham != null) OpenchildForm(_frmQlsAnPham);
         }
 
-        private void btn_ThanhToan_Click_1(object sender, EventArgs e)
+        private void Btn_ThanhToan_Click_1(object sender, EventArgs e)
         {
-            OpenchildForm(_frmBanHang);
+            if (_frmBanHang != null) OpenchildForm(_frmBanHang);
         }
 
-        private void btn_KhuyenMai_Click(object sender, EventArgs e)
+        private void Btn_KhuyenMai_Click(object sender, EventArgs e)
         {
             OpenchildForm(new FrmSaleList());
+        }
+
+        private void Btn_nhanvien_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(new FormNhanVien());
         }
     }
 }

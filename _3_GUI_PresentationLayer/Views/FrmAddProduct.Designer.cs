@@ -218,7 +218,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton5.Text = "Chọn ảnh";
             this.vbButton5.TextColor = System.Drawing.Color.White;
             this.vbButton5.UseVisualStyleBackColor = false;
-            this.vbButton5.Click += new System.EventHandler(this.vbButton5_Click);
+            this.vbButton5.Click += new System.EventHandler(this.VbButton5_Click);
             // 
             // label6
             // 
@@ -276,8 +276,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiaNhap.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaNhap.TabIndex = 2;
             this.txt_GiaNhap.Text = "0";
-            this.txt_GiaNhap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_GiaNhap_MouseClick);
-            this.txt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaNhap_KeyPress);
+            this.txt_GiaNhap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txt_GiaNhap_MouseClick);
+            this.txt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_GiaNhap_KeyPress);
             // 
             // button1
             // 
@@ -315,8 +315,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiaBan.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaBan.TabIndex = 1;
             this.txt_GiaBan.Text = "0";
-            this.txt_GiaBan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_GiaBan_MouseClick);
-            this.txt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_GiaBan_KeyPress);
+            this.txt_GiaBan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txt_GiaBan_MouseClick);
+            this.txt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_GiaBan_KeyPress);
             // 
             // button7
             // 
@@ -370,7 +370,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_AddVer.Text = "Thêm phiên bản";
             this.btn_AddVer.TextColor = System.Drawing.Color.White;
             this.btn_AddVer.UseVisualStyleBackColor = false;
-            this.btn_AddVer.Click += new System.EventHandler(this.btn_AddVer_Click);
+            this.btn_AddVer.Click += new System.EventHandler(this.Btn_AddVer_Click);
             // 
             // label7
             // 
@@ -626,7 +626,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_QRCode.Size = new System.Drawing.Size(40, 43);
             this.btn_QRCode.TabIndex = 4;
             this.btn_QRCode.UseVisualStyleBackColor = false;
-            this.btn_QRCode.Click += new System.EventHandler(this.btn_QRCode_Click);
+            this.btn_QRCode.Click += new System.EventHandler(this.Btn_QRCode_Click);
             // 
             // txt_QrCode
             // 
@@ -755,7 +755,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_AddThuongHieu.Size = new System.Drawing.Size(40, 44);
             this.btn_AddThuongHieu.TabIndex = 6;
             this.btn_AddThuongHieu.UseVisualStyleBackColor = false;
-            this.btn_AddThuongHieu.Click += new System.EventHandler(this.btn_AddThuongHieu_Click);
+            this.btn_AddThuongHieu.Click += new System.EventHandler(this.Btn_AddThuongHieu_Click);
             // 
             // button6
             // 
@@ -809,7 +809,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_AddCatergory.Size = new System.Drawing.Size(40, 43);
             this.btn_AddCatergory.TabIndex = 1;
             this.btn_AddCatergory.UseVisualStyleBackColor = false;
-            this.btn_AddCatergory.Click += new System.EventHandler(this.btn_AddCatergory_Click);
+            this.btn_AddCatergory.Click += new System.EventHandler(this.Btn_AddCatergory_Click);
             // 
             // button5
             // 
@@ -975,7 +975,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton3.Text = "Hủy";
             this.vbButton3.TextColor = System.Drawing.Color.Black;
             this.vbButton3.UseVisualStyleBackColor = false;
-            this.vbButton3.Click += new System.EventHandler(this.vbButton3_Click);
+            this.vbButton3.Click += new System.EventHandler(this.VbButton3_Click);
             // 
             // vbButton2
             // 
@@ -1001,7 +1001,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton2.Text = "Lưu";
             this.vbButton2.TextColor = System.Drawing.Color.White;
             this.vbButton2.UseVisualStyleBackColor = false;
-            this.vbButton2.Click += new System.EventHandler(this.vbButton2_Click);
+            this.vbButton2.Click += new System.EventHandler(this.VbButton2_Click);
             // 
             // FrmAddProduct
             // 

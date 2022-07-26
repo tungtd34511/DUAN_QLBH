@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class UserDetailService : IUserDetailService
     {
         private List<UserDetail> _lstUserDetails;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public UserDetailService()
         {
             _qlbhContext = new QLBHContext();

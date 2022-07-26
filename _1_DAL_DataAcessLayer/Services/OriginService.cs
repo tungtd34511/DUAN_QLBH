@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class OriginService : IOriginService
     {
         private List<Origin> _lstOrigins;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public OriginService()
         {
             _qlbhContext = new QLBHContext();

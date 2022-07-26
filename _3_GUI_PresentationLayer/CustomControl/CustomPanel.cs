@@ -11,39 +11,39 @@ namespace _3_GUI_PresentationLayer.CustomControl
 {
     public class CustomPanel : Panel
     {
-        private Panel panel = new Panel();
+        private readonly Panel _panel = new();
 
-        private Color borderColor = Color.MediumSlateBlue;
-        private Color borderFocusColor = Color.HotPink;
-        private int borderSize = 2;
-        private bool underlinedStyle = false;
-        private bool isFocused = false;
+        private Color _borderColor = Color.MediumSlateBlue;
+        private Color _borderFocusColor = Color.HotPink;
+        private int _borderSize = 2;
+        private bool _underlinedStyle = false;
+        private readonly bool _isFocused = false;
 
-        private int borderRadius = 0;
+        private int _borderRadius = 0;
         public Color BorderColor
         {
-            get { return borderColor; }
+            get { return _borderColor; }
             set
             {
-                borderColor = value;
+                _borderColor = value;
                 Invalidate();
             }
         }
 
         public Color BorderFocusColor
         {
-            get { return borderFocusColor; }
-            set { borderFocusColor = value; }
+            get { return _borderFocusColor; }
+            set { _borderFocusColor = value; }
         }
 
         public int BorderSize
         {
-            get { return borderSize; }
+            get { return _borderSize; }
             set
             {
                 if (value >= 1)
                 {
-                    borderSize = value;
+                    _borderSize = value;
                     Invalidate();
                 }
             }
@@ -51,10 +51,10 @@ namespace _3_GUI_PresentationLayer.CustomControl
 
         public bool UnderlinedStyle
         {
-            get { return underlinedStyle; }
+            get { return _underlinedStyle; }
             set
             {
-                underlinedStyle = value;
+                _underlinedStyle = value;
                 Invalidate();
             }
         }
@@ -65,19 +65,19 @@ namespace _3_GUI_PresentationLayer.CustomControl
             set
             {
                 base.ForeColor = value;
-                panel.ForeColor = value;
+                _panel.ForeColor = value;
             }
         }
 
 
         public int BorderRadius
         {
-            get { return borderRadius; }
+            get { return _borderRadius; }
             set
             {
                 if (value >= 0)
                 {
-                    borderRadius = value;
+                    _borderRadius = value;
                     Invalidate();//Redraw control
                 }
             }
@@ -88,40 +88,38 @@ namespace _3_GUI_PresentationLayer.CustomControl
             base.OnPaint(e);
             Graphics graph = e.Graphics;
 
-            if (borderRadius > 1)//Rounded TextBox
+            if (_borderRadius > 1)//Rounded TextBox
             {
                 //-Fields
                 var rectBorderSmooth = ClientRectangle;
-                var rectBorder = Rectangle.Inflate(rectBorderSmooth, -borderSize, -borderSize);
-                int smoothSize = borderSize > 0 ? borderSize : 1;
+                var rectBorder = Rectangle.Inflate(rectBorderSmooth, -_borderSize, -_borderSize);
+                int smoothSize = _borderSize > 0 ? _borderSize : 1;
 
-                using (GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, borderRadius))
-                using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
-                using (Pen penBorderSmooth = new Pen(Parent.BackColor, smoothSize))
-                using (Pen penBorder = new Pen(borderColor, borderSize))
+                using GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, _borderRadius);
+                using GraphicsPath pathBorder = GetFigurePath(rectBorder, _borderRadius - _borderSize);
+                using Pen penBorderSmooth = new(Parent.BackColor, smoothSize);
+                using Pen penBorder = new(_borderColor, _borderSize);
+                //-Drawing
+                Region = new Region(pathBorderSmooth);//Set the rounded region of UserControl
+                if (_borderRadius > 15) SetTextBoxRoundedRegion();//Set the rounded region of TextBox component
+                graph.SmoothingMode = SmoothingMode.AntiAlias;
+                penBorder.Alignment = PenAlignment.Center;
+                if (_isFocused) penBorder.Color = _borderFocusColor;
+
+                if (_underlinedStyle) //Line Style
                 {
-                    //-Drawing
-                    Region = new Region(pathBorderSmooth);//Set the rounded region of UserControl
-                    if (borderRadius > 15) SetTextBoxRoundedRegion();//Set the rounded region of TextBox component
-                    graph.SmoothingMode = SmoothingMode.AntiAlias;
-                    penBorder.Alignment = PenAlignment.Center;
-                    if (isFocused) penBorder.Color = borderFocusColor;
-
-                    if (underlinedStyle) //Line Style
-                    {
-                        //Draw border smoothing
-                        graph.DrawPath(penBorderSmooth, pathBorderSmooth);
-                        //Draw border
-                        graph.SmoothingMode = SmoothingMode.None;
-                        graph.DrawLine(penBorder, 0, Height - 1, Width, Height - 1);
-                    }
-                    else //Normal Style
-                    {
-                        //Draw border smoothing
-                        graph.DrawPath(penBorderSmooth, pathBorderSmooth);
-                        //Draw border
-                        graph.DrawPath(penBorder, pathBorder);
-                    }
+                    //Draw border smoothing
+                    graph.DrawPath(penBorderSmooth, pathBorderSmooth);
+                    //Draw border
+                    graph.SmoothingMode = SmoothingMode.None;
+                    graph.DrawLine(penBorder, 0, Height - 1, Width, Height - 1);
+                }
+                else //Normal Style
+                {
+                    //Draw border smoothing
+                    graph.DrawPath(penBorderSmooth, pathBorderSmooth);
+                    //Draw border
+                    graph.DrawPath(penBorder, pathBorder);
                 }
             }
         }
@@ -130,14 +128,14 @@ namespace _3_GUI_PresentationLayer.CustomControl
             GraphicsPath pathTxt;
 
 
-            pathTxt = GetFigurePath(panel.ClientRectangle, borderSize * 2);
-            panel.Region = new Region(pathTxt);
+            pathTxt = GetFigurePath(_panel.ClientRectangle, _borderSize * 2);
+            _panel.Region = new Region(pathTxt);
 
             pathTxt.Dispose();
         }
-        private GraphicsPath GetFigurePath(Rectangle rect, int radius)
+        private static GraphicsPath GetFigurePath(Rectangle rect, int radius)
         {
-            GraphicsPath path = new GraphicsPath();
+            GraphicsPath path = new ();
             float curveSize = radius * 2F;
 
             path.StartFigure();

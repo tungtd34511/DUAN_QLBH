@@ -14,7 +14,7 @@ namespace _2_BUS_BusinessLayer.Services
 {
     public class LoginService
     {
-        private List<NguoiDung> _nguoiDungs;
+        private readonly List<NguoiDung> _nguoiDungs;
         private NguoiDung _nguoiDung;
         private readonly IAccountService _iAccountService;
         private readonly IUserService _iUserService;

@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class SaleService : ISaleService
     {
         private List<Sale> _lstSales;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
 
         public SaleService()
         {

@@ -173,7 +173,7 @@
             this.btn_Down.Size = new System.Drawing.Size(40, 18);
             this.btn_Down.TabIndex = 7;
             this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
+            this.btn_Down.Click += new System.EventHandler(this.Btn_Down_Click);
             // 
             // btn_Up
             // 
@@ -190,7 +190,7 @@
             this.btn_Up.Size = new System.Drawing.Size(40, 18);
             this.btn_Up.TabIndex = 6;
             this.btn_Up.UseVisualStyleBackColor = false;
-            this.btn_Up.Click += new System.EventHandler(this.btn_Up_Click);
+            this.btn_Up.Click += new System.EventHandler(this.Btn_Up_Click);
             // 
             // panl_lstImg
             // 
@@ -292,7 +292,7 @@
             this.btn_Prev.Size = new System.Drawing.Size(50, 50);
             this.btn_Prev.TabIndex = 5;
             this.btn_Prev.UseVisualStyleBackColor = false;
-            this.btn_Prev.Click += new System.EventHandler(this.btn_Prev_Click);
+            this.btn_Prev.Click += new System.EventHandler(this.Btn_Prev_Click);
             // 
             // btn_Next
             // 
@@ -309,7 +309,7 @@
             this.btn_Next.Size = new System.Drawing.Size(50, 50);
             this.btn_Next.TabIndex = 6;
             this.btn_Next.UseVisualStyleBackColor = false;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            this.btn_Next.Click += new System.EventHandler(this.Btn_Next_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -334,8 +334,8 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
@@ -362,10 +362,10 @@
             this.panel8.Controls.Add(this.lbl_NameColor);
             this.panel8.Controls.Add(this.button5);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 222);
+            this.panel8.Location = new System.Drawing.Point(0, 228);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(550, 79);
+            this.panel8.Size = new System.Drawing.Size(550, 73);
             this.panel8.TabIndex = 13;
             // 
             // lbl_ProductId
@@ -387,7 +387,7 @@
             this.lbl_NameColor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_NameColor.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_NameColor.ForeColor = System.Drawing.Color.Black;
-            this.lbl_NameColor.Location = new System.Drawing.Point(0, 48);
+            this.lbl_NameColor.Location = new System.Drawing.Point(0, 42);
             this.lbl_NameColor.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_NameColor.Name = "lbl_NameColor";
             this.lbl_NameColor.Size = new System.Drawing.Size(229, 31);
@@ -416,7 +416,7 @@
             this.txt_sale.Location = new System.Drawing.Point(7, 196);
             this.txt_sale.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.txt_sale.Name = "txt_sale";
-            this.txt_sale.Size = new System.Drawing.Size(58, 26);
+            this.txt_sale.Size = new System.Drawing.Size(58, 32);
             this.txt_sale.TabIndex = 3;
             this.txt_sale.Text = "Sale";
             // 
@@ -538,7 +538,7 @@
             this.cmb_SoLuong.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmb_SoLuong.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmb_SoLuong.FormattingEnabled = true;
-            this.cmb_SoLuong.Location = new System.Drawing.Point(3, 550);
+            this.cmb_SoLuong.Location = new System.Drawing.Point(3, 551);
             this.cmb_SoLuong.Name = "cmb_SoLuong";
             this.cmb_SoLuong.Size = new System.Drawing.Size(167, 45);
             this.cmb_SoLuong.TabIndex = 18;

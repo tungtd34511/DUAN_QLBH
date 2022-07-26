@@ -74,13 +74,13 @@ namespace _3_GUI_PresentationLayer.CustomControl
             this.Size = new Size(150, 40);
             this.BackColor = Color.MediumSlateBlue;
             this.ForeColor = Color.White;
-            this.Resize += new EventHandler(Button_Resize);
+            this.Resize += new EventHandler(Button_Resize!);
         }
 
         //Methods
-        private GraphicsPath GetFigurePath(Rectangle rect, float radius)
+        private static GraphicsPath GetFigurePath(Rectangle rect, float radius)
         {
-            GraphicsPath path = new GraphicsPath();
+            GraphicsPath path = new();
             float curveSize = radius * 2F;
 
             path.StartFigure();
@@ -105,21 +105,19 @@ namespace _3_GUI_PresentationLayer.CustomControl
 
             if (borderRadius > 2) //Rounded button
             {
-                using (GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius))
-                using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
-                using (Pen penSurface = new Pen(this.Parent.BackColor, smoothSize))
-                using (Pen penBorder = new Pen(borderColor, borderSize))
-                {
-                    //Button surface
-                    this.Region = new Region(pathSurface);
-                    //Draw surface border for HD result
-                    pevent.Graphics.DrawPath(penSurface, pathSurface);
+                using GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius);
+                using GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize);
+                using Pen penSurface = new(this.Parent.BackColor, smoothSize);
+                using Pen penBorder = new(borderColor, borderSize);
+                //Button surface
+                this.Region = new Region(pathSurface);
+                //Draw surface border for HD result
+                pevent.Graphics.DrawPath(penSurface, pathSurface);
 
-                    //Button border                    
-                    if (borderSize >= 1)
-                        //Draw control border
-                        pevent.Graphics.DrawPath(penBorder, pathBorder);
-                }
+                //Button border                    
+                if (borderSize >= 1)
+                    //Draw control border
+                    pevent.Graphics.DrawPath(penBorder, pathBorder);
             }
             else //Normal button
             {
@@ -128,18 +126,16 @@ namespace _3_GUI_PresentationLayer.CustomControl
                 //Button border
                 if (borderSize >= 1)
                 {
-                    using (Pen penBorder = new Pen(borderColor, borderSize))
-                    {
-                        penBorder.Alignment = PenAlignment.Inset;
-                        pevent.Graphics.DrawRectangle(penBorder, 0, 0, this.Width - 1, this.Height - 1);
-                    }
+                    using Pen penBorder = new(borderColor, borderSize);
+                    penBorder.Alignment = PenAlignment.Inset;
+                    pevent.Graphics.DrawRectangle(penBorder, 0, 0, this.Width - 1, this.Height - 1);
                 }
             }
         }
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            this.Parent.BackColorChanged += new EventHandler(Container_BackColorChanged);
+            this.Parent.BackColorChanged += new EventHandler(Container_BackColorChanged!);
         }
 
         private void Container_BackColorChanged(object sender, EventArgs e)

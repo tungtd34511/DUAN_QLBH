@@ -20,13 +20,11 @@ namespace _3_GUI_PresentationLayer.Views
     {
         //tạo delegate để nhận trạng thái form và reload form
         public delegate void SendSatus(int ProductId);
-
-        private int _productIdUpdate;
         private int _indexUpdateDetail;
         private int _lastindex;
         private int _lstDetailIndex;
         //
-        private QLSanPhamService _qlSanPhamService;
+        private readonly QLSanPhamService _qlSanPhamService;
         private List<SanPham> _lstSanPhamsShow;
         // CHức năng thêm sản phẩm
         public FrmListProduct()
@@ -35,7 +33,7 @@ namespace _3_GUI_PresentationLayer.Views
             _qlSanPhamService = new QLSanPhamService();
             _indexUpdateDetail = new int();
             _lstSanPhamsShow = new List<SanPham>();
-            LoadThongTin();
+            //LoadThongTin();
         }
         /// <summary>
         /// reload lại thông tin cho form
@@ -50,7 +48,10 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
                 }
-                finally { }
+                catch
+                {
+                    break;
+                }
             }
             AddProduct(_lstSanPhamsShow);
             txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
@@ -60,7 +61,6 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void SetValue(int value)
         {
-            _productIdUpdate = value;
             _lstSanPhamsShow = new List<SanPham>();
             for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
             {
@@ -68,9 +68,9 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
                 }
-                catch (Exception)
+                catch
                 {
-
+                    continue;
                 }
             }
             // cập nhật tên sản phẩm
@@ -105,14 +105,14 @@ namespace _3_GUI_PresentationLayer.Views
             for (int i = 0; i < list.Count; i++)
             {
                 //panl
-                Panel panlProduct = new Panel();
+                Panel panlProduct = new();
                 panlProduct.Dock = DockStyle.Top;
                 panlProduct.Margin = new Padding(0);
                 panlProduct.Name = "panlProduct_"+i.ToString();
                 panlProduct.Size = new Size(1510, 50);
                 panlProduct.Font = new Font(new FontFamily("Segoe UI"), 9);
                 //tbl
-                TableLayoutPanel tblProduct = new TableLayoutPanel();
+                TableLayoutPanel tblProduct = new();
                 tblProduct.BackColor = Color.White;
                 tblProduct.ColumnCount = 10;
                 tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
@@ -141,7 +141,7 @@ namespace _3_GUI_PresentationLayer.Views
                     tblProduct.BackColor = Color.FromArgb(100,220, 220, 220);
                 }
                     //btnMoRong
-                IconButton btnMoRong = new IconButton();
+                IconButton btnMoRong = new();
                 btnMoRong.Anchor = AnchorStyles.Left;
                 btnMoRong.FlatAppearance.BorderSize = 0;
                 btnMoRong.FlatStyle = FlatStyle.Flat;
@@ -173,7 +173,7 @@ namespace _3_GUI_PresentationLayer.Views
                         tbl_lstProduct.Controls[index].Height += 600;
                         //form detail
                         FrmProductDetail frmProductDetail =
-                            new FrmProductDetail(_lstSanPhamsShow[index], SetValue, _qlSanPhamService);
+                            new(_lstSanPhamsShow[index], SetValue, _qlSanPhamService);
                         frmProductDetail.UpdateData(_lstSanPhamsShow[index]);
                         frmProductDetail.Name = "formDetail_" + index.ToString();
                         frmProductDetail.TopLevel = false;
@@ -212,7 +212,7 @@ namespace _3_GUI_PresentationLayer.Views
                     
                 };
                 //cbox 
-                CheckBox cbx = new CheckBox();
+                CheckBox cbx = new();
                 cbx.Anchor = AnchorStyles.None;
                 cbx.AutoSize = true;
                 cbx.Location = new Point(75, 16);
@@ -221,7 +221,7 @@ namespace _3_GUI_PresentationLayer.Views
                 cbx.Size = new Size(18, 17);
                 cbx.UseVisualStyleBackColor = true;
                 //lblStt
-                Label lblStt = new Label();
+                Label lblStt = new();
                 lblStt.Anchor = AnchorStyles.Right;
                 lblStt.BackColor = Color.Transparent;
                 lblStt.AutoSize = true;
@@ -232,14 +232,14 @@ namespace _3_GUI_PresentationLayer.Views
                 lblStt.Size = new Size(19, 23);
                 lblStt.Text = (i+1).ToString();
                 //btnImg
-                Button btnImg = new Button();
+                Button btnImg = new();
                 btnImg.Anchor = AnchorStyles.None;
                 btnImg.BackColor = Color.Transparent;
                 try
                 {
                     string path = _lstSanPhamsShow[i].Images.First().Path;
                     Image img = Image.FromFile(path);
-                    Bitmap img1 = new Bitmap(img, new Size(44, 44));
+                    Bitmap img1 = new(img, new Size(44, 44));
                     btnImg.BackgroundImage = img1;
                 }
                 catch
@@ -254,7 +254,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnImg.Size = new Size(94, 44);
                 btnImg.UseVisualStyleBackColor = false;
                 //lblId
-                Label lblId = new Label();
+                Label lblId = new();
                 lblId.Anchor = AnchorStyles.Left;
                 lblId.BackColor = Color.Transparent;
                 lblId.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -265,7 +265,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblId.Text = list[i].Product.Id.ToString();
                 lblId.AutoSize = true;
                 //lblName
-                Label lblName = new Label();
+                Label lblName = new();
                 lblName.Anchor = AnchorStyles.Left;
                 lblName.BackColor = Color.Transparent;
                 lblName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -276,7 +276,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblName.Text = list[i].Product.Name;
                 lblName.AutoSize = true;
                 //lblGiaBanSauSale
-                Label lblGiaHienTai = new Label();
+                Label lblGiaHienTai = new();
                 lblGiaHienTai.Anchor = AnchorStyles.Right;
                 lblGiaHienTai.BackColor = Color.Transparent;
                 lblGiaHienTai.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -287,7 +287,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblGiaHienTai.Text = string.Format("{0:#,##0}", list[i].Price.GiaBan) + " VNĐ";
                 lblGiaHienTai.AutoSize = true;
                 //lblGiaNhap
-                Label lblGiaNhap = new Label();
+                Label lblGiaNhap = new();
                 lblGiaNhap.Anchor = AnchorStyles.Right;
                 lblGiaNhap.BackColor = Color.Transparent;
                 lblGiaNhap.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -298,7 +298,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblGiaNhap.Text = string.Format("{0:#,##0}", list[i].Price.GiaNhap)+" VNĐ";
                 lblGiaNhap.AutoSize = true;
                 //lblTongSoLuong
-                Label lblTongSoLuong = new Label();
+                Label lblTongSoLuong = new();
                 lblTongSoLuong.Anchor = AnchorStyles.Right;
                 lblTongSoLuong.BackColor = Color.Transparent;
                 lblTongSoLuong.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -313,7 +313,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblTongSoLuong.Text = sum.ToString();
                 lblTongSoLuong.AutoSize = true;
                 //lblKhDat
-                Label lblKhDat = new Label();
+                Label lblKhDat = new();
                 lblKhDat.Anchor = AnchorStyles.Right;
                 lblKhDat.BackColor = Color.Transparent;
                 lblKhDat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -341,7 +341,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
@@ -359,12 +359,12 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void vbButton1_Click(object sender, EventArgs e)
+        private void VbButton1_Click(object sender, EventArgs e)
         {
-            FrmAddProduct frmAddProduct = new FrmAddProduct(_qlSanPhamService);
+            FrmAddProduct frmAddProduct = new(_qlSanPhamService);
             frmAddProduct.GetBtnLuu().Click += (o, s) =>
             {
-                SanPham sanPham = new SanPham();
+                SanPham sanPham;
                 sanPham = frmAddProduct.GetSanPham();
                 //Mặc định mở bán cho sản phẩm mới được thêm
                 sanPham.Product.Status = true;
@@ -378,9 +378,9 @@ namespace _3_GUI_PresentationLayer.Views
                     {
                         _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
                     }
-                    catch (Exception)
+                    catch 
                     {
-
+                        continue;
                     }
                 }
                 AddProduct(_lstSanPhamsShow);
@@ -388,7 +388,7 @@ namespace _3_GUI_PresentationLayer.Views
             };
             frmAddProduct.ShowDialog();
         }
-        private void btn_last_Click(object sender, EventArgs e)
+        private void Btn_last_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex != _lastindex)
             {
@@ -397,7 +397,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_firt_Click(object sender, EventArgs e)
+        private void Btn_firt_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex != 0)
             {
@@ -406,7 +406,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_next_Click(object sender, EventArgs e)
+        private void Btn_next_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex < _lastindex)
             {
@@ -415,7 +415,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_Prev_Click(object sender, EventArgs e)
+        private void Btn_Prev_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex > 0)
             {
@@ -424,7 +424,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -432,7 +432,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void txt_lstShowIndex_TextChanged(object sender, EventArgs e)
+        private void Txt_lstShowIndex_TextChanged(object sender, EventArgs e)
         {
             if (int.Parse(txt_lstShowIndex.Text) > (_lastindex+1)&&_lstDetailIndex!=_lastindex)
             {
@@ -473,20 +473,20 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void AddTblLoc()
         {
-            List<string> lstStr1 = new List<string>() {"GIỚI TÍNH", "GIÁ", "NHÓM HÀNG","TÌNH TRẠNG"};
-            List<string> lstStr2 = new List<string>() { "Nam", "Nữ"};
-            List<string> lstStr3 = new List<string>()
+            List<string> lstStr1 = new() {"GIỚI TÍNH", "GIÁ", "NHÓM HÀNG","TÌNH TRẠNG"};
+            List<string> lstStr2 = new() { "Nam", "Nữ"};
+            List<string> lstStr3 = new()
             {
                 "Dưới 199.000 VND", "199.000  - 299.000 VND", "299.000 - 399.000 VND",
                 "399.000 - 499.000 VND", "499.000 - 799.000 VND", "799.000 - 999.000 VND", "Trên 1 triệu"
             };
             List<string> lstStr4 = _qlSanPhamService.GetListCatergory().Select(c => c.Name).ToList();
-            List<string> lstStr5 = new List<string>() {"Đang mở bán", "Ngừng kinh doanh"};
-            List<List<string>> _lst = new List<List<string>>() {lstStr2, lstStr3, lstStr4, lstStr5 };
+            List<string> lstStr5 = new() {"Đang mở bán", "Ngừng kinh doanh"};
+            List<List<string>> _lst = new() {lstStr2, lstStr3, lstStr4, lstStr5 };
             for (int i=0;i<lstStr1.Count;i++)
             {
                 //panl
-                CustomPanel panlPrice = new CustomPanel();
+                CustomPanel panlPrice = new();
                 panlPrice.BackColor = SystemColors.Control;
                 panlPrice.BorderColor = SystemColors.Control;
                 panlPrice.BorderFocusColor = Color.HotPink;
@@ -497,7 +497,7 @@ namespace _3_GUI_PresentationLayer.Views
                 panlPrice.Dock = DockStyle.Top;
                 panlPrice.Name = "panlPrice_"+i.ToString();
                 //table
-                TableLayoutPanel tblPrice = new TableLayoutPanel();
+                TableLayoutPanel tblPrice = new();
                 tblPrice.ColumnCount = 1;
                 tblPrice.Dock = DockStyle.Top;
                 tblPrice.BackColor = SystemColors.Control;
@@ -507,7 +507,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblPrice.RowCount = 1;
                 tblPrice.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
                 //Head tblSex
-                TableLayoutPanel head = new TableLayoutPanel();
+                TableLayoutPanel head = new();
                 head.BackColor = Color.FromArgb(90, 76, 219);
                 head.ForeColor = Color.White;
                 head.ColumnCount = 3;
@@ -522,14 +522,14 @@ namespace _3_GUI_PresentationLayer.Views
                 head.Height = 50;
                 head.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
                 // check đầu table
-                CheckBox check1 = new CheckBox();
+                CheckBox check1 = new();
                 check1.Anchor = AnchorStyles.None;
                 check1.AutoSize = true;
                 check1.Location = new Point(16, 16);
                 check1.Name = "check1_"+i.ToString();
                 check1.Size = new Size(18, 17);
                 // Name table
-                Label Name = new Label();
+                Label Name = new();
                 Name.Anchor = AnchorStyles.Left;
                 Name.AutoSize = true;
                 Name.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
@@ -537,7 +537,7 @@ namespace _3_GUI_PresentationLayer.Views
                 Name.Name = "Name_".ToString();
                 Name.Text = lstStr1[i];
                 //
-                IconButton btnMoRong = new IconButton();
+                IconButton btnMoRong = new();
                 btnMoRong.Anchor = AnchorStyles.Right;
                 btnMoRong.FlatAppearance.BorderSize = 0;
                 btnMoRong.FlatStyle = FlatStyle.Flat;
@@ -557,7 +557,7 @@ namespace _3_GUI_PresentationLayer.Views
                 // Các check box trong table
                 for (int j = 0; j < _lst[i].Count; j++)
                 {
-                    CheckBox check2 = new CheckBox();
+                    CheckBox check2 = new();
                     check2.Anchor = AnchorStyles.Left;
                     check2.AutoSize = true;
                     check2.Padding = new Padding(13,3,3,3);
@@ -594,14 +594,14 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_XuatFile_Click(object sender, EventArgs e)
+        private void Btn_XuatFile_Click(object sender, EventArgs e)
         {
             string filePath = "";
             // tạo SaveFileDialog để lưu file excel
-            SaveFileDialog dialog = new SaveFileDialog();
+            SaveFileDialog dialog = new();
 
             // chỉ lọc ra các file có định dạng Excel
-            dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+            dialog.Filter = @"Excel | *.xlsx | Excel 2003 | *.xls";
 
             // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
             if (dialog.ShowDialog() == DialogResult.OK)

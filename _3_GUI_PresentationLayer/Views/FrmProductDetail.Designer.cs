@@ -219,7 +219,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Down.Size = new System.Drawing.Size(40, 18);
             this.btn_Down.TabIndex = 7;
             this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.iconButton2_Click);
+            this.btn_Down.Click += new System.EventHandler(this.IconButton2_Click);
             // 
             // btn_Up
             // 
@@ -236,7 +236,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Up.Size = new System.Drawing.Size(40, 18);
             this.btn_Up.TabIndex = 6;
             this.btn_Up.UseVisualStyleBackColor = false;
-            this.btn_Up.Click += new System.EventHandler(this.btn_Up_Click);
+            this.btn_Up.Click += new System.EventHandler(this.Btn_Up_Click);
             // 
             // panl_lstImg
             // 
@@ -338,7 +338,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Prev.Size = new System.Drawing.Size(50, 50);
             this.btn_Prev.TabIndex = 5;
             this.btn_Prev.UseVisualStyleBackColor = false;
-            this.btn_Prev.Click += new System.EventHandler(this.btn_Prev_Click);
+            this.btn_Prev.Click += new System.EventHandler(this.Btn_Prev_Click);
             // 
             // btn_Next
             // 
@@ -355,7 +355,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Next.Size = new System.Drawing.Size(50, 50);
             this.btn_Next.TabIndex = 6;
             this.btn_Next.UseVisualStyleBackColor = false;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            this.btn_Next.Click += new System.EventHandler(this.Btn_Next_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -1011,7 +1011,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Sua.Text = "Sửa";
             this.btn_Sua.TextColor = System.Drawing.Color.White;
             this.btn_Sua.UseVisualStyleBackColor = false;
-            this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
+            this.btn_Sua.Click += new System.EventHandler(this.Btn_Sua_Click);
             // 
             // panel14
             // 

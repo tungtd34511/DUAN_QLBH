@@ -1,6 +1,6 @@
 ﻿namespace _3_GUI_PresentationLayer.Views
 {
-    partial class frmLogin
+    partial class FrmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.panelDesktopLogin = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panl_Banner = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
@@ -133,7 +133,7 @@
             this.cbox_HienMatKhau.TabIndex = 8;
             this.cbox_HienMatKhau.Text = "Hiện mật khẩu";
             this.cbox_HienMatKhau.UseVisualStyleBackColor = true;
-            this.cbox_HienMatKhau.CheckedChanged += new System.EventHandler(this.cbox_HienMatKhau_CheckedChanged);
+            this.cbox_HienMatKhau.CheckedChanged += new System.EventHandler(this.Cbox_HienMatKhau_CheckedChanged);
             // 
             // vbButton2
             // 
@@ -202,7 +202,7 @@
             this.label3.Size = new System.Drawing.Size(150, 23);
             this.label3.TabIndex = 5;
             this.label3.Text = "Quên mật khẩu ?";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // customPanel2
             // 
@@ -365,11 +365,11 @@
             this.btn_Login.Text = "Đăng nhập";
             this.btn_Login.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.btn_Login.UseVisualStyleBackColor = false;
-            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
+            this.btn_Login.Click += new System.EventHandler(this.Btn_Login_Click);
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick_1);
             // 
             // frmLogin
             // 
@@ -379,7 +379,7 @@
             this.ClientSize = new System.Drawing.Size(915, 584);
             this.Controls.Add(this.panelDesktopLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmLogin";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EGALE";
             this.panelDesktopLogin.ResumeLayout(false);

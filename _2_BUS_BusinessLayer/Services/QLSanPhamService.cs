@@ -17,20 +17,20 @@ namespace _2_BUS_BusinessLayer.Services
 {
     public class QLSanPhamService
     {
-        private IProductService _productService;
-        private IProductDetailService _productDetailService;
-        private IVerService _verService;
-        private IColorService _colorService;
-        private ISizeService _sizeService;
-        private IImageService _imageService;
-        private IOriginService _originService;
-        private IThuongHieuService _thuongHieuService;
-        private ICatergoryService _catergoryService;
-        private IPriceService _priceService;
+        private readonly IProductService _productService;
+        private readonly IProductDetailService _productDetailService;
+        private readonly IVerService _verService;
+        private readonly IColorService _colorService;
+        private readonly ISizeService _sizeService;
+        private readonly IImageService _imageService;
+        private readonly IOriginService _originService;
+        private readonly IThuongHieuService _thuongHieuService;
+        private readonly ICatergoryService _catergoryService;
+        private readonly IPriceService _priceService;
         //
         private List<SanPham> _sanPhams;
         //
-        private XuatFile _xuatFile;
+        private readonly XuatFile _xuatFile;
         public QLSanPhamService()
         {
             _productService = new ProductService();
@@ -90,8 +90,10 @@ namespace _2_BUS_BusinessLayer.Services
             _sanPhams = new List<SanPham>();
             for (int i = 0; i < _productService.GetLstProducts().Count; i++)
             {
-                SanPham sanPham = new SanPham();
-                sanPham.Product = _productService.GetLstProducts()[i];
+                SanPham sanPham = new()
+                {
+                    Product = _productService.GetLstProducts()[i]
+                };
                 sanPham.ProductDetail = _productDetailService.GetLstProductDetails()
                     .FirstOrDefault(c => c.Id == sanPham.Product.ProductDetailId);
                 sanPham.Origin = _originService.GetLstOrigins()
@@ -127,7 +129,7 @@ namespace _2_BUS_BusinessLayer.Services
         
         public string AddSanPham(SanPham sanPham)
         {
-            sanPham.ProductDetail.QrCode = (_sanPhams.LastOrDefault().Product.Id + 1).ToString();
+            sanPham.ProductDetail.QrCode = 1.ToString();
             sanPham.ProductDetail.Origin = sanPham.Origin;
             sanPham.ProductDetail.OriginId = sanPham.Origin.Id;
             sanPham.ProductDetail.Price = sanPham.Price;

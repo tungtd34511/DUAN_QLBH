@@ -9,7 +9,7 @@ namespace _3_GUI_PresentationLayer.CustomControl
 {
     public class CustomButton2
     {
-        public IconButton IconButton { get; set; }
-        public CustomPanel CustomPanel { get; set; }
+        public IconButton? IconButton { get; set; }
+        public CustomPanel? CustomPanel { get; set; }
     }
 }

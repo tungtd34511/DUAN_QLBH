@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class SizeService : ISizeService
     {
         private List<Size> _lstSizes;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public SizeService()
         {
             _qlbhContext = new QLBHContext();

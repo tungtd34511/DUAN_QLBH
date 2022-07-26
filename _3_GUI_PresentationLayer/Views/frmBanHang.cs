@@ -14,31 +14,27 @@ using Size = System.Drawing.Size;
 
 namespace _3_GUI_PresentationLayer.Views
 {
-    public partial class frmBanHang : Form
+    public partial class FrmBanHang : Form
     {
-        private TextBox t = new TextBox();
-        private int _indexUpdateDetail;
-        private int _lastindex;
         private int _lstDetailIndex;
-        private int i =0;
-        private IBanHangService _banHangService;
-        private List<SanPham> _lstSanPhamsShow;
-        private List<ProductOder> _productOders;
-        public frmBanHang()
+        private int i;
+        private readonly IBanHangService _banHangService;
+        private readonly List<SanPham> _lstSanPhamsShow;
+        private readonly List<ProductOder> _productOders;
+        public FrmBanHang()
         {
+            i = 0;
             InitializeComponent();
             _banHangService = new BanHangService();
             _productOders = new List<ProductOder>();
             _lstSanPhamsShow = new List<SanPham>();
-            _indexUpdateDetail = -1;
-            LoadDetail();
+            //LoadDetail();
         }
         /// <summary>
         /// reload detail form
         /// </summary>
         public void LoadDetail()
         {
-            _lastindex = _banHangService.GetSanPhams().Count / 13;
             _lstDetailIndex = 0;
             for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
             {
@@ -46,7 +42,10 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     _lstSanPhamsShow.Add(_banHangService.GetSanPhams()[i]);
                 }
-                finally { }
+                catch
+                {
+                    break;
+                }
             }
             AddPanelProduct(_lstSanPhamsShow);
         }
@@ -56,15 +55,15 @@ namespace _3_GUI_PresentationLayer.Views
             for (int i = 0; i < list.Count; i++)
             {
                 //design panel
-                CustomPanel panel = new CustomPanel();
+                CustomPanel panel = new();
                 panel.Name = "panel_" + i.ToString();
                 panel.BorderSize = 2;
                 panel.BorderRadius = 10;
                 panel.BorderColor = Color.White;
                 panel.Dock = DockStyle.Fill;
                 Image img = Image.FromFile(list[i].Images[0].Path);
-                Bitmap img1 = new Bitmap(img, new Size(180, 180));
-                Bitmap img2 = new Bitmap(img, new Size(200, 200));
+                Bitmap img1 = new(img, new Size(180, 180));
+                Bitmap img2 = new(img, new Size(200, 200));
                 panel.BackgroundImage = img1;
                 panel.BackgroundImageLayout = ImageLayout.Center;
                 panel.BackColor = Color.FromArgb(235, 235, 235);
@@ -72,31 +71,35 @@ namespace _3_GUI_PresentationLayer.Views
                 panel.Margin = new Padding(2);
                 panel.Size = new Size(200, 254);
                 //
-                panel.MouseHover += (o, s) =>
+                panel.MouseHover += (_, _) =>
                 {
                     panel.BorderColor = Color.OrangeRed;
                     panel.BackgroundImage = img2;
                 };
-                panel.MouseLeave += (o, s) =>
+                panel.MouseLeave += (_, _) =>
                 {
                     panel.BorderColor = Color.White;
                     panel.BackgroundImage = img1;
                 };
                 //them san pham vao gio hang khi click vào panel
-                panel.Click += (o, s) =>
+                panel.Click += (_, _) =>
                 {
-                    int index = int.Parse(panel.Name.Split("_").LastOrDefault());
-                    FrmDatHang frmDatHang = new FrmDatHang(_lstSanPhamsShow[index], _banHangService.GetSales());
-                    frmDatHang.btn_Them.Click += (o, s) =>
+                    string? indexi = panel.Name.Split("_").LastOrDefault();
+                    if (indexi != null)
                     {
-                        _productOders.Add(frmDatHang.GetProductOder());
-                        AddPanelOderCart(frmDatHang.GetProductOder());
-                        frmDatHang.Close();
-                    };
-                    frmDatHang.ShowDialog();
+                        int index = int.Parse(indexi);
+                        FrmDatHang frmDatHang = new(_lstSanPhamsShow[index], _banHangService.GetSales());
+                        frmDatHang.btn_Them.Click += (_, _) =>
+                        {
+                            _productOders.Add(frmDatHang.GetProductOder());
+                            AddPanelOderCart(frmDatHang.GetProductOder());
+                            frmDatHang.Close();
+                        };
+                        frmDatHang.ShowDialog();
+                    }
                 };
                 //design Name
-                VBButton btnName = new VBButton();
+                VBButton btnName = new();
                 btnName.Name = "btnName_" + i.ToString();
                 btnName.BorderRadius = 10;
                 btnName.BackColor = Color.FromArgb(235, 235, 235);
@@ -115,7 +118,7 @@ namespace _3_GUI_PresentationLayer.Views
                 ////Color myColor = Color.FromArgb(100, Color.Blue);
                 ////label1.BackColor = myColor;
                 //design Price
-                Button btnPrice = new Button();
+                Button btnPrice = new();
                 btnPrice.BackColor = Color.FromArgb(130, Color.Black);
                 btnPrice.Dock = DockStyle.Bottom;
                 btnPrice.FlatAppearance.BorderSize = 0;
@@ -138,7 +141,7 @@ namespace _3_GUI_PresentationLayer.Views
             if (productOder != null)
             {
                 //panel
-                CustomPanel panl = new CustomPanel();
+                CustomPanel panl = new();
                 panl.BackColor = Color.White;
                 panl.BorderColor = Color.White;
                 panl.BorderFocusColor = Color.HotPink;
@@ -151,7 +154,7 @@ namespace _3_GUI_PresentationLayer.Views
                 panl.Size = new Size(1387, 50);
                 panl.UnderlinedStyle = false;
                 //tbl layout panel
-                TableLayoutPanel tbl = new TableLayoutPanel();
+                TableLayoutPanel tbl = new();
                 tbl.ColumnCount = 6;
                 tbl.ColumnStyles.Add(
                     new ColumnStyle(SizeType.Percent, 8.321964F));
@@ -174,7 +177,7 @@ namespace _3_GUI_PresentationLayer.Views
                     new RowStyle(SizeType.Percent, 50F));
                 tbl.Size = new Size(1387, 50);
                 //img
-                VBButton img = new VBButton();
+                VBButton img = new();
                 img.Anchor = AnchorStyles.None;
                 img.BackColor = Color.White;
                 img.BackgroundColor = Color.White;
@@ -193,7 +196,7 @@ namespace _3_GUI_PresentationLayer.Views
                 img.TextColor = Color.White;
                 img.UseVisualStyleBackColor = false;
                 //Name
-                Label lblName = new Label();
+                Label lblName = new();
                 lblName.Anchor = AnchorStyles.Left;
                 lblName.AllowDrop = true;
                 lblName.AutoSize = true;
@@ -204,7 +207,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblName.Size = new Size(566, 41);
                 lblName.Text = productOder.Product.Name + "_" + productOder.Color.Name + "_" + productOder.Size.Code;
                 //Gia ban
-                Label lblGiaBan = new Label();
+                Label lblGiaBan = new();
                 lblGiaBan.Anchor = AnchorStyles.None;
                 lblGiaBan.AutoSize = true;
                 lblGiaBan.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point);
@@ -214,7 +217,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblGiaBan.Text = productOder.Price.GiaBan.ToString();
                 lblGiaBan.TextAlign = ContentAlignment.BottomCenter;
                 //So luong
-                TextBox txtSoLuong = new TextBox();
+                TextBox txtSoLuong = new();
                 txtSoLuong.Anchor = AnchorStyles.None;
                 txtSoLuong.BackColor = SystemColors.Window;
                 txtSoLuong.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
@@ -225,7 +228,7 @@ namespace _3_GUI_PresentationLayer.Views
                 txtSoLuong.Text = productOder.SoLuong.ToString();
                 txtSoLuong.TextAlign = HorizontalAlignment.Right;
                 //Tong Tien
-                Label lblTongTien = new Label();
+                Label lblTongTien = new();
                 lblTongTien.Anchor = AnchorStyles.None;
                 lblTongTien.AutoSize = true;
                 lblTongTien.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point);
@@ -234,7 +237,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblTongTien.Size = new Size(182, 41);
                 lblTongTien.Text = (productOder.Price.GiaBan*productOder.SoLuong).ToString();
                 //
-                txtSoLuong.TextChanged += (o, s) =>
+                txtSoLuong.TextChanged += (_, _) =>
                 {
                     if (txtSoLuong.Text == "")
                     { 
@@ -246,7 +249,7 @@ namespace _3_GUI_PresentationLayer.Views
                     }
                 };
                 //button delete
-                VBButton btnDelete = new VBButton();
+                VBButton btnDelete = new();
                 btnDelete.Anchor = AnchorStyles.None;
                 btnDelete.BackColor = Color.Red;
                 btnDelete.BackgroundColor = Color.Red;
@@ -264,7 +267,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnDelete.Text = "Xóa";
                 btnDelete.TextColor = Color.White;
                 btnDelete.UseVisualStyleBackColor = false;
-                btnDelete.Click += (o, s) =>
+                btnDelete.Click += (_, _) =>
                 {
                     foreach (Control x in tblOrderCart.Controls)
                     {
@@ -311,13 +314,13 @@ namespace _3_GUI_PresentationLayer.Views
             int index = 0;
             foreach (var t in _productOders)
             {
-                Sale sale = new Sale();
+                Sale sale = new();
                 sale = t.Sale;
                 if (sale!=null && sale.Finished > DateTime.Today &&
                     sale.Started < DateTime.Today)
                 {
-                    tongTien += (t.Price.GiaBan * decimal.Parse(tblOrderCart.Controls[index].Controls[3].Text)*100) /
-                                sale.SalePercent;
+                    //tongTien += (t.Price.GiaBan * decimal.Parse(tblOrderCart.Controls[index].Controls[3].Text)*100) /
+                    //            sale.SalePercent;
                 }
                 else
                 {
@@ -328,12 +331,7 @@ namespace _3_GUI_PresentationLayer.Views
             txt_TongTien.Text = string.Format("{0:#,##0}", tongTien.ToString());
         }
 
-        private void customPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void TextBox3_TextChanged(object sender, EventArgs e)
         {
             label1.Text += ".";
             if (label1.Text == "......")

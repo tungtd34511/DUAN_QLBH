@@ -134,9 +134,9 @@
             this.button2.Text = "Duy Tùng";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
-            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover_1);
+            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
+            this.button2.MouseLeave += new System.EventHandler(this.Button2_MouseLeave);
+            this.button2.MouseHover += new System.EventHandler(this.Button2_MouseHover_1);
             // 
             // img_user
             // 
@@ -164,7 +164,7 @@
             this.img_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.img_user.TextColor = System.Drawing.Color.Black;
             this.img_user.UseVisualStyleBackColor = false;
-            this.img_user.Click += new System.EventHandler(this.vbButton1_Click);
+            this.img_user.Click += new System.EventHandler(this.VbButton1_Click);
             // 
             // rjDropdownMenu1
             // 
@@ -269,7 +269,7 @@
             this.iconButton1.TabIndex = 2;
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.iconButton1.Click += new System.EventHandler(this.IconButton1_Click);
             // 
             // panl_menu
             // 
@@ -279,6 +279,7 @@
             this.panl_menu.BorderRadius = 0;
             this.panl_menu.BorderSize = 1;
             this.panl_menu.Controls.Add(this.tbl_Menu);
+            this.panl_menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panl_menu.Location = new System.Drawing.Point(0, 0);
             this.panl_menu.Margin = new System.Windows.Forms.Padding(0);
             this.panl_menu.Name = "panl_menu";
@@ -457,7 +458,7 @@
             this.btn_Trangchu.Text = "        Trang Chủ";
             this.btn_Trangchu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Trangchu.UseVisualStyleBackColor = false;
-            this.btn_Trangchu.Click += new System.EventHandler(this.btn_Trangchu_Click_1);
+            this.btn_Trangchu.Click += new System.EventHandler(this.Btn_Trangchu_Click_1);
             // 
             // panlMenu2
             // 
@@ -494,6 +495,7 @@
             this.btn_nhanvien.Text = "        Nhân Viên";
             this.btn_nhanvien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_nhanvien.UseVisualStyleBackColor = false;
+            this.btn_nhanvien.Click += new System.EventHandler(this.Btn_nhanvien_Click);
             // 
             // panlMenu3
             // 
@@ -530,7 +532,7 @@
             this.btn_SanPham.Text = "        Sản Phẩm";
             this.btn_SanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SanPham.UseVisualStyleBackColor = false;
-            this.btn_SanPham.Click += new System.EventHandler(this.btn_SanPham_Click_1);
+            this.btn_SanPham.Click += new System.EventHandler(this.Btn_SanPham_Click_1);
             // 
             // panlMenu4
             // 
@@ -603,7 +605,7 @@
             this.btn_ThanhToan.Text = "        Thanh Toán";
             this.btn_ThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_ThanhToan.UseVisualStyleBackColor = false;
-            this.btn_ThanhToan.Click += new System.EventHandler(this.btn_ThanhToan_Click_1);
+            this.btn_ThanhToan.Click += new System.EventHandler(this.Btn_ThanhToan_Click_1);
             // 
             // panlMenu6
             // 
@@ -640,7 +642,7 @@
             this.btn_KhuyenMai.Text = "        Khuyến Mãi";
             this.btn_KhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_KhuyenMai.UseVisualStyleBackColor = false;
-            this.btn_KhuyenMai.Click += new System.EventHandler(this.btn_KhuyenMai_Click);
+            this.btn_KhuyenMai.Click += new System.EventHandler(this.Btn_KhuyenMai_Click);
             // 
             // panlMenu7
             // 
@@ -693,7 +695,7 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // FrmMain
             // 

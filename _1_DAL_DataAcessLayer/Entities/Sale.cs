@@ -11,8 +11,10 @@ namespace _1_DAL_DataAcessLayer.Entities
         public int Id { set; get; }
         [StringLength(55)]
         public string Name { set; get; }
-        public int SalePercent { set; get; }
+        public string Note { set; get; }
+        public string Detail { set; get; }
         public bool Status { set; get; }
+        public DateTime Created { get; set; }
         public DateTime Started { get; set; }
         public DateTime Finished { get; set; }
     }

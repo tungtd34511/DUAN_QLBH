@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class OrderDetailService : IOrderDetailService
     {
         private List<OrderDetail> _lstOrderDetails;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public OrderDetailService()
         {
             _qlbhContext = new QLBHContext();

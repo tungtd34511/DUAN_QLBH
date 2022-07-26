@@ -12,7 +12,7 @@ namespace _1_DAL_DataAcessLayer.Services
     public class ThuongHieuService : IThuongHieuService
     {
         private List<ThuongHieu> _lstThuongHieus;
-        private QLBHContext _qlbhContext;
+        private readonly QLBHContext _qlbhContext;
         public ThuongHieuService()
         {
             _qlbhContext = new QLBHContext();
