@@ -12,13 +12,11 @@ namespace _3_GUI_PresentationLayer.CustomControl
     public class CustomPanel : Panel
     {
         private readonly Panel _panel = new();
-
         private Color _borderColor = Color.MediumSlateBlue;
         private Color _borderFocusColor = Color.HotPink;
         private int _borderSize = 2;
         private bool _underlinedStyle = false;
         private readonly bool _isFocused = false;
-
         private int _borderRadius = 0;
         public Color BorderColor
         {

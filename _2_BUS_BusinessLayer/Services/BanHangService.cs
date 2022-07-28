@@ -61,43 +61,44 @@ namespace _2_BUS_BusinessLayer.Services
         public void GetLstSanPhamsFormDAL()
         {
             _sanPhams = new List<SanPham>();
-            for (int i = 0; i < _productService.GetLstProducts().Count; i++)
-            {
-                SanPham sanPham = new()
-                {
-                    Product = _productService.GetLstProducts()[i]
-                };
-                sanPham.ProductDetail = _productDetailService.GetLstProductDetails()
-                    .FirstOrDefault(c => c.Id == sanPham.Product.ProductDetailId);
-                sanPham.Origin = _originService.GetLstOrigins()
-                    .FirstOrDefault(c => c.Id == sanPham.ProductDetail.OriginId);
-                sanPham.ThuongHieu = _thuongHieuService.GetLstThuongHieus()
-                    .FirstOrDefault(c => c.Id == sanPham.Origin.ThuongHieuid);
-                sanPham.Catergory = _catergoryService.GetLstCatergorys()
-                    .FirstOrDefault(c => c.Id == sanPham.ProductDetail.CatergoryId);
-                sanPham.Price = _priceService.GetLstPrices().FirstOrDefault(c => c.Id == sanPham.ProductDetail.PriceId);
-                sanPham.Images = new List<Image>();
-                foreach (var x in _imageService.GetLstImages().Where(c => c.ProductId == sanPham.Product.Id))
-                {
-                    sanPham.Images.Add(x);
-                }
-                sanPham.Vers = new List<Ver>();
-                foreach (var x in _verService.GetLstVers().Where(c => c.ProductDetailId == sanPham.ProductDetail.Id))
-                {
-                    sanPham.Vers.Add(x);
-                }
-                sanPham.Colors = new List<Color>();
-                foreach (var x in sanPham.Vers.Select(c => c.ColorId).Distinct())
-                {
-                    sanPham.Colors.Add(_colorService.GetLstColors().FirstOrDefault(c => c.Id == x));
-                }
-                sanPham.Sizes = new List<Size>();
-                foreach (var x in sanPham.Vers.Select(c => c.SizeId).Distinct())
-                {
-                    sanPham.Sizes.Add(_sizeService.GetLstSizes().FirstOrDefault(c => c.Id == x));
-                }
-                _sanPhams.Add(sanPham);
-            }
+            _sanPhams = (from a in _productService.GetLstProducts()
+                         join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
+                         join c in _priceService.GetLstPrices() on b.PriceId equals c.Id
+                         join d in _catergoryService.GetLstCatergorys() on b.CatergoryId equals d.Id
+                         join e in _originService.GetLstOrigins() on b.OriginId equals e.Id
+                         join f in _thuongHieuService.GetLstThuongHieus() on e.ThuongHieuid equals f.Id
+                         //join i in _saleService.GetLstSales() on c.SaleId equals i.Id
+                         select new SanPham()
+                         {
+                             Product = a,
+                             Catergory = d,
+                             Origin = e,
+                             ThuongHieu = f,
+                             Vers = _verService.GetLstVers().Where(j => j.ProductDetailId == b.Id).ToList(),
+                             Colors = (from k in _verService.GetLstVers().Where(j => j.ProductDetailId == b.Id).Select(z => z.ColorId).ToList().Distinct()
+                                       join l in _colorService.GetLstColors() on k equals l.Id
+                                       select new Color()
+                                       {
+                                           Id = l.Id,
+                                           ColorCode = l.ColorCode,
+                                           ImagePath = l.ImagePath,
+                                           Name = l.Name,
+                                           Status = l.Status
+                                       }).ToList(),
+                             Sizes = (from k in _verService.GetLstVers().Where(j => j.ProductDetailId == b.Id).Select(z => z.SizeId).ToList().Distinct()
+                                      join l in _sizeService.GetLstSizes() on k equals l.Id
+                                      select new Size()
+                                      {
+                                          Id = l.Id,
+                                          Code = l.Code,
+                                          Status = l.Status
+                                      }).ToList(),
+                             Images = _imageService.GetLstImages().Where(x => x.ProductId == a.Id).ToList(),
+                             Price = c,
+                             ProductDetail = b
+                             //Sale = i
+                         }).ToList();
+            int v = _sanPhams.Count;
         }
     }
 }
