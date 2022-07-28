@@ -41,7 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_title = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.panl_menu = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.panl_menu = new _3_GUI_PresentationLayer.CustomControl.GadientPanel();
             this.tbl_Menu = new System.Windows.Forms.TableLayoutPanel();
             this.panl_Logo = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tbl_Logo = new System.Windows.Forms.TableLayoutPanel();
@@ -50,7 +50,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.border_bottom = new System.Windows.Forms.Panel();
-            this.boder_top = new System.Windows.Forms.Panel();
             this.panlMenu1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.btn_Trangchu = new FontAwesome.Sharp.IconButton();
             this.panlMenu2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
@@ -227,24 +226,25 @@
             this.btn_title.AutoSize = true;
             this.btn_title.BackColor = System.Drawing.Color.White;
             this.btn_title.BackgroundColor = System.Drawing.Color.White;
-            this.btn_title.BorderColor = System.Drawing.Color.LightGray;
+            this.btn_title.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.btn_title.BorderRadius = 5;
             this.btn_title.BorderSize = 1;
             this.btn_title.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.btn_title.FlatAppearance.BorderSize = 0;
             this.btn_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_title.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_title.ForeColor = System.Drawing.Color.Black;
+            this.btn_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.btn_title.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btn_title.IconColor = System.Drawing.Color.Black;
-            this.btn_title.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_title.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            this.btn_title.IconSize = 1;
             this.btn_title.Location = new System.Drawing.Point(0, 0);
             this.btn_title.Name = "btn_title";
-            this.btn_title.Size = new System.Drawing.Size(66, 54);
+            this.btn_title.Size = new System.Drawing.Size(66, 49);
             this.btn_title.TabIndex = 7;
             this.btn_title.Text = "vbBu";
             this.btn_title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_title.TextColor = System.Drawing.Color.Black;
+            this.btn_title.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.btn_title.UseVisualStyleBackColor = false;
             this.btn_title.Visible = false;
             // 
@@ -255,7 +255,7 @@
             this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.iconButton1.ForeColor = System.Drawing.Color.White;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
@@ -274,10 +274,8 @@
             // panl_menu
             // 
             this.panl_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.panl_menu.BorderColor = System.Drawing.Color.White;
-            this.panl_menu.BorderFocusColor = System.Drawing.Color.HotPink;
             this.panl_menu.BorderRadius = 0;
-            this.panl_menu.BorderSize = 1;
+            this.panl_menu.BottomRightColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
             this.panl_menu.Controls.Add(this.tbl_Menu);
             this.panl_menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panl_menu.Location = new System.Drawing.Point(0, 0);
@@ -285,11 +283,11 @@
             this.panl_menu.Name = "panl_menu";
             this.panl_menu.Size = new System.Drawing.Size(400, 991);
             this.panl_menu.TabIndex = 6;
-            this.panl_menu.UnderlinedStyle = false;
+            this.panl_menu.TopLeftColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             // 
             // tbl_Menu
             // 
-            this.tbl_Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.tbl_Menu.BackColor = System.Drawing.Color.Transparent;
             this.tbl_Menu.ColumnCount = 1;
             this.tbl_Menu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tbl_Menu.Controls.Add(this.panl_Logo, 0, 0);
@@ -370,7 +368,6 @@
             this.customPanel1.BorderSize = 2;
             this.customPanel1.Controls.Add(this.tableLayoutPanel1);
             this.customPanel1.Controls.Add(this.border_bottom);
-            this.customPanel1.Controls.Add(this.boder_top);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(5, 105);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(5);
@@ -405,7 +402,7 @@
             // 
             // border_bottom
             // 
-            this.border_bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(44)))));
+            this.border_bottom.BackColor = System.Drawing.SystemColors.MenuText;
             this.border_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.border_bottom.Location = new System.Drawing.Point(0, 57);
             this.border_bottom.Margin = new System.Windows.Forms.Padding(0);
@@ -413,23 +410,15 @@
             this.border_bottom.Size = new System.Drawing.Size(390, 3);
             this.border_bottom.TabIndex = 1;
             // 
-            // boder_top
-            // 
-            this.boder_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(44)))));
-            this.boder_top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boder_top.Location = new System.Drawing.Point(0, 0);
-            this.boder_top.Margin = new System.Windows.Forms.Padding(0);
-            this.boder_top.Name = "boder_top";
-            this.boder_top.Size = new System.Drawing.Size(390, 3);
-            this.boder_top.TabIndex = 0;
-            // 
             // panlMenu1
             // 
-            this.panlMenu1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu1.BackColor = System.Drawing.Color.Transparent;
+            this.panlMenu1.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu1.BorderRadius = 5;
+            this.panlMenu1.BorderRadius = 7;
             this.panlMenu1.BorderSize = 1;
             this.panlMenu1.Controls.Add(this.btn_Trangchu);
+            this.panlMenu1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu1.Location = new System.Drawing.Point(5, 175);
             this.panlMenu1.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu1.Name = "panlMenu1";
@@ -441,7 +430,7 @@
             // 
             this.btn_Trangchu.BackColor = System.Drawing.Color.Transparent;
             this.btn_Trangchu.FlatAppearance.BorderSize = 0;
-            this.btn_Trangchu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_Trangchu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_Trangchu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_Trangchu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Trangchu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -450,10 +439,10 @@
             this.btn_Trangchu.IconColor = System.Drawing.Color.White;
             this.btn_Trangchu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Trangchu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Trangchu.Location = new System.Drawing.Point(0, 3);
+            this.btn_Trangchu.Location = new System.Drawing.Point(5, 5);
             this.btn_Trangchu.Name = "btn_Trangchu";
-            this.btn_Trangchu.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_Trangchu.Size = new System.Drawing.Size(390, 60);
+            this.btn_Trangchu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_Trangchu.Size = new System.Drawing.Size(380, 50);
             this.btn_Trangchu.TabIndex = 0;
             this.btn_Trangchu.Text = "        Trang Chủ";
             this.btn_Trangchu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -462,11 +451,12 @@
             // 
             // panlMenu2
             // 
-            this.panlMenu2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu2.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu2.BorderRadius = 5;
+            this.panlMenu2.BorderRadius = 7;
             this.panlMenu2.BorderSize = 1;
             this.panlMenu2.Controls.Add(this.btn_nhanvien);
+            this.panlMenu2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu2.Location = new System.Drawing.Point(5, 245);
             this.panlMenu2.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu2.Name = "panlMenu2";
@@ -478,7 +468,7 @@
             // 
             this.btn_nhanvien.BackColor = System.Drawing.Color.Transparent;
             this.btn_nhanvien.FlatAppearance.BorderSize = 0;
-            this.btn_nhanvien.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_nhanvien.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_nhanvien.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_nhanvien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_nhanvien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -487,10 +477,10 @@
             this.btn_nhanvien.IconColor = System.Drawing.Color.White;
             this.btn_nhanvien.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_nhanvien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_nhanvien.Location = new System.Drawing.Point(0, 0);
+            this.btn_nhanvien.Location = new System.Drawing.Point(5, 5);
             this.btn_nhanvien.Name = "btn_nhanvien";
-            this.btn_nhanvien.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_nhanvien.Size = new System.Drawing.Size(390, 60);
+            this.btn_nhanvien.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_nhanvien.Size = new System.Drawing.Size(380, 50);
             this.btn_nhanvien.TabIndex = 1;
             this.btn_nhanvien.Text = "        Nhân Viên";
             this.btn_nhanvien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -499,11 +489,12 @@
             // 
             // panlMenu3
             // 
-            this.panlMenu3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu3.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu3.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu3.BorderRadius = 5;
+            this.panlMenu3.BorderRadius = 7;
             this.panlMenu3.BorderSize = 1;
             this.panlMenu3.Controls.Add(this.btn_SanPham);
+            this.panlMenu3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu3.Location = new System.Drawing.Point(5, 315);
             this.panlMenu3.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu3.Name = "panlMenu3";
@@ -515,7 +506,7 @@
             // 
             this.btn_SanPham.BackColor = System.Drawing.Color.Transparent;
             this.btn_SanPham.FlatAppearance.BorderSize = 0;
-            this.btn_SanPham.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_SanPham.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_SanPham.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_SanPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SanPham.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -524,10 +515,10 @@
             this.btn_SanPham.IconColor = System.Drawing.Color.White;
             this.btn_SanPham.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_SanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SanPham.Location = new System.Drawing.Point(0, 0);
+            this.btn_SanPham.Location = new System.Drawing.Point(5, 5);
             this.btn_SanPham.Name = "btn_SanPham";
-            this.btn_SanPham.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_SanPham.Size = new System.Drawing.Size(390, 60);
+            this.btn_SanPham.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_SanPham.Size = new System.Drawing.Size(380, 50);
             this.btn_SanPham.TabIndex = 1;
             this.btn_SanPham.Text = "        Sản Phẩm";
             this.btn_SanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -536,11 +527,12 @@
             // 
             // panlMenu4
             // 
-            this.panlMenu4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu4.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu4.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu4.BorderRadius = 5;
+            this.panlMenu4.BorderRadius = 7;
             this.panlMenu4.BorderSize = 1;
             this.panlMenu4.Controls.Add(this.btn_HoaDon);
+            this.panlMenu4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu4.Location = new System.Drawing.Point(5, 385);
             this.panlMenu4.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu4.Name = "panlMenu4";
@@ -552,7 +544,7 @@
             // 
             this.btn_HoaDon.BackColor = System.Drawing.Color.Transparent;
             this.btn_HoaDon.FlatAppearance.BorderSize = 0;
-            this.btn_HoaDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_HoaDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_HoaDon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_HoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_HoaDon.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -561,10 +553,10 @@
             this.btn_HoaDon.IconColor = System.Drawing.Color.White;
             this.btn_HoaDon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_HoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_HoaDon.Location = new System.Drawing.Point(0, 0);
+            this.btn_HoaDon.Location = new System.Drawing.Point(5, 5);
             this.btn_HoaDon.Name = "btn_HoaDon";
-            this.btn_HoaDon.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_HoaDon.Size = new System.Drawing.Size(390, 60);
+            this.btn_HoaDon.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_HoaDon.Size = new System.Drawing.Size(380, 50);
             this.btn_HoaDon.TabIndex = 1;
             this.btn_HoaDon.Text = "        Hóa Đơn";
             this.btn_HoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -572,11 +564,12 @@
             // 
             // panlMenu5
             // 
-            this.panlMenu5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu5.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu5.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu5.BorderRadius = 5;
+            this.panlMenu5.BorderRadius = 7;
             this.panlMenu5.BorderSize = 1;
             this.panlMenu5.Controls.Add(this.btn_ThanhToan);
+            this.panlMenu5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu5.Location = new System.Drawing.Point(5, 455);
             this.panlMenu5.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu5.Name = "panlMenu5";
@@ -588,7 +581,7 @@
             // 
             this.btn_ThanhToan.BackColor = System.Drawing.Color.Transparent;
             this.btn_ThanhToan.FlatAppearance.BorderSize = 0;
-            this.btn_ThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_ThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_ThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_ThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ThanhToan.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -597,10 +590,10 @@
             this.btn_ThanhToan.IconColor = System.Drawing.Color.White;
             this.btn_ThanhToan.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_ThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ThanhToan.Location = new System.Drawing.Point(0, 0);
+            this.btn_ThanhToan.Location = new System.Drawing.Point(5, 5);
             this.btn_ThanhToan.Name = "btn_ThanhToan";
-            this.btn_ThanhToan.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_ThanhToan.Size = new System.Drawing.Size(390, 60);
+            this.btn_ThanhToan.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_ThanhToan.Size = new System.Drawing.Size(380, 50);
             this.btn_ThanhToan.TabIndex = 1;
             this.btn_ThanhToan.Text = "        Thanh Toán";
             this.btn_ThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -609,11 +602,12 @@
             // 
             // panlMenu6
             // 
-            this.panlMenu6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu6.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu6.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu6.BorderRadius = 5;
+            this.panlMenu6.BorderRadius = 7;
             this.panlMenu6.BorderSize = 1;
             this.panlMenu6.Controls.Add(this.btn_KhuyenMai);
+            this.panlMenu6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu6.Location = new System.Drawing.Point(5, 525);
             this.panlMenu6.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu6.Name = "panlMenu6";
@@ -625,7 +619,7 @@
             // 
             this.btn_KhuyenMai.BackColor = System.Drawing.Color.Transparent;
             this.btn_KhuyenMai.FlatAppearance.BorderSize = 0;
-            this.btn_KhuyenMai.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_KhuyenMai.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_KhuyenMai.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_KhuyenMai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_KhuyenMai.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -634,10 +628,10 @@
             this.btn_KhuyenMai.IconColor = System.Drawing.Color.White;
             this.btn_KhuyenMai.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_KhuyenMai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KhuyenMai.Location = new System.Drawing.Point(0, 0);
+            this.btn_KhuyenMai.Location = new System.Drawing.Point(5, 5);
             this.btn_KhuyenMai.Name = "btn_KhuyenMai";
-            this.btn_KhuyenMai.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_KhuyenMai.Size = new System.Drawing.Size(390, 60);
+            this.btn_KhuyenMai.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_KhuyenMai.Size = new System.Drawing.Size(380, 50);
             this.btn_KhuyenMai.TabIndex = 1;
             this.btn_KhuyenMai.Text = "        Khuyến Mãi";
             this.btn_KhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -646,11 +640,12 @@
             // 
             // panlMenu7
             // 
-            this.panlMenu7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panlMenu7.BorderColor = System.Drawing.Color.Transparent;
             this.panlMenu7.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.panlMenu7.BorderRadius = 5;
+            this.panlMenu7.BorderRadius = 7;
             this.panlMenu7.BorderSize = 1;
             this.panlMenu7.Controls.Add(this.btn_logout);
+            this.panlMenu7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panlMenu7.Location = new System.Drawing.Point(5, 917);
             this.panlMenu7.Margin = new System.Windows.Forms.Padding(5);
             this.panlMenu7.Name = "panlMenu7";
@@ -662,7 +657,7 @@
             // 
             this.btn_logout.BackColor = System.Drawing.Color.Transparent;
             this.btn_logout.FlatAppearance.BorderSize = 0;
-            this.btn_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_logout.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -671,10 +666,10 @@
             this.btn_logout.IconColor = System.Drawing.Color.White;
             this.btn_logout.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_logout.Location = new System.Drawing.Point(0, 0);
+            this.btn_logout.Location = new System.Drawing.Point(5, 5);
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btn_logout.Size = new System.Drawing.Size(390, 60);
+            this.btn_logout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_logout.Size = new System.Drawing.Size(380, 50);
             this.btn_logout.TabIndex = 1;
             this.btn_logout.Text = "        Đăng Xuất";
             this.btn_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -745,7 +740,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Timer timer1;
-        private CustomControl.CustomPanel panl_menu;
+        private CustomControl.GadientPanel panl_menu;
         private System.Windows.Forms.TableLayoutPanel tbl_Menu;
         private CustomControl.CustomPanel customPanel1;
         private CustomControl.CustomPanel panl_Logo;
@@ -761,7 +756,6 @@
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel border_bottom;
-        private System.Windows.Forms.Panel boder_top;
         private CustomControl.CustomPanel panlMenu1;
         private FontAwesome.Sharp.IconButton btn_Trangchu;
         private CustomControl.CustomPanel panlMenu2;

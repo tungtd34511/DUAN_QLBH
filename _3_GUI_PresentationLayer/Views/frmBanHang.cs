@@ -28,7 +28,7 @@ namespace _3_GUI_PresentationLayer.Views
             _banHangService = new BanHangService();
             _productOders = new List<ProductOder>();
             _lstSanPhamsShow = new List<SanPham>();
-            //LoadDetail();
+            LoadDetail();
         }
         /// <summary>
         /// reload detail form
@@ -55,12 +55,14 @@ namespace _3_GUI_PresentationLayer.Views
             for (int i = 0; i < list.Count; i++)
             {
                 //design panel
-                CustomPanel panel = new();
-                panel.Name = "panel_" + i.ToString();
-                panel.BorderSize = 2;
-                panel.BorderRadius = 10;
-                panel.BorderColor = Color.White;
-                panel.Dock = DockStyle.Fill;
+                CustomPanel panel = new()
+                {
+                    Name = "panel_" + i.ToString(),
+                    BorderSize = 2,
+                    BorderRadius = 10,
+                    BorderColor = Color.White,
+                    Dock = DockStyle.Fill
+                };
                 Image img = Image.FromFile(list[i].Images[0].Path);
                 Bitmap img1 = new(img, new Size(180, 180));
                 Bitmap img2 = new(img, new Size(200, 200));
@@ -99,12 +101,14 @@ namespace _3_GUI_PresentationLayer.Views
                     }
                 };
                 //design Name
-                VBButton btnName = new();
-                btnName.Name = "btnName_" + i.ToString();
-                btnName.BorderRadius = 10;
-                btnName.BackColor = Color.FromArgb(235, 235, 235);
-                btnName.ForeColor = Color.Black;
-                btnName.Dock = DockStyle.Bottom;
+                VBButton btnName = new()
+                {
+                    Name = "btnName_" + i.ToString(),
+                    BorderRadius = 10,
+                    BackColor = Color.FromArgb(235, 235, 235),
+                    ForeColor = Color.Black,
+                    Dock = DockStyle.Bottom
+                };
                 btnName.FlatAppearance.BorderSize = 0;
                 btnName.FlatStyle = FlatStyle.Flat;
                 btnName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -118,9 +122,11 @@ namespace _3_GUI_PresentationLayer.Views
                 ////Color myColor = Color.FromArgb(100, Color.Blue);
                 ////label1.BackColor = myColor;
                 //design Price
-                Button btnPrice = new();
-                btnPrice.BackColor = Color.FromArgb(130, Color.Black);
-                btnPrice.Dock = DockStyle.Bottom;
+                Button btnPrice = new()
+                {
+                    BackColor = Color.FromArgb(130, Color.Black),
+                    Dock = DockStyle.Bottom
+                };
                 btnPrice.FlatAppearance.BorderSize = 0;
                 btnPrice.FlatStyle = FlatStyle.Flat;
                 btnPrice.ForeColor = Color.White;
@@ -141,21 +147,25 @@ namespace _3_GUI_PresentationLayer.Views
             if (productOder != null)
             {
                 //panel
-                CustomPanel panl = new();
-                panl.BackColor = Color.White;
-                panl.BorderColor = Color.White;
-                panl.BorderFocusColor = Color.HotPink;
-                panl.BorderRadius = 5;
-                panl.BorderSize = 1;
-                panl.Margin = new Padding(3);
-                panl.Dock = DockStyle.Top;
-                panl.Location = new Point(3, 8);
-                panl.Name = "panl_" + productOder.Product.Id.ToString();
-                panl.Size = new Size(1387, 50);
-                panl.UnderlinedStyle = false;
+                CustomPanel panl = new()
+                {
+                    BackColor = Color.White,
+                    BorderColor = Color.White,
+                    BorderFocusColor = Color.HotPink,
+                    BorderRadius = 5,
+                    BorderSize = 1,
+                    Margin = new Padding(3),
+                    Dock = DockStyle.Top,
+                    Location = new Point(3, 8),
+                    Name = "panl_" + productOder.Product.Id.ToString(),
+                    Size = new Size(1387, 50),
+                    UnderlinedStyle = false
+                };
                 //tbl layout panel
-                TableLayoutPanel tbl = new();
-                tbl.ColumnCount = 6;
+                TableLayoutPanel tbl = new()
+                {
+                    ColumnCount = 6
+                };
                 tbl.ColumnStyles.Add(
                     new ColumnStyle(SizeType.Percent, 8.321964F));
                 tbl.ColumnStyles.Add(
@@ -177,10 +187,12 @@ namespace _3_GUI_PresentationLayer.Views
                     new RowStyle(SizeType.Percent, 50F));
                 tbl.Size = new Size(1387, 50);
                 //img
-                VBButton img = new();
-                img.Anchor = AnchorStyles.None;
-                img.BackColor = Color.White;
-                img.BackgroundColor = Color.White;
+                VBButton img = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    BackColor = Color.White,
+                    BackgroundColor = Color.White
+                };
                 Image imgage = Image.FromFile(productOder.Image.Path);
                 img.BackgroundImage = imgage;
                 img.BackgroundImageLayout = ImageLayout.Zoom;
@@ -196,46 +208,54 @@ namespace _3_GUI_PresentationLayer.Views
                 img.TextColor = Color.White;
                 img.UseVisualStyleBackColor = false;
                 //Name
-                Label lblName = new();
-                lblName.Anchor = AnchorStyles.Left;
-                lblName.AllowDrop = true;
-                lblName.AutoSize = true;
-                lblName.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular,
-                    GraphicsUnit.Point);
-                lblName.Location = new Point(92, 4);
-                lblName.Name = "lblName_" + i.ToString();
-                lblName.Size = new Size(566, 41);
-                lblName.Text = productOder.Product.Name + "_" + productOder.Color.Name + "_" + productOder.Size.Code;
+                Label lblName = new()
+                {
+                    Anchor = AnchorStyles.Left,
+                    AllowDrop = true,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI Light", 18F, FontStyle.Regular,
+                    GraphicsUnit.Point),
+                    Location = new Point(92, 4),
+                    Name = "lblName_" + i.ToString(),
+                    Size = new Size(566, 41),
+                    Text = productOder.Product.Name + "_" + productOder.Color.Name + "_" + productOder.Size.Code
+                };
                 //Gia ban
-                Label lblGiaBan = new();
-                lblGiaBan.Anchor = AnchorStyles.None;
-                lblGiaBan.AutoSize = true;
-                lblGiaBan.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point);
-                lblGiaBan.Location = new Point(716, 4);
-                lblGiaBan.Name = "lblGiaBan_" + i.ToString();
-                lblGiaBan.Size = new Size(182, 41);
-                lblGiaBan.Text = productOder.Price.GiaBan.ToString();
-                lblGiaBan.TextAlign = ContentAlignment.BottomCenter;
+                Label lblGiaBan = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point),
+                    Location = new Point(716, 4),
+                    Name = "lblGiaBan_" + i.ToString(),
+                    Size = new Size(182, 41),
+                    Text = productOder.Price.GiaBan.ToString(),
+                    TextAlign = ContentAlignment.BottomCenter
+                };
                 //So luong
-                TextBox txtSoLuong = new();
-                txtSoLuong.Anchor = AnchorStyles.None;
-                txtSoLuong.BackColor = SystemColors.Window;
-                txtSoLuong.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-                txtSoLuong.Location = new Point(923, 5);
-                txtSoLuong.Margin = new Padding(0);
-                txtSoLuong.Name = "txtSoLuong_" + i.ToString();
-                txtSoLuong.Size = new Size(70, 47);
-                txtSoLuong.Text = productOder.SoLuong.ToString();
-                txtSoLuong.TextAlign = HorizontalAlignment.Right;
+                TextBox txtSoLuong = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    BackColor = SystemColors.Window,
+                    Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point),
+                    Location = new Point(923, 5),
+                    Margin = new Padding(0),
+                    Name = "txtSoLuong_" + i.ToString(),
+                    Size = new Size(70, 47),
+                    Text = productOder.SoLuong.ToString(),
+                    TextAlign = HorizontalAlignment.Right
+                };
                 //Tong Tien
-                Label lblTongTien = new();
-                lblTongTien.Anchor = AnchorStyles.None;
-                lblTongTien.AutoSize = true;
-                lblTongTien.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point);
-                lblTongTien.Location = new Point(1071, 4);
-                lblTongTien.Name = "lblTongTien_" + i.ToString();
-                lblTongTien.Size = new Size(182, 41);
-                lblTongTien.Text = (productOder.Price.GiaBan*productOder.SoLuong).ToString();
+                Label lblTongTien = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point),
+                    Location = new Point(1071, 4),
+                    Name = "lblTongTien_" + i.ToString(),
+                    Size = new Size(182, 41),
+                    Text = (productOder.Price.GiaBan * productOder.SoLuong).ToString()
+                };
                 //
                 txtSoLuong.TextChanged += (_, _) =>
                 {
@@ -249,13 +269,15 @@ namespace _3_GUI_PresentationLayer.Views
                     }
                 };
                 //button delete
-                VBButton btnDelete = new();
-                btnDelete.Anchor = AnchorStyles.None;
-                btnDelete.BackColor = Color.Red;
-                btnDelete.BackgroundColor = Color.Red;
-                btnDelete.BorderColor = Color.PaleVioletRed;
-                btnDelete.BorderRadius = 5;
-                btnDelete.BorderSize = 0;
+                VBButton btnDelete = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    BackColor = Color.Red,
+                    BackgroundColor = Color.Red,
+                    BorderColor = Color.PaleVioletRed,
+                    BorderRadius = 5,
+                    BorderSize = 0
+                };
                 btnDelete.FlatAppearance.BorderSize = 0;
                 btnDelete.FlatStyle = FlatStyle.Flat;
                 btnDelete.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);

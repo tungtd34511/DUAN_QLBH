@@ -33,7 +33,7 @@ namespace _3_GUI_PresentationLayer.Views
             _qlSanPhamService = new QLSanPhamService();
             _indexUpdateDetail = new int();
             _lstSanPhamsShow = new List<SanPham>();
-            //LoadThongTin();
+            LoadThongTin();
         }
         /// <summary>
         /// reload lại thông tin cho form

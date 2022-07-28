@@ -279,15 +279,17 @@ namespace _3_GUI_PresentationLayer.Views
                 lblSize.Name = "lblSize_"+i.ToString();
                 lblSize.Size = new Size(22, 20);
                 lblSize.Text = _sanPham.Sizes.FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString();
-                Label lblSoLuong = new();
-                lblSoLuong.Anchor = AnchorStyles.Right;
-                lblSoLuong.AutoSize = true;
-                lblSoLuong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-                lblSoLuong.Location = new Point(380, 12);
-                lblSoLuong.Margin = new Padding(3, 0, 7, 0);
-                lblSoLuong.Name = "lblSoLuong_"+i.ToString();
-                lblSoLuong.Size = new Size(33, 20);
-                lblSoLuong.Text = _sanPham.Vers[i].SoLuong.ToString();
+                Label lblSoLuong = new()
+                {
+                    Anchor = AnchorStyles.Right,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point),
+                    Location = new Point(380, 12),
+                    Margin = new Padding(3, 0, 7, 0),
+                    Name = "lblSoLuong_" + i.ToString(),
+                    Size = new Size(33, 20),
+                    Text = _sanPham.Vers[i].SoLuong.ToString()
+                };
                 //
                 tblVer.Controls.Add(lblStt, 0, 0);
                 tblVer.Controls.Add(panlColor, 1, 0);

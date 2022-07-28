@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.Models;
 using _2_BUS_BusinessLayer.Services;
+using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.CustomControl;
 using IronBarCode;
 using Color = _1_DAL_DataAcessLayer.Entities.Color;
@@ -154,19 +155,25 @@ namespace _3_GUI_PresentationLayer.Views
         {
             if (txt_QrCode.Text != "")
             {
-                Form frmQr = new();
-                frmQr.StartPosition = FormStartPosition.CenterScreen;
+                Form frmQr = new()
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 frmQr.BringToFront();
                 frmQr.Size = new System.Drawing.Size(600, 650);
-                Panel panl = new();
-                panl.Size = new System.Drawing.Size(500, 500);
-                panl.BackgroundImage = QRCodeWriter.CreateQrCode(txt_QrCode.Text, 500).ToImage();
-                panl.Location = new Point(50, 20);
+                Panel panl = new()
+                {
+                    Size = new System.Drawing.Size(500, 500),
+                    BackgroundImage = QRCodeWriter.CreateQrCode(txt_QrCode.Text, 500).ToImage(),
+                    Location = new Point(50, 20)
+                };
                 frmQr.Controls.Add(panl);
-                Button btnExit = new();
-                btnExit.Text = "Thoát";
-                btnExit.Size = new System.Drawing.Size(100, 50);
-                btnExit.Location = new Point(450, 540);
+                Button btnExit = new()
+                {
+                    Text = "Thoát",
+                    Size = new System.Drawing.Size(100, 50),
+                    Location = new Point(450, 540)
+                };
                 frmQr.Controls.Add(btnExit);
                 btnExit.Click += (s, o) => { frmQr.Close(); };
                 frmQr.ShowDialog();
@@ -180,8 +187,10 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 try
                 {
-                    Panel panl = new();
-                    panl.BackColor = SystemColors.ActiveBorder;
+                    Panel panl = new()
+                    {
+                        BackColor = SystemColors.ActiveBorder
+                    };
                     System.Drawing.Image img = System.Drawing.Image.FromFile(_sanPham.Images[i].Path);
                     Bitmap img1 = new(img, new System.Drawing.Size(100, 100));
                     panl.BackgroundImage = img1;
@@ -191,11 +200,13 @@ namespace _3_GUI_PresentationLayer.Views
                     panl.Name = "panl_" + i.ToString();
                     panl.Size = new System.Drawing.Size(100, 100);
                     //
-                    VBButton btnDelete = new();
-                    btnDelete.BorderSize = 0;
-                    btnDelete.BorderRadius = 5;
-                    btnDelete.Anchor = AnchorStyles.None;
-                    btnDelete.BackColor = System.Drawing.Color.Red;
+                    VBButton btnDelete = new()
+                    {
+                        BorderSize = 0,
+                        BorderRadius = 5,
+                        Anchor = AnchorStyles.None,
+                        BackColor = System.Drawing.Color.Red
+                    };
                     btnDelete.FlatAppearance.BorderSize = 0;
                     btnDelete.FlatStyle = FlatStyle.Flat;
                     btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -291,8 +302,10 @@ namespace _3_GUI_PresentationLayer.Views
                     // 
                     // tblVer
                     // 
-                    TableLayoutPanel tblVer = new();
-                    tblVer.ColumnCount = 5;
+                    TableLayoutPanel tblVer = new()
+                    {
+                        ColumnCount = 5
+                    };
                     tblVer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
                     tblVer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96F));
                     tblVer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 139F));
@@ -305,11 +318,13 @@ namespace _3_GUI_PresentationLayer.Views
                     tblVer.Size = new System.Drawing.Size(605, 50);
                     tblVer.BackColor = System.Drawing.Color.White;
                     // btnDelete
-                    VBButton btnDelete = new();
-                    btnDelete.BorderSize = 0;
-                    btnDelete.BorderRadius = 5;
-                    btnDelete.Anchor = AnchorStyles.None;
-                    btnDelete.BackColor = System.Drawing.Color.Red;
+                    VBButton btnDelete = new()
+                    {
+                        BorderSize = 0,
+                        BorderRadius = 5,
+                        Anchor = AnchorStyles.None,
+                        BackColor = System.Drawing.Color.Red
+                    };
                     btnDelete.FlatAppearance.BorderSize = 0;
                     btnDelete.FlatStyle = FlatStyle.Flat;
                     btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -336,9 +351,11 @@ namespace _3_GUI_PresentationLayer.Views
                         }
                     };
                     //
-                    Panel panImg = new();
-                    panImg.Anchor = AnchorStyles.None;
-                    panImg.BackColor = System.Drawing.Color.LightGray;
+                    Panel panImg = new()
+                    {
+                        Anchor = AnchorStyles.None,
+                        BackColor = System.Drawing.Color.LightGray
+                    };
                     var path = "";
                     try
                     {
@@ -361,9 +378,11 @@ namespace _3_GUI_PresentationLayer.Views
                     panImg.Name = "panlImg_" + i.ToString();
                     panImg.Size = new System.Drawing.Size(50, 50);
                     //btnName
-                    Button btnName = new();
-                    btnName.BackColor = System.Drawing.Color.White;
-                    btnName.Dock = DockStyle.Right;
+                    Button btnName = new()
+                    {
+                        BackColor = System.Drawing.Color.White,
+                        Dock = DockStyle.Right
+                    };
                     btnName.FlatAppearance.BorderSize = 0;
                     btnName.FlatStyle = FlatStyle.Flat;
                     btnName.Margin = new Padding(0);
@@ -375,8 +394,10 @@ namespace _3_GUI_PresentationLayer.Views
                     btnName.TextAlign = ContentAlignment.MiddleLeft;
                     btnName.UseVisualStyleBackColor = false;
                     // panlColor
-                    CustomPanel panlColor = new();
-                    panlColor.Anchor = ((AnchorStyles) ((AnchorStyles.Bottom | AnchorStyles.Left)));
+                    CustomPanel panlColor = new()
+                    {
+                        Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)))
+                    };
                     try
                     {
                         panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors
@@ -394,31 +415,35 @@ namespace _3_GUI_PresentationLayer.Views
                     panlColor.Size = new System.Drawing.Size(139, 50);
                     panlColor.UnderlinedStyle = false;
                     //txtSize
-                    TextBox txtSize = new();
-                    txtSize.Anchor = AnchorStyles.None;
-                    txtSize.BackColor = System.Drawing.Color.White;
-                    txtSize.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-                    txtSize.Margin = new Padding(0);
-                    txtSize.Name = "txtSize_" + i.ToString();
-                    txtSize.PlaceholderText = @"Kích cỡ";
-                    txtSize.Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString();
-                    txtSize.RightToLeft = RightToLeft.Yes;
-                    txtSize.Size = new System.Drawing.Size(100, 39);
-                    txtSize.ReadOnly = true;
-                    txtSize.BorderStyle = BorderStyle.FixedSingle;
+                    TextBox txtSize = new()
+                    {
+                        Anchor = AnchorStyles.None,
+                        BackColor = System.Drawing.Color.White,
+                        Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point),
+                        Margin = new Padding(0),
+                        Name = "txtSize_" + i.ToString(),
+                        PlaceholderText = @"Kích cỡ",
+                        Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString(),
+                        RightToLeft = RightToLeft.Yes,
+                        Size = new System.Drawing.Size(100, 39),
+                        ReadOnly = true,
+                        BorderStyle = BorderStyle.FixedSingle
+                    };
                     //txtSoLuong
-                    TextBox txtSoLuong = new();
-                    txtSoLuong.Anchor = AnchorStyles.None;
-                    txtSoLuong.BackColor = System.Drawing.Color.White;
-                    txtSoLuong.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-                    txtSoLuong.ForeColor = System.Drawing.Color.Black;
-                    txtSoLuong.Margin = new Padding(0);
-                    txtSoLuong.Name = "txtSoLuong_" + i.ToString();
-                    txtSoLuong.PlaceholderText = @"Số lượng";
-                    txtSoLuong.Text = _sanPham.Vers[i].SoLuong.ToString();
-                    txtSoLuong.RightToLeft = RightToLeft.Yes;
-                    txtSoLuong.Size = new System.Drawing.Size(100, 39);
-                    txtSoLuong.ReadOnly = true;
+                    TextBox txtSoLuong = new()
+                    {
+                        Anchor = AnchorStyles.None,
+                        BackColor = System.Drawing.Color.White,
+                        Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point),
+                        ForeColor = System.Drawing.Color.Black,
+                        Margin = new Padding(0),
+                        Name = "txtSoLuong_" + i.ToString(),
+                        PlaceholderText = @"Số lượng",
+                        Text = _sanPham.Vers[i].SoLuong.ToString(),
+                        RightToLeft = RightToLeft.Yes,
+                        Size = new System.Drawing.Size(100, 39),
+                        ReadOnly = true
+                    };
                     txtSize.BorderStyle = BorderStyle.FixedSingle;
                     //
                     //
@@ -541,6 +566,37 @@ namespace _3_GUI_PresentationLayer.Views
         private void Txt_GiaBan_MouseClick(object sender, EventArgs e)
         {
             txt_GiaBan.Text = "";
+        }
+
+        public new string Validate()
+        {
+            string ErorText = "";
+            CheckData check = new();
+            if (check.CheckKiTuDacBiet(txt_ProductName.Text))
+            {
+                ErorText += "Tên sản phẩm không chứa kí tự đặc biệt và số! ";
+            }
+            if (string.IsNullOrEmpty(txt_ThuongHieu.Text))
+            {
+                ErorText += "Bạn chưa chọn thương hiệu! ";
+            }
+            if (string.IsNullOrEmpty(txt_CatergoryName.Text))
+            {
+                ErorText += "Bạn chưa chọn nhóm hàng! ";
+            }
+            if (rbtn_Nam.Checked==false && rbtn_Nu.Checked ==false)
+            {
+                ErorText += "Bạn chưa chọn giới tính! ";
+            }
+            if (string.IsNullOrEmpty(txt_GiaBan.Text))
+            {
+                ErorText += "Bạn chưa nhập giá bán! ";
+            }
+            if (string.IsNullOrEmpty(txt_GiaBan.Text))
+            {
+                ErorText += "Bạn chưa nhập giá bán! ";
+            }
+            return ErorText;
         }
     }
 }

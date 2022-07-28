@@ -43,6 +43,22 @@ namespace _3_GUI_PresentationLayer.Views
             LoadCustomControl();
             //timer1.Start();
             //
+            _btnAcctive = _panelList[0];
+            if (_btnAcctive.CustomPanel != null)
+            {
+                _btnAcctive.CustomPanel.BackColor = Color.Transparent;
+                _btnAcctive.IconButton!.ForeColor = Color.White;
+                _btnAcctive.IconButton.IconColor = Color.White;
+                _btnAcctive = _panelList[0];
+                _btnAcctive.CustomPanel!.BackColor = Color.White;
+            }
+
+            if (_btnAcctive.IconButton != null)
+            {
+                _btnAcctive.IconButton.ForeColor = Color.FromArgb(90, 76, 219);
+                _btnAcctive.IconButton.IconColor = Color.FromArgb(90, 76, 219);
+            }
+            OpenchildForm(new FrmDashBoard());
         }
 
         #region Custom lại các control
@@ -239,7 +255,7 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void Btn_Trangchu_Click_1(object sender, EventArgs e)
         {
-            //OpenchildForm(new FrmmanHinhCho());
+            OpenchildForm(new FrmDashBoard());
         }
 
         private void Btn_SanPham_Click_1(object sender, EventArgs e)

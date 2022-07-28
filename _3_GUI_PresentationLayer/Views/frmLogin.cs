@@ -29,9 +29,11 @@ namespace _3_GUI_PresentationLayer.Views
             txt_Acc.Text = @"Taduytung99";
             txt_Pass.Text = @"Taduytung123";
             //Banner
-            FormBanner banner1 = new();
-            banner1.TopLevel = false;
-            banner1.Dock = DockStyle.None;
+            FormBanner banner1 = new()
+            {
+                TopLevel = false,
+                Dock = DockStyle.None
+            };
             panl_Banner.Controls.Add(banner1);
             banner1.Location = new Point(0, 0);
             banner1.BringToFront();
@@ -62,7 +64,6 @@ namespace _3_GUI_PresentationLayer.Views
             if (_loginService != null && _loginService.CheckLogin(acc,pass))
             {
                 _nguoiDung = _loginService.GetNguoiDung();
-                panel1.Controls.Clear();
                 OpenchildForm(new frmWelcome(_nguoiDung));
                 timer1.Start();
             }
@@ -82,7 +83,14 @@ namespace _3_GUI_PresentationLayer.Views
             _i++;
             if (_i == 1)
             {
-                if (_nguoiDung != null) _frmMain = new FrmMain(_nguoiDung);
+                if (_nguoiDung != null)
+                {
+                    _frmMain = new FrmMain(_nguoiDung);
+                    _frmMain.FormClosed += (o, args) =>
+                    {
+                        this.Close();
+                    };
+                }
             }
             else if (_i == 15)
             {
