@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.button2 = new FontAwesome.Sharp.IconButton();
-            this.img_user = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +43,12 @@
             this.panl_Logo = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tbl_Logo = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new FontAwesome.Sharp.IconButton();
+            this.img_user = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.border_bottom = new System.Windows.Forms.Panel();
             this.panlMenu1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.btn_Trangchu = new FontAwesome.Sharp.IconButton();
@@ -83,87 +83,6 @@
             this.panlMenu6.SuspendLayout();
             this.panlMenu7.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // vbButton2
-            // 
-            this.vbButton2.BackColor = System.Drawing.Color.White;
-            this.vbButton2.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
-            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton2.BorderRadius = 45;
-            this.vbButton2.BorderSize = 0;
-            this.vbButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.vbButton2.FlatAppearance.BorderSize = 0;
-            this.vbButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.vbButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton2.ForeColor = System.Drawing.Color.Black;
-            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.vbButton2.IconColor = System.Drawing.Color.Black;
-            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton2.Location = new System.Drawing.Point(0, 0);
-            this.vbButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(90, 90);
-            this.vbButton2.TabIndex = 3;
-            this.vbButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.vbButton2.TextColor = System.Drawing.Color.Black;
-            this.vbButton2.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.IconChar = FontAwesome.Sharp.IconChar.CaretDown;
-            this.button2.IconColor = System.Drawing.Color.White;
-            this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button2.IconSize = 22;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
-            this.button2.Size = new System.Drawing.Size(300, 54);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Duy Tùng";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
-            this.button2.MouseLeave += new System.EventHandler(this.Button2_MouseLeave);
-            this.button2.MouseHover += new System.EventHandler(this.Button2_MouseHover_1);
-            // 
-            // img_user
-            // 
-            this.img_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.img_user.BackColor = System.Drawing.Color.White;
-            this.img_user.BackgroundColor = System.Drawing.Color.White;
-            this.img_user.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_user.BackgroundImage")));
-            this.img_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.img_user.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.img_user.BorderRadius = 20;
-            this.img_user.BorderSize = 0;
-            this.img_user.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.img_user.FlatAppearance.BorderSize = 0;
-            this.img_user.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.img_user.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.img_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.img_user.ForeColor = System.Drawing.Color.Black;
-            this.img_user.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.img_user.IconColor = System.Drawing.Color.Black;
-            this.img_user.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.img_user.Location = new System.Drawing.Point(25, 7);
-            this.img_user.Name = "img_user";
-            this.img_user.Size = new System.Drawing.Size(40, 40);
-            this.img_user.TabIndex = 2;
-            this.img_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.img_user.TextColor = System.Drawing.Color.Black;
-            this.img_user.UseVisualStyleBackColor = false;
-            this.img_user.Click += new System.EventHandler(this.VbButton1_Click);
             // 
             // rjDropdownMenu1
             // 
@@ -282,7 +201,7 @@
             this.panl_menu.Margin = new System.Windows.Forms.Padding(0);
             this.panl_menu.Name = "panl_menu";
             this.panl_menu.Size = new System.Drawing.Size(400, 991);
-            this.panl_menu.TabIndex = 6;
+            this.panl_menu.TabIndex = 8;
             this.panl_menu.TopLeftColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             // 
             // tbl_Menu
@@ -360,6 +279,33 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "EGALE";
             // 
+            // vbButton2
+            // 
+            this.vbButton2.BackColor = System.Drawing.Color.White;
+            this.vbButton2.BackgroundColor = System.Drawing.Color.White;
+            this.vbButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vbButton2.BackgroundImage")));
+            this.vbButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.vbButton2.BorderRadius = 45;
+            this.vbButton2.BorderSize = 0;
+            this.vbButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vbButton2.FlatAppearance.BorderSize = 0;
+            this.vbButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.vbButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton2.ForeColor = System.Drawing.Color.Black;
+            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton2.IconColor = System.Drawing.Color.Black;
+            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.vbButton2.Location = new System.Drawing.Point(0, 0);
+            this.vbButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.vbButton2.Name = "vbButton2";
+            this.vbButton2.Size = new System.Drawing.Size(90, 90);
+            this.vbButton2.TabIndex = 3;
+            this.vbButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.vbButton2.TextColor = System.Drawing.Color.Black;
+            this.vbButton2.UseVisualStyleBackColor = false;
+            // 
             // customPanel1
             // 
             this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
@@ -399,6 +345,58 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 54);
             this.panel1.TabIndex = 3;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.IconChar = FontAwesome.Sharp.IconChar.CaretDown;
+            this.button2.IconColor = System.Drawing.Color.White;
+            this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button2.IconSize = 22;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.button2.Size = new System.Drawing.Size(300, 54);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Duy Tùng";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // img_user
+            // 
+            this.img_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.img_user.BackColor = System.Drawing.Color.White;
+            this.img_user.BackgroundColor = System.Drawing.Color.White;
+            this.img_user.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_user.BackgroundImage")));
+            this.img_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.img_user.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.img_user.BorderRadius = 20;
+            this.img_user.BorderSize = 0;
+            this.img_user.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.img_user.FlatAppearance.BorderSize = 0;
+            this.img_user.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.img_user.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.img_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.img_user.ForeColor = System.Drawing.Color.Black;
+            this.img_user.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.img_user.IconColor = System.Drawing.Color.Black;
+            this.img_user.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.img_user.Location = new System.Drawing.Point(25, 7);
+            this.img_user.Name = "img_user";
+            this.img_user.Size = new System.Drawing.Size(40, 40);
+            this.img_user.TabIndex = 2;
+            this.img_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.img_user.TextColor = System.Drawing.Color.Black;
+            this.img_user.UseVisualStyleBackColor = false;
+            this.img_user.Click += new System.EventHandler(this.img_user_Click);
             // 
             // border_bottom
             // 
@@ -447,7 +445,7 @@
             this.btn_Trangchu.Text = "        Trang Chủ";
             this.btn_Trangchu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Trangchu.UseVisualStyleBackColor = false;
-            this.btn_Trangchu.Click += new System.EventHandler(this.Btn_Trangchu_Click_1);
+            this.btn_Trangchu.Click += new System.EventHandler(this.Btn_Trangchu_Click);
             // 
             // panlMenu2
             // 
@@ -485,7 +483,7 @@
             this.btn_nhanvien.Text = "        Nhân Viên";
             this.btn_nhanvien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_nhanvien.UseVisualStyleBackColor = false;
-            this.btn_nhanvien.Click += new System.EventHandler(this.Btn_nhanvien_Click);
+            this.btn_nhanvien.Click += new System.EventHandler(this.Btn_nhanvien_Click_1);
             // 
             // panlMenu3
             // 
@@ -523,7 +521,7 @@
             this.btn_SanPham.Text = "        Sản Phẩm";
             this.btn_SanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SanPham.UseVisualStyleBackColor = false;
-            this.btn_SanPham.Click += new System.EventHandler(this.Btn_SanPham_Click_1);
+            this.btn_SanPham.Click += new System.EventHandler(this.Btn_SanPham_Click);
             // 
             // panlMenu4
             // 
@@ -598,7 +596,7 @@
             this.btn_ThanhToan.Text = "        Thanh Toán";
             this.btn_ThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_ThanhToan.UseVisualStyleBackColor = false;
-            this.btn_ThanhToan.Click += new System.EventHandler(this.Btn_ThanhToan_Click_1);
+            this.btn_ThanhToan.Click += new System.EventHandler(this.Btn_ThanhToan_Click);
             // 
             // panlMenu6
             // 
@@ -636,7 +634,7 @@
             this.btn_KhuyenMai.Text = "        Khuyến Mãi";
             this.btn_KhuyenMai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_KhuyenMai.UseVisualStyleBackColor = false;
-            this.btn_KhuyenMai.Click += new System.EventHandler(this.Btn_KhuyenMai_Click);
+            this.btn_KhuyenMai.Click += new System.EventHandler(this.btn_KhuyenMai_Click_1);
             // 
             // panlMenu7
             // 
@@ -729,32 +727,27 @@
         }
 
         #endregion
-        private CustomControl.VBButton img_user;
         private CustomControl.RJDropdownMenu rjDropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private CustomControl.VBButton vbButton2;
-        private FontAwesome.Sharp.IconButton button2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Timer timer1;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private CustomControl.VBButton btn_title;
         private CustomControl.GadientPanel panl_menu;
         private System.Windows.Forms.TableLayoutPanel tbl_Menu;
-        private CustomControl.CustomPanel customPanel1;
         private CustomControl.CustomPanel panl_Logo;
         private System.Windows.Forms.TableLayoutPanel tbl_Logo;
         private System.Windows.Forms.Label label1;
-        private CustomControl.CustomPanel panlMenu6;
-        private FontAwesome.Sharp.IconButton btn_KhuyenMai;
-        private CustomControl.CustomPanel panlMenu5;
-        private FontAwesome.Sharp.IconButton btn_ThanhToan;
-        private CustomControl.CustomPanel panlMenu4;
-        private FontAwesome.Sharp.IconButton btn_HoaDon;
+        private CustomControl.VBButton vbButton2;
+        private CustomControl.CustomPanel customPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton button2;
+        private CustomControl.VBButton img_user;
         private System.Windows.Forms.Panel border_bottom;
         private CustomControl.CustomPanel panlMenu1;
         private FontAwesome.Sharp.IconButton btn_Trangchu;
@@ -762,8 +755,13 @@
         private FontAwesome.Sharp.IconButton btn_nhanvien;
         private CustomControl.CustomPanel panlMenu3;
         private FontAwesome.Sharp.IconButton btn_SanPham;
+        private CustomControl.CustomPanel panlMenu4;
+        private FontAwesome.Sharp.IconButton btn_HoaDon;
+        private CustomControl.CustomPanel panlMenu5;
+        private FontAwesome.Sharp.IconButton btn_ThanhToan;
+        private CustomControl.CustomPanel panlMenu6;
+        private FontAwesome.Sharp.IconButton btn_KhuyenMai;
         private CustomControl.CustomPanel panlMenu7;
         private FontAwesome.Sharp.IconButton btn_logout;
-        private CustomControl.VBButton btn_title;
     }
 }

@@ -183,26 +183,6 @@ namespace _3_GUI_PresentationLayer.Views
         }
 
         #endregion
-        
-
-        private void VbButton1_Click(object sender, EventArgs e)
-        {
-            OpenchildForm(new FrmUser(_nguoiDung));
-        }
-        private void Button2_MouseHover_1(object sender, EventArgs e)
-        {
-            button2.IconColor = Color.Gray;
-        }
-
-        private void Button2_Click_1(object sender, EventArgs e)
-        {
-            rjDropdownMenu1.Show(button2, button2.Width, 47);
-        }
-        //
-        private void Button2_MouseLeave(object sender, EventArgs e)
-        {
-            button2.IconColor = Color.White;
-        }
 
         private int j = 0;
         private readonly List<bool> b = new(){false, false};
@@ -252,30 +232,41 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
         }
+        
 
-        private void Btn_Trangchu_Click_1(object sender, EventArgs e)
+        private void Btn_Trangchu_Click(object sender, EventArgs e)
         {
             OpenchildForm(new FrmDashBoard());
         }
 
-        private void Btn_SanPham_Click_1(object sender, EventArgs e)
+        private void Btn_nhanvien_Click_1(object sender, EventArgs e)
+        {
+            OpenchildForm(new FormNhanVien());
+        }
+
+        private void Btn_SanPham_Click(object sender, EventArgs e)
         {
             if (_frmQlsAnPham != null) OpenchildForm(_frmQlsAnPham);
         }
 
-        private void Btn_ThanhToan_Click_1(object sender, EventArgs e)
+        private void Btn_ThanhToan_Click(object sender, EventArgs e)
         {
             if (_frmBanHang != null) OpenchildForm(_frmBanHang);
         }
 
-        private void Btn_KhuyenMai_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new FrmSaleList());
+            rjDropdownMenu1.Show(button2, button2.Width, 47);
         }
 
-        private void Btn_nhanvien_Click(object sender, EventArgs e)
+        private void img_user_Click(object sender, EventArgs e)
         {
-            OpenchildForm(new FormNhanVien());
+            OpenchildForm(new FrmUser(_nguoiDung));
+        }
+
+        private void btn_KhuyenMai_Click_1(object sender, EventArgs e)
+        {
+            OpenchildForm(new FrmSaleList());
         }
     }
 }

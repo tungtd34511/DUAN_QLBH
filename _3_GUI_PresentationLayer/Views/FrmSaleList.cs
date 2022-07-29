@@ -340,6 +340,16 @@ namespace _3_GUI_PresentationLayer.Views
                 tbl_Loc.Controls.Add(panlPrice);
             }
         }
+
+        private void rjDropdownMenu1_Opening(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            rjDropdownMenu1.Show(iconButton1,iconButton1.Width,iconButton1.Height);
+        }
     }
     
 }

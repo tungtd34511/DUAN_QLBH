@@ -20,62 +20,74 @@ namespace _3_GUI_PresentationLayer.Views
     {
         //tạo delegate để nhận trạng thái form và reload form
         public delegate void SendSatus(int ProductId);
+
         private int _indexUpdateDetail;
         private int _lastindex;
+
         private int _lstDetailIndex;
+
+        //Danh sách sản phẩm khi chưa lock
+        private List<SanPham> _sanPhams;
+
         //
         private readonly QLSanPhamService _qlSanPhamService;
+
         private List<SanPham> _lstSanPhamsShow;
+
         // CHức năng thêm sản phẩm
         public FrmListProduct()
         {
             InitializeComponent();
-            _qlSanPhamService = new QLSanPhamService();
             _indexUpdateDetail = new int();
             _lstSanPhamsShow = new List<SanPham>();
+            _qlSanPhamService = new QLSanPhamService();
+            _sanPhams = _qlSanPhamService.GetLstSanPhams();
             LoadThongTin();
         }
-        /// <summary>
-        /// reload lại thông tin cho form
-        /// </summary>
-        public void LoadThongTin()
+
+        public List<SanPham> GetSanPhamShows(int index,List<SanPham> list)
         {
-            _lstDetailIndex = 0;
-            _lastindex = _qlSanPhamService.GetLstSanPhams().Count / 14;
-            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
+            _lstSanPhamsShow = new();
+            _lastindex = (list.Count / 16);
+            if (list.Count % 16 == 0)//Trường hợp đặc biệt
             {
-                try
-                {
-                    _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
-                }
-                catch
-                {
-                    break;
-                }
+                _lastindex--;
             }
-            AddProduct(_lstSanPhamsShow);
-            txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-            lbl_lastIndex.Text = "/" + (_lastindex + 1).ToString();
-            //
-            AddTblLoc();
-        }
-        private void SetValue(int value)
-        {
-            _lstSanPhamsShow = new List<SanPham>();
-            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
+            for (int i = index * 16; i < (index + 1) * 16; i++)
             {
                 try
                 {
-                    _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
+                    _lstSanPhamsShow.Add(list[i]);
                 }
                 catch
                 {
                     continue;
                 }
             }
+            txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
+            lbl_lastIndex.Text = "/" + (_lastindex+1).ToString();
+            Lbl_Result.Text = list.Count.ToString() + " Kết quả";
+            return _lstSanPhamsShow;
+        }
+
+        /// <summary>
+        /// reload lại thông tin cho form
+        /// </summary>
+        public void LoadThongTin()
+        {
+            _lstDetailIndex = 0;
+            AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
+            //
+            AddTblLoc();
+        }
+
+        private void SetValue(int value)
+        {
+            LocSanPham();
+            GetSanPhamShows(_lstDetailIndex,_sanPhams);
             // cập nhật tên sản phẩm
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[5].Text =
-                    _lstSanPhamsShow[_indexUpdateDetail].Product.Name;
+                _lstSanPhamsShow[_indexUpdateDetail].Product.Name;
             // cập nật giá bán
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[6].Text =
                 string.Format("{0:#,##0}", _lstSanPhamsShow[_indexUpdateDetail].Price.GiaBan.ToString()) + " VNĐ";
@@ -87,11 +99,13 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 sum += x.SoLuong;
             }
+
             //cập nhật số lượng
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[8].Text = sum.ToString();
         }
+
         //Load tbl_Product
-        private void AddProduct(List<SanPham> list)
+        private void AddTableProduct(List<SanPham> list)
         {
             tbl_lstProduct.Controls.Clear();
             TableLayoutRowStyleCollection styles =
@@ -100,7 +114,8 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 x.Height = 50;
             }
-            tbl_lstProduct.Height = 700;
+
+            tbl_lstProduct.Height = 800;
             //
             for (int i = 0; i < list.Count; i++)
             {
@@ -108,7 +123,7 @@ namespace _3_GUI_PresentationLayer.Views
                 Panel panlProduct = new();
                 panlProduct.Dock = DockStyle.Top;
                 panlProduct.Margin = new Padding(0);
-                panlProduct.Name = "panlProduct_"+i.ToString();
+                panlProduct.Name = "panlProduct_" + i.ToString();
                 panlProduct.Size = new Size(1510, 50);
                 panlProduct.Font = new Font(new FontFamily("Segoe UI"), 9);
                 //tbl
@@ -128,7 +143,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblProduct.Dock = DockStyle.Top;
                 tblProduct.Location = new Point(0, 0);
                 tblProduct.Margin = new Padding(0);
-                tblProduct.Name = "tbl_Product_"+i.ToString();
+                tblProduct.Name = "tbl_Product_" + i.ToString();
                 tblProduct.RowCount = 1;
                 tblProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
                 tblProduct.Size = new Size(1510, 50);
@@ -138,19 +153,20 @@ namespace _3_GUI_PresentationLayer.Views
                 }
                 else
                 {
-                    tblProduct.BackColor = Color.FromArgb(100,220, 220, 220);
+                    tblProduct.BackColor = Color.FromArgb(100, 220, 220, 220);
                 }
-                    //btnMoRong
+                //btnMoRong
                 IconButton btnMoRong = new();
                 btnMoRong.Anchor = AnchorStyles.Left;
                 btnMoRong.FlatAppearance.BorderSize = 0;
+                btnMoRong.BackColor = Color.Transparent;
                 btnMoRong.FlatStyle = FlatStyle.Flat;
                 btnMoRong.IconChar = IconChar.AngleDown;
                 btnMoRong.IconColor = Color.Black;
                 btnMoRong.IconFont = IconFont.Auto;
                 btnMoRong.IconSize = 30;
                 btnMoRong.Location = new Point(3, 10);
-                btnMoRong.Name = "btnMoRong_"+i.ToString();
+                btnMoRong.Name = "btnMoRong_" + i.ToString();
                 btnMoRong.Padding = new Padding(0, 7, 0, 0);
                 btnMoRong.Size = new Size(50, 40);
                 btnMoRong.UseVisualStyleBackColor = true;
@@ -165,8 +181,9 @@ namespace _3_GUI_PresentationLayer.Views
                     {
                         btnMoRong.IconChar = IconChar.AngleDown;
                     }
+
                     int index = int.Parse(btnMoRong.Name.Split("_").Last());
-                    if (tbl_lstProduct.Controls[index].Height <300)
+                    if (tbl_lstProduct.Controls[index].Height < 300)
                     {
                         tbl_lstProduct.Height += 600;
                         tbl_lstProduct.RowStyles[index].Height += 600;
@@ -198,6 +215,7 @@ namespace _3_GUI_PresentationLayer.Views
                                 k++;
                             }
                         }
+
                         panl_lstProduct.VerticalScroll.Value = 50 * (index) + k * 600;
                     }
                     else
@@ -209,7 +227,7 @@ namespace _3_GUI_PresentationLayer.Views
                         tbl_lstProduct.RowStyles[index].Height -= 600;
                         tbl_lstProduct.Height -= 600;
                     }
-                    
+
                 };
                 //cbox 
                 CheckBox cbx = new();
@@ -228,9 +246,9 @@ namespace _3_GUI_PresentationLayer.Views
                 lblStt.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblStt.ForeColor = Color.Black;
                 lblStt.Location = new Point(146, 13);
-                lblStt.Name = "lblStt_"+i.ToString();
+                lblStt.Name = "lblStt_" + i.ToString();
                 lblStt.Size = new Size(19, 23);
-                lblStt.Text = (i+1).ToString();
+                lblStt.Text = (i + 1).ToString();
                 //btnImg
                 Button btnImg = new();
                 btnImg.Anchor = AnchorStyles.None;
@@ -246,11 +264,12 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     btnImg.BackgroundImage = null;
                 }
+
                 btnImg.BackgroundImageLayout = ImageLayout.Zoom;
                 btnImg.FlatAppearance.BorderSize = 0;
                 btnImg.FlatStyle = FlatStyle.Flat;
                 btnImg.Location = new Point(175, 3);
-                btnImg.Name = "btnImg_"+i.ToString();
+                btnImg.Name = "btnImg_" + i.ToString();
                 btnImg.Size = new Size(94, 44);
                 btnImg.UseVisualStyleBackColor = false;
                 //lblId
@@ -260,7 +279,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblId.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblId.ForeColor = Color.Black;
                 lblId.Location = new Point(280, 13);
-                lblId.Name = "lblId_"+i.ToString();
+                lblId.Name = "lblId_" + i.ToString();
                 lblId.Size = new Size(19, 23);
                 lblId.Text = list[i].Product.Id.ToString();
                 lblId.AutoSize = true;
@@ -271,7 +290,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblName.ForeColor = Color.Black;
                 lblName.Location = new Point(472, 13);
-                lblName.Name = "lblName_"+i.ToString();
+                lblName.Name = "lblName_" + i.ToString();
                 lblName.Size = new Size(268, 23);
                 lblName.Text = list[i].Product.Name;
                 lblName.AutoSize = true;
@@ -282,7 +301,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblGiaHienTai.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblGiaHienTai.ForeColor = Color.Black;
                 lblGiaHienTai.Location = new Point(999, 13);
-                lblGiaHienTai.Name = "lblGiaHienTai_"+i.ToString();
+                lblGiaHienTai.Name = "lblGiaHienTai_" + i.ToString();
                 lblGiaHienTai.Size = new Size(109, 23);
                 lblGiaHienTai.Text = string.Format("{0:#,##0}", list[i].Price.GiaBan) + " VNĐ";
                 lblGiaHienTai.AutoSize = true;
@@ -293,9 +312,9 @@ namespace _3_GUI_PresentationLayer.Views
                 lblGiaNhap.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblGiaNhap.ForeColor = Color.Black;
                 lblGiaNhap.Location = new Point(1144, 13);
-                lblGiaNhap.Name = "lblGiaNhap_"+i.ToString();
+                lblGiaNhap.Name = "lblGiaNhap_" + i.ToString();
                 lblGiaNhap.Size = new Size(109, 23);
-                lblGiaNhap.Text = string.Format("{0:#,##0}", list[i].Price.GiaNhap)+" VNĐ";
+                lblGiaNhap.Text = string.Format("{0:#,##0}", list[i].Price.GiaNhap) + " VNĐ";
                 lblGiaNhap.AutoSize = true;
                 //lblTongSoLuong
                 Label lblTongSoLuong = new();
@@ -303,13 +322,14 @@ namespace _3_GUI_PresentationLayer.Views
                 lblTongSoLuong.BackColor = Color.Transparent;
                 lblTongSoLuong.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
                 lblTongSoLuong.ForeColor = Color.Black;
-                lblTongSoLuong.Name = "lblTongSoLuong_"+i.ToString();
+                lblTongSoLuong.Name = "lblTongSoLuong_" + i.ToString();
                 lblTongSoLuong.Size = new Size(37, 23);
                 int sum = 0;
                 foreach (var x in list[i].Vers)
                 {
                     sum += x.SoLuong;
                 }
+
                 lblTongSoLuong.Text = sum.ToString();
                 lblTongSoLuong.AutoSize = true;
                 //lblKhDat
@@ -320,7 +340,7 @@ namespace _3_GUI_PresentationLayer.Views
                 lblKhDat.ForeColor = Color.Black;
                 lblKhDat.Location = new Point(1486, 13);
                 lblKhDat.Margin = new Padding(3, 0, 5, 0);
-                lblKhDat.Name = "lblKhDat_"+i.ToString();
+                lblKhDat.Name = "lblKhDat_" + i.ToString();
                 lblKhDat.Size = new Size(19, 23);
                 lblKhDat.Text = "0";
                 //
@@ -347,14 +367,14 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 foreach (Control x in tbl_lstProduct.Controls)
                 {
-                    ((CheckBox)x.Controls[0].Controls[1]).Checked = true;
+                    ((CheckBox) x.Controls[0].Controls[1]).Checked = true;
                 }
             }
             else
             {
                 foreach (Control x in tbl_lstProduct.Controls)
                 {
-                    ((CheckBox)x.Controls[0].Controls[1]).Checked = false;
+                    ((CheckBox) x.Controls[0].Controls[1]).Checked = false;
                 }
             }
         }
@@ -370,24 +390,13 @@ namespace _3_GUI_PresentationLayer.Views
                 sanPham.Product.Status = true;
                 MessageBox.Show(_qlSanPhamService.AddSanPham(sanPham));
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-                _lstSanPhamsShow = new List<SanPham>();
-                _lastindex = _qlSanPhamService.GetLstSanPhams().Count / 14;
-                for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
-                {
-                    try
-                    {
-                        _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
-                    }
-                    catch 
-                    {
-                        continue;
-                    }
-                }
-                AddProduct(_lstSanPhamsShow);
+                LocSanPham();
+                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
                 frmAddProduct.Close();
             };
             frmAddProduct.ShowDialog();
         }
+
         private void Btn_last_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex != _lastindex)
@@ -410,7 +419,7 @@ namespace _3_GUI_PresentationLayer.Views
         {
             if (_lstDetailIndex < _lastindex)
             {
-                _lstDetailIndex +=1;
+                _lstDetailIndex += 1;
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
             }
         }
@@ -419,7 +428,7 @@ namespace _3_GUI_PresentationLayer.Views
         {
             if (_lstDetailIndex > 0)
             {
-                _lstDetailIndex -=1;
+                _lstDetailIndex -= 1;
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
             }
         }
@@ -434,56 +443,34 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void Txt_lstShowIndex_TextChanged(object sender, EventArgs e)
         {
-            if (int.Parse(txt_lstShowIndex.Text) > (_lastindex+1)&&_lstDetailIndex!=_lastindex)
+            if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1) && _lstDetailIndex != _lastindex)
             {
                 _lstDetailIndex = _lastindex;
-                txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-                _lstSanPhamsShow = new List<SanPham>();
-                for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
-                {
-                    try
-                    {
-                        _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-                }
-                AddProduct(_lstSanPhamsShow);
+                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
             }
             else
             {
-                _lstDetailIndex = int.Parse(txt_lstShowIndex.Text)-1;
+                _lstDetailIndex = int.Parse(txt_lstShowIndex.Text) - 1;
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-                _lstSanPhamsShow = new List<SanPham>();
-                for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
-                {
-                    try
-                    {
-                        _lstSanPhamsShow.Add(_qlSanPhamService.GetLstSanPhams()[i]);
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-                }
-                AddProduct(_lstSanPhamsShow);
+                AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
             }
         }
+
         private void AddTblLoc()
         {
-            List<string> lstStr1 = new() {"GIỚI TÍNH", "GIÁ", "NHÓM HÀNG","TÌNH TRẠNG"};
-            List<string> lstStr2 = new() { "Nam", "Nữ"};
+            tbl_Loc.Controls.Clear();
+            List<string> lstStr1 = new() {"GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU"};
+            List<string> lstStr2 = new() {"Nam", "Nữ"};
             List<string> lstStr3 = new()
             {
-                "Dưới 199.000 VND", "199.000  - 299.000 VND", "299.000 - 399.000 VND",
-                "399.000 - 499.000 VND", "499.000 - 799.000 VND", "799.000 - 999.000 VND", "Trên 1 triệu"
+                "Dưới 200.000 VND", "200.000  - 299.000 VND", "300.000 - 399.000 VND",
+                "400.000 - 499.000 VND", "500.000 - 799.000 VND", "800.000 - 1 triệu", "Trên 1 triệu"
             };
             List<string> lstStr4 = _qlSanPhamService.GetListCatergory().Select(c => c.Name).ToList();
             List<string> lstStr5 = new() {"Đang mở bán", "Ngừng kinh doanh"};
-            List<List<string>> _lst = new() {lstStr2, lstStr3, lstStr4, lstStr5 };
-            for (int i=0;i<lstStr1.Count;i++)
+            List<string> lstStr6 = _qlSanPhamService.GetListThuongHieus().Select(c => c.Name).ToList();
+            List<List<string>> _lst = new() {lstStr2, lstStr3, lstStr4, lstStr5, lstStr6};
+            for (int i = 0; i < lstStr1.Count; i++)
             {
                 //panl
                 CustomPanel panlPrice = new();
@@ -493,9 +480,9 @@ namespace _3_GUI_PresentationLayer.Views
                 panlPrice.BorderRadius = 5;
                 panlPrice.BorderSize = 1;
                 panlPrice.Margin = new Padding(0, 0, 0, 0);
-                panlPrice.Padding = new Padding(2,2,1,5);
+                panlPrice.Padding = new Padding(2, 2, 1, 5);
                 panlPrice.Dock = DockStyle.Top;
-                panlPrice.Name = "panlPrice_"+i.ToString();
+                panlPrice.Name = "panlPrice_" + i.ToString();
                 //table
                 TableLayoutPanel tblPrice = new();
                 tblPrice.ColumnCount = 1;
@@ -503,7 +490,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblPrice.BackColor = SystemColors.Control;
                 tblPrice.Location = new Point(0, 0);
                 tblPrice.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-                tblPrice.Name = "tblPrice_"+i.ToString();
+                tblPrice.Name = "tblPrice_" + i.ToString();
                 tblPrice.RowCount = 1;
                 tblPrice.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
                 //Head tblSex
@@ -517,17 +504,19 @@ namespace _3_GUI_PresentationLayer.Views
                 head.Dock = DockStyle.Top;
                 head.Location = new Point(0, 0);
                 head.Margin = new Padding(0);
-                head.Name = "head_"+i.ToString();
+                head.Name = "head_" + i.ToString();
                 head.RowCount = 1;
                 head.Height = 50;
                 head.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
                 // check đầu table
-                CheckBox check1 = new();
-                check1.Anchor = AnchorStyles.None;
-                check1.AutoSize = true;
-                check1.Location = new Point(16, 16);
-                check1.Name = "check1_"+i.ToString();
-                check1.Size = new Size(18, 17);
+                CheckBox check1 = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    AutoSize = true,
+                    Location = new Point(16, 16),
+                    Name = "check1_" + i.ToString(),
+                    Size = new Size(18, 17)
+                };
                 // Name table
                 Label Name = new();
                 Name.Anchor = AnchorStyles.Left;
@@ -560,14 +549,32 @@ namespace _3_GUI_PresentationLayer.Views
                     CheckBox check2 = new();
                     check2.Anchor = AnchorStyles.Left;
                     check2.AutoSize = true;
-                    check2.Padding = new Padding(13,3,3,3);
+                    check2.Padding = new Padding(13, 3, 3, 3);
                     check2.ForeColor = Color.Black;
                     check2.Font = new Font("Segoe UI", 10F, GraphicsUnit.Point);
-                    check2.Name = "checkBox_"+i.ToString()+"/"+j.ToString();
-                    check2.Text = "   "+ _lst[i][j];
+                    check2.Name = "checkBox_" + i.ToString() + "/" + j.ToString();
+                    check2.Text = "   " + _lst[i][j];
                     //
-                    tblPrice.Controls.Add(check2,0,j);
+                    tblPrice.Controls.Add(check2);
                 }
+
+                check1.CheckedChanged += (o, s) =>
+                {
+                    if (check1.Checked)
+                    {
+                        foreach (Control c in tblPrice.Controls)
+                        {
+                            ((CheckBox) c).Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        foreach (Control c in tblPrice.Controls)
+                        {
+                            ((CheckBox) c).Checked = false;
+                        }
+                    }
+                };
                 tblPrice.Height = tblPrice.Controls.Count * 40 + 10;
                 //
                 btnMoRong.Click += (o, s) =>
@@ -587,13 +594,85 @@ namespace _3_GUI_PresentationLayer.Views
                 };
                 panlPrice.Controls.Add(tblPrice);
                 panlPrice.Controls.Add(head);
-                panlPrice.Height =  58;
+                panlPrice.Height = 58;
                 //
                 tbl_Loc.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 tbl_Loc.Controls.Add(panlPrice);
             }
         }
+        //Lọc sản phẩm và đổ dữ liệu cho _sanPhams
+        public void LocSanPham()
+        {
+            List<CheckBox> listCheck = new();
+            foreach (Control x in tbl_Loc.Controls)
+            {
+                foreach (Control y in x.Controls[0].Controls)
+                {
+                    listCheck.Add((CheckBox) y);
+                }
+            }
+            HashSet<SanPham> sanPhams = new HashSet<SanPham>();
+            if (listCheck.Where(c => c.Checked).Count() > 0)
+            {
+                for (int i = 0; i < listCheck.Count; i++)
+                {
+                    if (listCheck[i].Checked)
+                    {
+                        foreach (var y in _qlSanPhamService.GetLstSanPhams().Where(c => GetLoc(c)[i]))
+                        {
+                            sanPhams.Add(y);
+                        }
+                    }
+                }
+                _sanPhams = sanPhams.ToList();
+            }
+            else
+            {
+                _sanPhams = _qlSanPhamService.GetLstSanPhams();
+            }
+        }
+        // Tạo chuỗi điều kiện lọc cho sản phẩm
+        public List<bool> GetLoc(SanPham item)
+        {
+            //{ "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU"};
+            List<bool> list6 = new List<bool>();
+            List<bool> sex = new() { true, false };
+            List<bool> lstStatus = new() { true, false };
+            foreach (var x in sex)
+            {
+                list6.Add(item.ProductDetail.Sex==x);
+            }
+            List<decimal> lstGia = new() { 199000, 299000, 399000, 499000, 799000, 1000000 };
+            for (int i = 0; i <= lstGia.Count; i++)//đệt mợ cái bug khốn nạn sai dấu >=
+            {
+                if (i == 0)
+                {
+                    list6.Add(item.Price.GiaBan <= lstGia[i]);
+                }
+                else if (i == lstGia.Count)
+                {
+                    list6.Add(item.Price.GiaBan > lstGia[lstGia.Count - 1]);
+                }
+                else
+                {
+                    list6.Add((item.Price.GiaBan > lstGia[i - 1]) && (item.Price.GiaBan <= lstGia[i]));
+                }
+            }
+            foreach (var x in _qlSanPhamService.GetListCatergory())
+            {
+                list6.Add(item.Catergory.Name == x.Name);
+            }
 
+            foreach (var x in lstStatus)
+            {
+                list6.Add(item.Product.Status==x);
+            }
+            foreach (var x in _qlSanPhamService.GetListThuongHieus().Select(c=>c.Name).ToList())
+            {
+                list6.Add(item.ThuongHieu.Name == x);
+            }
+            return list6;
+        }
         private void Btn_XuatFile_Click(object sender, EventArgs e)
         {
             string filePath = "";
@@ -617,7 +696,52 @@ namespace _3_GUI_PresentationLayer.Views
             }
             else
             {
-                MessageBox.Show(_qlSanPhamService.XuatFileExcel("DS",filePath,_qlSanPhamService.GetLstSanPhams()));
+                MessageBox.Show(_qlSanPhamService.XuatFileExcel("DS", filePath,
+                    _qlSanPhamService.GetLstSanPhams()));
+            }
+        }
+        private void Btn_Loc_Click(object sender, EventArgs e)
+        {
+            // _sanPham là những sản phẩm đủ điều kiện
+            LocSanPham();
+            _lstDetailIndex = 0;
+            AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
+        }
+
+        private void Btn_HuyLoc_Click(object sender, EventArgs e)
+        {
+            _lstDetailIndex = 0;
+            _sanPhams = _qlSanPhamService.GetLstSanPhams();
+            AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Txt_Search.Text))
+            {
+                LocSanPham();//Làm mới list Sản phẩm _sanPhams
+                _lstDetailIndex = 0;
+                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
+            }
+            else
+            {
+                _sanPhams = _sanPhams.Where(c =>
+                    c.Product.Id.ToString() == Txt_Search.Text ||
+                    c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower())).ToList();
+                _lstDetailIndex = 0;
+                AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+            }
+        }
+
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            if (Txt_Search.Text.StartsWith(" "))
+            {
+                int lenght = Txt_Search.Text.Length;
+                if (lenght > 0)
+                {
+                    Txt_Search.Text = Txt_Search.Text.Substring(1, -1);
+                }
             }
         }
     }
