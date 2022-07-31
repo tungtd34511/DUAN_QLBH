@@ -12,6 +12,9 @@ namespace _2_BUS_BusinessLayer.IServices
     {
         List<SanPham> GetSanPhams();
         void GetLstSanPhamsFormDAL();
-        List<Sale> GetSales();
+        void SaveTemporaryOrder(List<HoaDon> list);
+        void ReadTemporaryOrder();
+        string ThanhToan(HoaDon hoaDon);
+        List<HoaDon> GetHoaDons();
     }
 }

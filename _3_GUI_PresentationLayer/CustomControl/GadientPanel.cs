@@ -19,42 +19,39 @@ namespace _3_GUI_PresentationLayer.CustomControl
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            Point startPoint = new(0, 0);
-            Point endPoint = new(this.Width, this.Height);
+            
+                Point startPoint = new(0, 0);
+                Point endPoint = new(this.Width, this.Height);
 
-            LinearGradientBrush lgb =
-                new(startPoint, endPoint, _topLeftColor, _bottomRightColor);
-            Graphics g = e.Graphics;
-            g.FillRectangle(lgb, 0, 0, endPoint.X, endPoint.Y);
-            // g.DrawLine(new Pen(Color.Yellow, 1.5f), startPoint, endPoint);
-            //
-            Graphics graph = e.Graphics;
+                LinearGradientBrush lgb =
+                    new(startPoint, endPoint, _topLeftColor, _bottomRightColor);
+                Graphics g = e.Graphics;
+                g.FillRectangle(lgb, 0, 0, endPoint.X, endPoint.Y);
+                // g.DrawLine(new Pen(Color.Yellow, 1.5f), startPoint, endPoint);
+                //
+                Graphics graph = e.Graphics;
 
-            if (_borderRadius > 1)//Rounded TextBox
-            {
-                //-Fields
-                var rectBorderSmooth = ClientRectangle;
-                int smoothSize = 0;
-                using GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, _borderRadius);
-                using Pen penBorderSmooth = new(Parent.BackColor, smoothSize);
-                //-Drawing
-                Region = new Region(pathBorderSmooth);//Set the rounded region of UserControl
-                if (_borderRadius > 15) SetTextBoxRoundedRegion();//Set the rounded region of TextBox component
-                graph.SmoothingMode = SmoothingMode.AntiAlias;
-
-                if (true) //Line Style
+                if (_borderRadius > 1) //Rounded TextBox
                 {
-                    //Draw border smoothing
-                    graph.DrawPath(penBorderSmooth, pathBorderSmooth);
-                    //Draw border
-                    graph.SmoothingMode = SmoothingMode.None;
+                    //-Fields
+                    var rectBorderSmooth = ClientRectangle;
+                    int smoothSize = 0;
+                    using GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, _borderRadius);
+                    using Pen penBorderSmooth = new(Parent.BackColor, smoothSize);
+                    //-Drawing
+                    Region = new Region(pathBorderSmooth); //Set the rounded region of UserControl
+                    if (_borderRadius > 15) SetTextBoxRoundedRegion(); //Set the rounded region of TextBox component
+                    graph.SmoothingMode = SmoothingMode.AntiAlias;
+
+                    if (true) //Line Style
+                    {
+                        //Draw border smoothing
+                        graph.DrawPath(penBorderSmooth, pathBorderSmooth);
+                        //Draw border
+                        graph.SmoothingMode = SmoothingMode.None;
+                    }
                 }
-                else //Normal Style
-                {
-                    //Draw border smoothing
-                    graph.DrawPath(penBorderSmooth, pathBorderSmooth);
-                }
-            }
+               
         }
 
         public Color TopLeftColor

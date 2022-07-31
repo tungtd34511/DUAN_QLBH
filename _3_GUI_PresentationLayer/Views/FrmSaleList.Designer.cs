@@ -63,11 +63,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbl_Loc = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.btn_XuatFile = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label1 = new System.Windows.Forms.Label();
             this.rjDropdownMenu1 = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
             this.tableLayoutPanel1.SuspendLayout();
@@ -619,132 +614,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.vbButton4);
-            this.panel1.Controls.Add(this.vbButton5);
-            this.panel1.Controls.Add(this.btn_XuatFile);
-            this.panel1.Controls.Add(this.vbButton2);
-            this.panel1.Controls.Add(this.vbButton1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1804, 89);
             this.panel1.TabIndex = 1;
-            // 
-            // vbButton4
-            // 
-            this.vbButton4.BackColor = System.Drawing.Color.White;
-            this.vbButton4.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton4.BorderRadius = 7;
-            this.vbButton4.BorderSize = 0;
-            this.vbButton4.FlatAppearance.BorderSize = 0;
-            this.vbButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton4.ForeColor = System.Drawing.Color.White;
-            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            this.vbButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton4.Location = new System.Drawing.Point(994, 25);
-            this.vbButton4.Name = "vbButton4";
-            this.vbButton4.Size = new System.Drawing.Size(51, 50);
-            this.vbButton4.TabIndex = 10;
-            this.vbButton4.TextColor = System.Drawing.Color.White;
-            this.vbButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton4.UseVisualStyleBackColor = false;
-            // 
-            // vbButton5
-            // 
-            this.vbButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton5.BorderRadius = 7;
-            this.vbButton5.BorderSize = 0;
-            this.vbButton5.FlatAppearance.BorderSize = 0;
-            this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.Outdent;
-            this.vbButton5.IconColor = System.Drawing.Color.White;
-            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton5.IconSize = 40;
-            this.vbButton5.Location = new System.Drawing.Point(1207, 25);
-            this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(195, 50);
-            this.vbButton5.TabIndex = 9;
-            this.vbButton5.Text = "Thêm hàng loạt";
-            this.vbButton5.TextColor = System.Drawing.Color.White;
-            this.vbButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton5.UseVisualStyleBackColor = false;
-            // 
-            // btn_XuatFile
-            // 
-            this.btn_XuatFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_XuatFile.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_XuatFile.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_XuatFile.BorderRadius = 7;
-            this.btn_XuatFile.BorderSize = 0;
-            this.btn_XuatFile.FlatAppearance.BorderSize = 0;
-            this.btn_XuatFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_XuatFile.ForeColor = System.Drawing.Color.White;
-            this.btn_XuatFile.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
-            this.btn_XuatFile.IconColor = System.Drawing.Color.White;
-            this.btn_XuatFile.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.btn_XuatFile.IconSize = 40;
-            this.btn_XuatFile.Location = new System.Drawing.Point(1439, 25);
-            this.btn_XuatFile.Name = "btn_XuatFile";
-            this.btn_XuatFile.Size = new System.Drawing.Size(137, 50);
-            this.btn_XuatFile.TabIndex = 8;
-            this.btn_XuatFile.Text = "Xuất file";
-            this.btn_XuatFile.TextColor = System.Drawing.Color.White;
-            this.btn_XuatFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_XuatFile.UseVisualStyleBackColor = false;
-            // 
-            // vbButton2
-            // 
-            this.vbButton2.BackColor = System.Drawing.Color.Red;
-            this.vbButton2.BackgroundColor = System.Drawing.Color.Red;
-            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton2.BorderRadius = 7;
-            this.vbButton2.BorderSize = 0;
-            this.vbButton2.FlatAppearance.BorderSize = 0;
-            this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton2.ForeColor = System.Drawing.Color.White;
-            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.Dropbox;
-            this.vbButton2.IconColor = System.Drawing.Color.White;
-            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton2.IconSize = 40;
-            this.vbButton2.Location = new System.Drawing.Point(1601, 25);
-            this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(213, 50);
-            this.vbButton2.TabIndex = 7;
-            this.vbButton2.Text = "Ngừng kinh doanh";
-            this.vbButton2.TextColor = System.Drawing.Color.White;
-            this.vbButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton2.UseVisualStyleBackColor = false;
-            // 
-            // vbButton1
-            // 
-            this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton1.BorderRadius = 7;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.vbButton1.IconColor = System.Drawing.Color.White;
-            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton1.IconSize = 40;
-            this.vbButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton1.Location = new System.Drawing.Point(1065, 25);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(118, 50);
-            this.vbButton1.TabIndex = 6;
-            this.vbButton1.Text = "Thêm ";
-            this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -824,11 +699,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private CustomControl.VBButton vbButton4;
-        private CustomControl.VBButton vbButton5;
-        private CustomControl.VBButton btn_XuatFile;
-        private CustomControl.VBButton vbButton2;
-        private CustomControl.VBButton vbButton1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private CustomControl.VBButton vbButton6;
         private CustomControl.VBButton vbButton3;

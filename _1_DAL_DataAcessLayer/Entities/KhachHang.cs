@@ -8,17 +8,16 @@ using System.Threading.Tasks;
 
 namespace _1_DAL_DataAcessLayer.Entities
 {
-    [Table("ORIGIN")]
+    [Table("KhachHang")]
     [Serializable]
-    public class Origin
+    public class KhachHang
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(35)]
-        public string NoiSanXuat { get; set; }
-        public int NamPhatHanh { get; set; }
-        public DateTime NgayNhap { get; set; }
-        public int? ThuongHieuid { get; set; }
-        public virtual ThuongHieu ThuongHieu { get; set; }
+        public string Name { get; set; }
+        public bool? Sex { get; set; }
+        public string Sdt { get; set; }
+        public string Address { get; set; }
+        public bool? Status { get; set; }
     }
 }

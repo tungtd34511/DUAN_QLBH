@@ -30,15 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Lbl_Result = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Comb_OderBy = new System.Windows.Forms.ComboBox();
             this.Panl_Search = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.Txt_Search = new System.Windows.Forms.TextBox();
             this.Btn_Search = new FontAwesome.Sharp.IconButton();
-            this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.Btn_Reset = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_XuatFile = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.Lbl_Result = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panl_lstProduct = new System.Windows.Forms.Panel();
             this.tbl_lstProduct = new System.Windows.Forms.TableLayoutPanel();
@@ -53,13 +55,14 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Prev = new FontAwesome.Sharp.IconButton();
             this.btn_last = new FontAwesome.Sharp.IconButton();
             this.btn_next = new FontAwesome.Sharp.IconButton();
             this.btn_firt = new FontAwesome.Sharp.IconButton();
-            this.txt_lstShowIndex = new System.Windows.Forms.TextBox();
             this.lbl_lastIndex = new System.Windows.Forms.Label();
+            this.txt_lstShowIndex = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panl_LocDS = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -86,7 +89,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.label1.Location = new System.Drawing.Point(39, 14);
+            this.label1.Location = new System.Drawing.Point(23, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(230, 60);
             this.label1.TabIndex = 0;
@@ -95,9 +98,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.Lbl_Result);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.Comb_OderBy);
             this.panel1.Controls.Add(this.Panl_Search);
-            this.panel1.Controls.Add(this.vbButton4);
+            this.panel1.Controls.Add(this.Btn_Reset);
             this.panel1.Controls.Add(this.vbButton5);
             this.panel1.Controls.Add(this.btn_XuatFile);
             this.panel1.Controls.Add(this.vbButton2);
@@ -110,15 +114,33 @@
             this.panel1.Size = new System.Drawing.Size(1815, 89);
             this.panel1.TabIndex = 0;
             // 
-            // Lbl_Result
+            // label4
             // 
-            this.Lbl_Result.AutoSize = true;
-            this.Lbl_Result.Font = new System.Drawing.Font("Segoe UI Semilight", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Lbl_Result.Location = new System.Drawing.Point(644, 36);
-            this.Lbl_Result.Name = "Lbl_Result";
-            this.Lbl_Result.Size = new System.Drawing.Size(121, 31);
-            this.Lbl_Result.TabIndex = 7;
-            this.Lbl_Result.Text = "24 Kết quả";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.label4.Location = new System.Drawing.Point(708, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Sắp xếp:";
+            // 
+            // Comb_OderBy
+            // 
+            this.Comb_OderBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Comb_OderBy.DropDownWidth = 200;
+            this.Comb_OderBy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Comb_OderBy.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Comb_OderBy.FormattingEnabled = true;
+            this.Comb_OderBy.Items.AddRange(new object[] {
+            "Không"});
+            this.Comb_OderBy.Location = new System.Drawing.Point(785, 35);
+            this.Comb_OderBy.Margin = new System.Windows.Forms.Padding(0);
+            this.Comb_OderBy.Name = "Comb_OderBy";
+            this.Comb_OderBy.Size = new System.Drawing.Size(186, 39);
+            this.Comb_OderBy.TabIndex = 7;
+            this.Comb_OderBy.SelectedIndexChanged += new System.EventHandler(this.Comb_OderBy_SelectedIndexChanged);
             // 
             // Panl_Search
             // 
@@ -141,7 +163,7 @@
             this.Txt_Search.Location = new System.Drawing.Point(3, 11);
             this.Txt_Search.Name = "Txt_Search";
             this.Txt_Search.PlaceholderText = "Tìm Kiếm";
-            this.Txt_Search.Size = new System.Drawing.Size(305, 32);
+            this.Txt_Search.Size = new System.Drawing.Size(295, 32);
             this.Txt_Search.TabIndex = 1;
             this.Txt_Search.TextChanged += new System.EventHandler(this.Txt_Search_TextChanged);
             // 
@@ -152,7 +174,7 @@
             this.Btn_Search.FlatAppearance.BorderSize = 0;
             this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.Btn_Search.IconColor = System.Drawing.Color.Black;
+            this.Btn_Search.IconColor = System.Drawing.Color.DimGray;
             this.Btn_Search.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Btn_Search.IconSize = 35;
             this.Btn_Search.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -163,28 +185,29 @@
             this.Btn_Search.UseVisualStyleBackColor = false;
             this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
-            // vbButton4
+            // Btn_Reset
             // 
-            this.vbButton4.BackColor = System.Drawing.Color.White;
-            this.vbButton4.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton4.BorderRadius = 7;
-            this.vbButton4.BorderSize = 0;
-            this.vbButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.vbButton4.FlatAppearance.BorderSize = 0;
-            this.vbButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton4.ForeColor = System.Drawing.Color.White;
-            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            this.vbButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton4.Location = new System.Drawing.Point(974, 24);
-            this.vbButton4.Name = "vbButton4";
-            this.vbButton4.Size = new System.Drawing.Size(51, 50);
-            this.vbButton4.TabIndex = 5;
-            this.vbButton4.TextColor = System.Drawing.Color.White;
-            this.vbButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton4.UseVisualStyleBackColor = false;
+            this.Btn_Reset.BackColor = System.Drawing.Color.White;
+            this.Btn_Reset.BackgroundColor = System.Drawing.Color.White;
+            this.Btn_Reset.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Btn_Reset.BorderRadius = 7;
+            this.Btn_Reset.BorderSize = 0;
+            this.Btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Reset.FlatAppearance.BorderSize = 0;
+            this.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Reset.ForeColor = System.Drawing.Color.White;
+            this.Btn_Reset.IconChar = FontAwesome.Sharp.IconChar.Rotate;
+            this.Btn_Reset.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.Btn_Reset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_Reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Reset.Location = new System.Drawing.Point(1085, 28);
+            this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Size = new System.Drawing.Size(51, 50);
+            this.Btn_Reset.TabIndex = 5;
+            this.Btn_Reset.TextColor = System.Drawing.Color.White;
+            this.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Reset.UseVisualStyleBackColor = false;
+            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
             // 
             // vbButton5
             // 
@@ -201,9 +224,9 @@
             this.vbButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton5.IconSize = 40;
-            this.vbButton5.Location = new System.Drawing.Point(1187, 24);
+            this.vbButton5.Location = new System.Drawing.Point(1260, 28);
             this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(195, 50);
+            this.vbButton5.Size = new System.Drawing.Size(180, 50);
             this.vbButton5.TabIndex = 4;
             this.vbButton5.Text = "Thêm hàng loạt";
             this.vbButton5.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
@@ -225,9 +248,9 @@
             this.btn_XuatFile.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.btn_XuatFile.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btn_XuatFile.IconSize = 40;
-            this.btn_XuatFile.Location = new System.Drawing.Point(1419, 24);
+            this.btn_XuatFile.Location = new System.Drawing.Point(1450, 29);
             this.btn_XuatFile.Name = "btn_XuatFile";
-            this.btn_XuatFile.Size = new System.Drawing.Size(137, 50);
+            this.btn_XuatFile.Size = new System.Drawing.Size(124, 50);
             this.btn_XuatFile.TabIndex = 3;
             this.btn_XuatFile.Text = "Xuất file";
             this.btn_XuatFile.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
@@ -250,9 +273,9 @@
             this.vbButton2.IconColor = System.Drawing.Color.Red;
             this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton2.IconSize = 40;
-            this.vbButton2.Location = new System.Drawing.Point(1581, 24);
+            this.vbButton2.Location = new System.Drawing.Point(1586, 28);
             this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(213, 50);
+            this.vbButton2.Size = new System.Drawing.Size(208, 50);
             this.vbButton2.TabIndex = 2;
             this.vbButton2.Text = "Ngừng kinh doanh";
             this.vbButton2.TextColor = System.Drawing.Color.Red;
@@ -275,15 +298,25 @@
             this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton1.IconSize = 40;
             this.vbButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton1.Location = new System.Drawing.Point(1045, 24);
+            this.vbButton1.Location = new System.Drawing.Point(1148, 28);
             this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(118, 50);
+            this.vbButton1.Size = new System.Drawing.Size(101, 50);
             this.vbButton1.TabIndex = 1;
             this.vbButton1.Text = "Thêm ";
             this.vbButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.vbButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.vbButton1.UseVisualStyleBackColor = false;
             this.vbButton1.Click += new System.EventHandler(this.VbButton1_Click);
+            // 
+            // Lbl_Result
+            // 
+            this.Lbl_Result.AutoSize = true;
+            this.Lbl_Result.Font = new System.Drawing.Font("Segoe UI Semilight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Lbl_Result.Location = new System.Drawing.Point(0, 15);
+            this.Lbl_Result.Name = "Lbl_Result";
+            this.Lbl_Result.Size = new System.Drawing.Size(227, 25);
+            this.Lbl_Result.TabIndex = 7;
+            this.Lbl_Result.Text = "Hiển thị 20 trên 50 kết quả";
             // 
             // tableLayoutPanel3
             // 
@@ -317,7 +350,7 @@
             // 
             // tbl_lstProduct
             // 
-            this.tbl_lstProduct.BackColor = System.Drawing.Color.Transparent;
+            this.tbl_lstProduct.BackColor = System.Drawing.SystemColors.Control;
             this.tbl_lstProduct.ColumnCount = 1;
             this.tbl_lstProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tbl_lstProduct.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -490,20 +523,30 @@
             // 
             // customPanel1
             // 
-            this.customPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.customPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 0;
             this.customPanel1.BorderSize = 2;
+            this.customPanel1.Controls.Add(this.Lbl_Result);
+            this.customPanel1.Controls.Add(this.panel3);
             this.customPanel1.Controls.Add(this.tableLayoutPanel2);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.customPanel1.Location = new System.Drawing.Point(284, 850);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.customPanel1.Size = new System.Drawing.Size(1510, 47);
             this.customPanel1.TabIndex = 4;
             this.customPanel1.UnderlinedStyle = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1510, 2);
+            this.panel3.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -518,9 +561,9 @@
             this.tableLayoutPanel2.Controls.Add(this.btn_last, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_next, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_firt, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txt_lstShowIndex, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.lbl_lastIndex, 3, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(606, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txt_lstShowIndex, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1225, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -534,8 +577,9 @@
             this.btn_Prev.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btn_Prev.FlatAppearance.BorderSize = 0;
             this.btn_Prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Prev.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Prev.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            this.btn_Prev.IconColor = System.Drawing.Color.White;
+            this.btn_Prev.IconColor = System.Drawing.Color.Black;
             this.btn_Prev.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Prev.IconSize = 20;
             this.btn_Prev.Location = new System.Drawing.Point(40, 0);
@@ -553,8 +597,9 @@
             this.btn_last.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btn_last.FlatAppearance.BorderSize = 0;
             this.btn_last.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_last.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btn_last.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleRight;
-            this.btn_last.IconColor = System.Drawing.Color.White;
+            this.btn_last.IconColor = System.Drawing.Color.Black;
             this.btn_last.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_last.IconSize = 20;
             this.btn_last.Location = new System.Drawing.Point(240, 0);
@@ -572,8 +617,9 @@
             this.btn_next.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btn_next.FlatAppearance.BorderSize = 0;
             this.btn_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_next.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btn_next.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
-            this.btn_next.IconColor = System.Drawing.Color.White;
+            this.btn_next.IconColor = System.Drawing.Color.Black;
             this.btn_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_next.IconSize = 20;
             this.btn_next.Location = new System.Drawing.Point(200, 0);
@@ -591,8 +637,9 @@
             this.btn_firt.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btn_firt.FlatAppearance.BorderSize = 0;
             this.btn_firt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_firt.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btn_firt.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
-            this.btn_firt.IconColor = System.Drawing.Color.White;
+            this.btn_firt.IconColor = System.Drawing.Color.Black;
             this.btn_firt.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_firt.IconSize = 20;
             this.btn_firt.Location = new System.Drawing.Point(0, 0);
@@ -604,12 +651,25 @@
             this.btn_firt.UseVisualStyleBackColor = true;
             this.btn_firt.Click += new System.EventHandler(this.Btn_firt_Click);
             // 
+            // lbl_lastIndex
+            // 
+            this.lbl_lastIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_lastIndex.AutoSize = true;
+            this.lbl_lastIndex.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_lastIndex.ForeColor = System.Drawing.Color.Black;
+            this.lbl_lastIndex.Location = new System.Drawing.Point(143, 7);
+            this.lbl_lastIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.lbl_lastIndex.Name = "lbl_lastIndex";
+            this.lbl_lastIndex.Size = new System.Drawing.Size(54, 30);
+            this.lbl_lastIndex.TabIndex = 5;
+            this.lbl_lastIndex.Text = "/ 20";
+            // 
             // txt_lstShowIndex
             // 
             this.txt_lstShowIndex.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txt_lstShowIndex.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_lstShowIndex.Location = new System.Drawing.Point(80, 3);
-            this.txt_lstShowIndex.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.txt_lstShowIndex.Location = new System.Drawing.Point(80, 6);
+            this.txt_lstShowIndex.Margin = new System.Windows.Forms.Padding(0);
             this.txt_lstShowIndex.Name = "txt_lstShowIndex";
             this.txt_lstShowIndex.Size = new System.Drawing.Size(60, 34);
             this.txt_lstShowIndex.TabIndex = 6;
@@ -617,19 +677,6 @@
             this.txt_lstShowIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_lstShowIndex.TextChanged += new System.EventHandler(this.Txt_lstShowIndex_TextChanged);
             this.txt_lstShowIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_lstShowIndex_KeyPress);
-            // 
-            // lbl_lastIndex
-            // 
-            this.lbl_lastIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_lastIndex.AutoSize = true;
-            this.lbl_lastIndex.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_lastIndex.ForeColor = System.Drawing.Color.White;
-            this.lbl_lastIndex.Location = new System.Drawing.Point(143, 7);
-            this.lbl_lastIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
-            this.lbl_lastIndex.Name = "lbl_lastIndex";
-            this.lbl_lastIndex.Size = new System.Drawing.Size(54, 30);
-            this.lbl_lastIndex.TabIndex = 5;
-            this.lbl_lastIndex.Text = "/ 20";
             // 
             // tableLayoutPanel1
             // 
@@ -666,8 +713,8 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.64583F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.35416F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.65233F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.34767F));
             this.tableLayoutPanel4.Controls.Add(this.Btn_HuyLoc, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.Btn_Loc, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -694,10 +741,9 @@
             this.Btn_HuyLoc.IconChar = FontAwesome.Sharp.IconChar.None;
             this.Btn_HuyLoc.IconColor = System.Drawing.Color.Black;
             this.Btn_HuyLoc.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Btn_HuyLoc.Location = new System.Drawing.Point(84, 7);
-            this.Btn_HuyLoc.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.Btn_HuyLoc.Location = new System.Drawing.Point(122, 3);
             this.Btn_HuyLoc.Name = "Btn_HuyLoc";
-            this.Btn_HuyLoc.Size = new System.Drawing.Size(81, 35);
+            this.Btn_HuyLoc.Size = new System.Drawing.Size(81, 44);
             this.Btn_HuyLoc.TabIndex = 9;
             this.Btn_HuyLoc.Text = "Hủy lọc";
             this.Btn_HuyLoc.TextColor = System.Drawing.Color.White;
@@ -707,25 +753,26 @@
             // Btn_Loc
             // 
             this.Btn_Loc.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.Btn_Loc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.Btn_Loc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.Btn_Loc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Btn_Loc.BackColor = System.Drawing.Color.White;
+            this.Btn_Loc.BackgroundColor = System.Drawing.Color.White;
+            this.Btn_Loc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.Btn_Loc.BorderRadius = 7;
             this.Btn_Loc.BorderSize = 1;
             this.Btn_Loc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.Btn_Loc.FlatAppearance.BorderSize = 0;
             this.Btn_Loc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Loc.ForeColor = System.Drawing.Color.White;
-            this.Btn_Loc.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.Btn_Loc.IconColor = System.Drawing.Color.Black;
+            this.Btn_Loc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.Btn_Loc.IconChar = FontAwesome.Sharp.IconChar.Filter;
+            this.Btn_Loc.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.Btn_Loc.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Btn_Loc.Location = new System.Drawing.Point(5, 7);
-            this.Btn_Loc.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.Btn_Loc.IconSize = 40;
+            this.Btn_Loc.Location = new System.Drawing.Point(3, 3);
             this.Btn_Loc.Name = "Btn_Loc";
-            this.Btn_Loc.Size = new System.Drawing.Size(73, 35);
+            this.Btn_Loc.Size = new System.Drawing.Size(101, 44);
             this.Btn_Loc.TabIndex = 8;
             this.Btn_Loc.Text = "Lọc";
-            this.Btn_Loc.TextColor = System.Drawing.Color.White;
+            this.Btn_Loc.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.Btn_Loc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_Loc.UseVisualStyleBackColor = false;
             this.Btn_Loc.Click += new System.EventHandler(this.Btn_Loc_Click);
             // 
@@ -775,6 +822,7 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -817,7 +865,7 @@
         private CustomControl.VBButton vbButton5;
         private CustomControl.VBButton btn_XuatFile;
         private System.Windows.Forms.TableLayoutPanel tbl_Loc;
-        private CustomControl.VBButton vbButton4;
+        private CustomControl.VBButton Btn_Reset;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private CustomControl.VBButton Btn_HuyLoc;
         private CustomControl.VBButton Btn_Loc;
@@ -826,5 +874,8 @@
         private CustomControl.CustomPanel Panl_Search;
         private System.Windows.Forms.TextBox Txt_Search;
         private FontAwesome.Sharp.IconButton Btn_Search;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox Comb_OderBy;
+        private System.Windows.Forms.Label label4;
     }
 }

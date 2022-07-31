@@ -39,6 +39,7 @@ namespace _1_DAL_DataAcessLayer.DatabaseContext
         public DbSet<User> Users { get; set; }
         public DbSet<UserDetail> UserDetails { get; set; }
         public DbSet<Ver> Vers { get; set; }
+        public DbSet<KhachHang> KhachHangs { get; set; }
         //EF CODE FIRST
         //1. CÀI ĐẶT:
         //+ Install-Package Microsoft.EntityFrameworkCore

@@ -41,42 +41,17 @@ namespace _3_GUI_PresentationLayer.Views
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Prev = new FontAwesome.Sharp.IconButton();
-            this.btn_last = new FontAwesome.Sharp.IconButton();
-            this.btn_next = new FontAwesome.Sharp.IconButton();
-            this.btn_firt = new FontAwesome.Sharp.IconButton();
-            this.txt_lstShowIndex = new System.Windows.Forms.TextBox();
-            this.lbl_lastIndex = new System.Windows.Forms.Label();
             this.Tbl_lstOrder = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.vbButton6 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbl_Loc = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.btn_XuatFile = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.customPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.Tbl_lstOrder.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -250,7 +225,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 0;
             this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.tableLayoutPanel3);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(294, 845);
             this.customPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -260,127 +234,10 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel1.TabIndex = 5;
             this.customPanel1.UnderlinedStyle = false;
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 6;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel3.Controls.Add(this.btn_Prev, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_last, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_next, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_firt, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txt_lstShowIndex, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lbl_lastIndex, 3, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(600, -5);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(297, 40);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // btn_Prev
-            // 
-            this.btn_Prev.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Prev.FlatAppearance.BorderSize = 0;
-            this.btn_Prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Prev.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            this.btn_Prev.IconColor = System.Drawing.Color.White;
-            this.btn_Prev.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Prev.IconSize = 30;
-            this.btn_Prev.Location = new System.Drawing.Point(50, 0);
-            this.btn_Prev.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Prev.Name = "btn_Prev";
-            this.btn_Prev.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.btn_Prev.Size = new System.Drawing.Size(40, 40);
-            this.btn_Prev.TabIndex = 0;
-            this.btn_Prev.UseVisualStyleBackColor = true;
-            // 
-            // btn_last
-            // 
-            this.btn_last.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_last.FlatAppearance.BorderSize = 0;
-            this.btn_last.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_last.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleRight;
-            this.btn_last.IconColor = System.Drawing.Color.White;
-            this.btn_last.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_last.IconSize = 30;
-            this.btn_last.Location = new System.Drawing.Point(254, 0);
-            this.btn_last.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_last.Name = "btn_last";
-            this.btn_last.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.btn_last.Size = new System.Drawing.Size(40, 40);
-            this.btn_last.TabIndex = 3;
-            this.btn_last.UseVisualStyleBackColor = true;
-            // 
-            // btn_next
-            // 
-            this.btn_next.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_next.FlatAppearance.BorderSize = 0;
-            this.btn_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_next.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
-            this.btn_next.IconColor = System.Drawing.Color.White;
-            this.btn_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_next.IconSize = 30;
-            this.btn_next.Location = new System.Drawing.Point(202, 0);
-            this.btn_next.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_next.Name = "btn_next";
-            this.btn_next.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.btn_next.Size = new System.Drawing.Size(40, 40);
-            this.btn_next.TabIndex = 2;
-            this.btn_next.UseVisualStyleBackColor = true;
-            // 
-            // btn_firt
-            // 
-            this.btn_firt.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_firt.FlatAppearance.BorderSize = 0;
-            this.btn_firt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_firt.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
-            this.btn_firt.IconColor = System.Drawing.Color.White;
-            this.btn_firt.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_firt.IconSize = 30;
-            this.btn_firt.Location = new System.Drawing.Point(0, 0);
-            this.btn_firt.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_firt.Name = "btn_firt";
-            this.btn_firt.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.btn_firt.Size = new System.Drawing.Size(40, 40);
-            this.btn_firt.TabIndex = 1;
-            this.btn_firt.UseVisualStyleBackColor = true;
-            // 
-            // txt_lstShowIndex
-            // 
-            this.txt_lstShowIndex.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_lstShowIndex.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_lstShowIndex.Location = new System.Drawing.Point(90, 10);
-            this.txt_lstShowIndex.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.txt_lstShowIndex.Name = "txt_lstShowIndex";
-            this.txt_lstShowIndex.Size = new System.Drawing.Size(52, 30);
-            this.txt_lstShowIndex.TabIndex = 6;
-            this.txt_lstShowIndex.Text = "1";
-            this.txt_lstShowIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbl_lastIndex
-            // 
-            this.lbl_lastIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_lastIndex.AutoSize = true;
-            this.lbl_lastIndex.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_lastIndex.ForeColor = System.Drawing.Color.White;
-            this.lbl_lastIndex.Location = new System.Drawing.Point(145, 7);
-            this.lbl_lastIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
-            this.lbl_lastIndex.Name = "lbl_lastIndex";
-            this.lbl_lastIndex.Size = new System.Drawing.Size(54, 30);
-            this.lbl_lastIndex.TabIndex = 5;
-            this.lbl_lastIndex.Text = "/ 20";
-            // 
             // Tbl_lstOrder
             // 
             this.Tbl_lstOrder.ColumnCount = 1;
             this.Tbl_lstOrder.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Tbl_lstOrder.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.Tbl_lstOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Tbl_lstOrder.Location = new System.Drawing.Point(294, 45);
             this.Tbl_lstOrder.Margin = new System.Windows.Forms.Padding(0);
@@ -408,131 +265,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.Tbl_lstOrder.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.Tbl_lstOrder.Size = new System.Drawing.Size(1510, 800);
             this.Tbl_lstOrder.TabIndex = 6;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tableLayoutPanel6.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel6.ColumnCount = 9;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel6.Controls.Add(this.label5, 4, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label7, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.checkBox2, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label9, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label12, 5, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label13, 6, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label14, 8, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label15, 7, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1510, 40);
-            this.tableLayoutPanel6.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(413, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "24/11/2000";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(237, 11);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 23);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Tạ Duy Tùng";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(59, 14);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(18, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(161, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 23);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "1";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(567, 11);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 23);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Tạ Duy Tùng";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(891, 11);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 23);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Nội Dung";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(1420, 11);
-            this.label14.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 23);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Tình trạng";
-            // 
-            // label15
-            // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(1261, 11);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(84, 23);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Tổng Tiền";
             // 
             // tableLayoutPanel5
             // 
@@ -624,134 +356,12 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.vbButton4);
-            this.panel1.Controls.Add(this.vbButton5);
-            this.panel1.Controls.Add(this.btn_XuatFile);
-            this.panel1.Controls.Add(this.vbButton2);
-            this.panel1.Controls.Add(this.vbButton1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1804, 89);
             this.panel1.TabIndex = 1;
-            // 
-            // vbButton4
-            // 
-            this.vbButton4.BackColor = System.Drawing.Color.White;
-            this.vbButton4.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton4.BorderRadius = 7;
-            this.vbButton4.BorderSize = 0;
-            this.vbButton4.FlatAppearance.BorderSize = 0;
-            this.vbButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton4.ForeColor = System.Drawing.Color.White;
-            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            this.vbButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton4.Location = new System.Drawing.Point(982, 19);
-            this.vbButton4.Name = "vbButton4";
-            this.vbButton4.Size = new System.Drawing.Size(51, 50);
-            this.vbButton4.TabIndex = 10;
-            this.vbButton4.TextColor = System.Drawing.Color.White;
-            this.vbButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton4.UseVisualStyleBackColor = false;
-            // 
-            // vbButton5
-            // 
-            this.vbButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton5.BorderRadius = 7;
-            this.vbButton5.BorderSize = 0;
-            this.vbButton5.FlatAppearance.BorderSize = 0;
-            this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.Outdent;
-            this.vbButton5.IconColor = System.Drawing.Color.White;
-            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton5.IconSize = 40;
-            this.vbButton5.Location = new System.Drawing.Point(1195, 19);
-            this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(195, 50);
-            this.vbButton5.TabIndex = 9;
-            this.vbButton5.Text = "Thêm hàng loạt";
-            this.vbButton5.TextColor = System.Drawing.Color.White;
-            this.vbButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton5.UseVisualStyleBackColor = false;
-            // 
-            // btn_XuatFile
-            // 
-            this.btn_XuatFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_XuatFile.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_XuatFile.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_XuatFile.BorderRadius = 7;
-            this.btn_XuatFile.BorderSize = 0;
-            this.btn_XuatFile.FlatAppearance.BorderSize = 0;
-            this.btn_XuatFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_XuatFile.ForeColor = System.Drawing.Color.White;
-            this.btn_XuatFile.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
-            this.btn_XuatFile.IconColor = System.Drawing.Color.White;
-            this.btn_XuatFile.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.btn_XuatFile.IconSize = 40;
-            this.btn_XuatFile.Location = new System.Drawing.Point(1427, 19);
-            this.btn_XuatFile.Name = "btn_XuatFile";
-            this.btn_XuatFile.Size = new System.Drawing.Size(137, 50);
-            this.btn_XuatFile.TabIndex = 8;
-            this.btn_XuatFile.Text = "Xuất file";
-            this.btn_XuatFile.TextColor = System.Drawing.Color.White;
-            this.btn_XuatFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_XuatFile.UseVisualStyleBackColor = false;
-            this.btn_XuatFile.Click += new System.EventHandler(this.Btn_XuatFile_Click);
-            // 
-            // vbButton2
-            // 
-            this.vbButton2.BackColor = System.Drawing.Color.Red;
-            this.vbButton2.BackgroundColor = System.Drawing.Color.Red;
-            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton2.BorderRadius = 7;
-            this.vbButton2.BorderSize = 0;
-            this.vbButton2.FlatAppearance.BorderSize = 0;
-            this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton2.ForeColor = System.Drawing.Color.White;
-            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.Dropbox;
-            this.vbButton2.IconColor = System.Drawing.Color.White;
-            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton2.IconSize = 40;
-            this.vbButton2.Location = new System.Drawing.Point(1589, 19);
-            this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(213, 50);
-            this.vbButton2.TabIndex = 7;
-            this.vbButton2.Text = "Ngừng kinh doanh";
-            this.vbButton2.TextColor = System.Drawing.Color.White;
-            this.vbButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton2.UseVisualStyleBackColor = false;
-            this.vbButton2.Click += new System.EventHandler(this.VbButton2_Click);
-            // 
-            // vbButton1
-            // 
-            this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton1.BorderRadius = 7;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.vbButton1.IconColor = System.Drawing.Color.White;
-            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton1.IconSize = 40;
-            this.vbButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vbButton1.Location = new System.Drawing.Point(1053, 19);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(118, 50);
-            this.vbButton1.TabIndex = 6;
-            this.vbButton1.Text = "Thêm ";
-            this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -779,12 +389,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.customPanel1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.Tbl_lstOrder.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -807,35 +411,14 @@ namespace _3_GUI_PresentationLayer.Views
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
         private CustomControl.CustomPanel customPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private FontAwesome.Sharp.IconButton btn_Prev;
-        private FontAwesome.Sharp.IconButton btn_last;
-        private FontAwesome.Sharp.IconButton btn_next;
-        private FontAwesome.Sharp.IconButton btn_firt;
-        private System.Windows.Forms.TextBox txt_lstShowIndex;
-        private System.Windows.Forms.Label lbl_lastIndex;
-        private System.Windows.Forms.TableLayoutPanel Tbl_lstOrder;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private CustomControl.VBButton vbButton6;
         private CustomControl.VBButton vbButton3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tbl_Loc;
         private System.Windows.Forms.Panel panel1;
-        private CustomControl.VBButton vbButton4;
-        private CustomControl.VBButton vbButton5;
-        private CustomControl.VBButton btn_XuatFile;
-        private CustomControl.VBButton vbButton2;
-        private CustomControl.VBButton vbButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TableLayoutPanel Tbl_lstOrder;
     }
 }

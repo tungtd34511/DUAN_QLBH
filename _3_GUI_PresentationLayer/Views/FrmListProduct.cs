@@ -42,6 +42,7 @@ namespace _3_GUI_PresentationLayer.Views
             _lstSanPhamsShow = new List<SanPham>();
             _qlSanPhamService = new QLSanPhamService();
             _sanPhams = _qlSanPhamService.GetLstSanPhams();
+            Comb_OderBy.SelectedIndex = 0;
             LoadThongTin();
         }
 
@@ -66,7 +67,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
             txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
             lbl_lastIndex.Text = "/" + (_lastindex+1).ToString();
-            Lbl_Result.Text = list.Count.ToString() + " Kết quả";
+            Lbl_Result.Text = "Hiển thị từ " + ((_lstDetailIndex * 16)+1).ToString()+ " đến "+ ((_lstDetailIndex * 16) + _lstSanPhamsShow.Count).ToString() + " của " + _sanPhams.Count + " sản phẩm.";
             return _lstSanPhamsShow;
         }
 
@@ -149,7 +150,7 @@ namespace _3_GUI_PresentationLayer.Views
                 tblProduct.Size = new Size(1510, 50);
                 if (i % 2 == 0)
                 {
-                    tblProduct.BackColor = Color.White;
+                    tblProduct.BackColor = SystemColors.Control;
                 }
                 else
                 {
@@ -435,7 +436,8 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void Txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -443,16 +445,28 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void Txt_lstShowIndex_TextChanged(object sender, EventArgs e)
         {
-            if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1) && _lstDetailIndex != _lastindex)
+            try
             {
-                _lstDetailIndex = _lastindex;
-                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
+                if (txt_lstShowIndex.Text.StartsWith("0"))
+                {
+                    txt_lstShowIndex.Text = "1";
+                }
+                if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1) && _lstDetailIndex != _lastindex)
+                {
+                    _lstDetailIndex = _lastindex;
+                    AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
+                }
+                else
+                {
+                    _lstDetailIndex = int.Parse(txt_lstShowIndex.Text) - 1;
+                    txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
+                    AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                }
             }
-            else
+            catch
             {
-                _lstDetailIndex = int.Parse(txt_lstShowIndex.Text) - 1;
-                txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-                AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                MessageBox.Show("Chỉ nhập số!");
+                txt_lstShowIndex.Text = "1";
             }
         }
 
@@ -740,9 +754,24 @@ namespace _3_GUI_PresentationLayer.Views
                 int lenght = Txt_Search.Text.Length;
                 if (lenght > 0)
                 {
-                    Txt_Search.Text = Txt_Search.Text.Substring(1, -1);
+                    Txt_Search.Text = Txt_Search.Text.Substring(1, lenght-1);
                 }
             }
+        }
+        
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            Txt_Search.Text = "";
+            Comb_OderBy.SelectedIndex= 0;
+            AddTblLoc();
+            _lstDetailIndex = 0;
+            _sanPhams = _qlSanPhamService.GetLstSanPhams();
+            AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+        }
+
+        private void Comb_OderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

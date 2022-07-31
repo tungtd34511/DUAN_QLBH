@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("PRODUCT")]
+    [Serializable]
     public class Product
     {
         [Key]

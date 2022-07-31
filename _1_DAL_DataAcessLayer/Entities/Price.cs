@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("PRICE")]
+    [Serializable]
     public class Price
     {
         [Key]

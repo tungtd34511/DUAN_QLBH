@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("VER")]
+    [Serializable]
     public class Ver
     {
         [Key]

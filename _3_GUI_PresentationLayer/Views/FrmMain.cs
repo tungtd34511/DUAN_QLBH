@@ -268,5 +268,20 @@ namespace _3_GUI_PresentationLayer.Views
         {
             OpenchildForm(new FrmSaleList());
         }
+
+        private void btn_HoaDon_Click(object sender, EventArgs e)
+        {
+            OpenchildForm(new FrmListOder());
+        }
+
+        private void tbl_Menu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panl_menu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

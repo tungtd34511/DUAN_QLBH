@@ -538,7 +538,7 @@
             this.cmb_SoLuong.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmb_SoLuong.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmb_SoLuong.FormattingEnabled = true;
-            this.cmb_SoLuong.Location = new System.Drawing.Point(3, 551);
+            this.cmb_SoLuong.Location = new System.Drawing.Point(3, 550);
             this.cmb_SoLuong.Name = "cmb_SoLuong";
             this.cmb_SoLuong.Size = new System.Drawing.Size(167, 45);
             this.cmb_SoLuong.TabIndex = 18;

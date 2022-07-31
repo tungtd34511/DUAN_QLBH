@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("COLOR")]
+    [Serializable]
     public class Color
     {
         [Key]

@@ -26,7 +26,7 @@ namespace _3_GUI_PresentationLayer.Views
         private VBButton _activeColor;
         private VBButton _activeSize;
 
-        public FrmDatHang(SanPham sanPham,List<Sale> list)
+        public FrmDatHang(SanPham sanPham)
         {
             InitializeComponent();
             SanPham = new SanPham();
@@ -286,6 +286,7 @@ namespace _3_GUI_PresentationLayer.Views
             _oder.Price = SanPham.Price;
             _oder.Sale = SanPham.Sale;
             _oder.SoLuong = int.Parse(cmb_SoLuong.Text);
+            _oder.Ver = SanPham.Vers.FirstOrDefault(c => c.ColorId == _oder.Color.Id && c.SizeId == _oder.Size.Id);
             return _oder;
         }
     }

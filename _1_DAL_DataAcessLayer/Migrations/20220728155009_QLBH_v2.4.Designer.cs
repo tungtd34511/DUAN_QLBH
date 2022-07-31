@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1_DAL_DataAcessLayer.DatabaseContext;
 
 namespace _1_DAL_DataAcessLayer.Migrations
 {
     [DbContext(typeof(QLBHContext))]
-    partial class QLBHContextModelSnapshot : ModelSnapshot
+    [Migration("20220728155009_QLBH_v2.4")]
+    partial class QLBH_v24
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,33 +167,6 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.ToTable("IMAGE");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.KhachHang", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sdt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("Sex")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KhachHang");
-                });
-
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -199,27 +174,13 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("Created")
+                    b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("GiamGia")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("KhachHangId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NoiDungOder")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("TongTien")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("KhachHangId");
 
                     b.HasIndex("UserId");
 
@@ -236,17 +197,20 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VerId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TongTien")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("VerId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ORDER_DETAIL");
                 });
@@ -606,15 +570,9 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Order", b =>
                 {
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.KhachHang", "KhachHang")
-                        .WithMany()
-                        .HasForeignKey("KhachHangId");
-
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-
-                    b.Navigation("KhachHang");
 
                     b.Navigation("User");
                 });
@@ -625,13 +583,13 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .WithMany()
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Ver", "Ver")
+                    b.HasOne("_1_DAL_DataAcessLayer.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("VerId");
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Order");
 
-                    b.Navigation("Ver");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAcessLayer.Entities.Origin", b =>

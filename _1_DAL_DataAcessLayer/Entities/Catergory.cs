@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("CATERGORY")]
+    [Serializable]
     public class Catergory
     {
         [Key]
