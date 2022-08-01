@@ -523,7 +523,7 @@
             // 
             // customPanel1
             // 
-            this.customPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.customPanel1.BackColor = System.Drawing.Color.White;
             this.customPanel1.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel1.BorderRadius = 0;
