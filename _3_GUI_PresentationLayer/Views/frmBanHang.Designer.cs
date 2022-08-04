@@ -31,6 +31,7 @@ namespace _3_GUI_PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Panl_MenuTop = new _3_GUI_PresentationLayer.CustomControl.GadientPanel();
             this.btn_Them = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.Tbl_LstOder = new System.Windows.Forms.TableLayoutPanel();
@@ -44,13 +45,14 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.tbl_lstproduct = new System.Windows.Forms.TableLayoutPanel();
             this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.Btn_Reset = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.Panl_Search = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.Btn_Search = new FontAwesome.Sharp.IconButton();
             this.Txt_Search = new System.Windows.Forms.TextBox();
             this.lbl_ketQua = new System.Windows.Forms.Label();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.Btn_Fill = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Prev = new FontAwesome.Sharp.IconButton();
             this.btn_last = new FontAwesome.Sharp.IconButton();
@@ -80,10 +82,11 @@ namespace _3_GUI_PresentationLayer.Views
             this.button1 = new System.Windows.Forms.Button();
             this.Txt_KhachHangName = new System.Windows.Forms.TextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Btn_KH = new FontAwesome.Sharp.IconButton();
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.Menu_Fill = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Menu_KhachHang = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Panl_MenuTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -145,7 +148,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Them.TabIndex = 10;
             this.btn_Them.TextColor = System.Drawing.Color.White;
             this.btn_Them.UseVisualStyleBackColor = false;
-            this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
+            this.btn_Them.Click += new System.EventHandler(this.Btn_Them_Click);
             // 
             // Tbl_LstOder
             // 
@@ -295,11 +298,13 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
             this.customPanel2.BorderRadius = 0;
             this.customPanel2.BorderSize = 2;
+            this.customPanel2.Controls.Add(this.Btn_Reset);
             this.customPanel2.Controls.Add(this.tableLayoutPanel3);
             this.customPanel2.Controls.Add(this.iconButton3);
-            this.customPanel2.Controls.Add(this.vbButton1);
+            this.customPanel2.Controls.Add(this.Btn_Fill);
             this.customPanel2.Controls.Add(this.tableLayoutPanel2);
             this.customPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customPanel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customPanel2.Location = new System.Drawing.Point(0, 0);
             this.customPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.customPanel2.Name = "customPanel2";
@@ -307,6 +312,32 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel2.Size = new System.Drawing.Size(1428, 50);
             this.customPanel2.TabIndex = 0;
             this.customPanel2.UnderlinedStyle = false;
+            // 
+            // Btn_Reset
+            // 
+            this.Btn_Reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Reset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Reset.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Btn_Reset.BorderRadius = 7;
+            this.Btn_Reset.BorderSize = 0;
+            this.Btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Reset.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn_Reset.FlatAppearance.BorderSize = 0;
+            this.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Reset.ForeColor = System.Drawing.Color.White;
+            this.Btn_Reset.IconChar = FontAwesome.Sharp.IconChar.Rotate;
+            this.Btn_Reset.IconColor = System.Drawing.Color.White;
+            this.Btn_Reset.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Reset.IconSize = 33;
+            this.Btn_Reset.Location = new System.Drawing.Point(256, 3);
+            this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.Btn_Reset.Size = new System.Drawing.Size(44, 44);
+            this.Btn_Reset.TabIndex = 14;
+            this.Btn_Reset.TextColor = System.Drawing.Color.White;
+            this.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Reset.UseVisualStyleBackColor = false;
+            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -347,6 +378,7 @@ namespace _3_GUI_PresentationLayer.Views
             // Btn_Search
             // 
             this.Btn_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Search.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Search.Dock = System.Windows.Forms.DockStyle.Right;
             this.Btn_Search.FlatAppearance.BorderSize = 0;
             this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -367,6 +399,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             this.Txt_Search.BackColor = System.Drawing.Color.White;
             this.Txt_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Search.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Txt_Search.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Txt_Search.Location = new System.Drawing.Point(8, 10);
             this.Txt_Search.Margin = new System.Windows.Forms.Padding(5);
@@ -375,6 +408,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.Txt_Search.Size = new System.Drawing.Size(196, 29);
             this.Txt_Search.TabIndex = 1;
             this.Txt_Search.Visible = false;
+            this.Txt_Search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Search_KeyDown);
             // 
             // lbl_ketQua
             // 
@@ -392,6 +426,7 @@ namespace _3_GUI_PresentationLayer.Views
             // iconButton3
             // 
             this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.iconButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton3.Dock = System.Windows.Forms.DockStyle.Left;
             this.iconButton3.FlatAppearance.BorderSize = 0;
             this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -407,30 +442,32 @@ namespace _3_GUI_PresentationLayer.Views
             this.iconButton3.TabIndex = 12;
             this.iconButton3.UseVisualStyleBackColor = false;
             // 
-            // vbButton1
+            // Btn_Fill
             // 
-            this.vbButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.vbButton1.BorderRadius = 0;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.Filter;
-            this.vbButton1.IconColor = System.Drawing.Color.White;
-            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton1.IconSize = 30;
-            this.vbButton1.Location = new System.Drawing.Point(3, 3);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.vbButton1.Size = new System.Drawing.Size(44, 44);
-            this.vbButton1.TabIndex = 10;
-            this.vbButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.vbButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton1.UseVisualStyleBackColor = false;
+            this.Btn_Fill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Fill.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Fill.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_Fill.BorderRadius = 0;
+            this.Btn_Fill.BorderSize = 0;
+            this.Btn_Fill.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Fill.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn_Fill.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.Btn_Fill.FlatAppearance.BorderSize = 0;
+            this.Btn_Fill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Fill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.Btn_Fill.IconChar = FontAwesome.Sharp.IconChar.Filter;
+            this.Btn_Fill.IconColor = System.Drawing.Color.White;
+            this.Btn_Fill.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_Fill.IconSize = 30;
+            this.Btn_Fill.Location = new System.Drawing.Point(3, 3);
+            this.Btn_Fill.Name = "Btn_Fill";
+            this.Btn_Fill.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.Btn_Fill.Size = new System.Drawing.Size(44, 44);
+            this.Btn_Fill.TabIndex = 10;
+            this.Btn_Fill.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.Btn_Fill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Fill.UseVisualStyleBackColor = false;
+            this.Btn_Fill.Click += new System.EventHandler(this.Btn_Fill_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -474,7 +511,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_Prev.Size = new System.Drawing.Size(40, 44);
             this.btn_Prev.TabIndex = 0;
             this.btn_Prev.UseVisualStyleBackColor = true;
-            this.btn_Prev.Click += new System.EventHandler(this.btn_Prev_Click);
+            this.btn_Prev.Click += new System.EventHandler(this.Btn_Prev_Click);
             // 
             // btn_last
             // 
@@ -494,7 +531,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_last.Size = new System.Drawing.Size(40, 44);
             this.btn_last.TabIndex = 3;
             this.btn_last.UseVisualStyleBackColor = true;
-            this.btn_last.Click += new System.EventHandler(this.btn_last_Click);
+            this.btn_last.Click += new System.EventHandler(this.Btn_last_Click);
             // 
             // btn_next
             // 
@@ -514,7 +551,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_next.Size = new System.Drawing.Size(40, 44);
             this.btn_next.TabIndex = 2;
             this.btn_next.UseVisualStyleBackColor = true;
-            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
+            this.btn_next.Click += new System.EventHandler(this.Btn_next_Click);
             // 
             // btn_firt
             // 
@@ -534,23 +571,25 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_firt.Size = new System.Drawing.Size(40, 44);
             this.btn_firt.TabIndex = 1;
             this.btn_firt.UseVisualStyleBackColor = true;
-            this.btn_firt.Click += new System.EventHandler(this.btn_firt_Click);
+            this.btn_firt.Click += new System.EventHandler(this.Btn_firt_Click);
             // 
             // lbl_lastIndex
             // 
-            this.lbl_lastIndex.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_lastIndex.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_lastIndex.AutoSize = true;
             this.lbl_lastIndex.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl_lastIndex.ForeColor = System.Drawing.Color.White;
-            this.lbl_lastIndex.Location = new System.Drawing.Point(143, 7);
+            this.lbl_lastIndex.Location = new System.Drawing.Point(144, 7);
             this.lbl_lastIndex.Name = "lbl_lastIndex";
             this.lbl_lastIndex.Size = new System.Drawing.Size(52, 30);
             this.lbl_lastIndex.TabIndex = 5;
             this.lbl_lastIndex.Text = "/ 20";
+            this.lbl_lastIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txt_lstShowIndex
             // 
             this.txt_lstShowIndex.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_lstShowIndex.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_lstShowIndex.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_lstShowIndex.Location = new System.Drawing.Point(80, 5);
             this.txt_lstShowIndex.Margin = new System.Windows.Forms.Padding(0);
@@ -559,8 +598,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_lstShowIndex.TabIndex = 6;
             this.txt_lstShowIndex.Text = "1";
             this.txt_lstShowIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_lstShowIndex.TextChanged += new System.EventHandler(this.txt_lstShowIndex_TextChanged);
-            this.txt_lstShowIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_lstShowIndex_KeyPress);
+            this.txt_lstShowIndex.TextChanged += new System.EventHandler(this.Txt_lstShowIndex_TextChanged);
+            this.txt_lstShowIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_lstShowIndex_KeyPress);
             // 
             // pan_ThanhToan
             // 
@@ -601,6 +640,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // txt_Note
             // 
+            this.txt_Note.AllowDrop = true;
             this.txt_Note.BackColor = System.Drawing.Color.White;
             this.txt_Note.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Note.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -625,11 +665,11 @@ namespace _3_GUI_PresentationLayer.Views
             this.iconButton9.IconSize = 35;
             this.iconButton9.Location = new System.Drawing.Point(13, 523);
             this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(167, 38);
+            this.iconButton9.Size = new System.Drawing.Size(135, 38);
             this.iconButton9.TabIndex = 15;
             this.iconButton9.Text = "Ghi chú";
             this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton9.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -809,7 +849,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_TienKhachTra.Size = new System.Drawing.Size(183, 36);
             this.txt_TienKhachTra.TabIndex = 10;
             this.txt_TienKhachTra.Text = "0";
-            this.txt_TienKhachTra.TextChanged += new System.EventHandler(this.txt_TienKhachTra_TextChanged);
+            this.txt_TienKhachTra.TextChanged += new System.EventHandler(this.Txt_TienKhachTra_TextChanged);
             // 
             // panel6
             // 
@@ -830,8 +870,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel4.Controls.Add(this.button1);
             this.customPanel4.Controls.Add(this.Txt_KhachHangName);
             this.customPanel4.Controls.Add(this.iconButton1);
-            this.customPanel4.Controls.Add(this.iconButton2);
-            this.customPanel4.Controls.Add(this.label1);
+            this.customPanel4.Controls.Add(this.Btn_KH);
             this.customPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.customPanel4.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customPanel4.Location = new System.Drawing.Point(5, 5);
@@ -856,12 +895,12 @@ namespace _3_GUI_PresentationLayer.Views
             // Txt_KhachHangName
             // 
             this.Txt_KhachHangName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_KhachHangName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Txt_KhachHangName.Location = new System.Drawing.Point(71, 40);
             this.Txt_KhachHangName.Name = "Txt_KhachHangName";
             this.Txt_KhachHangName.PlaceholderText = "Khách Hàng";
             this.Txt_KhachHangName.Size = new System.Drawing.Size(251, 40);
             this.Txt_KhachHangName.TabIndex = 1;
-            this.Txt_KhachHangName.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
             // 
             // iconButton1
             // 
@@ -877,30 +916,20 @@ namespace _3_GUI_PresentationLayer.Views
             this.iconButton1.TabIndex = 0;
             this.iconButton1.UseVisualStyleBackColor = false;
             // 
-            // iconButton2
+            // Btn_KH
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.White;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
-            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(325, 35);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(50, 42);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.label1.Location = new System.Drawing.Point(321, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 50);
-            this.label1.TabIndex = 9;
+            this.Btn_KH.BackColor = System.Drawing.Color.White;
+            this.Btn_KH.FlatAppearance.BorderSize = 0;
+            this.Btn_KH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_KH.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.Btn_KH.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
+            this.Btn_KH.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_KH.Location = new System.Drawing.Point(327, 38);
+            this.Btn_KH.Name = "Btn_KH";
+            this.Btn_KH.Size = new System.Drawing.Size(50, 42);
+            this.Btn_KH.TabIndex = 2;
+            this.Btn_KH.UseVisualStyleBackColor = false;
+            this.Btn_KH.Click += new System.EventHandler(this.Btn_KH_Click);
             // 
             // vbButton5
             // 
@@ -947,6 +976,20 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton4.Text = "Thanh toán";
             this.vbButton4.TextColor = System.Drawing.Color.White;
             this.vbButton4.UseVisualStyleBackColor = false;
+            // 
+            // Menu_Fill
+            // 
+            this.Menu_Fill.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Menu_Fill.Name = "contextMenuStrip1";
+            this.Menu_Fill.ShowImageMargin = false;
+            this.Menu_Fill.Size = new System.Drawing.Size(186, 32);
+            // 
+            // Menu_KhachHang
+            // 
+            this.Menu_KhachHang.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Menu_KhachHang.Name = "contextMenuStrip1";
+            this.Menu_KhachHang.ShowImageMargin = false;
+            this.Menu_KhachHang.Size = new System.Drawing.Size(36, 4);
             // 
             // FrmBanHang
             // 
@@ -1010,7 +1053,7 @@ namespace _3_GUI_PresentationLayer.Views
         private CustomControl.VBButton vbButton4;
         private System.Windows.Forms.TextBox Txt_KhachHangName;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton Btn_KH;
         private System.Windows.Forms.TableLayoutPanel tblOrderCart;
         private CustomControl.CustomPanel customPanel2;
         private System.Windows.Forms.TextBox txt_GiamGia;
@@ -1024,7 +1067,6 @@ namespace _3_GUI_PresentationLayer.Views
         private CustomControl.CustomPanel customPanel1;
         private System.Windows.Forms.TextBox txt_Note;
         private CustomControl.VBButton btn_Them;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private GadientPanel Panl_MenuTop;
@@ -1041,7 +1083,10 @@ namespace _3_GUI_PresentationLayer.Views
         private TextBox Txt_Search;
         private FontAwesome.Sharp.IconButton Btn_Search;
         private Label lbl_ketQua;
-        private VBButton vbButton1;
+        private VBButton Btn_Fill;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private VBButton Btn_Reset;
+        private ContextMenuStrip Menu_Fill;
+        private ContextMenuStrip Menu_KhachHang;
     }
 }

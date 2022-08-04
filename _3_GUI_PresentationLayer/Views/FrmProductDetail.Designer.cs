@@ -94,7 +94,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_TongQuan = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.vbButton1 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.Btn_NgungKD = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_Sua = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel14 = new System.Windows.Forms.Panel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -951,7 +951,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
-            this.tableLayoutPanel3.Controls.Add(this.vbButton1, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.Btn_NgungKD, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Sua, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 560);
@@ -962,30 +962,31 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1510, 40);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // vbButton1
+            // Btn_NgungKD
             // 
-            this.vbButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.vbButton1.BackColor = System.Drawing.Color.Red;
-            this.vbButton1.BackgroundColor = System.Drawing.Color.Red;
-            this.vbButton1.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.BorderRadius = 5;
-            this.vbButton1.BorderSize = 0;
-            this.vbButton1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton1.FlatAppearance.BorderSize = 0;
-            this.vbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton1.ForeColor = System.Drawing.Color.White;
-            this.vbButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.vbButton1.IconColor = System.Drawing.Color.Black;
-            this.vbButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton1.Location = new System.Drawing.Point(1321, 2);
-            this.vbButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.vbButton1.Name = "vbButton1";
-            this.vbButton1.Size = new System.Drawing.Size(172, 36);
-            this.vbButton1.TabIndex = 13;
-            this.vbButton1.Text = "Ngừng kinh doanh";
-            this.vbButton1.TextColor = System.Drawing.Color.White;
-            this.vbButton1.UseVisualStyleBackColor = false;
+            this.Btn_NgungKD.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Btn_NgungKD.BackColor = System.Drawing.Color.Red;
+            this.Btn_NgungKD.BackgroundColor = System.Drawing.Color.Red;
+            this.Btn_NgungKD.BorderColor = System.Drawing.Color.Silver;
+            this.Btn_NgungKD.BorderRadius = 5;
+            this.Btn_NgungKD.BorderSize = 0;
+            this.Btn_NgungKD.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.Btn_NgungKD.FlatAppearance.BorderSize = 0;
+            this.Btn_NgungKD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_NgungKD.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_NgungKD.ForeColor = System.Drawing.Color.White;
+            this.Btn_NgungKD.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Btn_NgungKD.IconColor = System.Drawing.Color.Black;
+            this.Btn_NgungKD.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_NgungKD.Location = new System.Drawing.Point(1321, 2);
+            this.Btn_NgungKD.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_NgungKD.Name = "Btn_NgungKD";
+            this.Btn_NgungKD.Size = new System.Drawing.Size(172, 36);
+            this.Btn_NgungKD.TabIndex = 13;
+            this.Btn_NgungKD.Text = "Ngừng kinh doanh";
+            this.Btn_NgungKD.TextColor = System.Drawing.Color.White;
+            this.Btn_NgungKD.UseVisualStyleBackColor = false;
+            this.Btn_NgungKD.Click += new System.EventHandler(this.Btn_NgungKD_Click);
             // 
             // btn_Sua
             // 
@@ -1207,7 +1208,7 @@ namespace _3_GUI_PresentationLayer.Views
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private CustomControl.VBButton btn_Sua;
-        private CustomControl.VBButton vbButton1;
+        private CustomControl.VBButton Btn_NgungKD;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel14;

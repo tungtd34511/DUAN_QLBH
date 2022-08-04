@@ -12,7 +12,6 @@ using _2_BUS_BusinessLayer.Services;
 using _3_GUI_PresentationLayer.Models;
 using LiveCharts;
 using LiveCharts.Wpf;
-using Syncfusion.Windows.Forms.Chart;
 using ChartPoint = LiveCharts.ChartPoint;
 
 //using LiveCharts;

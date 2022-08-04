@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using _3_GUI_PresentationLayer.CustomControl;
 using System.Drawing;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace _3_GUI_PresentationLayer.Views
         private readonly IBanHangService _banHangService;
         private List<SanPham> _sanPhams;
         private List<SanPham> _lstSanPhamsShow;
-        private List<HoaDon> _lstHoaDonShow;//List hóa đơn đang có trong màn hình
+        private readonly List<HoaDon> _lstHoaDonShow;//List hóa đơn đang có trong màn hình
         private HoaDon _hoaDonShow;//hóa đơn được hiển thị
         private Order _order;
         private List<ProductOder> _lstProductOderShow;
@@ -116,6 +117,231 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
             AddPanelProduct(_lstSanPhamsShow);
+            // Add menu lọc
+
+            #region Design panel Fillter
+            var panel = new Panel()
+            {
+                BackColor = Color.White,
+                MinimumSize = new Size(1000, 400),
+                Size = MinimumSize,
+            };
+            var panelResize = new Panel()
+            {
+                BackColor = Color.White,
+                MinimumSize = new Size(1000, 350),
+                Size = MinimumSize,
+                Dock = DockStyle.Top
+            };
+            List<string> lstStr1 = new() { "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU" };
+            List<string> lstStr2 = new() { "Nam", "Nữ" };
+            List<string> lstStr3 = new()
+            {
+                "Dưới 200.000 VND", "200.000  - 299.000 VND", "300.000 - 399.000 VND",
+                "400.000 - 499.000 VND", "500.000 - 799.000 VND", "800.000 - 1 triệu", "Trên 1 triệu"
+            };
+            List<string> lstStr4 = _banHangService.GetCatergories().Select(c => c.Name).ToList();
+            List<string> lstStr5 = new() { "Đang mở bán", "Ngừng kinh doanh" };
+            List<string> lstStr6 = _banHangService.GetThuongHieus().Select(c => c.Name).ToList();
+            List<List<string>> _lst = new() { lstStr2, lstStr3, lstStr4, lstStr5, lstStr6 };
+            for (int i = 0; i < lstStr1.Count; i++)
+            {
+                //table
+                FlowLayoutPanel tblPrice = new() { FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight };
+                tblPrice.Dock = DockStyle.Top;
+                tblPrice.BackColor = SystemColors.Control;
+                tblPrice.Location = new Point(0, 0);
+                tblPrice.Name = "tblPrice_" + i.ToString();
+                tblPrice.AutoSize = true;
+                tblPrice.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                tblPrice.Padding = new Padding(0, 0, 0, 10);
+                //Head tblSex
+                TableLayoutPanel head = new();
+                head.BackColor = Color.FromArgb(90, 76, 219);
+                head.ForeColor = Color.White;
+                head.ColumnCount = 3;
+                head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+                head.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+                head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+                head.Dock = DockStyle.Top;
+                head.Location = new Point(0, 0);
+                head.Margin = new Padding(0);
+                head.Name = "head_" + i.ToString();
+                head.RowCount = 1;
+                head.Height = 50;
+                head.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+                // check đầu table
+                CheckBox check1 = new()
+                {
+                    Anchor = AnchorStyles.None,
+                    AutoSize = true,
+                    Location = new Point(16, 16),
+                    Name = "check1_" + i.ToString(),
+                    Size = new Size(18, 17)
+                };
+                // Name table
+                Label Name = new();
+                Name.Anchor = AnchorStyles.Left;
+                Name.AutoSize = true;
+                Name.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+                Name.ForeColor = Color.White;
+                Name.Name = "Name_".ToString();
+                Name.Text = lstStr1[i];
+                //
+                IconButton btnMoRong = new();
+                btnMoRong.Anchor = AnchorStyles.Right;
+                btnMoRong.FlatAppearance.BorderSize = 0;
+                btnMoRong.FlatStyle = FlatStyle.Flat;
+                btnMoRong.IconChar = IconChar.AngleDown;
+                btnMoRong.IconColor = Color.Black;
+                btnMoRong.IconFont = IconFont.Auto;
+                btnMoRong.IconSize = 30;
+                btnMoRong.Location = new Point(3, 10);
+                btnMoRong.Name = "btnMoRong_" + i.ToString();
+                btnMoRong.Padding = new Padding(0, 7, 0, 0);
+                btnMoRong.Size = new Size(50, 50);
+                btnMoRong.UseVisualStyleBackColor = true;
+                //
+                head.Controls.Add(check1, 0, 0);
+                head.Controls.Add(Name, 1, 0);
+                head.Controls.Add(btnMoRong, 2, 0);
+                // Các check box trong table
+                for (int j = 0; j < _lst[i].Count; j++)
+                {
+                    CheckBox check2 = new();
+                    check2.Anchor = AnchorStyles.Left;
+                    check2.Padding = new Padding(13, 3, 3, 3);
+                    check2.ForeColor = Color.Black;
+                    check2.Font = new Font("Segoe UI", 10F, GraphicsUnit.Point);
+                    check2.Name = "checkBox_" + i.ToString() + "/" + j.ToString();
+                    check2.Text = "   " + _lst[i][j];
+                    check2.AutoSize = true;
+                    //
+                    tblPrice.Controls.Add(check2);
+                }
+
+                check1.CheckedChanged += (o, s) =>
+                {
+                    if (check1.Checked)
+                    {
+                        foreach (Control c in tblPrice.Controls)
+                        {
+                            ((CheckBox)c).Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        foreach (Control c in tblPrice.Controls)
+                        {
+                            ((CheckBox)c).Checked = false;
+                        }
+                    }
+                };
+                tblPrice.Height = tblPrice.Controls.Count * 40 + 10;
+                //
+                btnMoRong.Click += (o, s) =>
+                {
+                    if (tblPrice.Visible == true)
+                    {
+                        tblPrice.Visible = false;
+                        btnMoRong.IconChar = IconChar.AngleDown;
+                    }
+                    else
+                    {
+                        btnMoRong.IconChar = IconChar.AngleUp;
+                        tblPrice.Visible = true;
+                    }
+                };
+                //
+                panelResize.Controls.Add(tblPrice);
+                panelResize.Controls.Add(head);
+            }
+
+            panelResize.AutoScroll = true;
+            //
+            Panel panlSapXep = new Panel()
+            {
+                BackColor = Color.White,
+                MinimumSize = new Size(1000, 50),
+                Size = MinimumSize,
+                Dock = DockStyle.Top,
+                Padding = new Padding(5,5,5,5)
+            };
+            
+            panlSapXep.Controls.Add(new ComboBox()
+            {
+                DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList,
+                DropDownWidth = 200,
+                Dock = DockStyle.Left,
+                FlatStyle = System.Windows.Forms.FlatStyle.System,
+                Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point),
+                FormattingEnabled = true,
+                Name = "Comb_OderBy",
+                Items = {"1a", "1s", "10", "11", "13", "12" }
+            });
+            panlSapXep.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point),
+                ForeColor = Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219))))),
+                Name = "labelpanlSapXep",
+                Dock = DockStyle.Left,
+                Text = "Sắp xếp:"
+            });
+            //
+            panel.Controls.Add(new VBButton()
+            {
+                Location = new Point(900, 360),
+                Anchor = System.Windows.Forms.AnchorStyles.Left,
+                BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78))))),
+                BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78))))),
+                BorderColor = System.Drawing.Color.Silver,
+                BorderRadius = 5,
+                BorderSize = 0,
+                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point),
+                ForeColor = System.Drawing.Color.White,
+                IconChar = FontAwesome.Sharp.IconChar.None,
+                IconColor = System.Drawing.Color.Black,
+                IconFont = FontAwesome.Sharp.IconFont.Auto,
+                Margin = new System.Windows.Forms.Padding(0),
+                Name = "btn_Sua",
+                Size = new System.Drawing.Size(80, 36),
+                TabIndex = 12,
+                Text = "Lọc",
+                TextColor = System.Drawing.Color.White,
+                UseVisualStyleBackColor = false
+            });
+            panel.Controls.Add(panlSapXep);
+            panel.Controls.Add(panelResize);
+            #endregion
+            var hostTool = new ToolStripControlHost(panel)
+            {
+                Padding = Padding.Empty,
+                Margin = Padding.Empty
+            };
+            ;
+            Menu_Fill.Items.Add(hostTool);
+            //
+            var panel1 = new Panel()
+            {
+                BackColor = Color.White,
+                MinimumSize = new Size(500, 300),
+                Size = MinimumSize,
+            };
+            panel1.Controls.Add(new VBButton() { Dock = DockStyle.Bottom });
+            panel1.Paint += (s, e) => {
+                TextRenderer.DrawText(e.Graphics, "Pop-up Panel",
+                    SystemFonts.DefaultFont, panel1.ClientRectangle,
+                    Color.Black, Color.Empty,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            };
+            var hostTool1 = new ToolStripControlHost(panel1)
+            {
+                Padding = Padding.Empty,
+                Margin = Padding.Empty
+            };
+            Menu_KhachHang.Items.Add(hostTool1);
         }
 
         /// <summary>
@@ -158,7 +384,7 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
             Txt_KhachHangName.Text = hoaDon.KhachHang.Name;
-            txt_GiamGia.Text = hoaDon.Order.GiamGia.ToString()!=null? hoaDon.Order.GiamGia.ToString():"0";
+            txt_GiamGia.Text = hoaDon.Order.GiamGia.ToString() ?? "0";
             txt_TienKhachTra.Text = hoaDon.TienKhachTra.ToString();
             txt_Note.Text = hoaDon.Order.NoiDungOder;
             TinhTien();
@@ -261,6 +487,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnPrice.Name = "button2_" + i.ToString();
                 btnPrice.Text = string.Format("{0:#,##0}", list[i].Price.GiaBan.ToString()) + " VNĐ";
                 btnPrice.Height = 25;
+                btnPrice.AutoSize = true;
                 //
                 panel.Controls.Add(btnPrice);
                 panel.Controls.Add(btnName);
@@ -383,10 +610,8 @@ namespace _3_GUI_PresentationLayer.Views
             };
             txtSoLuong.KeyPress += (o, s) =>
             {
-                using (KeyPressService key = new())
-                {
-                    key.ChiNhapSo(o, s);
-                }
+                using KeyPressService key = new();
+                key.ChiNhapSo(o, s);
             };
             txtSoLuong.LostFocus += (o, s) => { txtSoLuong.ReadOnly = true; };
             //Tong Tien
@@ -492,42 +717,43 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void TextBox3_TextChanged(object sender, EventArgs e)
         {
-            label1.Text += ".";
-            if (label1.Text == "......")
-            {
-                label1.Text = ".";
-            }
         }
         public void AddHoaDon(HoaDon hoaDon)
         {
-            CustomPanel Panl_Oder = new CustomPanel();
-            Panl_Oder.BackColor = Color.Transparent;
-            Panl_Oder.BorderColor = Color.White;
-            Panl_Oder.BorderFocusColor = Color.HotPink;
-            Panl_Oder.BorderRadius = 0;
-            Panl_Oder.BorderSize = 0;
-            Panl_Oder.Dock = DockStyle.Left;
-            Panl_Oder.Margin = new Padding(0);
-            Panl_Oder.Name = "Panl_Oder_";
-            Panl_Oder.Padding = new Padding(5);
-            Panl_Oder.Size = new Size(205, 39);
-            Panl_Oder.UnderlinedStyle = false;
+            CustomPanel Panl_Oder = new()
+            {
+                BackColor = Color.Transparent,
+                BorderColor = Color.White,
+                BorderFocusColor = Color.HotPink,
+                BorderRadius = 0,
+                BorderSize = 0,
+                Dock = DockStyle.Left,
+                Margin = new Padding(0),
+                Name = "Panl_Oder_",
+                Padding = new Padding(5),
+                Size = new Size(205, 39),
+                UnderlinedStyle = false
+            };
             Panl_Oder.Click += (sender, e) => { AcctiveOder(Panl_Oder); };
             //
-            Label LblNameOder = new Label();
-            LblNameOder.AutoSize = true;
-            LblNameOder.Dock = DockStyle.Bottom;
-            LblNameOder.Font = new Font("Segoe UI Semilight", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            LblNameOder.Name = "LblNameOder";
-            LblNameOder.Size = new Size(85, 23);
-            LblNameOder.BackColor = Color.Transparent;
-            LblNameOder.Text = "Hóa đơn " + "(mới)";
+            Label LblNameOder = new ()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Bottom,
+                Font = new Font("Segoe UI Semilight", 10F, FontStyle.Regular, GraphicsUnit.Point),
+                Name = "LblNameOder",
+                Size = new Size(85, 23),
+                BackColor = Color.Transparent,
+                Text = "Hóa đơn " + "(mới)"
+            };
             LblNameOder.Click += (sender, e) => { AcctiveOder(Panl_Oder); };
             //
-            IconButton Btn_Delete = new IconButton();
-            Btn_Delete.BackColor = Color.Transparent;
-            Btn_Delete.Dock = DockStyle.Right;
-            Btn_Delete.FlatStyle = FlatStyle.Flat;
+            IconButton Btn_Delete = new()
+            {
+                BackColor = Color.Transparent,
+                Dock = DockStyle.Right,
+                FlatStyle = FlatStyle.Flat
+            };
             Btn_Delete.FlatAppearance.BorderSize = 0;
             Btn_Delete.FlatAppearance.MouseOverBackColor = Color.Transparent;
             Btn_Delete.FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -565,12 +791,14 @@ namespace _3_GUI_PresentationLayer.Views
                     }
                 }
             };
-            Button btn = new Button();
-            btn.Dock = DockStyle.Right;
-            btn.Width = 1;
-            btn.Height = 30;
-            btn.BackColor = Color.Black;
-            btn.FlatStyle = FlatStyle.Flat;
+            Button btn = new()
+            {
+                Dock = DockStyle.Right,
+                Width = 1,
+                Height = 30,
+                BackColor = Color.Black,
+                FlatStyle = FlatStyle.Flat
+            };
             btn.FlatAppearance.BorderSize = 0;
             //
             Panl_Oder.Controls.Add(LblNameOder);
@@ -583,7 +811,7 @@ namespace _3_GUI_PresentationLayer.Views
             //
             _lstHoaDonShow.Add(hoaDon);
         }
-        private void btn_Them_Click(object sender, EventArgs e)
+        private void Btn_Them_Click(object sender, EventArgs e)
         {
             AddHoaDon(new HoaDon());
         }
@@ -614,26 +842,74 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void txt_TienKhachTra_TextChanged(object sender, EventArgs e)
+        private void Txt_TienKhachTra_TextChanged(object sender, EventArgs e)
         {
             _tienkhachtra = decimal.Parse(txt_TienKhachTra.Text);
             TinhTien();
         }
         
+
+        #region MenuProduct
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            Txt_Search.Text = "";
+            Txt_Search.Visible = false;
+            lbl_ketQua.Visible = false;
+            Btn_Search.BackColor = Color.FromArgb(22, 27, 34);
+            Panl_Search.BackColor = Color.FromArgb(22, 27, 34);
+            Panl_Search.Width = 44;
+            _lstDetailIndex = 0;
+            _sanPhams = _banHangService.GetSanPhams();
+            AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+        }
         private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            Search();
+        }
+        private void Txt_Search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+            }
+            if (e.Control == true && e.KeyCode == Keys.A)
+            {
+                Txt_Search.SelectionStart = 0;
+                Txt_Search.SelectionLength = Txt_Search.Text.Length;
+            }
+            if(Txt_Search.SelectedText.Length>0){
+                if (e.KeyCode == Keys.Delete)
+                {
+                    Txt_Search.SelectedText.Replace(Txt_Search.SelectedText, "");
+                }
+            }
+        }
+        public void Search()
         {
             if (Panl_Search.Width > 44)
             {
                 if (Txt_Search.Text.Length > 0)
                 {
+                    //tìm kiếm sản phẩm
+                    _sanPhams = _banHangService.GetSanPhams();
+                    _lstDetailIndex = 0;
+                    _sanPhams = _sanPhams.Where(c => c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower()) || Txt_Search.Text == c.Product.Id.ToString())
+                        .ToList();
+                    AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                    //
                     Txt_Search.Visible = false;
                     Panl_Search.BackColor = Color.FromArgb(22, 27, 34);
                     Panl_Search.Width = 44;
                     lbl_ketQua.Visible = true;
                     Btn_Search.BackColor = Color.FromArgb(22, 27, 34);
+                    lbl_ketQua.Text = _sanPhams.Count.ToString() + " kết quả";
+                }
+                else
+                {
+                    MessageBox.Show("Mời nhập thông tin cần tìm kiếm là tên hoặc mã sản phẩm !!!!", "Cảnh báo");
                 }
             }
-            else if(Panl_Search.Width < 250)
+            else if (Panl_Search.Width < 250)
             {
                 Btn_Search.BackColor = Color.White;
                 Panl_Search.Width = 250;
@@ -642,9 +918,8 @@ namespace _3_GUI_PresentationLayer.Views
                 lbl_ketQua.Visible = false;
             }
         }
-
         #region Phân trang
-        private void btn_next_Click(object sender, EventArgs e)
+        private void Btn_next_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex < _lastindex)
             {
@@ -653,7 +928,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_last_Click(object sender, EventArgs e)
+        private void Btn_last_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex != _lastindex)
             {
@@ -661,7 +936,7 @@ namespace _3_GUI_PresentationLayer.Views
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
             }
         }
-        private void btn_Prev_Click(object sender, EventArgs e)
+        private void Btn_Prev_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex > 0)
             {
@@ -670,7 +945,7 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void btn_firt_Click(object sender, EventArgs e)
+        private void Btn_firt_Click(object sender, EventArgs e)
         {
             if (_lstDetailIndex != 0)
             {
@@ -678,7 +953,7 @@ namespace _3_GUI_PresentationLayer.Views
                 txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
             }
         }
-        private void txt_lstShowIndex_TextChanged(object sender, EventArgs e)
+        private void Txt_lstShowIndex_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -686,7 +961,7 @@ namespace _3_GUI_PresentationLayer.Views
                 {
                     txt_lstShowIndex.Text = "1";
                 }
-                if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1) && _lstDetailIndex != _lastindex)
+                if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1))
                 {
                     _lstDetailIndex = _lastindex;
                     AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
@@ -698,19 +973,33 @@ namespace _3_GUI_PresentationLayer.Views
                     AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Chỉ nhập số!");
                 txt_lstShowIndex.Text = "1";
             }
         }
-        private void txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
         {
-            using (KeyPressService key = new KeyPressService())
-            {
-                key.ChiNhapSo(sender,e);
-            }
+            using KeyPressService key = new();
+            key.ChiNhapSo(sender, e);
         }
         #endregion
+        //Lọc
+        private void Btn_Fill_Click(object sender, EventArgs e)
+        {
+            
+            Menu_Fill.Show(Btn_Fill,0,Btn_Fill.Height);
+        }
+        #endregion
+        private void Btn_KH_Click(object sender, EventArgs e)
+        {
+            Menu_KhachHang.Show(Btn_KH, 0, Btn_KH.Height);
+        }
+
+        private void tbl_lstproduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

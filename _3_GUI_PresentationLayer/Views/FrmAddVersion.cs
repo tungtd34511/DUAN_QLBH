@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.Models;
 using _3_GUI_PresentationLayer.CustomControl;
+using _3_GUI_PresentationLayer.Service;
 using Accessibility;
 using FontAwesome.Sharp;
 using Color = System.Drawing.Color;
@@ -224,20 +225,48 @@ namespace _3_GUI_PresentationLayer.Views
         }
         private void Txt_G_TextChanged(object sender, EventArgs e)
         {
-            txt_MaHex.Text = "#" + int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
-                             int.Parse(txt_B.Text).ToString("X2");
+            var data = int.Parse(txt_G.Text);
+            if (data > 255)
+            {
+                data = 255;
+                txt_G.Text = data.ToString();
+            }
+            else
+            {
+                txt_MaHex.Text = "#" + int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
+                                 int.Parse(txt_B.Text).ToString("X2");
+            }
         }
 
         private void Txt_B_TextChanged(object sender, EventArgs e)
         {
-            txt_MaHex.Text ="#"+ int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
-                             int.Parse(txt_B.Text).ToString("X2");
+            var data = int.Parse(txt_B.Text);
+            if (data > 255)
+            {
+                data = 255;
+                txt_B.Text = data.ToString();
+            }
+            else
+            {
+                txt_MaHex.Text = "#" + int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
+                                 int.Parse(txt_B.Text).ToString("X2");
+            }
+            
         }
 
         private void Txt_R_TextChanged(object sender, EventArgs e)
         {
-            txt_MaHex.Text = "#" + int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
-                             int.Parse(txt_B.Text).ToString("X2");
+            var data = int.Parse(txt_R.Text);
+            if (data > 255)
+            {
+                data = 255;
+                txt_R.Text = data.ToString();
+            }
+            else
+            {
+                txt_MaHex.Text = "#" + int.Parse(txt_R.Text).ToString("X2") + int.Parse(txt_G.Text).ToString("X2") +
+                                 int.Parse(txt_B.Text).ToString("X2");
+            }
         }
 
         private void Pic_Product_MouseHover(object sender, EventArgs e)
@@ -292,6 +321,22 @@ namespace _3_GUI_PresentationLayer.Views
         private void Pic_Product_MouseLeave(object sender, EventArgs e)
         {
             timer1.Stop();
+        }
+
+        private void vbButton3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Các dữ liệu sẽ không được lưu, bạn có muốn thoát ?", "Cảnh báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Close();
+            }
+        }
+
+        private void txt_B_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            using (KeyPressService Kpress = new KeyPressService())
+            {
+                Kpress.ChiNhapSo(sender,e);
+            }
         }
         // sự kiện load ảnh
     }

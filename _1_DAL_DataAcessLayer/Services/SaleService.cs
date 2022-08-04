@@ -28,7 +28,7 @@ namespace _1_DAL_DataAcessLayer.Services
         public void GetLstSalesFormDb()
         {
             _lstSales = new List<Sale>();
-            //_lstSales = _qlbhContext.Sales.ToList();
+            _lstSales = _qlbhContext.Sales.ToList();
         }
 
         public string Add(Sale sale)

@@ -19,6 +19,5 @@ namespace _1_DAL_DataAcessLayer.Entities
         public decimal GiaBan { get; set; }
         public bool Status { get; set; }
         public int? SaleId { get; set; }
-        public virtual Sale Sale { get; set; }
     }
 }

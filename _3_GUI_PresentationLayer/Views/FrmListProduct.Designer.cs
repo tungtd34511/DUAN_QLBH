@@ -89,7 +89,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.label1.Location = new System.Drawing.Point(23, 14);
+            this.label1.Location = new System.Drawing.Point(0, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(230, 60);
             this.label1.TabIndex = 0;
@@ -125,16 +125,27 @@
             this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 8;
             this.label4.Text = "Sắp xếp:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Comb_OderBy
             // 
             this.Comb_OderBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Comb_OderBy.DropDownWidth = 200;
+            this.Comb_OderBy.DropDownWidth = 250;
             this.Comb_OderBy.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Comb_OderBy.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Comb_OderBy.FormattingEnabled = true;
             this.Comb_OderBy.Items.AddRange(new object[] {
-            "Không"});
+            "Không",
+            "Theo tên (A-Z)",
+            "Theo tên (Z-A)",
+            "Theo mã sản phẩm (Tăng)",
+            "Theo mã sản phẩm (Giảm)",
+            "Theo giá bán (Tăng)",
+            "Theo giá bán (Giảm)",
+            "Theo giá nhập (Tăng)",
+            "Theo giá nhập (Giảm)",
+            "Theo tổng số lượng (Tăng)",
+            "Theo tổng số lượng (Giảm)"});
             this.Comb_OderBy.Location = new System.Drawing.Point(785, 35);
             this.Comb_OderBy.Margin = new System.Windows.Forms.Padding(0);
             this.Comb_OderBy.Name = "Comb_OderBy";
@@ -199,9 +210,12 @@
             this.Btn_Reset.IconChar = FontAwesome.Sharp.IconChar.Rotate;
             this.Btn_Reset.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.Btn_Reset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_Reset.IconSize = 40;
             this.Btn_Reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_Reset.Location = new System.Drawing.Point(1085, 28);
+            this.Btn_Reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.Btn_Reset.Size = new System.Drawing.Size(51, 50);
             this.Btn_Reset.TabIndex = 5;
             this.Btn_Reset.TextColor = System.Drawing.Color.White;
@@ -393,8 +407,8 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel7.Controls.Add(this.label11, 9, 0);
             this.tableLayoutPanel7.Controls.Add(this.label10, 8, 0);
             this.tableLayoutPanel7.Controls.Add(this.label9, 7, 0);
@@ -411,6 +425,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1510, 50);
             this.tableLayoutPanel7.TabIndex = 0;
+            this.tableLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel7_Paint);
             // 
             // label11
             // 
@@ -418,12 +433,12 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(1429, 13);
+            this.label11.Location = new System.Drawing.Point(1396, 13);
             this.label11.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 23);
+            this.label11.Size = new System.Drawing.Size(109, 23);
             this.label11.TabIndex = 9;
-            this.label11.Text = "KH đặt";
+            this.label11.Text = "Trạng Thái";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
@@ -432,7 +447,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(1297, 13);
+            this.label10.Location = new System.Drawing.Point(1264, 13);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 23);
             this.label10.TabIndex = 8;
@@ -729,23 +744,24 @@
             // Btn_HuyLoc
             // 
             this.Btn_HuyLoc.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.Btn_HuyLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
-            this.Btn_HuyLoc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
+            this.Btn_HuyLoc.BackColor = System.Drawing.Color.White;
+            this.Btn_HuyLoc.BackgroundColor = System.Drawing.Color.White;
             this.Btn_HuyLoc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Btn_HuyLoc.BorderRadius = 7;
-            this.Btn_HuyLoc.BorderSize = 1;
+            this.Btn_HuyLoc.BorderSize = 0;
             this.Btn_HuyLoc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.Btn_HuyLoc.FlatAppearance.BorderSize = 0;
             this.Btn_HuyLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_HuyLoc.ForeColor = System.Drawing.Color.White;
-            this.Btn_HuyLoc.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Btn_HuyLoc.IconChar = FontAwesome.Sharp.IconChar.Rotate;
             this.Btn_HuyLoc.IconColor = System.Drawing.Color.Black;
             this.Btn_HuyLoc.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_HuyLoc.IconSize = 30;
             this.Btn_HuyLoc.Location = new System.Drawing.Point(122, 3);
             this.Btn_HuyLoc.Name = "Btn_HuyLoc";
-            this.Btn_HuyLoc.Size = new System.Drawing.Size(81, 44);
+            this.Btn_HuyLoc.Padding = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.Btn_HuyLoc.Size = new System.Drawing.Size(44, 44);
             this.Btn_HuyLoc.TabIndex = 9;
-            this.Btn_HuyLoc.Text = "Hủy lọc";
             this.Btn_HuyLoc.TextColor = System.Drawing.Color.White;
             this.Btn_HuyLoc.UseVisualStyleBackColor = false;
             this.Btn_HuyLoc.Click += new System.EventHandler(this.Btn_HuyLoc_Click);
@@ -768,7 +784,7 @@
             this.Btn_Loc.IconSize = 40;
             this.Btn_Loc.Location = new System.Drawing.Point(3, 3);
             this.Btn_Loc.Name = "Btn_Loc";
-            this.Btn_Loc.Size = new System.Drawing.Size(101, 44);
+            this.Btn_Loc.Size = new System.Drawing.Size(113, 44);
             this.Btn_Loc.TabIndex = 8;
             this.Btn_Loc.Text = "Lọc";
             this.Btn_Loc.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));

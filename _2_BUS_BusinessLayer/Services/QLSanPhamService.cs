@@ -28,12 +28,14 @@ namespace _2_BUS_BusinessLayer.Services
         private readonly ICatergoryService _catergoryService;
         private readonly IPriceService _priceService;
         private readonly ISaleService _saleService;
+        private readonly CheckData _check;
         //
         private List<SanPham> _sanPhams;
         //
         private readonly XuatFile _xuatFile;
         public QLSanPhamService()
         {
+            _check = new CheckData();
             _productService = new ProductService();
             _productDetailService = new ProductDetailService();
             _verService = new VerService();
@@ -205,6 +207,144 @@ namespace _2_BUS_BusinessLayer.Services
             }
             GetLstSanPhamsFormDAL();
             return "Cập nhật sản phẩm thành công!";
+        }
+        public bool GetKQLoc(SanPham item,List<bool> listCBox)
+        {
+            using DeQuy DQ = new DeQuy();//Sử dụng đệ quy lấy kết quả cho list điều kiện
+            int index = 0;
+            List<bool> listMain = new List<bool>();//Tổng kết các kết quả
+            //{ "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU"};
+            //List điều kiện
+            List<bool> sex = new() { true, false };
+            List<bool> lstStatus = new() { true, false };
+            //list Kết quả
+            List<bool> listkq1 = new List<bool>();
+            foreach (var x in sex)
+            {
+                if (listCBox[index++])
+                {
+                    listkq1.Add(item.ProductDetail.Sex == x);
+                }
+            }
+
+            if (listkq1.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq1)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            List<bool> listkq2 = new List<bool>();
+            List<decimal> lstGia = new() { 199000, 299000, 399000, 499000, 799000, 1000000 };
+            for (int i = 0; i <= lstGia.Count; i++)//đệt mợ cái bug khốn nạn sai dấu >=
+            {
+                if (listCBox[index++])
+                {
+                    if (i == 0)
+                    {
+                        listkq2.Add(item.Price.GiaBan <= lstGia[i]);
+                    }
+                    else if (i == lstGia.Count)
+                    {
+                        listkq2.Add(item.Price.GiaBan > lstGia[lstGia.Count - 1]);
+                    }
+                    else
+                    {
+                        listkq2.Add((item.Price.GiaBan > lstGia[i - 1]) && (item.Price.GiaBan <= lstGia[i]));
+                    }
+                }
+            }
+            if (listkq2.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq2)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            //
+            List<bool> listkq3 = new List<bool>();
+            foreach (var a in _catergoryService.GetLstCatergorys())
+            {
+                if (listCBox[index++])
+                {
+                    listkq3.Add(a.Name == item.Catergory.Name);
+                }
+            }
+            if (listkq3.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq3)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            //
+            List<bool> listkq4 = new List<bool>();
+            foreach (var a in (new List<bool>(){true,false}))
+            {
+                if (listCBox[index++])
+                {
+                    listkq4.Add(a == item.Product.Status);
+                }
+            }
+            if (listkq4.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq4)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            List<bool> listkq5 = new List<bool>();
+            foreach (var a in _thuongHieuService.GetLstThuongHieus())
+            {
+                if (listCBox[index++])
+                {
+                    listkq5.Add(a.Name == item.ThuongHieu.Name);
+                }
+            }
+            if (listkq5.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq5)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+
+            if (listMain.Count > 0)
+            {
+                return DQ.GetBool1(listMain);//ĐỆ quy giửa các nhóm đệ quy là và và
+            }
+            else
+            {
+                return true;//Hiện thị tất cả nếu không check box nào đc chọn
+            }
+        }
+
+        public bool ChangeProductStatus(Product p)
+        {
+            try
+            {
+                if (p.Status)
+                {
+                    p.Status = false;
+                    _productService.Update(p);
+                }
+                else
+                {
+                    p.Status = true;
+                    _productService.Update(p);
+                }
+                GetLstSanPhamsFormDAL();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool TrungTen(string name)
+        {
+            if (_productService.GetLstProducts().Select(c => c.Name).ToList().Contains(name))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public string Validation(SanPham _sanPham)
+        {
+            string txtEror = "";
+            if (string.IsNullOrEmpty(_sanPham.Product.Name))
+            {
+                txtEror+="Vui lòng điền tên sản phẩm !";
+            }
+            return txtEror;
         }
     }
 }

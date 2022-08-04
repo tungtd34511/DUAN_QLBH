@@ -34,7 +34,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_GiaBan = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_AddVer = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -119,8 +119,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblName, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -150,6 +150,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1282, 750);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // tableLayoutPanel3
             // 
@@ -177,12 +178,12 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.40127F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.59872F));
-            this.tableLayoutPanel5.Controls.Add(this.vbButton5, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.label6, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel2, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.vbButton5, 1, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -194,31 +195,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(628, 135);
             this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // vbButton5
-            // 
-            this.vbButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vbButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.vbButton5.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton5.BorderRadius = 5;
-            this.vbButton5.BorderSize = 1;
-            this.vbButton5.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton5.ForeColor = System.Drawing.Color.White;
-            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.vbButton5.IconColor = System.Drawing.Color.Black;
-            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton5.Location = new System.Drawing.Point(460, 95);
-            this.vbButton5.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
-            this.vbButton5.Name = "vbButton5";
-            this.vbButton5.Size = new System.Drawing.Size(153, 37);
-            this.vbButton5.TabIndex = 1;
-            this.vbButton5.Text = "Chọn ảnh";
-            this.vbButton5.TextColor = System.Drawing.Color.White;
-            this.vbButton5.UseVisualStyleBackColor = false;
-            this.vbButton5.Click += new System.EventHandler(this.VbButton5_Click);
             // 
             // label6
             // 
@@ -271,12 +247,13 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiaNhap.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_GiaNhap.Location = new System.Drawing.Point(0, 20);
             this.txt_GiaNhap.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_GiaNhap.MaxLength = 10;
             this.txt_GiaNhap.Name = "txt_GiaNhap";
-            this.txt_GiaNhap.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_GiaNhap.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaNhap.TabIndex = 2;
             this.txt_GiaNhap.Text = "0";
             this.txt_GiaNhap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txt_GiaNhap_MouseClick);
+            this.txt_GiaNhap.TextChanged += new System.EventHandler(this.txt_GiaNhap_TextChanged);
             this.txt_GiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_GiaNhap_KeyPress);
             // 
             // button1
@@ -310,8 +287,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiaBan.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_GiaBan.Location = new System.Drawing.Point(0, 20);
             this.txt_GiaBan.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_GiaBan.MaxLength = 10;
             this.txt_GiaBan.Name = "txt_GiaBan";
-            this.txt_GiaBan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_GiaBan.Size = new System.Drawing.Size(511, 23);
             this.txt_GiaBan.TabIndex = 1;
             this.txt_GiaBan.Text = "0";
@@ -330,6 +307,31 @@ namespace _3_GUI_PresentationLayer.Views
             this.button7.Size = new System.Drawing.Size(511, 2);
             this.button7.TabIndex = 0;
             this.button7.UseVisualStyleBackColor = false;
+            // 
+            // vbButton5
+            // 
+            this.vbButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.vbButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.vbButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.vbButton5.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton5.BorderRadius = 5;
+            this.vbButton5.BorderSize = 1;
+            this.vbButton5.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.vbButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.vbButton5.ForeColor = System.Drawing.Color.White;
+            this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton5.IconColor = System.Drawing.Color.Black;
+            this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.vbButton5.Location = new System.Drawing.Point(460, 95);
+            this.vbButton5.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
+            this.vbButton5.Name = "vbButton5";
+            this.vbButton5.Size = new System.Drawing.Size(153, 37);
+            this.vbButton5.TabIndex = 1;
+            this.vbButton5.Text = "Chọn ảnh";
+            this.vbButton5.TextColor = System.Drawing.Color.White;
+            this.vbButton5.UseVisualStyleBackColor = false;
+            this.vbButton5.Click += new System.EventHandler(this.VbButton5_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -536,13 +538,13 @@ namespace _3_GUI_PresentationLayer.Views
             this.rbtn_Nu.Name = "rbtn_Nu";
             this.rbtn_Nu.Size = new System.Drawing.Size(50, 24);
             this.rbtn_Nu.TabIndex = 2;
-            this.rbtn_Nu.TabStop = true;
             this.rbtn_Nu.Text = "Nữ";
             this.rbtn_Nu.UseVisualStyleBackColor = true;
             // 
             // rbtn_Nam
             // 
             this.rbtn_Nam.AutoSize = true;
+            this.rbtn_Nam.Checked = true;
             this.rbtn_Nam.Location = new System.Drawing.Point(9, 18);
             this.rbtn_Nam.Name = "rbtn_Nam";
             this.rbtn_Nam.Size = new System.Drawing.Size(62, 24);
@@ -582,10 +584,12 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_ProductName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_ProductName.Location = new System.Drawing.Point(0, 20);
             this.txt_ProductName.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_ProductName.MaxLength = 55;
             this.txt_ProductName.Name = "txt_ProductName";
             this.txt_ProductName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_ProductName.Size = new System.Drawing.Size(498, 23);
             this.txt_ProductName.TabIndex = 3;
+            this.txt_ProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_ProductName_KeyPress);
             // 
             // button4
             // 
@@ -954,11 +958,11 @@ namespace _3_GUI_PresentationLayer.Views
             // vbButton3
             // 
             this.vbButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vbButton3.BackColor = System.Drawing.Color.White;
-            this.vbButton3.BackgroundColor = System.Drawing.Color.White;
-            this.vbButton3.BorderColor = System.Drawing.Color.Black;
+            this.vbButton3.BackColor = System.Drawing.SystemColors.Control;
+            this.vbButton3.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.vbButton3.BorderColor = System.Drawing.Color.Silver;
             this.vbButton3.BorderRadius = 5;
-            this.vbButton3.BorderSize = 0;
+            this.vbButton3.BorderSize = 1;
             this.vbButton3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.vbButton3.FlatAppearance.BorderSize = 0;
             this.vbButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

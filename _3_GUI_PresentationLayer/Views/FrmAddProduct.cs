@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.Models;
 using _2_BUS_BusinessLayer.Services;
 using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.CustomControl;
+using _3_GUI_PresentationLayer.Service;
 using IronBarCode;
 using Color = _1_DAL_DataAcessLayer.Entities.Color;
+using Cursors = System.Windows.Forms.Cursors;
 using Image = _1_DAL_DataAcessLayer.Entities.Image;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Size = _1_DAL_DataAcessLayer.Entities.Size;
 
 namespace _3_GUI_PresentationLayer.Views
@@ -460,17 +464,21 @@ namespace _3_GUI_PresentationLayer.Views
                 catch{continue;}
             }
         }
-
         private void VbButton3_Click(object sender, EventArgs e)
         {
-            Close();
+            if (MessageBox.Show("Các dữ liệu sẽ không được lưu, bạn có muốn thoát ?", "Cảnh báo",MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Close();
+            }
         }
 
         // Chọn ảnh
         private void VbButton5_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opnfd = new();
-            opnfd.Filter = @"Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            OpenFileDialog opnfd = new()
+            {
+                Filter = @"Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif"
+            };
             //kiểm tra ảnh đã tồn tại chưa'
             var t = false;
             if (opnfd.ShowDialog() == DialogResult.OK)
@@ -567,36 +575,32 @@ namespace _3_GUI_PresentationLayer.Views
         {
             txt_GiaBan.Text = "";
         }
-
-        public new string Validate()
+        private void txt_GiaNhap_TextChanged(object sender, EventArgs e)
         {
-            string ErorText = "";
-            CheckData check = new();
-            if (check.CheckKiTuDacBiet(txt_ProductName.Text))
+            if (txt_GiaNhap.Text.StartsWith("0"))
             {
-                ErorText += "Tên sản phẩm không chứa kí tự đặc biệt và số! ";
+                MessageBox.Show("Giá tiền phải bắt đầu từ 1-9 !");
+                txt_GiaNhap.Text = "";
             }
-            if (string.IsNullOrEmpty(txt_ThuongHieu.Text))
+            else if (txt_GiaNhap.Text.Length < 2 && txt_GiaNhap.Text!="")
             {
-                ErorText += "Bạn chưa chọn thương hiệu! ";
+                txt_GiaNhap.Text += "000";
+                txt_GiaNhap.Select(); // to Set Focus
+                txt_GiaNhap.Select(1, 0);// để dấu nháy nhảy đến sau số vừa nhập
             }
-            if (string.IsNullOrEmpty(txt_CatergoryName.Text))
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txt_ProductName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            using (KeyPressService Kpress = new KeyPressService())
             {
-                ErorText += "Bạn chưa chọn nhóm hàng! ";
+                Kpress.OnlyDigit(sender,e);
             }
-            if (rbtn_Nam.Checked==false && rbtn_Nu.Checked ==false)
-            {
-                ErorText += "Bạn chưa chọn giới tính! ";
-            }
-            if (string.IsNullOrEmpty(txt_GiaBan.Text))
-            {
-                ErorText += "Bạn chưa nhập giá bán! ";
-            }
-            if (string.IsNullOrEmpty(txt_GiaBan.Text))
-            {
-                ErorText += "Bạn chưa nhập giá bán! ";
-            }
-            return ErorText;
         }
     }
 }

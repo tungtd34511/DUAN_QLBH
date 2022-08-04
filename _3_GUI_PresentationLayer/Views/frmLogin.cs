@@ -16,10 +16,9 @@ namespace _3_GUI_PresentationLayer.Views
         private NguoiDung? _nguoiDung;
         private FrmMain? _frmMain;
         private Form? _currentChildForm;
-        private readonly LoginService? _loginService;
+        private LoginService? _loginService;
         public FrmLogin()
         {
-            
             InitializeComponent();
             //
             _loginService = new LoginService();
@@ -40,8 +39,28 @@ namespace _3_GUI_PresentationLayer.Views
             banner1.Show();
         }
         // Chạy banner
-        
-
+        public void reload()
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+            //
+            _loginService = new LoginService();
+            _nguoiDung = new NguoiDung();
+            _currentChildForm = new Form();
+            //
+            txt_Acc.Text = @"Taduytung99";
+            txt_Pass.Text = @"Taduytung123";
+            //Banner
+            FormBanner banner1 = new()
+            {
+                TopLevel = false,
+                Dock = DockStyle.None
+            };
+            panl_Banner.Controls.Add(banner1);
+            banner1.Location = new Point(0, 0);
+            banner1.BringToFront();
+            banner1.Show();
+        }
         // function
         private void OpenchildForm(Form form)
         {
@@ -97,6 +116,16 @@ namespace _3_GUI_PresentationLayer.Views
                 if (_frmMain != null)
                 {
                     _frmMain.Show();
+                    _frmMain.btn_logout.Click += (o, s) =>
+                    {
+                        if (MessageBox.Show("Bạn có muốn đăng xuất !", "Thông Báo", MessageBoxButtons.OKCancel) ==
+                            DialogResult.OK)
+                        {
+                            this.reload();
+                            this.Show();
+                            _frmMain.Dispose();
+                        }
+                    };
                     //Load thong tin form cho fomr main
                     _frmMain.GetTimer().Start();
                 }

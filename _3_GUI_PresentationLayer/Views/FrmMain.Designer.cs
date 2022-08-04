@@ -125,7 +125,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Controls.Add(this.btn_title);
             this.panel2.Controls.Add(this.iconButton1);
             this.panel2.Controls.Add(this.panl_menu);
@@ -313,15 +313,17 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel1.Controls.Add(this.img_user);
             this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customPanel1.Location = new System.Drawing.Point(19, 105);
-            this.customPanel1.Margin = new System.Windows.Forms.Padding(19, 5, 24, 5);
+            this.customPanel1.Margin = new System.Windows.Forms.Padding(19, 5, 21, 5);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Padding = new System.Windows.Forms.Padding(3);
-            this.customPanel1.Size = new System.Drawing.Size(357, 60);
+            this.customPanel1.Size = new System.Drawing.Size(360, 60);
             this.customPanel1.TabIndex = 8;
             this.customPanel1.UnderlinedStyle = false;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -331,16 +333,16 @@ namespace _3_GUI_PresentationLayer.Views
             this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.button2.IconSize = 20;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(77, 4);
+            this.button2.Location = new System.Drawing.Point(57, 3);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.button2.Size = new System.Drawing.Size(253, 52);
+            this.button2.Size = new System.Drawing.Size(300, 54);
             this.button2.TabIndex = 3;
             this.button2.Text = "Duy Tùng";
             this.button2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // img_user
@@ -636,6 +638,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_logout.Text = "        Đăng Xuất";
             this.btn_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_logout.UseVisualStyleBackColor = false;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // panelDesktop
             // 
@@ -657,7 +660,7 @@ namespace _3_GUI_PresentationLayer.Views
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1902, 991);
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(34)))));
@@ -720,6 +723,6 @@ namespace _3_GUI_PresentationLayer.Views
         private CustomControl.CustomPanel panlMenu6;
         private FontAwesome.Sharp.IconButton btn_KhuyenMai;
         private CustomControl.CustomPanel panlMenu7;
-        private FontAwesome.Sharp.IconButton btn_logout;
+        public FontAwesome.Sharp.IconButton btn_logout;
     }
 }

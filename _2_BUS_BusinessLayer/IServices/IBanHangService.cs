@@ -16,5 +16,8 @@ namespace _2_BUS_BusinessLayer.IServices
         void ReadTemporaryOrder();
         string ThanhToan(HoaDon hoaDon);
         List<HoaDon> GetHoaDons();
+        List<ThuongHieu> GetThuongHieus();
+        List<Catergory> GetCatergories();
+        bool GetKQLoc(SanPham item);
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using _2_BUS_BusinessLayer.Models;
 using _2_BUS_BusinessLayer.Services;
+using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.CustomControl;
 using FontAwesome.Sharp;
 
@@ -84,25 +85,29 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void SetValue(int value)
         {
-            LocSanPham();
-            GetSanPhamShows(_lstDetailIndex,_sanPhams);
+            _lstSanPhamsShow[_indexUpdateDetail] =
+                _qlSanPhamService.GetLstSanPhams().FirstOrDefault(c => c.Product.Id == value);//caapj nhật giá trị
+            SanPham sp = _lstSanPhamsShow[_indexUpdateDetail];
             // cập nhật tên sản phẩm
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[5].Text =
-                _lstSanPhamsShow[_indexUpdateDetail].Product.Name;
+                sp.Product.Name;
             // cập nật giá bán
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[6].Text =
-                string.Format("{0:#,##0}", _lstSanPhamsShow[_indexUpdateDetail].Price.GiaBan.ToString()) + " VNĐ";
+                string.Format("{0:#,##0}", sp.Price.GiaBan.ToString()) + " VNĐ";
             //cập nhật giá nhâp
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[7].Text =
-                string.Format("{0:#,##0}", _lstSanPhamsShow[_indexUpdateDetail].Price.GiaNhap.ToString()) + " VNĐ";
+                string.Format("{0:#,##0}", sp.Price.GiaNhap.ToString()) + " VNĐ";
             int sum = 0;
-            foreach (var x in _lstSanPhamsShow[_indexUpdateDetail].Vers)
+            foreach (var x in sp.Vers)
             {
                 sum += x.SoLuong;
             }
 
             //cập nhật số lượng
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[8].Text = sum.ToString();
+            //Trạng thái
+            tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[9].Text =
+                sp.Product.Status ? "Mở bán" : "Ngừng bán";
         }
 
         //Load tbl_Product
@@ -139,8 +144,8 @@ namespace _3_GUI_PresentationLayer.Views
                 tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 457F));
                 tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
                 tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
-                tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
-                tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
+                tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
+                tblProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41));
                 tblProduct.Dock = DockStyle.Top;
                 tblProduct.Location = new Point(0, 0);
                 tblProduct.Margin = new Padding(0);
@@ -343,7 +348,8 @@ namespace _3_GUI_PresentationLayer.Views
                 lblKhDat.Margin = new Padding(3, 0, 5, 0);
                 lblKhDat.Name = "lblKhDat_" + i.ToString();
                 lblKhDat.Size = new Size(19, 23);
-                lblKhDat.Text = "0";
+                lblKhDat.Text = list[i].Product.Status ? "Mở bán" : "Ngừng bán";
+                lblKhDat.AutoSize = true;
                 //
                 tblProduct.Controls.Add(btnMoRong, 0, 0);
                 tblProduct.Controls.Add(cbx, 1, 0);
@@ -511,8 +517,7 @@ namespace _3_GUI_PresentationLayer.Views
                 TableLayoutPanel head = new();
                 head.BackColor = Color.FromArgb(90, 76, 219);
                 head.ForeColor = Color.White;
-                head.ColumnCount = 3;
-                head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+                head.ColumnCount = 2;
                 head.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 head.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
                 head.Dock = DockStyle.Top;
@@ -522,15 +527,6 @@ namespace _3_GUI_PresentationLayer.Views
                 head.RowCount = 1;
                 head.Height = 50;
                 head.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-                // check đầu table
-                CheckBox check1 = new()
-                {
-                    Anchor = AnchorStyles.None,
-                    AutoSize = true,
-                    Location = new Point(16, 16),
-                    Name = "check1_" + i.ToString(),
-                    Size = new Size(18, 17)
-                };
                 // Name table
                 Label Name = new();
                 Name.Anchor = AnchorStyles.Left;
@@ -554,9 +550,8 @@ namespace _3_GUI_PresentationLayer.Views
                 btnMoRong.Size = new Size(50, 50);
                 btnMoRong.UseVisualStyleBackColor = true;
                 //
-                head.Controls.Add(check1, 0, 0);
-                head.Controls.Add(Name, 1, 0);
-                head.Controls.Add(btnMoRong, 2, 0);
+                head.Controls.Add(Name, 0, 0);
+                head.Controls.Add(btnMoRong, 1, 0);
                 // Các check box trong table
                 for (int j = 0; j < _lst[i].Count; j++)
                 {
@@ -571,24 +566,6 @@ namespace _3_GUI_PresentationLayer.Views
                     //
                     tblPrice.Controls.Add(check2);
                 }
-
-                check1.CheckedChanged += (o, s) =>
-                {
-                    if (check1.Checked)
-                    {
-                        foreach (Control c in tblPrice.Controls)
-                        {
-                            ((CheckBox) c).Checked = true;
-                        }
-                    }
-                    else
-                    {
-                        foreach (Control c in tblPrice.Controls)
-                        {
-                            ((CheckBox) c).Checked = false;
-                        }
-                    }
-                };
                 tblPrice.Height = tblPrice.Controls.Count * 40 + 10;
                 //
                 btnMoRong.Click += (o, s) =>
@@ -615,78 +592,30 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
         //Lọc sản phẩm và đổ dữ liệu cho _sanPhams
-        public void LocSanPham()
+        private List<CheckBox> getCheckBoxes()
         {
             List<CheckBox> listCheck = new();
             foreach (Control x in tbl_Loc.Controls)
             {
                 foreach (Control y in x.Controls[0].Controls)
                 {
-                    listCheck.Add((CheckBox) y);
+                    listCheck.Add(((CheckBox)y));
                 }
             }
-            HashSet<SanPham> sanPhams = new HashSet<SanPham>();
-            if (listCheck.Where(c => c.Checked).Count() > 0)
+            return listCheck;
+        }
+        public void LocSanPham()
+        {
+            _sanPhams = _qlSanPhamService.GetLstSanPhams();
+            
+            if (getCheckBoxes().Where(c=>c.Checked).Count() > 0)
             {
-                for (int i = 0; i < listCheck.Count; i++)
-                {
-                    if (listCheck[i].Checked)
-                    {
-                        foreach (var y in _qlSanPhamService.GetLstSanPhams().Where(c => GetLoc(c)[i]))
-                        {
-                            sanPhams.Add(y);
-                        }
-                    }
-                }
-                _sanPhams = sanPhams.ToList();
-            }
-            else
-            {
-                _sanPhams = _qlSanPhamService.GetLstSanPhams();
+                _sanPhams = _sanPhams.Where(c => _qlSanPhamService.GetKQLoc(c, getCheckBoxes().Select(c=>c.Checked).ToList())).ToList();//lọc sản phẩm
+                int a = _sanPhams.Count;
             }
         }
         // Tạo chuỗi điều kiện lọc cho sản phẩm
-        public List<bool> GetLoc(SanPham item)
-        {
-            //{ "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU"};
-            List<bool> list6 = new List<bool>();
-            List<bool> sex = new() { true, false };
-            List<bool> lstStatus = new() { true, false };
-            foreach (var x in sex)
-            {
-                list6.Add(item.ProductDetail.Sex==x);
-            }
-            List<decimal> lstGia = new() { 199000, 299000, 399000, 499000, 799000, 1000000 };
-            for (int i = 0; i <= lstGia.Count; i++)//đệt mợ cái bug khốn nạn sai dấu >=
-            {
-                if (i == 0)
-                {
-                    list6.Add(item.Price.GiaBan <= lstGia[i]);
-                }
-                else if (i == lstGia.Count)
-                {
-                    list6.Add(item.Price.GiaBan > lstGia[lstGia.Count - 1]);
-                }
-                else
-                {
-                    list6.Add((item.Price.GiaBan > lstGia[i - 1]) && (item.Price.GiaBan <= lstGia[i]));
-                }
-            }
-            foreach (var x in _qlSanPhamService.GetListCatergory())
-            {
-                list6.Add(item.Catergory.Name == x.Name);
-            }
-
-            foreach (var x in lstStatus)
-            {
-                list6.Add(item.Product.Status==x);
-            }
-            foreach (var x in _qlSanPhamService.GetListThuongHieus().Select(c=>c.Name).ToList())
-            {
-                list6.Add(item.ThuongHieu.Name == x);
-            }
-            return list6;
-        }
+        
         private void Btn_XuatFile_Click(object sender, EventArgs e)
         {
             string filePath = "";
@@ -717,33 +646,49 @@ namespace _3_GUI_PresentationLayer.Views
         private void Btn_Loc_Click(object sender, EventArgs e)
         {
             // _sanPham là những sản phẩm đủ điều kiện
-            LocSanPham();
+            Txt_Search.Text = "";
             _lstDetailIndex = 0;
+            LocSanPham();
+            SapXep();
             AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
         }
 
+        public void HuyLoc()
+        {
+            foreach (var x in getCheckBoxes())
+            {
+                if (x.Checked)
+                {
+                    x.Checked = false;
+                }
+            }
+        }
         private void Btn_HuyLoc_Click(object sender, EventArgs e)
         {
-            _lstDetailIndex = 0;
-            _sanPhams = _qlSanPhamService.GetLstSanPhams();
-            AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+           HuyLoc();
+           AddKQ();
         }
 
+        public void Serch()
+        {
+            _sanPhams = _sanPhams.Where(c =>
+                c.Product.Id.ToString() == Txt_Search.Text ||
+                c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower())).ToList();
+        }
+
+        public void AddKQ()//hiển thị sản phẩm theo kết quả lọc, tìm kiếm và sắp xếp
+        {
+            LocSanPham();
+            Serch();
+            SapXep();
+            _lstDetailIndex = 0;
+            AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+        }
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Txt_Search.Text))
+            if(!string.IsNullOrEmpty(Txt_Search.Text))
             {
-                LocSanPham();//Làm mới list Sản phẩm _sanPhams
-                _lstDetailIndex = 0;
-                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
-            }
-            else
-            {
-                _sanPhams = _sanPhams.Where(c =>
-                    c.Product.Id.ToString() == Txt_Search.Text ||
-                    c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower())).ToList();
-                _lstDetailIndex = 0;
-                AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                AddKQ();
             }
         }
 
@@ -761,15 +706,66 @@ namespace _3_GUI_PresentationLayer.Views
         
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
+            HuyLoc();
             Txt_Search.Text = "";
-            Comb_OderBy.SelectedIndex= 0;
-            AddTblLoc();
-            _lstDetailIndex = 0;
-            _sanPhams = _qlSanPhamService.GetLstSanPhams();
-            AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+            if (Comb_OderBy.SelectedIndex == 0)//load lại nếu combobox ko đổi
+            {
+                AddKQ();
+            }
+            else
+            {
+                Comb_OderBy.SelectedIndex = 0;
+            }
+        }
+        private void Comb_OderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddKQ();
+        }
+        //sắp xếp
+        public void SapXep()
+        {
+            switch (Comb_OderBy.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Product.Name).ToList();
+                    break;
+                case 2:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Product.Name).ToList();
+                    break;
+                case 3:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Product.Id).ToList();
+                    break;
+                case 4:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Product.Id).ToList();
+                    break;
+                case 5:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Price.GiaBan).ToList();
+                    break;
+                case 6:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Price.GiaBan).ToList();
+                    break;
+                case 7:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Price.GiaNhap).ToList();
+                    break;
+                case 8:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Price.GiaNhap).ToList();
+                    break;
+                case 9:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Vers.Select(d => d.SoLuong).Sum()).ToList();
+                    break;
+                case 10:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Vers.Select(d => d.SoLuong).Sum()).ToList();
+                    break;
+            }
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
 
-        private void Comb_OderBy_SelectedIndexChanged(object sender, EventArgs e)
+        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -39,6 +39,11 @@ namespace _3_GUI_PresentationLayer.Views
             //
             _sanPham = new SanPham();
             _sanPham = sanPham;
+            if (_sanPham.Product.Status == false)
+            {
+                Btn_NgungKD.Text = "Mở Bán";
+                Btn_NgungKD.BackColor = Color.FromArgb(90, 76, 219);
+            }
             // load thong tin
             if (_sanPham.Product != null)
             {
@@ -88,8 +93,8 @@ namespace _3_GUI_PresentationLayer.Views
             lbl_Sex.Text = sanPham.ProductDetail.Sex == true ? "Nam" : "Nữ";
             lbl_Catergory.Text = sanPham.Catergory.Name;
             lbl_ThuongHieu.Text = sanPham.ThuongHieu.Name.ToString();
-            lbl_GiaNhap.Text = string.Format("{0:#,##0}", sanPham.Price.GiaNhap) + " VNĐ"; ;
-            lbl_GiaBan.Text = string.Format("{0:#,##0}", sanPham.Price.GiaBan) + " VNĐ"; ;
+            lbl_GiaNhap.Text = string.Format("{0:#,##0}", sanPham.Price.GiaNhap) + " vnđ"; ;
+            lbl_GiaBan.Text = string.Format("{0:#,##0}", sanPham.Price.GiaBan) + " vnđ"; ;
             txt_ChatLieu.Text = sanPham.ProductDetail.ChatLieu;
             txt_TongQuan.Text = sanPham.ProductDetail.MoTaChiTiet;
             if (sanPham.Product.Status == true)
@@ -298,6 +303,53 @@ namespace _3_GUI_PresentationLayer.Views
                 //
                 tbl_lstVer.Controls.Add(tblVer);
             }
+        }
+
+        private void Btn_NgungKD_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show((_sanPham.Product.Status
+                    ? "Bạn có muốn ngừng kinh doanh sản phẩm ?"
+                    : "Bạn có muốn mở bán sản phẩm ?")) == DialogResult.OK)
+            {
+                if (!_sanPham.Product.Status)
+                {
+                    if (_qlSanPhamService.ChangeProductStatus(_sanPham.Product))
+                    {
+                        Btn_NgungKD.Text = "Ngừng kinh doanh";
+                        Btn_NgungKD.BackColor = Color.Red;
+                        send(_sanPham.Product.Id);
+                        //
+                        btn_Status.Text = "Đang mở bán";
+                        btn_Status.IconChar = IconChar.Check;
+                        btn_Status.IconColor = Color.FromArgb(45, 164, 78);
+                        MessageBox.Show("Sản phẩm sẽ được mở bán !", "Cập nhật");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mở bán thất bại !", "Cập nhật");
+                    }
+                }
+                else
+                {
+                    if (_qlSanPhamService.ChangeProductStatus(_sanPham.Product))
+                    {
+                        send(_sanPham.Product.Id);
+                        Btn_NgungKD.Text = "Mở bán";
+                        Btn_NgungKD.BackColor = Color.FromArgb(90, 76, 219);
+                        //
+                        //
+                        btn_Status.Text = "Không mở bán";
+                        btn_Status.IconChar = IconChar.X;
+                        btn_Status.IconColor = Color.Red;
+                        MessageBox.Show("Sản phẩm đã được ngừng kinh doanh !", "Cập nhật");
+                    }
+                    else
+                    {
+                        MessageBox.Show(" Ngừng kinh doanh thất bại !", "Cập nhật");
+                    }
+                }
+            }
+            
         }
     }
 }

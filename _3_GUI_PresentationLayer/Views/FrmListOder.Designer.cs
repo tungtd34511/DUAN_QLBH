@@ -379,7 +379,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
-            this.label1.Location = new System.Drawing.Point(24, 19);
+            this.label1.Location = new System.Drawing.Point(-3, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 60);
             this.label1.TabIndex = 1;

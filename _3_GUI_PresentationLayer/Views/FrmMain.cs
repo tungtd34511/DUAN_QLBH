@@ -283,5 +283,10 @@ namespace _3_GUI_PresentationLayer.Views
         {
 
         }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -10,9 +10,9 @@ namespace _2_BUS_BusinessLayer.Utilities
     public class CheckData
     {
         private readonly string _regKiTu = @"\W";
-        public bool CheckKiTuDacBiet(string txt)
+        public bool IsKiTu(string txt)
         {
-            return Regex.IsMatch(txt, _regKiTu);
+            return !Regex.IsMatch(txt, _regKiTu);
         }
     }
 }

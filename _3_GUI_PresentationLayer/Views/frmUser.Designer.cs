@@ -628,9 +628,9 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.8705F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.1295F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.55017F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.44983F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel6.Controls.Add(this.vbButton5, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.vbButton6, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -655,7 +655,7 @@
             this.vbButton5.IconChar = FontAwesome.Sharp.IconChar.None;
             this.vbButton5.IconColor = System.Drawing.Color.Black;
             this.vbButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton5.Location = new System.Drawing.Point(143, 3);
+            this.vbButton5.Location = new System.Drawing.Point(204, 3);
             this.vbButton5.Name = "vbButton5";
             this.vbButton5.Size = new System.Drawing.Size(80, 37);
             this.vbButton5.TabIndex = 0;
@@ -678,9 +678,9 @@
             this.vbButton6.IconChar = FontAwesome.Sharp.IconChar.None;
             this.vbButton6.IconColor = System.Drawing.Color.Black;
             this.vbButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton6.Location = new System.Drawing.Point(269, 3);
+            this.vbButton6.Location = new System.Drawing.Point(294, 3);
             this.vbButton6.Name = "vbButton6";
-            this.vbButton6.Size = new System.Drawing.Size(110, 37);
+            this.vbButton6.Size = new System.Drawing.Size(85, 37);
             this.vbButton6.TabIndex = 1;
             this.vbButton6.Text = "Thoát";
             this.vbButton6.TextColor = System.Drawing.Color.Black;
@@ -812,13 +812,13 @@
             this.vbButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbButton4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.vbButton4.ForeColor = System.Drawing.Color.Black;
-            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.Image;
             this.vbButton4.IconColor = System.Drawing.Color.Black;
             this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vbButton4.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.vbButton4.Location = new System.Drawing.Point(328, 314);
             this.vbButton4.Name = "vbButton4";
-            this.vbButton4.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.vbButton4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.vbButton4.Size = new System.Drawing.Size(66, 66);
             this.vbButton4.TabIndex = 8;
             this.vbButton4.TextColor = System.Drawing.Color.Black;
@@ -826,7 +826,7 @@
             this.vbButton4.MouseLeave += new System.EventHandler(this.VbButton4_MouseLeave);
             this.vbButton4.MouseHover += new System.EventHandler(this.VbButton4_MouseHover);
             // 
-            // frmUser
+            // FrmUser
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -837,7 +837,7 @@
             this.Controls.Add(this.panelDesktop2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmUser";
+            this.Name = "FrmUser";
             this.Text = "frmProfileUser";
             this.panelMenu.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

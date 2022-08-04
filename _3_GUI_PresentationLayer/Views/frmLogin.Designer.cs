@@ -174,9 +174,9 @@
             this.vbButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.vbButton3.Location = new System.Drawing.Point(245, 379);
             this.vbButton3.Name = "vbButton3";
-            this.vbButton3.Size = new System.Drawing.Size(188, 52);
+            this.vbButton3.Size = new System.Drawing.Size(167, 52);
             this.vbButton3.TabIndex = 7;
-            this.vbButton3.Text = "Đăng ký̵͟K͟͟í͟ ͟t͟͟ự͟ ͟";
+            this.vbButton3.Text = "Đăng ký";
             this.vbButton3.TextColor = System.Drawing.Color.White;
             this.vbButton3.UseVisualStyleBackColor = false;
             // 
@@ -197,7 +197,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Constantia", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(266, 454);
+            this.label3.Location = new System.Drawing.Point(245, 446);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 23);
             this.label3.TabIndex = 5;
@@ -371,7 +371,7 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick_1);
             // 
-            // frmLogin
+            // FrmLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;

@@ -1,6 +1,4 @@
 ﻿using _1_DAL_DataAcessLayer.Entities;
-using Syncfusion.Drawing;
-using Syncfusion.Windows.Forms.Chart;
 
 namespace _3_GUI_PresentationLayer.Views
 {
@@ -55,6 +53,12 @@ namespace _3_GUI_PresentationLayer.Views
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,12 +71,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.customPanel1 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.customPanel2 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gadientPanel4.SuspendLayout();
@@ -85,11 +83,11 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.customPanel3.SuspendLayout();
+            this.customPanel2.SuspendLayout();
+            this.customPanel1.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.customPanel1.SuspendLayout();
-            this.customPanel2.SuspendLayout();
-            this.customPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -401,6 +399,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // tableLayoutPanel11
             // 
+            this.tableLayoutPanel11.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel11.ColumnCount = 1;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Controls.Add(this.pie_Top5, 0, 1);
@@ -416,6 +415,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // pie_Top5
             // 
+            this.pie_Top5.BackColor = System.Drawing.SystemColors.Control;
             this.pie_Top5.Location = new System.Drawing.Point(3, 35);
             this.pie_Top5.Name = "pie_Top5";
             this.pie_Top5.Size = new System.Drawing.Size(386, 367);
@@ -452,6 +452,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // tableLayoutPanel8
             // 
+            this.tableLayoutPanel8.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.customPanel3, 0, 2);
@@ -467,8 +468,123 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel8.Size = new System.Drawing.Size(332, 405);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
+            // customPanel3
+            // 
+            this.customPanel3.BackColor = System.Drawing.Color.IndianRed;
+            this.customPanel3.BorderColor = System.Drawing.Color.Transparent;
+            this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel3.BorderRadius = 5;
+            this.customPanel3.BorderSize = 2;
+            this.customPanel3.Controls.Add(this.iconButton7);
+            this.customPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customPanel3.Location = new System.Drawing.Point(3, 273);
+            this.customPanel3.Name = "customPanel3";
+            this.customPanel3.Size = new System.Drawing.Size(326, 129);
+            this.customPanel3.TabIndex = 2;
+            this.customPanel3.UnderlinedStyle = false;
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton7.ForeColor = System.Drawing.Color.White;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
+            this.iconButton7.IconColor = System.Drawing.Color.White;
+            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton7.IconSize = 80;
+            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.iconButton7.Location = new System.Drawing.Point(0, 0);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Size = new System.Drawing.Size(326, 112);
+            this.iconButton7.TabIndex = 1;
+            this.iconButton7.Text = "Tổng Doanh Thu";
+            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.iconButton7.UseVisualStyleBackColor = false;
+            // 
+            // customPanel2
+            // 
+            this.customPanel2.BackColor = System.Drawing.Color.IndianRed;
+            this.customPanel2.BorderColor = System.Drawing.Color.Transparent;
+            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel2.BorderRadius = 5;
+            this.customPanel2.BorderSize = 2;
+            this.customPanel2.Controls.Add(this.iconButton6);
+            this.customPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customPanel2.Location = new System.Drawing.Point(3, 139);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.Size = new System.Drawing.Size(326, 128);
+            this.customPanel2.TabIndex = 1;
+            this.customPanel2.UnderlinedStyle = false;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton6.ForeColor = System.Drawing.Color.White;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
+            this.iconButton6.IconColor = System.Drawing.Color.White;
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.IconSize = 80;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.iconButton6.Location = new System.Drawing.Point(0, 0);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Size = new System.Drawing.Size(326, 112);
+            this.iconButton6.TabIndex = 1;
+            this.iconButton6.Text = "Tổng Doanh Thu";
+            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.BackColor = System.Drawing.Color.IndianRed;
+            this.customPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.customPanel1.BorderRadius = 5;
+            this.customPanel1.BorderSize = 2;
+            this.customPanel1.Controls.Add(this.iconButton5);
+            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customPanel1.Location = new System.Drawing.Point(3, 3);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(326, 130);
+            this.customPanel1.TabIndex = 0;
+            this.customPanel1.UnderlinedStyle = false;
+            // 
+            // iconButton5
+            // 
+            this.iconButton5.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton5.ForeColor = System.Drawing.Color.White;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
+            this.iconButton5.IconColor = System.Drawing.Color.White;
+            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton5.IconSize = 80;
+            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.iconButton5.Location = new System.Drawing.Point(0, 0);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.Size = new System.Drawing.Size(326, 112);
+            this.iconButton5.TabIndex = 1;
+            this.iconButton5.Text = "Tổng Doanh Thu";
+            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.iconButton5.UseVisualStyleBackColor = false;
+            // 
             // tableLayoutPanel9
             // 
+            this.tableLayoutPanel9.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -684,120 +800,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(76)))), ((int)(((byte)(219)))));
             this.vbButton4.UseVisualStyleBackColor = false;
             // 
-            // customPanel1
-            // 
-            this.customPanel1.BackColor = System.Drawing.Color.IndianRed;
-            this.customPanel1.BorderColor = System.Drawing.Color.Transparent;
-            this.customPanel1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel1.BorderRadius = 5;
-            this.customPanel1.BorderSize = 2;
-            this.customPanel1.Controls.Add(this.iconButton5);
-            this.customPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel1.Location = new System.Drawing.Point(3, 3);
-            this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(326, 130);
-            this.customPanel1.TabIndex = 0;
-            this.customPanel1.UnderlinedStyle = false;
-            // 
-            // customPanel2
-            // 
-            this.customPanel2.BackColor = System.Drawing.Color.IndianRed;
-            this.customPanel2.BorderColor = System.Drawing.Color.Transparent;
-            this.customPanel2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel2.BorderRadius = 5;
-            this.customPanel2.BorderSize = 2;
-            this.customPanel2.Controls.Add(this.iconButton6);
-            this.customPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel2.Location = new System.Drawing.Point(3, 139);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(326, 128);
-            this.customPanel2.TabIndex = 1;
-            this.customPanel2.UnderlinedStyle = false;
-            // 
-            // customPanel3
-            // 
-            this.customPanel3.BackColor = System.Drawing.Color.IndianRed;
-            this.customPanel3.BorderColor = System.Drawing.Color.Transparent;
-            this.customPanel3.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.customPanel3.BorderRadius = 5;
-            this.customPanel3.BorderSize = 2;
-            this.customPanel3.Controls.Add(this.iconButton7);
-            this.customPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customPanel3.Location = new System.Drawing.Point(3, 273);
-            this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(326, 129);
-            this.customPanel3.TabIndex = 2;
-            this.customPanel3.UnderlinedStyle = false;
-            // 
-            // iconButton5
-            // 
-            this.iconButton5.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.iconButton5.ForeColor = System.Drawing.Color.White;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
-            this.iconButton5.IconColor = System.Drawing.Color.White;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.IconSize = 80;
-            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 0);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(326, 112);
-            this.iconButton5.TabIndex = 1;
-            this.iconButton5.Text = "Tổng Doanh Thu";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.iconButton5.UseVisualStyleBackColor = false;
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.iconButton6.ForeColor = System.Drawing.Color.White;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.IconSize = 80;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 0);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(326, 112);
-            this.iconButton6.TabIndex = 1;
-            this.iconButton6.Text = "Tổng Doanh Thu";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton7
-            // 
-            this.iconButton7.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.iconButton7.ForeColor = System.Drawing.Color.White;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
-            this.iconButton7.IconColor = System.Drawing.Color.White;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 80;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 0);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(326, 112);
-            this.iconButton7.TabIndex = 1;
-            this.iconButton7.Text = "Tổng Doanh Thu";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.iconButton7.UseVisualStyleBackColor = false;
-            // 
             // FrmDashBoard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -825,12 +827,12 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.customPanel3.ResumeLayout(false);
+            this.customPanel2.ResumeLayout(false);
+            this.customPanel1.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.customPanel1.ResumeLayout(false);
-            this.customPanel2.ResumeLayout(false);
-            this.customPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
