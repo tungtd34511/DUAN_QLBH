@@ -16,7 +16,14 @@ namespace _3_GUI_PresentationLayer.Views
         public frmWelcome(NguoiDung _nguoiDung)
         {
             InitializeComponent();
-            img_User.BackgroundImage = Image.FromFile(_nguoiDung.UserDetail.Image);
+            if (string.IsNullOrEmpty(_nguoiDung.UserDetail.Image))
+            {
+                img_User.BackColor = Color.IndianRed;
+            }
+            else
+            {
+                img_User.BackgroundImage = Image.FromFile(_nguoiDung.UserDetail.Image);
+            }
             txt_welcome.Text = "Cin chào, "+_nguoiDung.User.Name.Split(" ").LastOrDefault();
         }
     }

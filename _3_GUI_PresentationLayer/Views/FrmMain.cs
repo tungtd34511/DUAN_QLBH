@@ -38,7 +38,23 @@ namespace _3_GUI_PresentationLayer.Views
             _nguoiDung = nguoiDung;
             _currentchildForm = new Form();
             //
-            img_user.BackgroundImage = Image.FromFile(_nguoiDung.UserDetail.Image);
+            var img = _nguoiDung.UserDetail.Image;
+            if (string.IsNullOrEmpty(img))
+            {
+                img_user.BackgroundColor = Color.IndianRed;
+            }
+            else
+            {
+                try
+                {
+
+                    img_user.BackgroundImage = Image.FromFile(img);
+                }
+                catch 
+                {
+                    img_user.BackgroundColor = Color.IndianRed;
+                }
+            }
             button2.Text = _nguoiDung.User.Name;
             LoadCustomControl();
             //timer1.Start();
@@ -151,10 +167,6 @@ namespace _3_GUI_PresentationLayer.Views
         {
             if (_currentchildForm != form)
             {
-                if (_currentchildForm == _frmBanHang)
-                {
-                    b[1] = false;
-                }
                 if (_currentchildForm == _frmQlsAnPham)
                 {
                     b[0] = false;
@@ -198,7 +210,7 @@ namespace _3_GUI_PresentationLayer.Views
                 }
                 if (b[1] == false)
                 {
-                    _frmBanHang = new FrmBanHang();
+                    _frmBanHang = new FrmBanHang(_nguoiDung.User);
                     b[1] = true;
                 }
 
@@ -232,8 +244,6 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
         }
-        
-
         private void Btn_Trangchu_Click(object sender, EventArgs e)
         {
             OpenchildForm(new FrmDashBoard());

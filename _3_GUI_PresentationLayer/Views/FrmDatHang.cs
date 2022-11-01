@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.Models;
+using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.CustomControl;
 using FontAwesome.Sharp;
 using Color = System.Drawing.Color;
@@ -19,16 +20,19 @@ namespace _3_GUI_PresentationLayer.Views
 {
     public partial class FrmDatHang : Form
     {
+
+        public Ver _Ver;
         public SanPham SanPham;
         private readonly ProductOder _oder;
         private int _indexImgZoom;
         private Panel _activeImg;
         private VBButton _activeColor;
         private VBButton _activeSize;
-
+        public int _verindex =0;
         public FrmDatHang(SanPham sanPham)
         {
             InitializeComponent();
+            _Ver = new Ver();
             SanPham = new SanPham();
             _activeImg = new Panel();
             _oder = new ProductOder();
@@ -47,8 +51,26 @@ namespace _3_GUI_PresentationLayer.Views
         {
             //
             lbl_ProductId.Text = "Mã sản phẩm: " + sanPham.Product.Id;
+            using CheckData check = new CheckData();
+            using ConverterData converter = new ConverterData();
+            decimal giaban = 0;
+            if (check.OnSale(sanPham.Sale))
+            {
+                giaban = converter.LamTron(sanPham.Price.GiaBan * (100 - sanPham.Sale.SalePercent) / 100);
+                txt_GiaHienTai.Text = converter.ConvertVND(giaban) .ToString();
+                txt_GiaBan.Text = converter.ConvertVND(sanPham.Price.GiaBan);
+                txt_sale.Text = sanPham.Sale.Name + ", Giảm" + sanPham.Sale.SalePercent + "%";
+            }
+            else
+            {
+                giaban = sanPham.Price.GiaBan;
+                txt_GiaHienTai.Text = converter.ConvertVND(giaban);
+                txt_GiaBan.Visible = false;
+                txt_sale.Visible = false;
+                txt_GiaHienTai.ForeColor = Color.Black;
+            }
             txt_ProductName.Text = sanPham.Product.Name;
-            txt_GiaHienTai.Text = sanPham.Price.GiaBan.ToString();
+            
             //
             _indexImgZoom = 0;
             //
@@ -229,6 +251,7 @@ namespace _3_GUI_PresentationLayer.Views
                 btnSize.Click += (o, s) =>
                 {
                         int index = int.Parse(btnSize.Name.Split("_").LastOrDefault()!);
+                        _Ver = verList[index];
                     if (verList[index].SoLuong > 0)
                     {
                         lbl_Soluong.Text = @"SỐ LƯỢNG (CÒN " + verList[index].SoLuong.ToString() + "):";
@@ -252,6 +275,7 @@ namespace _3_GUI_PresentationLayer.Views
             _oder.Size = SanPham.Sizes.FirstOrDefault(c => c.Id == verList[0].SizeId);
             AcctiveBtnSize((VBButton)tbl_Size.Controls[0]);
             lbl_nameSize.Text = @"KÍCH CỠ: " + SanPham.Sizes.FirstOrDefault(c => c.Id == verList[0].SizeId)!.Code;
+            _Ver = verList[0];
             if (verList[0].SoLuong > 0)
             {
                 lbl_Soluong.Text = @"SỐ LƯỢNG (CÒN " + verList[0].SoLuong.ToString() + "):";
@@ -282,12 +306,24 @@ namespace _3_GUI_PresentationLayer.Views
 
         public ProductOder GetProductOder()
         {
-            _oder.Product = SanPham.Product;
-            _oder.Price = SanPham.Price;
-            _oder.Sale = SanPham.Sale;
-            _oder.SoLuong = int.Parse(cmb_SoLuong.Text);
-            _oder.Ver = SanPham.Vers.FirstOrDefault(c => c.ColorId == _oder.Color.Id && c.SizeId == _oder.Size.Id);
+            try
+            {
+                _oder.Product = SanPham.Product;
+                _oder.Price = SanPham.Price;
+                _oder.Sale = SanPham.Sale;
+                _oder.SoLuong = int.Parse(cmb_SoLuong.Text);
+                _oder.Ver = SanPham.Vers.FirstOrDefault(c => c.ColorId == _oder.Color.Id && c.SizeId == _oder.Size.Id);
+            }
+            catch
+            {
+
+            }
             return _oder;
+        }
+
+        private void cmb_SoLuong_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

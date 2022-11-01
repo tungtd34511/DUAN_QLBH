@@ -16,7 +16,7 @@ namespace _2_BUS_BusinessLayer.Utilities
             {
                 bool a = (list[0] == true);
                 list.RemoveAt(0);
-                return GetBool2(list) &&a;
+                return GetBool1(list) &&a;
             }
             else
             {

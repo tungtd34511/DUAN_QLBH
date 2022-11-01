@@ -111,6 +111,16 @@ namespace _3_GUI_PresentationLayer.Views
                 btn_Status.IconChar = IconChar.X;
                 btn_Status.Text = "Không mở bán";
             }
+
+            if (sanPham.Sale.Id > 0 && DateTime.Now >= sanPham.Sale.Started && DateTime.Now <= sanPham.Sale.Finished)
+            {
+                Btn_Sale.Text = sanPham.Sale.Name + " giảm " + sanPham.Sale.SalePercent + "%" + " (Mã KM: " +
+                                sanPham.Sale.Id + ")";
+            }
+            else
+            {
+                Btn_Sale.Visible = false;
+            }
             int indexImage = 0;
 
             try
@@ -177,10 +187,18 @@ namespace _3_GUI_PresentationLayer.Views
             //
             FrmEdit.GetBtnLuu().Click += (o, s) =>
             {
-                MessageBox.Show(_qlSanPhamService.UpdateSanPham(FrmEdit.GetSanPham()));
-                send(_sanPham.Product.Id);
-                LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c=>c.Product.Id==FrmEdit.GetSanPham().Product.Id)!);
-                FrmEdit.Close();
+                var eror = FrmEdit.ValidateForProduct();
+                if (eror=="")
+                {
+                    MessageBox.Show(_qlSanPhamService.UpdateSanPham(FrmEdit.GetSanPham()));
+                    send(_sanPham.Product.Id);
+                    LoadThongTin(_qlSanPhamService.GetLstSanPhams().FirstOrDefault(c => c.Product.Id == FrmEdit.GetSanPham().Product.Id)!);
+                    FrmEdit.Close();
+                }
+                else
+                {
+                    MessageBox.Show(eror);
+                }
             };
             FrmEdit.ShowDialog();
         }

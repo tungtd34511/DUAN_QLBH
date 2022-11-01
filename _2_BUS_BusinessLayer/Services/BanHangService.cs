@@ -17,20 +17,20 @@ namespace _2_BUS_BusinessLayer.Services
 {
     public class BanHangService : IBanHangService
     {
-        private readonly IProductService _productService;
-        private readonly IProductDetailService _productDetailService;
-        private readonly IVerService _verService;
-        private readonly IColorService _colorService;
-        private readonly ISizeService _sizeService;
-        private readonly IImageService _imageService;
-        private readonly IOriginService _originService;
-        private readonly IThuongHieuService _thuongHieuService;
-        private readonly ICatergoryService _catergoryService;
-        private readonly IPriceService _priceService;
-        private readonly ISaleService _saleService;
-        private readonly IKhachHangService _khachHangService;
-        private readonly IOrderDetailService _orderDetailService;
-        private readonly IOrderService _orderService;
+        private  IProductService _productService;
+        private  IProductDetailService _productDetailService;
+        private  IVerService _verService;
+        private  IColorService _colorService;
+        private  ISizeService _sizeService;
+        private  IImageService _imageService;
+        private  IOriginService _originService;
+        private  IThuongHieuService _thuongHieuService;
+        private  ICatergoryService _catergoryService;
+        private  IPriceService _priceService;
+        private  ISaleService _saleService;
+        private  IKhachHangService _khachHangService;
+        private  IOrderDetailService _orderDetailService;
+        private  IOrderService _orderService;
         private List<SanPham> _sanPhams;
         private List<HoaDon> _hoaDons;
         //
@@ -76,8 +76,20 @@ namespace _2_BUS_BusinessLayer.Services
         }
         public void GetLstSanPhamsFormDAL()
         {
+            _productService.GetLstProductsFormDb();
+            _productDetailService.GetLstProductDetailsFormDb();
+            _verService.GetLstVersFormDb();
+            _colorService.GetLstColorsFormDb();
+            _sizeService.GetLstSizesFormDb();
+            _imageService.GetLstImagesFormDb();
+            _originService.GetLstOriginsFormDb();
+            _thuongHieuService.GetLstThuongHieusFormDb();
+            _catergoryService.GetLstCatergorysFormDb();
+            _priceService.GetLstPricesFormDb();
+            _saleService.GetLstSalesFormDb();
+            _priceService.GetLstPricesFormDb();//lamf moi thoong tin tu DB
             _sanPhams = new List<SanPham>();
-            _sanPhams = (from a in _productService.GetLstProducts()
+            _sanPhams = (from a in _productService.GetLstProducts().Where(z=>z.Status==true)//chỉ lấy sản phẩm mở bán
                          join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
                          join c in _priceService.GetLstPrices() on b.PriceId equals c.Id
                          join d in _catergoryService.GetLstCatergorys() on b.CatergoryId equals d.Id
@@ -111,8 +123,8 @@ namespace _2_BUS_BusinessLayer.Services
                                       }).ToList(),
                              Images = _imageService.GetLstImages().Where(x => x.ProductId == a.Id).ToList(),
                              Price = c,
-                             ProductDetail = b
-                             //Sale = i
+                             ProductDetail = b,
+                             Sale = c.SaleId != null ? _saleService.GetLstSales().FirstOrDefault(g => g.Id == c.SaleId) : new Sale()
                          }).ToList();
             int v = _sanPhams.Count;
         }
@@ -136,28 +148,38 @@ namespace _2_BUS_BusinessLayer.Services
             _hoaDons = (List<HoaDon>)data;
             _fs.Close();
         }
-        public string ThanhToan(HoaDon hoaDon)
+        public bool ThanhToan(HoaDon hoaDon)
         {
             try
             {
+                hoaDon.Order.Created = DateTime.Now;
+                hoaDon.Order.Status = true;//trạng thái thanh toán là true
+                if (!string.IsNullOrEmpty(hoaDon.KhachHang.Name))
+                {
+                    _khachHangService.Add(hoaDon.KhachHang);
+                }
+                else
+                {
+                    hoaDon.KhachHang = null;
+                }
                 _orderService.Add(hoaDon.Order);
+                using ConverterData cv = new ConverterData();
                 foreach (var x in hoaDon.ProductOders)
                 {
-                    Ver ver = _verService.GetLstVers().FirstOrDefault(c => c.Color == x.Color && c.Size == x.Size);
                     _orderDetailService.Add(new OrderDetail()
                     {
                         Order = hoaDon.Order,
-                        Ver =ver,
-                        SoLuong = x.SoLuong
+                        Ver =x.Ver,
+                        SoLuong = x.SoLuong,
+                        TongTien = cv.LamTron(x.Price.GiaBan*(100-x.Sale.SalePercent)/100)*x.SoLuong
                     });
-                    ver.SoLuong -= x.SoLuong;
-                    _verService.Update(ver);
                 }
-                return "Thanh toán thành công !";
+                return true;
             }
-            catch
+            catch (Exception e)
             {
-                return "Thanh toán thất bại !";
+                var t = e.Message;
+                return false;
             }
         }
         public List<HoaDon> GetHoaDons()
@@ -208,6 +230,113 @@ namespace _2_BUS_BusinessLayer.Services
             listMain.Add(DQ.GetBool2((from a in _thuongHieuService.GetLstThuongHieus()
                                       select (a.Name == item.ThuongHieu.Name)).ToList()));//Dùng luôn linq cho tiện
             return DQ.GetBool1(listMain);//ĐỆ quy giửa các nhóm đệ quy là và và
+        }
+        
+
+        public bool DatHang(Ver ver, int soluong)//Giảm số lượng sản phẩm khi đặt hàng
+        {
+            try
+            {
+                if (ver.SoLuong >= soluong)
+                {
+                    ver.SoLuong -= soluong;
+                    _verService.Update(ver);
+                    GetLstSanPhamsFormDAL();
+                }
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        public List<Ver> GerVers()
+        {
+            return _verService.GetLstVers();
+        }
+        public bool GetKQLoc(SanPham item, List<bool> listCBox)
+        {
+            using DeQuy DQ = new DeQuy();//Sử dụng đệ quy lấy kết quả cho list điều kiện
+            int index = 0;
+            List<bool> listMain = new List<bool>();//Tổng kết các kết quả
+            //{ "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU"};
+            //List điều kiện
+            List<bool> sex = new() { true, false };
+            List<bool> lstStatus = new() { true, false };
+            //list Kết quả
+            List<bool> listkq1 = new List<bool>();
+            foreach (var x in sex)
+            {
+                if (listCBox[index++])
+                {
+                    listkq1.Add(item.ProductDetail.Sex == x);
+                }
+            }
+
+            if (listkq1.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq1)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            List<bool> listkq2 = new List<bool>();
+            List<decimal> lstGia = new() { 199000, 299000, 399000, 499000, 799000, 1000000 };
+            for (int i = 0; i <= lstGia.Count; i++)//đệt mợ cái bug khốn nạn sai dấu >=
+            {
+                if (listCBox[index++])
+                {
+                    if (i == 0)
+                    {
+                        listkq2.Add(item.Price.GiaBan <= lstGia[i]);
+                    }
+                    else if (i == lstGia.Count)
+                    {
+                        listkq2.Add(item.Price.GiaBan > lstGia[lstGia.Count - 1]);
+                    }
+                    else
+                    {
+                        listkq2.Add((item.Price.GiaBan > lstGia[i - 1]) && (item.Price.GiaBan <= lstGia[i]));
+                    }
+                }
+            }
+            if (listkq2.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq2)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            //
+            List<bool> listkq3 = new List<bool>();
+            foreach (var a in _catergoryService.GetLstCatergorys())
+            {
+                if (listCBox[index++])
+                {
+                    listkq3.Add(a.Name == item.Catergory.Name);
+                }
+            }
+            if (listkq3.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq3)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+            //
+            List<bool> listkq5 = new List<bool>();
+            foreach (var a in _thuongHieuService.GetLstThuongHieus())
+            {
+                if (listCBox[index++])
+                {
+                    listkq5.Add(a.Name == item.ThuongHieu.Name);
+                }
+            }
+            if (listkq5.Count > 0)
+            {
+                listMain.Add(DQ.GetBool2(listkq5)); //sử dụng get bool2 vì cùng một nhóm sẽ dùng toán tử hoặc ||
+            }
+
+            if (listMain.Count > 0)
+            {
+                return DQ.GetBool1(listMain);//ĐỆ quy giửa các nhóm đệ quy là và và
+            }
+            else
+            {
+                return true;//Hiện thị tất cả nếu không check box nào đc chọn
+            }
         }
     }
 }

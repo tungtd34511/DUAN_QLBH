@@ -217,10 +217,79 @@ namespace _2_BUS_BusinessLayer.Services
             }
             
         }
-
         public List<Sale> GetSales()
         {
             return _saleService.GetLstSales();
+        }
+
+        public string ApDung(Sale sale)
+        {
+            try
+            {
+                var list = from a in _productService.GetLstProducts()
+                    join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
+                    join c in _priceService.GetLstPrices() on b.PriceId equals c.Id
+                    join d in _saleProductService.GetLstSaleProducts() on a.Id equals d.ProductId
+                    where d.SaleId == sale.Id
+                    select c;
+                foreach (var x in list)
+                {
+                    x.SaleId = sale.Id;
+                    _priceService.Update(x);
+                }
+
+                sale.Status = true;
+                _saleService.Update(sale);
+                return "Áp dụng thành công!";
+            }
+            catch 
+            {
+                return "Áp dụng thất  bại!";
+            }
+        }
+        public string NgungApDung(Sale sale)
+        {
+            try
+            {
+                var list = from a in _productService.GetLstProducts()
+                    join b in _productDetailService.GetLstProductDetails() on a.ProductDetailId equals b.Id
+                    join c in _priceService.GetLstPrices() on b.PriceId equals c.Id
+                    join d in _saleProductService.GetLstSaleProducts() on a.Id equals d.ProductId
+                    where d.SaleId == sale.Id
+                    select c;
+                foreach (var x in list)
+                {
+                    if (x.SaleId == sale.Id)
+                    {
+                        x.SaleId = null;
+                        _priceService.Update(x);
+                    }
+                }
+                sale.Status = false;
+                _saleService.Update(sale);
+                return "Ngừng áp dụng thành công!";
+            }
+            catch
+            {
+                return "Ngừng Áp dụng thất  bại!";
+            }
+        }
+
+        public List<Product> GetProductsOnSale(Sale sale) // lấy danh sách sản phẩm của khuyến mãi
+        {
+            var list = (from a in _productService.GetLstProducts()
+                join b in _saleProductService.GetLstSaleProducts() on a.Id equals b.ProductId
+                where b.SaleId == sale.Id
+                select a).ToList();
+            if (list.Count > 0)
+            {
+                return list;
+            }
+            else
+            {
+                return new List<Product>();
+            }
+
         }
     }
 }

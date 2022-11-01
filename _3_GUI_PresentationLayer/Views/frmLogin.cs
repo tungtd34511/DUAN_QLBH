@@ -25,8 +25,10 @@ namespace _3_GUI_PresentationLayer.Views
             _nguoiDung = new NguoiDung();
             _currentChildForm = new Form();
             //
-            txt_Acc.Text = @"Taduytung99";
-            txt_Pass.Text = @"Taduytung123";
+            //txt_Acc.Text = @"Taduytung99";
+            //txt_Pass.Text = @"Taduytung123";
+            txt_Acc.Text = @"tbv001";
+            txt_Pass.Text = @"tbv001";
             //Banner
             FormBanner banner1 = new()
             {
@@ -41,25 +43,11 @@ namespace _3_GUI_PresentationLayer.Views
         // Chạy banner
         public void reload()
         {
-            this.Controls.Clear();
-            InitializeComponent();
-            //
-            _loginService = new LoginService();
-            _nguoiDung = new NguoiDung();
-            _currentChildForm = new Form();
-            //
-            txt_Acc.Text = @"Taduytung99";
-            txt_Pass.Text = @"Taduytung123";
-            //Banner
-            FormBanner banner1 = new()
+            panel1.Controls.RemoveAt(panel1.Controls.Count-1);
+            for (int j = 0; j < panel1.Controls.Count; j++)
             {
-                TopLevel = false,
-                Dock = DockStyle.None
-            };
-            panl_Banner.Controls.Add(banner1);
-            banner1.Location = new Point(0, 0);
-            banner1.BringToFront();
-            banner1.Show();
+                panel1.Controls[j].Visible = true;
+            }
         }
         // function
         private void OpenchildForm(Form form)
@@ -69,7 +57,10 @@ namespace _3_GUI_PresentationLayer.Views
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
-            panel1.Controls.Clear();
+            foreach (Control x in panel1.Controls)
+            {
+                x.Visible =false;
+            }
             panel1.Controls.Add(form);
             panel1.Tag = form;
             form.Show();
@@ -107,7 +98,7 @@ namespace _3_GUI_PresentationLayer.Views
                     _frmMain = new FrmMain(_nguoiDung);
                     _frmMain.FormClosed += (o, args) =>
                     {
-                        this.Close();
+                        this.Show();
                     };
                 }
             }
@@ -124,14 +115,15 @@ namespace _3_GUI_PresentationLayer.Views
                             this.reload();
                             this.Show();
                             _frmMain.Dispose();
+                            _i = 0;//Làm mới form
                         }
                     };
                     //Load thong tin form cho fomr main
                     _frmMain.GetTimer().Start();
                 }
-
-                this.Hide();
+                timer1.Stop();
             }
+            this.Hide();
         }
 
         //private void MaHoaMatKhau()

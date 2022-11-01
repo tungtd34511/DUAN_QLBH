@@ -62,11 +62,11 @@
             this.Txt_Search = new System.Windows.Forms.TextBox();
             this.Btn_Search = new FontAwesome.Sharp.IconButton();
             this.Btn_Reset = new _3_GUI_PresentationLayer.CustomControl.VBButton();
-            this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.Btn_Add = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.label1 = new System.Windows.Forms.Label();
             this.Menu_ProductTitle = new _3_GUI_PresentationLayer.CustomControl.RJDropdownMenu(this.components);
             this.ttttttToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ngừngÁpDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_last = new FontAwesome.Sharp.IconButton();
             this.txt_lstShowIndex = new System.Windows.Forms.TextBox();
             this.lbl_lastIndex = new System.Windows.Forms.Label();
@@ -517,7 +517,6 @@
             this.panel1.Controls.Add(this.Comb_OderBy);
             this.panel1.Controls.Add(this.Panl_Search);
             this.panel1.Controls.Add(this.Btn_Reset);
-            this.panel1.Controls.Add(this.vbButton2);
             this.panel1.Controls.Add(this.Btn_Add);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -552,6 +551,7 @@
             this.Comb_OderBy.Name = "Comb_OderBy";
             this.Comb_OderBy.Size = new System.Drawing.Size(186, 39);
             this.Comb_OderBy.TabIndex = 15;
+            this.Comb_OderBy.SelectedIndexChanged += new System.EventHandler(this.Comb_OderBy_SelectedIndexChanged);
             // 
             // Panl_Search
             // 
@@ -573,7 +573,7 @@
             this.Txt_Search.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Txt_Search.Location = new System.Drawing.Point(3, 11);
             this.Txt_Search.Name = "Txt_Search";
-            this.Txt_Search.PlaceholderText = "Tìm Kiếm";
+            this.Txt_Search.PlaceholderText = "Tìm Kiếm (tiêu đề)";
             this.Txt_Search.Size = new System.Drawing.Size(295, 32);
             this.Txt_Search.TabIndex = 1;
             // 
@@ -610,38 +610,13 @@
             this.Btn_Reset.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
             this.Btn_Reset.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Btn_Reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Reset.Location = new System.Drawing.Point(1454, 30);
+            this.Btn_Reset.Location = new System.Drawing.Point(1647, 26);
             this.Btn_Reset.Name = "Btn_Reset";
             this.Btn_Reset.Size = new System.Drawing.Size(51, 50);
             this.Btn_Reset.TabIndex = 13;
             this.Btn_Reset.TextColor = System.Drawing.Color.White;
             this.Btn_Reset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_Reset.UseVisualStyleBackColor = false;
-            // 
-            // vbButton2
-            // 
-            this.vbButton2.BackColor = System.Drawing.Color.Transparent;
-            this.vbButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.vbButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbButton2.BorderRadius = 7;
-            this.vbButton2.BorderSize = 0;
-            this.vbButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.vbButton2.FlatAppearance.BorderSize = 0;
-            this.vbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.vbButton2.ForeColor = System.Drawing.Color.Red;
-            this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.Dropbox;
-            this.vbButton2.IconColor = System.Drawing.Color.Red;
-            this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton2.IconSize = 40;
-            this.vbButton2.Location = new System.Drawing.Point(1620, 31);
-            this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(187, 50);
-            this.vbButton2.TabIndex = 10;
-            this.vbButton2.Text = "Ngừng áp dụng";
-            this.vbButton2.TextColor = System.Drawing.Color.Red;
-            this.vbButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vbButton2.UseVisualStyleBackColor = false;
             // 
             // Btn_Add
             // 
@@ -660,7 +635,7 @@
             this.Btn_Add.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Btn_Add.IconSize = 40;
             this.Btn_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Add.Location = new System.Drawing.Point(1511, 30);
+            this.Btn_Add.Location = new System.Drawing.Point(1704, 26);
             this.Btn_Add.Name = "Btn_Add";
             this.Btn_Add.Size = new System.Drawing.Size(101, 50);
             this.Btn_Add.TabIndex = 9;
@@ -685,11 +660,12 @@
             // Menu_ProductTitle
             // 
             this.Menu_ProductTitle.BackColor = System.Drawing.Color.White;
-            this.Menu_ProductTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Menu_ProductTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Menu_ProductTitle.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.Menu_ProductTitle.IsMainMenu = false;
             this.Menu_ProductTitle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ttttttToolStripMenuItem});
+            this.ttttttToolStripMenuItem,
+            this.ngừngÁpDụngToolStripMenuItem});
             this.Menu_ProductTitle.Margin = new System.Windows.Forms.Padding(3);
             this.Menu_ProductTitle.MenuItemHeight = 25;
             this.Menu_ProductTitle.MenuItemTextColor = System.Drawing.Color.Empty;
@@ -698,13 +674,20 @@
             this.Menu_ProductTitle.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.Menu_ProductTitle.ShowImageMargin = false;
             this.Menu_ProductTitle.ShowItemToolTips = false;
-            this.Menu_ProductTitle.Size = new System.Drawing.Size(118, 40);
+            this.Menu_ProductTitle.Size = new System.Drawing.Size(189, 60);
+            this.Menu_ProductTitle.Opening += new System.ComponentModel.CancelEventHandler(this.Menu_ProductTitle_Opening);
             // 
             // ttttttToolStripMenuItem
             // 
             this.ttttttToolStripMenuItem.Name = "ttttttToolStripMenuItem";
-            this.ttttttToolStripMenuItem.Size = new System.Drawing.Size(117, 36);
-            this.ttttttToolStripMenuItem.Text = "tttttt";
+            this.ttttttToolStripMenuItem.Size = new System.Drawing.Size(188, 28);
+            this.ttttttToolStripMenuItem.Text = "Sửa khuyến mãi";
+            // 
+            // ngừngÁpDụngToolStripMenuItem
+            // 
+            this.ngừngÁpDụngToolStripMenuItem.Name = "ngừngÁpDụngToolStripMenuItem";
+            this.ngừngÁpDụngToolStripMenuItem.Size = new System.Drawing.Size(188, 28);
+            this.ngừngÁpDụngToolStripMenuItem.Text = "Ngừng Áp Dụng";
             // 
             // btn_last
             // 
@@ -818,7 +801,6 @@
         private System.Windows.Forms.TextBox Txt_Search;
         private FontAwesome.Sharp.IconButton Btn_Search;
         private CustomControl.VBButton Btn_Reset;
-        private CustomControl.VBButton vbButton2;
         private CustomControl.VBButton Btn_Add;
         private FontAwesome.Sharp.IconButton btn_last;
         private System.Windows.Forms.TextBox txt_lstShowIndex;
@@ -836,5 +818,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem ttttttToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ngừngÁpDụngToolStripMenuItem;
     }
 }

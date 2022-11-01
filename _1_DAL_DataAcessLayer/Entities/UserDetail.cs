@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("USER_DETAIL")]
+    [Serializable]
     public class UserDetail
     {
         [Key]
         public int Id { get; set; }
         public bool Sex { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         [StringLength(15)]
         public string PhoneNumber { get; set; }
         [StringLength(55)]
@@ -25,6 +26,8 @@ namespace _1_DAL_DataAcessLayer.Entities
         public string Image { get; set; }
         [StringLength(305)]
         public string Note { get; set; }
+        [StringLength(35)]
+        public string CCCD { get; set; }
         public bool Status { get; set; }
     }
 }

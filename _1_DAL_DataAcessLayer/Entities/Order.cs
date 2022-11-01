@@ -22,5 +22,6 @@ namespace _1_DAL_DataAcessLayer.Entities
         public virtual KhachHang KhachHang { get; set; }
         public string NoiDungOder { get; set; }
         public decimal GiamGia { get; set; }
+        public bool Status { get; set; }
     }
 }

@@ -778,7 +778,6 @@
             // 
             this.img_User.BackColor = System.Drawing.Color.White;
             this.img_User.BackgroundColor = System.Drawing.Color.White;
-            this.img_User.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_User.BackgroundImage")));
             this.img_User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.img_User.BorderColor = System.Drawing.Color.Silver;
             this.img_User.BorderRadius = 200;

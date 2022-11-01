@@ -86,7 +86,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton5 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton4 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.Menu_Fill = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Menu_KhachHang = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Panl_MenuTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -441,6 +440,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.iconButton3.Size = new System.Drawing.Size(44, 44);
             this.iconButton3.TabIndex = 12;
             this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // Btn_Fill
             // 
@@ -634,7 +634,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.customPanel1.Location = new System.Drawing.Point(5, 567);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Padding = new System.Windows.Forms.Padding(3);
-            this.customPanel1.Size = new System.Drawing.Size(383, 148);
+            this.customPanel1.Size = new System.Drawing.Size(383, 232);
             this.customPanel1.TabIndex = 16;
             this.customPanel1.UnderlinedStyle = false;
             // 
@@ -649,7 +649,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_Note.Margin = new System.Windows.Forms.Padding(0);
             this.txt_Note.Multiline = true;
             this.txt_Note.Name = "txt_Note";
-            this.txt_Note.Size = new System.Drawing.Size(377, 142);
+            this.txt_Note.Size = new System.Drawing.Size(377, 226);
             this.txt_Note.TabIndex = 17;
             this.txt_Note.Text = "0";
             // 
@@ -704,12 +704,13 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel6.RowCount = 5;
+            this.tableLayoutPanel6.RowCount = 6;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(383, 406);
             this.tableLayoutPanel6.TabIndex = 1;
@@ -744,9 +745,9 @@ namespace _3_GUI_PresentationLayer.Views
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(8, 134);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 31);
+            this.label6.Size = new System.Drawing.Size(69, 31);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Giảm giá:";
+            this.label6.Text = "Thuế:";
             // 
             // label5
             // 
@@ -771,7 +772,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiamGia.ReadOnly = true;
             this.txt_GiamGia.Size = new System.Drawing.Size(188, 36);
             this.txt_GiamGia.TabIndex = 13;
-            this.txt_GiamGia.Text = "0";
+            this.txt_GiamGia.Text = "8%";
             // 
             // txt_TongTien
             // 
@@ -850,6 +851,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_TienKhachTra.TabIndex = 10;
             this.txt_TienKhachTra.Text = "0";
             this.txt_TienKhachTra.TextChanged += new System.EventHandler(this.Txt_TienKhachTra_TextChanged);
+            this.txt_TienKhachTra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TienKhachTra_KeyPress);
             // 
             // panel6
             // 
@@ -901,6 +903,8 @@ namespace _3_GUI_PresentationLayer.Views
             this.Txt_KhachHangName.PlaceholderText = "Khách Hàng";
             this.Txt_KhachHangName.Size = new System.Drawing.Size(251, 40);
             this.Txt_KhachHangName.TabIndex = 1;
+            this.Txt_KhachHangName.TextChanged += new System.EventHandler(this.Txt_KhachHangName_TextChanged);
+            this.Txt_KhachHangName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KhachHangName_KeyPress);
             // 
             // iconButton1
             // 
@@ -969,27 +973,21 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton4.IconChar = FontAwesome.Sharp.IconChar.None;
             this.vbButton4.IconColor = System.Drawing.Color.Black;
             this.vbButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton4.Location = new System.Drawing.Point(192, 822);
+            this.vbButton4.Location = new System.Drawing.Point(222, 822);
             this.vbButton4.Name = "vbButton4";
             this.vbButton4.Size = new System.Drawing.Size(163, 87);
             this.vbButton4.TabIndex = 12;
             this.vbButton4.Text = "Thanh toán";
             this.vbButton4.TextColor = System.Drawing.Color.White;
             this.vbButton4.UseVisualStyleBackColor = false;
+            this.vbButton4.Click += new System.EventHandler(this.vbButton4_Click);
             // 
             // Menu_Fill
             // 
             this.Menu_Fill.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.Menu_Fill.Name = "contextMenuStrip1";
             this.Menu_Fill.ShowImageMargin = false;
-            this.Menu_Fill.Size = new System.Drawing.Size(186, 32);
-            // 
-            // Menu_KhachHang
-            // 
-            this.Menu_KhachHang.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.Menu_KhachHang.Name = "contextMenuStrip1";
-            this.Menu_KhachHang.ShowImageMargin = false;
-            this.Menu_KhachHang.Size = new System.Drawing.Size(36, 4);
+            this.Menu_Fill.Size = new System.Drawing.Size(36, 4);
             // 
             // FrmBanHang
             // 
@@ -1087,6 +1085,5 @@ namespace _3_GUI_PresentationLayer.Views
         private FontAwesome.Sharp.IconButton iconButton3;
         private VBButton Btn_Reset;
         private ContextMenuStrip Menu_Fill;
-        private ContextMenuStrip Menu_KhachHang;
     }
 }

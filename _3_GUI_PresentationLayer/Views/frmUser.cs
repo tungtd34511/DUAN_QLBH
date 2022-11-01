@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,15 +52,37 @@ namespace _3_GUI_PresentationLayer.Views
 
         public void LoadThongTin(NguoiDung nguoiDung)
         {
-            img_User.BackgroundImage = Image.FromFile(nguoiDung.UserDetail.Image);
+            try
+            {
+                img_User.BackgroundImage = Image.FromFile(nguoiDung.UserDetail.Image);
+            }
+            catch 
+            {
+                img_User.BackgroundColor = Color.IndianRed;
+            }
             txt_lastName.Text = nguoiDung.User.Name.Split(" ").LastOrDefault();
-            txt_Email.Text = nguoiDung.UserDetail.Email.Split("@").FirstOrDefault();
+            if (!string.IsNullOrEmpty(nguoiDung.UserDetail.Email))
+            {
+                txt_Email.Text = nguoiDung.UserDetail.Email.Split("@").FirstOrDefault();
+            }
+            else
+            {
+                txt_Email.Text = "";
+            }
             txt_Name.Text = nguoiDung.User.Name;
             txt_SoDT.Text = nguoiDung.UserDetail.PhoneNumber;
             rbtn_nam.Checked = nguoiDung.UserDetail.Sex;
             rbtn_nu.Checked = !rbtn_nam.Checked ;
             txt_DiaChi.Text = nguoiDung.UserDetail.Address;
-            date_NgaySinh.Value = nguoiDung.UserDetail.DateOfBirth;
+            try 
+            {
+
+                date_NgaySinh.Value = Convert.ToDateTime(nguoiDung.UserDetail.DateOfBirth);
+                
+            }
+            catch{
+                date_NgaySinh.Value = new DateTime(1890, 1, 1);
+            }
         }
         private void ActiveButton(object senderBtn, Color color)
         {

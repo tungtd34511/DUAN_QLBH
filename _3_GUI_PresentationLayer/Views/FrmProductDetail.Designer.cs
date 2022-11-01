@@ -97,7 +97,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.Btn_NgungKD = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_Sua = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.Btn_Sale = new FontAwesome.Sharp.IconButton();
             this.btn_Status = new FontAwesome.Sharp.IconButton();
             this.lblName = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -1017,7 +1017,7 @@ namespace _3_GUI_PresentationLayer.Views
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.White;
-            this.panel14.Controls.Add(this.iconButton2);
+            this.panel14.Controls.Add(this.Btn_Sale);
             this.panel14.Controls.Add(this.btn_Status);
             this.panel14.Controls.Add(this.lblName);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1028,26 +1028,26 @@ namespace _3_GUI_PresentationLayer.Views
             this.panel14.Size = new System.Drawing.Size(1510, 35);
             this.panel14.TabIndex = 3;
             // 
-            // iconButton2
+            // Btn_Sale
             // 
-            this.iconButton2.AutoSize = true;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.iconButton2.IconColor = System.Drawing.Color.Red;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 28;
-            this.iconButton2.Location = new System.Drawing.Point(548, 0);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(117, 35);
-            this.iconButton2.TabIndex = 3;
-            this.iconButton2.Text = "btn_sale";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.Btn_Sale.AutoSize = true;
+            this.Btn_Sale.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn_Sale.FlatAppearance.BorderSize = 0;
+            this.Btn_Sale.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sale.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Sale.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.Btn_Sale.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
+            this.Btn_Sale.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Btn_Sale.IconSize = 35;
+            this.Btn_Sale.Location = new System.Drawing.Point(548, 0);
+            this.Btn_Sale.Name = "Btn_Sale";
+            this.Btn_Sale.Size = new System.Drawing.Size(117, 35);
+            this.Btn_Sale.TabIndex = 3;
+            this.Btn_Sale.Text = "btn_sale";
+            this.Btn_Sale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Sale.UseVisualStyleBackColor = true;
             // 
             // btn_Status
             // 
@@ -1212,7 +1212,7 @@ namespace _3_GUI_PresentationLayer.Views
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel14;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton Btn_Sale;
         private FontAwesome.Sharp.IconButton btn_Status;
         private System.Windows.Forms.Label lblName;
     }

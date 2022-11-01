@@ -21,29 +21,46 @@ namespace _3_GUI_PresentationLayer.Views
     public partial class FrmSaleList : Form
     {
         private readonly QLSaleService _qlSaleService;
+        private List<Sale> _saleListShow;
+        private Sale _sale;
         public FrmSaleList()
         {
             InitializeComponent();
             _qlSaleService = new QLSaleService();
-            AddTblSale(_qlSaleService.GetSales());
+            _saleListShow = _qlSaleService.GetSales();
+            _sale = new Sale();
+            AddTblSale(_saleListShow);
+            //
+            Menu_ProductTitle.Items[0].Click += (sender, args) =>
+            {
+                FrmSaleDetail frmSaleDetail = new FrmSaleDetail("Sửa Khuyến Mãi", _qlSaleService, _sale);
+                frmSaleDetail.ShowDialog();
+            };
+            Menu_ProductTitle.Items[1].Click += (sender, args) =>
+                {
+                    if (_sale.Status)
+                    {
+                        if (MessageBox.Show(
+                                "Các sản phẩm trong danh sách sản phẩm khuyến mãi nếu đang được áp dụng mã khuyến mãi khác sẽ được giữ nguyên khuyến mãi, bạn có muốn ngừng áp dụng không ?",
+                                "Thông Báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            MessageBox.Show(_qlSaleService.NgungApDung(_sale));
+                        }
+                    }
+                    else
+                    {
+                        if (MessageBox.Show(
+                                "Các sản phẩm trong danh sách sản phẩm khuyến sẽ được áp dụng khuyến mãi này, bạn có muốn áp dụng không ?",
+                                "Thông Báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            MessageBox.Show(_qlSaleService.ApDung(_sale));
+                        }
+                    }
+                };
         }
 
         private void FrmSaleList_Load(object sender, EventArgs e)
         {
-            Menu_ProductTitle.ForeColor = Color.White;
-            Menu_ProductTitle.Items.Add(new IconMenuItem()
-            {
-                AutoSize = true,
-                Text = "Chỉnh sửa",
-                ForeColor = Color.White,
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point)
-            });
-            Menu_ProductTitle.Items.Add(new IconMenuItem()
-            {
-                AutoSize = true,
-                Text = "Ngừng Áp Dụng",
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point)
-            });
             //listView1.Controls.Add(new Panel(){Width = 50,Height = 50,BackColor = Color.Blue});
             //QLSanPhamService ql = new();
             //List <SanPham> san = new();
@@ -182,7 +199,7 @@ namespace _3_GUI_PresentationLayer.Views
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            FrmSaleDetail Frmadd = new FrmSaleDetail("Thêm sản phẩm",_qlSaleService);
+            FrmSaleDetail Frmadd = new FrmSaleDetail("Thêm sản phẩm",_qlSaleService,new Sale());
             Frmadd.Btn_Luu.Click += (o, s) =>
             {
                 if (MessageBox.Show("Bạn có muốn lưu sản phẩm ?", "Thông báo", MessageBoxButtons.OKCancel) ==
@@ -327,7 +344,25 @@ namespace _3_GUI_PresentationLayer.Views
             Tbl_Sale.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             Tbl_Sale.Size = new Size(1510, 40);
             //
+            BtnMoRong.Click += (o, s) =>
+            {
+                var indexSale = Tbl_LstSale.Controls.IndexOf(Tbl_Sale);
+                _sale = _saleListShow[indexSale];
+                Menu_ProductTitle.Show(BtnMoRong, 0, BtnMoRong.Height);
+                Menu_ProductTitle.Items[1].Text = _sale.Status ? "Ngừng áp dụng" : "Áp dụng";
+            };
+            //
             Tbl_LstSale.Controls.Add(Tbl_Sale);
+        }
+
+        private void Menu_ProductTitle_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void Comb_OderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     

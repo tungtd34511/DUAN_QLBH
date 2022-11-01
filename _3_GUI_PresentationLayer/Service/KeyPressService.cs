@@ -17,7 +17,7 @@ namespace _3_GUI_PresentationLayer.Service
         public  void ChiNhapSo(object? sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
+                (e.KeyChar != '.')&& e.KeyChar != (char)Keys.Space)
             {
                 e.Handled = true;
             }

@@ -211,6 +211,9 @@ namespace _1_DAL_DataAcessLayer.Migrations
                     b.Property<string>("NoiDungOder")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("TongTien")
                         .HasColumnType("decimal(18,2)");
 
@@ -238,6 +241,9 @@ namespace _1_DAL_DataAcessLayer.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TongTien")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("VerId")
                         .HasColumnType("int");
@@ -435,10 +441,10 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SaleId")
+                    b.Property<int?>("SaleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -528,7 +534,11 @@ namespace _1_DAL_DataAcessLayer.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<string>("CCCD")
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
+
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -697,15 +707,11 @@ namespace _1_DAL_DataAcessLayer.Migrations
                 {
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("_1_DAL_DataAcessLayer.Entities.Sale", "Sale")
                         .WithMany()
-                        .HasForeignKey("SaleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SaleId");
 
                     b.Navigation("Product");
 

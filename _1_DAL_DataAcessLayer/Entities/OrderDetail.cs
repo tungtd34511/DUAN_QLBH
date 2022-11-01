@@ -19,5 +19,6 @@ namespace _1_DAL_DataAcessLayer.Entities
         public virtual Order Order { get; set; }
         public int? VerId { get; set; }
         public virtual Ver Ver { get; set; }
+        public decimal TongTien { get; set; }
     }
 }

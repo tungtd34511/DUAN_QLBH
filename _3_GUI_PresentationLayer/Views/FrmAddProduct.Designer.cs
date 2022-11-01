@@ -63,7 +63,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_ProductName = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_QRCode = new FontAwesome.Sharp.IconButton();
             this.txt_QrCode = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -87,10 +86,10 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_ChatLieu = new System.Windows.Forms.RichTextBox();
             this.customPanel3 = new _3_GUI_PresentationLayer.CustomControl.CustomPanel();
             this.txt_TongQuan = new System.Windows.Forms.RichTextBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.vbButton3 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
+            this.lblName = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -150,7 +149,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1282, 750);
             this.tableLayoutPanel2.TabIndex = 0;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // tableLayoutPanel3
             // 
@@ -293,6 +291,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_GiaBan.TabIndex = 1;
             this.txt_GiaBan.Text = "0";
             this.txt_GiaBan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txt_GiaBan_MouseClick);
+            this.txt_GiaBan.TextChanged += new System.EventHandler(this.txt_GiaBan_TextChanged);
             this.txt_GiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_GiaBan_KeyPress);
             // 
             // button7
@@ -532,7 +531,6 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // rbtn_Nu
             // 
-            this.rbtn_Nu.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rbtn_Nu.AutoSize = true;
             this.rbtn_Nu.Location = new System.Drawing.Point(103, 18);
             this.rbtn_Nu.Name = "rbtn_Nu";
@@ -606,7 +604,6 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.btn_QRCode);
             this.panel6.Controls.Add(this.txt_QrCode);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Location = new System.Drawing.Point(130, 45);
@@ -614,23 +611,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(498, 45);
             this.panel6.TabIndex = 11;
-            // 
-            // btn_QRCode
-            // 
-            this.btn_QRCode.BackColor = System.Drawing.Color.Transparent;
-            this.btn_QRCode.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_QRCode.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.btn_QRCode.IconColor = System.Drawing.Color.Black;
-            this.btn_QRCode.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_QRCode.IconSize = 40;
-            this.btn_QRCode.Location = new System.Drawing.Point(458, 0);
-            this.btn_QRCode.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_QRCode.Name = "btn_QRCode";
-            this.btn_QRCode.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btn_QRCode.Size = new System.Drawing.Size(40, 43);
-            this.btn_QRCode.TabIndex = 4;
-            this.btn_QRCode.UseVisualStyleBackColor = false;
-            this.btn_QRCode.Click += new System.EventHandler(this.Btn_QRCode_Click);
             // 
             // txt_QrCode
             // 
@@ -641,8 +621,9 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_QrCode.Margin = new System.Windows.Forms.Padding(0);
             this.txt_QrCode.Name = "txt_QrCode";
             this.txt_QrCode.PlaceholderText = "Mã QR tự động";
+            this.txt_QrCode.ReadOnly = true;
             this.txt_QrCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_QrCode.Size = new System.Drawing.Size(298, 23);
+            this.txt_QrCode.Size = new System.Drawing.Size(458, 23);
             this.txt_QrCode.TabIndex = 3;
             // 
             // button3
@@ -932,18 +913,6 @@ namespace _3_GUI_PresentationLayer.Views
             this.txt_TongQuan.TabIndex = 0;
             this.txt_TongQuan.Text = "";
             // 
-            // lblName
-            // 
-            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblName.Location = new System.Drawing.Point(15, 4);
-            this.lblName.Margin = new System.Windows.Forms.Padding(15, 0, 3, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(253, 45);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Thêm sản phẩm";
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -1006,6 +975,18 @@ namespace _3_GUI_PresentationLayer.Views
             this.vbButton2.TextColor = System.Drawing.Color.White;
             this.vbButton2.UseVisualStyleBackColor = false;
             this.vbButton2.Click += new System.EventHandler(this.VbButton2_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblName.Location = new System.Drawing.Point(15, 4);
+            this.lblName.Margin = new System.Windows.Forms.Padding(15, 0, 3, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(253, 45);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Thêm sản phẩm";
             // 
             // FrmAddProduct
             // 
@@ -1104,7 +1085,6 @@ namespace _3_GUI_PresentationLayer.Views
         private System.Windows.Forms.Panel panl_lstVer;
         private System.Windows.Forms.TableLayoutPanel tbl_lstVer;
         private System.Windows.Forms.RichTextBox txt_ChatLieu;
-        private FontAwesome.Sharp.IconButton btn_QRCode;
         private FontAwesome.Sharp.IconButton btn_AddCatergory;
         private FontAwesome.Sharp.IconButton btn_AddThuongHieu;
         private System.Windows.Forms.ComboBox txt_ThuongHieu;

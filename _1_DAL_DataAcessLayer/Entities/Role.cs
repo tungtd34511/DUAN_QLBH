@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace _1_DAL_DataAcessLayer.Entities
 {
     [Table("ROLL")]
+    [Serializable]
     public class Role
     {
         [Key]

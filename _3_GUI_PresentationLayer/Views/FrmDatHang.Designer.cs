@@ -61,7 +61,6 @@
             this.lbl_Soluong = new System.Windows.Forms.Label();
             this.cmb_SoLuong = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Sua = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.vbButton2 = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.btn_Them = new _3_GUI_PresentationLayer.CustomControl.VBButton();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -538,11 +537,23 @@
             this.cmb_SoLuong.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmb_SoLuong.Font = new System.Drawing.Font("Segoe UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmb_SoLuong.FormattingEnabled = true;
+            this.cmb_SoLuong.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.cmb_SoLuong.Location = new System.Drawing.Point(3, 551);
             this.cmb_SoLuong.Name = "cmb_SoLuong";
             this.cmb_SoLuong.Size = new System.Drawing.Size(167, 45);
             this.cmb_SoLuong.TabIndex = 18;
             this.cmb_SoLuong.Text = "1";
+            this.cmb_SoLuong.TextChanged += new System.EventHandler(this.cmb_SoLuong_TextChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -550,9 +561,8 @@
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel3.Controls.Add(this.btn_Sua, 1, 0);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             this.tableLayoutPanel3.Controls.Add(this.vbButton2, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Them, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -563,31 +573,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1326, 44);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // btn_Sua
-            // 
-            this.btn_Sua.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_Sua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_Sua.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78)))));
-            this.btn_Sua.BorderColor = System.Drawing.Color.Silver;
-            this.btn_Sua.BorderRadius = 5;
-            this.btn_Sua.BorderSize = 0;
-            this.btn_Sua.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btn_Sua.FlatAppearance.BorderSize = 0;
-            this.btn_Sua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Sua.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Sua.ForeColor = System.Drawing.Color.White;
-            this.btn_Sua.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btn_Sua.IconColor = System.Drawing.Color.Black;
-            this.btn_Sua.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Sua.Location = new System.Drawing.Point(767, 4);
-            this.btn_Sua.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(281, 36);
-            this.btn_Sua.TabIndex = 12;
-            this.btn_Sua.Text = "THÊM VÀ TIẾP TỤC ĐẶT HÀNG";
-            this.btn_Sua.TextColor = System.Drawing.Color.White;
-            this.btn_Sua.UseVisualStyleBackColor = false;
             // 
             // vbButton2
             // 
@@ -605,12 +590,12 @@
             this.vbButton2.IconChar = FontAwesome.Sharp.IconChar.None;
             this.vbButton2.IconColor = System.Drawing.Color.Black;
             this.vbButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vbButton2.Location = new System.Drawing.Point(1241, 4);
+            this.vbButton2.Location = new System.Drawing.Point(1197, 4);
             this.vbButton2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.vbButton2.Name = "vbButton2";
-            this.vbButton2.Size = new System.Drawing.Size(80, 36);
+            this.vbButton2.Size = new System.Drawing.Size(124, 36);
             this.vbButton2.TabIndex = 14;
-            this.vbButton2.Text = "Thoát";
+            this.vbButton2.Text = "THOÁT";
             this.vbButton2.TextColor = System.Drawing.Color.Black;
             this.vbButton2.UseVisualStyleBackColor = false;
             // 
@@ -630,7 +615,7 @@
             this.btn_Them.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btn_Them.IconColor = System.Drawing.Color.Black;
             this.btn_Them.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_Them.Location = new System.Drawing.Point(1055, 4);
+            this.btn_Them.Location = new System.Drawing.Point(1009, 4);
             this.btn_Them.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(168, 36);
@@ -711,7 +696,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private CustomControl.VBButton btn_Sua;
         public CustomControl.VBButton btn_Them;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

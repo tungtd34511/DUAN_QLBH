@@ -9,17 +9,20 @@ using _1_DAL_DataAcessLayer.Entities;
 using _2_BUS_BusinessLayer.IServices;
 using _2_BUS_BusinessLayer.Models;
 using _2_BUS_BusinessLayer.Services;
+using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.Service;
 using FontAwesome.Sharp;
 using Color = System.Drawing.Color;
 using Image = System.Drawing.Image;
 using Size = System.Drawing.Size;
+using System.Threading;
+using Timer = System.Windows.Forms.Timer;
 
 namespace _3_GUI_PresentationLayer.Views
 {
     public partial class FrmBanHang : Form
     {
-        private readonly IBanHangService _banHangService;
+        private IBanHangService _banHangService;
         private List<SanPham> _sanPhams;
         private List<SanPham> _lstSanPhamsShow;
         private readonly List<HoaDon> _lstHoaDonShow;//List hóa đơn đang có trong màn hình
@@ -33,27 +36,32 @@ namespace _3_GUI_PresentationLayer.Views
         private decimal giamgia;
         private int _lastindex;
         private int _lstDetailIndex;
-        public FrmBanHang()
+        private ConverterData _converter;
+        public User _user;
+        private CheckData _checkData;
+        public FrmBanHang(User user)
         {
+            _user = new User();
             _order = new Order();
             _khachHang = new KhachHang();
             _OderAcctive = new CustomPanel();
             _hoaDonShow = new HoaDon();
             _sanPhams = new List<SanPham>();
             _banHangService = new BanHangService();
+            _lstSanPhamsShow = new List<SanPham>();
+            _lstHoaDonShow = new List<HoaDon>();
+            _converter = new ConverterData();
+            _lstProductOderShow = new List<ProductOder>();
+            _checkData = new CheckData();
             InitializeComponent();
             Tbl_LstOder.AutoSize = true;
             //
-            _sanPhams = _banHangService.GetSanPhams();
+            _user = user;
             _lstDetailIndex = 0;
-            AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
             //
-            _lstSanPhamsShow = new List<SanPham>();
-            _lstHoaDonShow = new List<HoaDon>();
             List<HoaDon> list = _banHangService.GetHoaDons();
-            _lstProductOderShow = new List<ProductOder>();
             Tbl_LstOder.Controls.Clear();
-            if (list.Count>0 )
+            if (list.Count > 0)
             {
                 foreach (var x in list)
                 {
@@ -67,7 +75,7 @@ namespace _3_GUI_PresentationLayer.Views
                     }
                 }
             }
-            else if(_lstHoaDonShow.Count==0)
+            else if (_lstHoaDonShow.Count == 0)
             {
                 _hoaDonShow = new HoaDon()
                 {
@@ -101,22 +109,70 @@ namespace _3_GUI_PresentationLayer.Views
             lbl_lastIndex.Text = "/" + (_lastindex + 1).ToString();
             return _lstSanPhamsShow;
         }
-
-        private void FrmBanHang_Load(object sender, EventArgs e)
+        private List<CheckBox> getCheckBoxes()
         {
-            _lstDetailIndex = 0;
-            for (int i = _lstDetailIndex * 14; i < (_lstDetailIndex + 1) * 14; i++)
+            List<CheckBox> listCheck = new();
+            for (int i = 0; i < panelResize.Controls.Count; i+=2)
             {
-                try
+                foreach (Control y in panelResize.Controls[i].Controls)
                 {
-                    _lstSanPhamsShow.Add(_banHangService.GetSanPhams()[i]);
-                }
-                catch
-                {
-                    break;
+                    listCheck.Add(((CheckBox)y));
                 }
             }
-            AddPanelProduct(_lstSanPhamsShow);
+            return listCheck;
+        }
+        private Panel panelResize;
+        private ComboBox Comb_OderBy;
+        public void SapXep()
+        {
+            switch (Comb_OderBy.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Product.Name).ToList();
+                    break;
+                case 2:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Product.Name).ToList();
+                    break;
+                case 3:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Product.Id).ToList();
+                    break;
+                case 4:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Product.Id).ToList();
+                    break;
+                case 5:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Price.GiaBan).ToList();
+                    break;
+                case 6:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Price.GiaBan).ToList();
+                    break;
+                case 7:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Price.GiaNhap).ToList();
+                    break;
+                case 8:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Price.GiaNhap).ToList();
+                    break;
+                case 9:
+                    _sanPhams = _sanPhams.OrderBy(c => c.Vers.Select(d => d.SoLuong).Sum()).ToList();
+                    break;
+                case 10:
+                    _sanPhams = _sanPhams.OrderByDescending(c => c.Vers.Select(d => d.SoLuong).Sum()).ToList();
+                    break;
+            }
+        }
+        public void LocSanPham()
+        {
+            _sanPhams = _banHangService.GetSanPhams();
+
+            if (getCheckBoxes().Where(c => c.Checked).Count() > 0)
+            {
+                _sanPhams = _sanPhams.Where(c => _banHangService.GetKQLoc(c, getCheckBoxes().Select(c => c.Checked).ToList())).ToList();//lọc sản phẩm
+                int a = _sanPhams.Count;
+            }
+        }
+        private void FrmBanHang_Load(object sender, EventArgs e)
+        {
             // Add menu lọc
 
             #region Design panel Fillter
@@ -126,14 +182,14 @@ namespace _3_GUI_PresentationLayer.Views
                 MinimumSize = new Size(1000, 400),
                 Size = MinimumSize,
             };
-            var panelResize = new Panel()
+            panelResize = new Panel()
             {
                 BackColor = Color.White,
                 MinimumSize = new Size(1000, 350),
                 Size = MinimumSize,
                 Dock = DockStyle.Top
             };
-            List<string> lstStr1 = new() { "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG", "TÌNH TRẠNG", "THƯƠNG HIỆU" };
+            List<string> lstStr1 = new() { "GIỚI TÍNH", "GIÁ", "NHÓM HÀNG","THƯƠNG HIỆU" };
             List<string> lstStr2 = new() { "Nam", "Nữ" };
             List<string> lstStr3 = new()
             {
@@ -141,9 +197,8 @@ namespace _3_GUI_PresentationLayer.Views
                 "400.000 - 499.000 VND", "500.000 - 799.000 VND", "800.000 - 1 triệu", "Trên 1 triệu"
             };
             List<string> lstStr4 = _banHangService.GetCatergories().Select(c => c.Name).ToList();
-            List<string> lstStr5 = new() { "Đang mở bán", "Ngừng kinh doanh" };
             List<string> lstStr6 = _banHangService.GetThuongHieus().Select(c => c.Name).ToList();
-            List<List<string>> _lst = new() { lstStr2, lstStr3, lstStr4, lstStr5, lstStr6 };
+            List<List<string>> _lst = new() { lstStr2, lstStr3, lstStr4,  lstStr6 };
             for (int i = 0; i < lstStr1.Count; i++)
             {
                 //table
@@ -267,18 +322,30 @@ namespace _3_GUI_PresentationLayer.Views
                 Dock = DockStyle.Top,
                 Padding = new Padding(5,5,5,5)
             };
-            
-            panlSapXep.Controls.Add(new ComboBox()
+            Comb_OderBy = new ComboBox()
             {
                 DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList,
                 DropDownWidth = 200,
                 Dock = DockStyle.Left,
                 FlatStyle = System.Windows.Forms.FlatStyle.System,
-                Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point),
+                Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Regular,
+                    System.Drawing.GraphicsUnit.Point),
                 FormattingEnabled = true,
                 Name = "Comb_OderBy",
-                Items = {"1a", "1s", "10", "11", "13", "12" }
-            });
+                Items = {"Không",
+                    "Theo tên (A-Z)",
+                    "Theo tên (Z-A)",
+                    "Theo mã sản phẩm (Tăng)",
+                    "Theo mã sản phẩm (Giảm)",
+                    "Theo giá bán (Tăng)",
+                    "Theo giá bán (Giảm)",
+                    "Theo giá nhập (Tăng)",
+                    "Theo giá nhập (Giảm)",
+                    "Theo tổng số lượng (Tăng)",
+                    "Theo tổng số lượng (Giảm)"}
+            };
+            Comb_OderBy.SelectedIndex = 0;
+            panlSapXep.Controls.Add(Comb_OderBy);
             panlSapXep.Controls.Add(new Label()
             {
                 AutoSize = true,
@@ -289,17 +356,20 @@ namespace _3_GUI_PresentationLayer.Views
                 Text = "Sắp xếp:"
             });
             //
-            panel.Controls.Add(new VBButton()
+            VBButton btn_Luu = new VBButton()
             {
                 Location = new Point(900, 360),
                 Anchor = System.Windows.Forms.AnchorStyles.Left,
-                BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78))))),
-                BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(164)))), ((int)(((byte)(78))))),
+                BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (45)))), ((int) (((byte) (164)))),
+                    ((int) (((byte) (78))))),
+                BackgroundColor = System.Drawing.Color.FromArgb(((int) (((byte) (45)))), ((int) (((byte) (164)))),
+                    ((int) (((byte) (78))))),
                 BorderColor = System.Drawing.Color.Silver,
                 BorderRadius = 5,
                 BorderSize = 0,
                 FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point),
+                Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular,
+                    System.Drawing.GraphicsUnit.Point),
                 ForeColor = System.Drawing.Color.White,
                 IconChar = FontAwesome.Sharp.IconChar.None,
                 IconColor = System.Drawing.Color.Black,
@@ -311,7 +381,24 @@ namespace _3_GUI_PresentationLayer.Views
                 Text = "Lọc",
                 TextColor = System.Drawing.Color.White,
                 UseVisualStyleBackColor = false
-            });
+            };
+            btn_Luu.Click += (o, s) =>
+            {
+                try
+                {
+                    LocSanPham();
+                    SapXep();
+                    _lstDetailIndex = 0;
+                    AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                    Menu_Fill.Hide();
+                }
+                catch 
+                {
+                    MessageBox.Show("Lọc thất bại!");
+                }
+                
+            };
+            panel.Controls.Add(btn_Luu);
             panel.Controls.Add(panlSapXep);
             panel.Controls.Add(panelResize);
             #endregion
@@ -323,27 +410,8 @@ namespace _3_GUI_PresentationLayer.Views
             ;
             Menu_Fill.Items.Add(hostTool);
             //
-            var panel1 = new Panel()
-            {
-                BackColor = Color.White,
-                MinimumSize = new Size(500, 300),
-                Size = MinimumSize,
-            };
-            panel1.Controls.Add(new VBButton() { Dock = DockStyle.Bottom });
-            panel1.Paint += (s, e) => {
-                TextRenderer.DrawText(e.Graphics, "Pop-up Panel",
-                    SystemFonts.DefaultFont, panel1.ClientRectangle,
-                    Color.Black, Color.Empty,
-                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
-            };
-            var hostTool1 = new ToolStripControlHost(panel1)
-            {
-                Padding = Padding.Empty,
-                Margin = Padding.Empty
-            };
-            Menu_KhachHang.Items.Add(hostTool1);
         }
-
+        
         /// <summary>
         /// reload detail form
         /// </summary>
@@ -355,7 +423,6 @@ namespace _3_GUI_PresentationLayer.Views
                 _lstHoaDonShow[index1] = GetDon();
                 _lstHoaDonShow[index1].active = false;
             }
-            
             if (_OderAcctive.Controls.Count > 0)
             {
                 _OderAcctive.Controls[2].Visible = true;
@@ -384,7 +451,6 @@ namespace _3_GUI_PresentationLayer.Views
                 }
             }
             Txt_KhachHangName.Text = hoaDon.KhachHang.Name;
-            txt_GiamGia.Text = hoaDon.Order.GiamGia.ToString() ?? "0";
             txt_TienKhachTra.Text = hoaDon.TienKhachTra.ToString();
             txt_Note.Text = hoaDon.Order.NoiDungOder;
             TinhTien();
@@ -434,20 +500,36 @@ namespace _3_GUI_PresentationLayer.Views
                         frmDatHang.btn_Them.Click += (_, _) =>
                         {
                             ProductOder p = frmDatHang.GetProductOder();
-                            int producIndex= _lstProductOderShow.FindIndex(c => c.Ver == p.Ver);
-                            if (producIndex >=0)
+                            if (p.SoLuong > frmDatHang._Ver.SoLuong)
                             {
-                                _lstProductOderShow[(int)producIndex].SoLuong += p.SoLuong;
-                                tblOrderCart.Controls[(int) producIndex].Controls[0].Controls[3].Text =
-                                    _lstProductOderShow[(int) producIndex].SoLuong.ToString();
-                                MessageBox.Show("Sản phẩm đã tồn tại trong giỏ và sẽ cộng dồn số lượng sản phẩm");
+                                if (frmDatHang._Ver.SoLuong < 1)
+                                {
+                                    MessageBox.Show("Sản phẩm đã hết hàng !");
+                                }
+                                else 
+                                {
+                                    MessageBox.Show("Số lượng đặt hàng phải nhỏ hơn số lượng còn lại của sản phẩm !");
+                                }
                             }
                             else
                             {
-                                _lstProductOderShow.Add(p);
-                                AddPanelOderCart(p);
+                                int producIndex = _lstProductOderShow.FindIndex(c => c.Ver == p.Ver);
+                                _banHangService.DatHang(p.Ver, p.SoLuong);//trừ sản phẩm khi đặt hàng
+                                if (producIndex >= 0)
+                                {
+                                    _lstProductOderShow[(int)producIndex].SoLuong += p.SoLuong;
+                                    tblOrderCart.Controls[(int)producIndex].Controls[0].Controls[3].Text =
+                                        _lstProductOderShow[(int)producIndex].SoLuong.ToString();
+                                    MessageBox.Show("Sản phẩm đã tồn tại trong giỏ và sẽ cộng dồn số lượng sản phẩm");
+                                }
+                                else
+                                {
+                                    _lstProductOderShow.Add(p);
+                                    AddPanelOderCart(p);
+                                }
+                                MessageBox.Show("Đặt hàng thành công !");
+                                frmDatHang.Close();
                             }
-                            frmDatHang.Close();
                         };
                         frmDatHang.ShowDialog();
                     }
@@ -485,10 +567,42 @@ namespace _3_GUI_PresentationLayer.Views
                 btnPrice.Location = new Point(0, 181);
                 btnPrice.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
                 btnPrice.Name = "button2_" + i.ToString();
-                btnPrice.Text = string.Format("{0:#,##0}", list[i].Price.GiaBan.ToString()) + " VNĐ";
+                decimal giaban = 1000;
+                if (_checkData.OnSale(list[i].Sale))
+                {
+                    giaban = _converter.LamTron(list[i].Price.GiaBan * (100 - list[i].Sale.SalePercent) / 100);
+                }
+                else
+                {
+                    giaban = list[i].Price.GiaBan;
+                }
+                btnPrice.Text = string.Format("{0:#,##0}", giaban.ToString()) + " VNĐ";
                 btnPrice.Height = 25;
                 btnPrice.AutoSize = true;
                 //
+                if (list[i].Sale.Id > 0 && DateTime.Now >= list[i].Sale.Started &&
+                    DateTime.Now <= list[i].Sale.Finished)
+                {
+                    VBButton btnSale = new()
+                    {
+                        BackColor = Color.FromArgb(180, Color.Red),
+                        Dock = DockStyle.None,
+                        TextAlign = ContentAlignment.MiddleCenter
+                    };
+                    btnSale.FlatAppearance.BorderSize = 0;
+                    btnSale.FlatStyle = FlatStyle.Flat;
+                    btnSale.ForeColor = Color.White;
+                    btnSale.Location = new Point(3,3);
+                    btnSale.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+                    btnSale.Name = "button2_" + i.ToString();
+                    btnSale.Text = "Giảm "+ list[i].Sale.SalePercent + "%";
+                    btnSale.BorderRadius = 5;
+                    btnSale.BorderColor = Color.Red;
+                    btnSale.Size = new Size(50,50);
+                    //
+                    panel.Controls.Add(btnSale);
+                }
+
                 panel.Controls.Add(btnPrice);
                 panel.Controls.Add(btnName);
                 tbl_lstproduct.Controls.Add(panel);
@@ -576,6 +690,17 @@ namespace _3_GUI_PresentationLayer.Views
                 Text = productOder.Product.Name + "_" + productOder.Color.Name + "_" + productOder.Size.Code
             };
             //Gia ban
+            decimal giaban = 1000;
+            if (productOder.Sale != null && productOder.Sale.Finished > DateTime.Today &&
+                productOder.Sale.Started < DateTime.Today)
+            {
+                giaban = _converter.LamTron((productOder.Price.GiaBan * (100 - productOder.Sale.SalePercent)) /
+                                                    100);
+            }
+            else
+            {
+                giaban = productOder.Price.GiaBan;
+            }
             Label lblGiaBan = new()
             {
                 Anchor = AnchorStyles.None,
@@ -584,7 +709,7 @@ namespace _3_GUI_PresentationLayer.Views
                 Location = new Point(716, 4),
                 Name = "lblGiaBan_" + index,
                 Size = new Size(182, 41),
-                Text = productOder.Price.GiaBan.ToString(),
+                Text = giaban.ToString(),
                 TextAlign = ContentAlignment.BottomCenter
             };
             //So luong
@@ -606,6 +731,8 @@ namespace _3_GUI_PresentationLayer.Views
                 if (MessageBox.Show("Bạn có muốn thay đổi số lượng ?","Đổi số lượng",MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     txtSoLuong.ReadOnly = false;
+                    txtSoLuong.SelectionStart = 0;
+                    txtSoLuong.SelectionLength = txtSoLuong.Text.Length;
                 }
             };
             txtSoLuong.KeyPress += (o, s) =>
@@ -615,6 +742,7 @@ namespace _3_GUI_PresentationLayer.Views
             };
             txtSoLuong.LostFocus += (o, s) => { txtSoLuong.ReadOnly = true; };
             //Tong Tien
+            decimal tongtien = giaban * productOder.SoLuong;
             Label lblTongTien = new()
             {
                 Anchor = AnchorStyles.None,
@@ -623,23 +751,35 @@ namespace _3_GUI_PresentationLayer.Views
                 Location = new Point(1071, 4),
                 Name = "lblTongTien_" + index,
                 Size = new Size(182, 41),
-                Text = (productOder.Price.GiaBan * productOder.SoLuong).ToString()
+                Text = tongtien.ToString()
             };
             //
             txtSoLuong.TextChanged += (_, _) =>
             {
+                Ver ver = _banHangService.GerVers().First(c => c.Id == productOder.Ver.Id);
                 if (txtSoLuong.Text == "" || txtSoLuong.Text.StartsWith("0"))
                 {
-                    txtSoLuong.Text = 1.ToString();
-                    productOder.SoLuong = int.Parse(txtSoLuong.Text);
-                    lblTongTien.Text = (productOder.Price.GiaBan * productOder.SoLuong).ToString();
+                    _banHangService.DatHang(productOder.Ver, (1 - productOder.SoLuong));
+                    productOder.SoLuong = 1;
+                    tongtien = productOder.SoLuong * giaban;
+                    lblTongTien.Text = tongtien.ToString();
                 }
                 else
                 {
-                    productOder.SoLuong = int.Parse(txtSoLuong.Text);
-                    lblTongTien.Text = (productOder.Price.GiaBan * productOder.SoLuong).ToString();
+                    if (ver.SoLuong >
+                        (int.Parse(txtSoLuong.Text) - productOder.SoLuong))
+                    {
+                        _banHangService.DatHang(productOder.Ver, (int.Parse(txtSoLuong.Text) - productOder.SoLuong));
+                        productOder.SoLuong = int.Parse(txtSoLuong.Text);
+                        tongtien = productOder.SoLuong * giaban;
+                        lblTongTien.Text = tongtien.ToString();
+                    }
+                    else
+                    {
+                        txtSoLuong.Text = productOder.SoLuong.ToString();
+                        MessageBox.Show("Phiên bản này chỉ còn " + ver.SoLuong + " sản phẩm!!!!","Cảnh báo");
+                    }
                 }
-
                 TinhTien();
             };
             //button delete
@@ -667,9 +807,11 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 if (MessageBox.Show("Bạn có muốn xóa sản phẩm ?") == DialogResult.OK)
                 {
+                    _banHangService.DatHang(productOder.Ver, (-1) * productOder.SoLuong);
                     int index = tblOrderCart.Controls.IndexOf(panl);
                     _lstProductOderShow.RemoveAt(index); //phải viết xóa list trước vì khi xóa panel thì hàm ngừng chạy
                     tblOrderCart.Controls.RemoveAt(index);
+                    TinhTien();
                 }
             };
             //
@@ -698,8 +840,8 @@ namespace _3_GUI_PresentationLayer.Views
                 if (sale!=null && sale.Finished > DateTime.Today &&
                     sale.Started < DateTime.Today)
                 {
-                    //tongTien += (t.Price.GiaBan * decimal.Parse(tblOrderCart.Controls[index].Controls[3].Text)*100) /
-                    //            sale.SalePercent;
+                    tongTien += _converter.LamTron((t.Price.GiaBan * t.SoLuong * (100-sale.SalePercent)) /
+                                                   100);
                 }
                 else
                 {
@@ -708,15 +850,11 @@ namespace _3_GUI_PresentationLayer.Views
             }
             txt_TongTien.Text = string.Format("{0:#,##0}", tongTien.ToString());
             giamgia = (_hoaDonShow.Order.GiamGia != 0)?_hoaDonShow.Order.GiamGia:0;
-            _khachcantra = tongTien-giamgia;
+            _khachcantra = _converter.LamTron(tongTien*108/100);
             _order.TongTien = _khachcantra; 
             decimal tienthua = _tienkhachtra - _khachcantra;
-            txt_GiamGia.Text = string.Format("{0:#,##0}", giamgia.ToString());
             txt_KhachCanTra.Text = string.Format("{0:#,##0}", _khachcantra.ToString());
             txt_TienThua.Text = string.Format("{0:#,##0}", tienthua.ToString());
-        }
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
         }
         public void AddHoaDon(HoaDon hoaDon)
         {
@@ -772,6 +910,7 @@ namespace _3_GUI_PresentationLayer.Views
             {
                 if (MessageBox.Show("Bạn có muốn đóng hóa đơn ?") == DialogResult.OK)
                 {
+                    HuyDon();
                     int index = Tbl_LstOder.Controls.IndexOf(Panl_Oder);
                     Tbl_LstOder.Controls.Remove(Panl_Oder);
                     _lstHoaDonShow.RemoveAt(index);
@@ -788,6 +927,16 @@ namespace _3_GUI_PresentationLayer.Views
                                 AcctiveOder((CustomPanel) Tbl_LstOder.Controls[index]);
                             }
                         }
+                    }
+                    if (_lstHoaDonShow.Count == 0)
+                    {
+                        _hoaDonShow = new HoaDon()
+                        {
+                            active = true
+                        };
+                        //_lstHoaDonShow.Add(_hoaDonShow);//bug do thực hiện hai hành động add cùng lúc
+                        AddHoaDon(_hoaDonShow);
+                        AcctiveOder((CustomPanel)Tbl_LstOder.Controls[0]);
                     }
                 }
             };
@@ -818,18 +967,28 @@ namespace _3_GUI_PresentationLayer.Views
         // lấy hoa đơn hiện tại
         public HoaDon GetDon()
         {
-            _order.TongTien = decimal.Parse(txt_TongTien.Text);
             if (_order.Created == null)
             {
                 _order.Created = DateTime.Now;
             }
             _order.NoiDungOder = txt_Note.Text;
-            _order.GiamGia = int.Parse(txt_GiamGia.Text);
-            _hoaDonShow.TienKhachTra= decimal.Parse(txt_TienKhachTra.Text);
+            _order.GiamGia = 0;
+            if (txt_TienKhachTra.Text.Length > 0)
+            {
+                _hoaDonShow.TienKhachTra = decimal.Parse(txt_TienKhachTra.Text);
+            }
+            else
+            {
+                _hoaDonShow.TienKhachTra = 0;
+            }
+            _hoaDonShow.Order = _order;
             _hoaDonShow.ProductOders = _lstProductOderShow;
+            _hoaDonShow.Order.User = _user;
             _khachHang.Name = Txt_KhachHangName.Text;
             _hoaDonShow.KhachHang = _khachHang;
-            _hoaDonShow.Order = _order;
+            _hoaDonShow.Order.KhachHang = _khachHang;
+            _hoaDonShow.Order.Status = false;
+            _hoaDonShow.Order.NoiDungOder = txt_Note.Text;
             return _hoaDonShow;
         }
         private void FrmBanHang_VisibleChanged(object sender, EventArgs e)
@@ -840,24 +999,63 @@ namespace _3_GUI_PresentationLayer.Views
                 _lstHoaDonShow[index] = GetDon();
                 _banHangService.SaveTemporaryOrder(_lstHoaDonShow);
             }
+            else
+            {
+                Timer time1 = new Timer();
+                time1.Tick += (o, s) =>
+                {
+                    _banHangService.GetLstSanPhamsFormDAL();
+                    _sanPhams = _banHangService.GetSanPhams();
+                    _lstDetailIndex = 0;
+                    AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                    time1.Dispose();
+                };
+                time1.Start();
+            }
         }
 
         private void Txt_TienKhachTra_TextChanged(object sender, EventArgs e)
         {
-            _tienkhachtra = decimal.Parse(txt_TienKhachTra.Text);
-            TinhTien();
-        }
-        
+            try
+            {
+                if (txt_TienKhachTra.Text.StartsWith("0"))
+                {
+                    if (txt_TienKhachTra.Text.Length > 0)
+                    {
+                        txt_TienKhachTra.Text = txt_TienKhachTra.Text.Substring(1, txt_TienKhachTra.Text.Length - 1);
+                    }
+                    else
+                    {
+                        txt_TienKhachTra.Text = "";
+                    }
+                }
 
+                if (txt_TienKhachTra.Text.Length > 0)
+                {
+                    _tienkhachtra = decimal.Parse(txt_TienKhachTra.Text);
+                }
+                TinhTien();
+            }
+            catch
+            {
+                txt_TienKhachTra.Text = "";
+            }
+        }
         #region MenuProduct
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
             Txt_Search.Text = "";
             Txt_Search.Visible = false;
             lbl_ketQua.Visible = false;
+            foreach (var x in getCheckBoxes())
+            {
+                x.Checked = false;
+            }
+            Comb_OderBy.SelectedIndex = 0;
             Btn_Search.BackColor = Color.FromArgb(22, 27, 34);
             Panl_Search.BackColor = Color.FromArgb(22, 27, 34);
             Panl_Search.Width = 44;
+            _banHangService.GetLstSanPhamsFormDAL();
             _lstDetailIndex = 0;
             _sanPhams = _banHangService.GetSanPhams();
             AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
@@ -891,7 +1089,8 @@ namespace _3_GUI_PresentationLayer.Views
                 if (Txt_Search.Text.Length > 0)
                 {
                     //tìm kiếm sản phẩm
-                    _sanPhams = _banHangService.GetSanPhams();
+                    LocSanPham();
+                    SapXep();
                     _lstDetailIndex = 0;
                     _sanPhams = _sanPhams.Where(c => c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower()) || Txt_Search.Text == c.Product.Id.ToString())
                         .ToList();
@@ -964,42 +1163,189 @@ namespace _3_GUI_PresentationLayer.Views
                 if (int.Parse(txt_lstShowIndex.Text) > (_lastindex + 1))
                 {
                     _lstDetailIndex = _lastindex;
-                    AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                    txt_lstShowIndex.Text = (_lastindex+1).ToString();
                 }
-                else
+                if(int.Parse(txt_lstShowIndex.Text) > 0 && int.Parse(txt_lstShowIndex.Text) <= (_lastindex + 1))
                 {
                     _lstDetailIndex = int.Parse(txt_lstShowIndex.Text) - 1;
-                    txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
                     AddPanelProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
                 }
             }
             catch
             {
-                MessageBox.Show("Chỉ nhập số!");
-                txt_lstShowIndex.Text = "1";
             }
         }
         private void Txt_lstShowIndex_KeyPress(object sender, KeyPressEventArgs e)
         {
-            using KeyPressService key = new();
-            key.ChiNhapSo(sender, e);
+            using KeyPressService key = new KeyPressService(); key.ChiNhapSo(sender, e);
         }
         #endregion
         //Lọc
         private void Btn_Fill_Click(object sender, EventArgs e)
         {
-            
             Menu_Fill.Show(Btn_Fill,0,Btn_Fill.Height);
         }
         #endregion
         private void Btn_KH_Click(object sender, EventArgs e)
         {
-            Menu_KhachHang.Show(Btn_KH, 0, Btn_KH.Height);
+            FrmAddKhachHang frmAddKhach = new FrmAddKhachHang(_khachHang);
+            frmAddKhach.Btn_Luu.Click += (o, s) =>
+            {
+                _khachHang = frmAddKhach.GetKhachHang();
+                Txt_KhachHangName.Text = _khachHang.Name;
+                frmAddKhach.Dispose();
+            };
+            frmAddKhach.ShowDialog();
         }
 
-        private void tbl_lstproduct_Paint(object sender, PaintEventArgs e)
+        private void vbButton4_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Bạn có muốn thanh toán ?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (int.Parse(txt_TienThua.Text)>=0)
+                {
+                    _hoaDonShow = GetDon();
+                    if (_banHangService.ThanhToan(_hoaDonShow))
+                    {
+                        MessageBox.Show("Thanh toán thành công, hóa đơn sẽ được đóng!");
+                        int index = Tbl_LstOder.Controls.IndexOf(_OderAcctive);
+                        Tbl_LstOder.Controls.Remove(_OderAcctive);
+                        _lstHoaDonShow.RemoveAt(index);
+                        //
+                        if (Tbl_LstOder.Controls.Count > 0)
+                        {
+                            if (index >= Tbl_LstOder.Controls.Count)
+                            {
+                                AcctiveOder((CustomPanel)Tbl_LstOder.Controls[index - 1]);
+                            }
+                            else
+                            {
+                                AcctiveOder((CustomPanel)Tbl_LstOder.Controls[index]);
+                            }
+                        }
+                        if (_lstHoaDonShow.Count == 0)
+                        {
+                            _hoaDonShow = new HoaDon()
+                            {
+                                active = true
+                            };
+                            //_lstHoaDonShow.Add(_hoaDonShow);//bug do thực hiện hai hành động add cùng lúc
+                            AddHoaDon(_hoaDonShow);
+                            AcctiveOder((CustomPanel)Tbl_LstOder.Controls[0]);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thanh toán thất bại!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tiền khách trả phải lớn hơn tiền đơn hàng khách cần trả!");
+                }
+            }
+        }
 
+        private void Txt_KhachHangName_TextChanged(object sender, EventArgs e)
+        {
+            _khachHang.Name = Txt_KhachHangName.Text;
+        }
+
+        public void HuyDon()
+        {
+            foreach (var x in _hoaDonShow.ProductOders)
+            {
+                _banHangService.DatHang(x.Ver, (-1 * x.SoLuong));//Cộng lại sản phẩm khi hủy đơn
+            }
+        }
+
+        private void txt_TienKhachTra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            using (KeyPressService kp = new KeyPressService())
+            {
+                kp.ChiNhapSo(sender,e);
+            }
+        }
+
+        private void Txt_KhachHangName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (string.IsNullOrEmpty(Txt_KhachHangName.Text) && Txt_KhachHangName.Text.StartsWith(" "))
+            {
+                if (e.KeyChar == (char)Keys.Space)
+                {
+                    e.Handled = true;
+                    Txt_KhachHangName.Text.Replace(" ", "");//Xóa khoảng trắng
+                }
+            }
+            using (KeyPressService kp = new KeyPressService())
+            {
+                kp.OnlyDigit(sender, e);
+            }
+        }
+        public delegate void SendQR(string text);
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            frmQuetQR frmQuetQr = new frmQuetQR(loadQR);
+            frmQuetQr.ShowDialog();
+        }
+        private string _maQR;
+        private void loadQR(string data)
+        {
+            _maQR = "";
+            _maQR = data;
+            if (_maQR != "")
+            {
+                var info = _maQR.Split("_");
+                if (_banHangService.GetSanPhams().Select(c => c.Product.Id.ToString()).Contains(info[0]))
+                {
+                    SanPham sp = _banHangService.GetSanPhams().FirstOrDefault(c => c.Product.Id.ToString() == info[0]);
+                    if (sp != null)
+                    {
+                        Ver ver = sp.Vers.FirstOrDefault(c => c.Id.ToString() == info[1]);
+                        if (ver != null)
+                        {
+                            ProductOder ProOder = new ProductOder()
+                            {
+                                Color = sp.Colors.FirstOrDefault(c => c.Id == ver.ColorId), Price = sp.Price,
+                                Product = sp.Product, Sale = sp.Sale,
+                                Size = sp.Sizes.FirstOrDefault(c => c.Id == ver.SizeId), SoLuong = 1, Ver = ver
+                            };
+                            try
+                            {
+                                var img = sp.Colors.FirstOrDefault(c => c.Id == ver.ColorId).ImagePath;
+                                ProOder.Image = sp.Images.FirstOrDefault(c => c.Path == img);
+                            }
+                            catch
+                            {
+                                ProOder.Image = sp.Images[0];
+                            }
+                            //
+                            int producIndex = _lstProductOderShow.FindIndex(c => c.Ver.Id == ver.Id);
+                            //_banHangService.DatHang(p.Ver, p.SoLuong);//trừ sản phẩm khi đặt hàng
+                            if (producIndex >= 0)
+                            {
+                                _lstProductOderShow[(int)producIndex].SoLuong += ProOder.SoLuong;
+                                tblOrderCart.Controls[(int)producIndex].Controls[0].Controls[3].Text =
+                                    _lstProductOderShow[(int)producIndex].SoLuong.ToString();
+                                MessageBox.Show("Sản phẩm đã tồn tại trong giỏ và sẽ cộng dồn số lượng sản phẩm");
+                            }
+                            else
+                            {
+                                _lstProductOderShow.Add(ProOder);
+                                AddPanelOderCart(ProOder);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tồn tại phiên bản sản phẩm này!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tồn tại sản phẩm này!");
+                    }
+                }
+            }
         }
     }
 }

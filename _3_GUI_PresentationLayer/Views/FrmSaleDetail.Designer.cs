@@ -33,7 +33,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txt_ProductId = new System.Windows.Forms.TextBox();
+            this.txt_Id = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_1 = new System.Windows.Forms.Label();
             this.lbl3 = new System.Windows.Forms.Label();
@@ -141,7 +141,7 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.txt_ProductId);
+            this.panel5.Controls.Add(this.txt_Id);
             this.panel5.Controls.Add(this.button2);
             this.panel5.Location = new System.Drawing.Point(139, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
@@ -149,20 +149,20 @@ namespace _3_GUI_PresentationLayer.Views
             this.panel5.Size = new System.Drawing.Size(491, 32);
             this.panel5.TabIndex = 11;
             // 
-            // txt_ProductId
+            // txt_Id
             // 
-            this.txt_ProductId.BackColor = System.Drawing.Color.White;
-            this.txt_ProductId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_ProductId.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txt_ProductId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_ProductId.Location = new System.Drawing.Point(0, 7);
-            this.txt_ProductId.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_ProductId.Name = "txt_ProductId";
-            this.txt_ProductId.PlaceholderText = "Mã sale tự động";
-            this.txt_ProductId.ReadOnly = true;
-            this.txt_ProductId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ProductId.Size = new System.Drawing.Size(491, 23);
-            this.txt_ProductId.TabIndex = 3;
+            this.txt_Id.BackColor = System.Drawing.Color.White;
+            this.txt_Id.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Id.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txt_Id.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Id.Location = new System.Drawing.Point(0, 7);
+            this.txt_Id.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_Id.Name = "txt_Id";
+            this.txt_Id.PlaceholderText = "Mã sale tự động";
+            this.txt_Id.ReadOnly = true;
+            this.txt_Id.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Id.Size = new System.Drawing.Size(491, 23);
+            this.txt_Id.TabIndex = 3;
             // 
             // button2
             // 
@@ -711,7 +711,7 @@ namespace _3_GUI_PresentationLayer.Views
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox txt_ProductId;
+        private System.Windows.Forms.TextBox txt_Id;
         private System.Windows.Forms.Button button2;
         private CustomControl.CustomPanel customPanel1;
         private System.Windows.Forms.RichTextBox txt_Title;

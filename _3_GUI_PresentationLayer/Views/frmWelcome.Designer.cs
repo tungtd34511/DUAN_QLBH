@@ -61,11 +61,11 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.txt_welcome, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 280);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 290);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 120);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 110);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // txt_welcome
@@ -73,7 +73,7 @@
             this.txt_welcome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_welcome.AutoSize = true;
             this.txt_welcome.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txt_welcome.Location = new System.Drawing.Point(115, 41);
+            this.txt_welcome.Location = new System.Drawing.Point(115, 36);
             this.txt_welcome.Name = "txt_welcome";
             this.txt_welcome.Size = new System.Drawing.Size(209, 37);
             this.txt_welcome.TabIndex = 4;

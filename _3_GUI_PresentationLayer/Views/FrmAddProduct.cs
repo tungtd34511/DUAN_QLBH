@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -14,7 +15,6 @@ using _2_BUS_BusinessLayer.Services;
 using _2_BUS_BusinessLayer.Utilities;
 using _3_GUI_PresentationLayer.CustomControl;
 using _3_GUI_PresentationLayer.Service;
-using IronBarCode;
 using Color = _1_DAL_DataAcessLayer.Entities.Color;
 using Cursors = System.Windows.Forms.Cursors;
 using Image = _1_DAL_DataAcessLayer.Entities.Image;
@@ -154,35 +154,7 @@ namespace _3_GUI_PresentationLayer.Views
 
             }
         }
-
-        private void Btn_QRCode_Click(object sender, EventArgs e)
-        {
-            if (txt_QrCode.Text != "")
-            {
-                Form frmQr = new()
-                {
-                    StartPosition = FormStartPosition.CenterScreen
-                };
-                frmQr.BringToFront();
-                frmQr.Size = new System.Drawing.Size(600, 650);
-                Panel panl = new()
-                {
-                    Size = new System.Drawing.Size(500, 500),
-                    BackgroundImage = QRCodeWriter.CreateQrCode(txt_QrCode.Text, 500).ToImage(),
-                    Location = new Point(50, 20)
-                };
-                frmQr.Controls.Add(panl);
-                Button btnExit = new()
-                {
-                    Text = "Thoát",
-                    Size = new System.Drawing.Size(100, 50),
-                    Location = new Point(450, 540)
-                };
-                frmQr.Controls.Add(btnExit);
-                btnExit.Click += (s, o) => { frmQr.Close(); };
-                frmQr.ShowDialog();
-            }
-        }
+        
 
         public void AddTableListImage()
         {
@@ -216,7 +188,7 @@ namespace _3_GUI_PresentationLayer.Views
                     btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
                     btnDelete.ForeColor = System.Drawing.Color.White;
                     btnDelete.Margin = new Padding(0);
-                    btnDelete.Name = "btnDelete_"+i.ToString();
+                    btnDelete.Name = "btnDelete_" + i.ToString();
                     btnDelete.Size = new System.Drawing.Size(45, 45);
                     btnDelete.Location = new Point(28, 28);
                     btnDelete.Text = "Xóa";
@@ -236,29 +208,29 @@ namespace _3_GUI_PresentationLayer.Views
                         if (MessageBox.Show(@"Bạn có muốn xóa ảnh ?") == DialogResult.OK)
                         {
                             var index = int.Parse(btnDelete.Name.Split("_").LastOrDefault()!);
-                            if (_sanPham.Images[index].Product!=null)
+                            if (_sanPham.Images[index].Product != null)
                             {
                                 // xóa cấc ảnh mới được tạo luôn nếu chưa được lưu vào DB
-                                try
-                                {
-                                    _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path)!.ImagePath =
-                                        "";
-                                }
-                                finally
-                                {
-                                    AddTableListVersion();
-                                    _sanPham.Images.RemoveAt(index);
-                                    AddTableListImage();
-                                }
+                                AddTableListVersion();
+                                _sanPham.Images.RemoveAt(index);
+                                AddTableListImage();
                             }
                             else
                             {
+                                try
+                                {
+                                    _sanPham.Images[index].ProductId = null;
+                                    // xóa image khỏi color
+                                    _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path)!
+                                            .ImagePath =
+                                        "";
+                                    AddTableListVersion();
+                                }
+                                catch
+                                {
+                                }
                                 // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
-                                _sanPham.Images[index].ProductId = null;
-                                // xóa image khỏi color
-                                _sanPham.Colors.FirstOrDefault(c => c.ImagePath == _sanPham.Images[index].Path)!.ImagePath =
-                                    "";
-                                AddTableListVersion();
+
                                 panl.Visible = false;
                             }
                         }
@@ -290,7 +262,10 @@ namespace _3_GUI_PresentationLayer.Views
                         timer1.Start();
                     };
                 }
-                finally{}
+                catch
+                {
+
+                }
             }
         }
 
@@ -336,24 +311,25 @@ namespace _3_GUI_PresentationLayer.Views
                     btnDelete.Margin = new Padding(0);
                     btnDelete.Name = "btnDelete_"+i.ToString();
                     btnDelete.Size = new System.Drawing.Size(45, 45);
-                    btnDelete.Text = "Xóa";
+                    btnDelete.Text = "";
                     btnDelete.UseVisualStyleBackColor = false;
-                    btnDelete.Click += (o, s) =>
-                    {
-                        var index = int.Parse(btnDelete.Name.Split("_").LastOrDefault() ?? string.Empty);
-                        if (_sanPham.Vers[index].Color != null)
-                        {
-                            // xóa ver mới được tạo luôn nếu chưa được lưu vào DB
-                            _sanPham.Vers.RemoveAt(index);
-                            AddTableListVersion();
-                        }
-                        else
-                        {
-                            // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
-                            _sanPham.Vers[index].ProductDetailId = null;
-                            tblVer.Visible = false;
-                        }
-                    };
+                    btnDelete.Enabled = false;
+                    //btnDelete.Click += (o, s) =>
+                    //{
+                    //    var index = int.Parse(btnDelete.Name.Split("_").LastOrDefault() ?? string.Empty);
+                    //    if (_sanPham.Vers[index].Color != null)
+                    //    {
+                    //        // xóa ver mới được tạo luôn nếu chưa được lưu vào DB
+                    //        _sanPham.Vers.RemoveAt(index);
+                    //        AddTableListVersion();
+                    //    }
+                    //    else
+                    //    {
+                    //        // xóa productid của ảnh phục vụ cho xóa ảnh khỏi sản phầm
+                    //        _sanPham.Vers[index].ProductDetailId = null;
+                    //        tblVer.Visible = false;
+                    //    }
+                    //};
                     //
                     Panel panImg = new()
                     {
@@ -385,7 +361,7 @@ namespace _3_GUI_PresentationLayer.Views
                     Button btnName = new()
                     {
                         BackColor = System.Drawing.Color.White,
-                        Dock = DockStyle.Right
+                        Dock = DockStyle.Fill
                     };
                     btnName.FlatAppearance.BorderSize = 0;
                     btnName.FlatStyle = FlatStyle.Flat;
@@ -404,7 +380,7 @@ namespace _3_GUI_PresentationLayer.Views
                     };
                     try
                     {
-                        panlColor.BackColor = ColorTranslator.FromHtml(_sanPham.Colors
+                        btnDelete.BackColor = ColorTranslator.FromHtml(_sanPham.Colors
                             .FirstOrDefault(d => id != null ? d.Id == id : d.ImagePath == ver.Color.ImagePath)!
                             .ColorCode);
                     }
@@ -430,8 +406,7 @@ namespace _3_GUI_PresentationLayer.Views
                         Text = _sanPhamService.GetSizes().FirstOrDefault(c => c.Id == _sanPham.Vers[i].SizeId)!.Code.ToString(),
                         RightToLeft = RightToLeft.Yes,
                         Size = new System.Drawing.Size(100, 39),
-                        ReadOnly = true,
-                        BorderStyle = BorderStyle.FixedSingle
+                        ReadOnly = true
                     };
                     //txtSoLuong
                     TextBox txtSoLuong = new()
@@ -447,6 +422,33 @@ namespace _3_GUI_PresentationLayer.Views
                         RightToLeft = RightToLeft.Yes,
                         Size = new System.Drawing.Size(100, 39),
                         ReadOnly = true
+                    };
+                    txtSoLuong.Click += (o, s) =>
+                    {
+                        if (MessageBox.Show("Bạn có muốn thay đổi số lượng ?", "Đổi số lượng", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            txtSoLuong.ReadOnly = false;
+                            txtSoLuong.SelectionStart = 0;
+                            txtSoLuong.SelectionLength = txtSoLuong.Text.Length;
+                        }
+                    };
+                    txtSoLuong.KeyPress += (o, s) =>
+                    {
+                        using KeyPressService key = new();
+                        key.ChiNhapSo(o, s);
+                    };
+                    txtSoLuong.LostFocus += (o, s) => { txtSoLuong.ReadOnly = true; };
+                    txtSoLuong.TextChanged += (o, s) =>
+                    {
+                        var index = tbl_lstVer.Controls.IndexOf(tblVer);
+                        try
+                        {
+                            _sanPham.Vers[index].SoLuong = int.Parse(txtSoLuong.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Bạn chưa nhập số lượng chính xác !");
+                        }
                     };
                     txtSize.BorderStyle = BorderStyle.FixedSingle;
                     //
@@ -541,14 +543,21 @@ namespace _3_GUI_PresentationLayer.Views
             FrmAddVersion frmAddVer = new(_sanPham,_sanPhamService.GetSizes());
             frmAddVer.GetBtnLuu().Click += (sender, e) =>
             {
-                List<Ver> list = frmAddVer.GetVers();
-                foreach (var ver in list)
+                if (frmAddVer.ValidateForVer() == "")
                 {
-                    _sanPham.Vers.Add(ver);
+                    List<Ver> list = frmAddVer.GetVers();
+                    foreach (var ver in list)
+                    {
+                        _sanPham.Vers.Add(ver);
+                    }
+                    _sanPham.Colors.Add(list[0].Color);
+                    frmAddVer.Close();
+                    AddTableListVersion();
                 }
-                _sanPham.Colors.Add(list[0].Color);
-                frmAddVer.Close();
-                AddTableListVersion();
+                else
+                {
+                    MessageBox.Show(frmAddVer.ValidateForVer());
+                }
             };
             frmAddVer.ShowDialog();
         }
@@ -590,17 +599,65 @@ namespace _3_GUI_PresentationLayer.Views
             }
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Txt_ProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
             using (KeyPressService Kpress = new KeyPressService())
             {
                 Kpress.OnlyDigit(sender,e);
             }
+        }
+
+        private void txt_GiaBan_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_GiaBan.Text.StartsWith("0"))
+            {
+                MessageBox.Show("Giá tiền phải bắt đầu từ 1-9 !");
+                txt_GiaBan.Text = "";
+            }
+            else if (txt_GiaBan.Text.Length < 2 && txt_GiaBan.Text != "")
+            {
+                txt_GiaBan.Text += "000";
+                txt_GiaBan.Select(); // to Set Focus
+                txt_GiaBan.Select(1, 0);// để dấu nháy nhảy đến sau số vừa nhập
+            }
+        }
+
+        public string ValidateForProduct()
+        {
+            string txtEror = "";
+            Regex Number = new Regex("^[0-9]$");
+            if (string.IsNullOrEmpty(txt_ProductName.Text))
+            {
+                txtEror += "Không được bỏ trống tên sản phẩm!\n";
+            }
+            if (_sanPhamService.TrungTen(txt_ProductName.Text))
+            {
+                txtEror += "Trùng tên sản phẩm!\n";
+            }
+            if (!(_sanPham.Images.Count > 0))
+            {
+                txtEror += "Sản phẩm chưa có ảnh!\n";
+            }
+            if (!(_sanPham.Vers.Count > 0))
+            {
+                txtEror += "Sản phẩm chưa có phiên bản nào cả!\n";
+            }
+            if (!Number.IsMatch(txt_GiaNhap.Text)|| string.IsNullOrEmpty(txt_GiaNhap.Text))
+            {
+                txtEror += "Giá nhập phải đúng định dạng!\n";
+            }
+            try
+            {
+                if (!Number.IsMatch(txt_GiaBan.Text) || string.IsNullOrEmpty(txt_GiaNhap.Text) || int.Parse(txt_GiaBan.Text) < int.Parse(txt_GiaNhap.Text))
+                {
+                    txtEror += "Giá bán phải đúng định dạng và lớn hơn giá nhập!\n";
+                }
+            }
+            catch 
+            {
+                return txtEror;
+            }
+            return txtEror;
         }
     }
 }

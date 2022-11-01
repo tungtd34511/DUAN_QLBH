@@ -349,7 +349,6 @@ namespace _3_GUI_PresentationLayer.Views
             // 
             this.img_user.BackColor = System.Drawing.Color.LightGray;
             this.img_user.BackgroundColor = System.Drawing.Color.LightGray;
-            this.img_user.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("img_user.BackgroundImage")));
             this.img_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.img_user.BorderColor = System.Drawing.Color.Black;
             this.img_user.BorderRadius = 26;
@@ -559,7 +558,7 @@ namespace _3_GUI_PresentationLayer.Views
             this.btn_ThanhToan.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_ThanhToan.Size = new System.Drawing.Size(380, 50);
             this.btn_ThanhToan.TabIndex = 1;
-            this.btn_ThanhToan.Text = "        Thanh Toán";
+            this.btn_ThanhToan.Text = "        Bán Hàng";
             this.btn_ThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_ThanhToan.UseVisualStyleBackColor = false;
             this.btn_ThanhToan.Click += new System.EventHandler(this.Btn_ThanhToan_Click);

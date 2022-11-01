@@ -98,7 +98,6 @@ namespace _2_BUS_BusinessLayer.Services
                 join d in _catergoryService.GetLstCatergorys() on b.CatergoryId equals d.Id
                 join e in _originService.GetLstOrigins() on b.OriginId equals e.Id
                 join f in _thuongHieuService.GetLstThuongHieus() on e.ThuongHieuid equals f.Id
-                //join i in _saleService.GetLstSales() on c.SaleId equals i.Id
                 select new SanPham()
                 {
                     Product = a,
@@ -126,9 +125,14 @@ namespace _2_BUS_BusinessLayer.Services
                         }).ToList(),
                     Images = _imageService.GetLstImages().Where(x=>x.ProductId== a.Id).ToList(),
                     Price = c,
-                    ProductDetail = b
-                    //Sale = i
+                    ProductDetail = b,
+                    Sale = c.SaleId!=null?_saleService.GetLstSales().FirstOrDefault(g=>g.Id==c.SaleId):new Sale()
                 }).ToList();
+            //foreach (var x in _sanPhams)
+            //{
+            //    x.ProductDetail.QrCode = x.Product.Id.ToString();
+            //    _productDetailService.Update(x.ProductDetail);
+            //}
         }
         
         public string AddSanPham(SanPham sanPham)
@@ -154,6 +158,8 @@ namespace _2_BUS_BusinessLayer.Services
             {
                 _imageService.Add(x);
             }
+            sanPham.ProductDetail.QrCode = sanPham.Product.Id.ToString();
+            _productDetailService.Update(sanPham.ProductDetail);
             GetLstSanPhamsFormDAL();
             return "Thêm sản phẩm thành công!";
             
@@ -329,12 +335,11 @@ namespace _2_BUS_BusinessLayer.Services
 
         public bool TrungTen(string name)
         {
-            if (_productService.GetLstProducts().Select(c => c.Name).ToList().Contains(name))
+            if (_productService.GetLstProducts().Select(c => c.Name.ToLower()).ToList().Contains(name.ToLower()))
             {
-                return false;
+                return true;
             }
-
-            return true;
+            return false;
         }
 
         public string Validation(SanPham _sanPham)
@@ -346,5 +351,15 @@ namespace _2_BUS_BusinessLayer.Services
             }
             return txtEror;
         }
+
+        public bool CheckNameColor(string name)
+        {
+            if (_colorService.GetLstColors().Select(c => c.Name.ToLower()).Contains(name.ToLower()))
+            {
+                return true;
+            } 
+            return false;
+        }
+        
     }
 }

@@ -24,20 +24,40 @@ namespace _3_GUI_PresentationLayer.Views
         private QLSaleService _QLSaleService;
         private List<Product> _selectedProduct;
         private Sale _sale = new Sale();
-        public FrmSaleDetail(string title,QLSaleService qlSaleService)
+        public FrmSaleDetail(string title,QLSaleService qlSaleService,Sale sale)
         {
             InitializeComponent();
             _QLSaleService = qlSaleService;
             lblName.Text = title;
             _selectedProduct = new List<Product>();
-            _sale = new Sale();
+            _sale = sale;
+            if (sale.Id >0)
+            {
+                LoadDetail(sale);
+            }
+            else
+            {
+                _selectedProduct = new List<Product>();
+                _sale = new Sale();
+            }
         }
 
+        public void LoadDetail(Sale sale)
+        {
+            date_started.Value = sale.Started;
+            date_ended.Value = sale.Finished;
+            txt_Id.Text = sale.Id.ToString();
+            txt_Title.Text = sale.Name;
+            txt_GhiChu.Text = sale.Note;
+            txt_SalePercent.Text = sale.SalePercent.ToString();
+            _selectedProduct = _QLSaleService.GetProductsOnSale(sale);
+            AddLstProduct(_selectedProduct);
+        }
         public void AddLstProduct(List<Product> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
-                AddProduct(list[i],i);
+                AddProduct(list[i], list[i].Id);
             }
         }
         public void AddProduct(Product product, int index)

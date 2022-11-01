@@ -871,7 +871,7 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Ghi Chú";
             // 
-            // frmProfile
+            // FrmProfile
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;

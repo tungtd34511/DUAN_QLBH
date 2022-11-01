@@ -96,7 +96,7 @@ namespace _3_GUI_PresentationLayer.Views
                 string.Format("{0:#,##0}", sp.Price.GiaBan.ToString()) + " VNĐ";
             //cập nhật giá nhâp
             tbl_lstProduct.Controls[_indexUpdateDetail].Controls[0].Controls[7].Text =
-                string.Format("{0:#,##0}", sp.Price.GiaNhap.ToString()) + " VNĐ";
+                string.Format("{0:#,##0}", sp.Price.GiaNhap.ToString()) + " VNĐ"; 
             int sum = 0;
             foreach (var x in sp.Vers)
             {
@@ -391,15 +391,23 @@ namespace _3_GUI_PresentationLayer.Views
             FrmAddProduct frmAddProduct = new(_qlSanPhamService);
             frmAddProduct.GetBtnLuu().Click += (o, s) =>
             {
+                var eror = frmAddProduct.ValidateForProduct();
                 SanPham sanPham;
-                sanPham = frmAddProduct.GetSanPham();
-                //Mặc định mở bán cho sản phẩm mới được thêm
-                sanPham.Product.Status = true;
-                MessageBox.Show(_qlSanPhamService.AddSanPham(sanPham));
-                txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
-                LocSanPham();
-                AddTableProduct(GetSanPhamShows(_lstDetailIndex,_sanPhams));
-                frmAddProduct.Close();
+                if (eror == "")
+                {
+                    sanPham = frmAddProduct.GetSanPham();
+                    //Mặc định mở bán cho sản phẩm mới được thêm
+                    sanPham.Product.Status = true;
+                    MessageBox.Show(_qlSanPhamService.AddSanPham(sanPham));
+                    txt_lstShowIndex.Text = (_lstDetailIndex + 1).ToString();
+                    LocSanPham();
+                    AddTableProduct(GetSanPhamShows(_lstDetailIndex, _sanPhams));
+                    frmAddProduct.Close();
+                }
+                else
+                {
+                    MessageBox.Show(eror);
+                }
             };
             frmAddProduct.ShowDialog();
         }
@@ -671,9 +679,11 @@ namespace _3_GUI_PresentationLayer.Views
 
         public void Serch()
         {
-            _sanPhams = _sanPhams.Where(c =>
-                c.Product.Id.ToString() == Txt_Search.Text ||
-                c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower())).ToList();
+            if(!string.IsNullOrEmpty(Txt_Search.Text)){
+                _sanPhams = _sanPhams.Where(c =>
+                    c.Product.Id.ToString() == Txt_Search.Text ||
+                    c.Product.Name.ToLower().Contains(Txt_Search.Text.ToLower())).ToList();
+            }
         }
 
         public void AddKQ()//hiển thị sản phẩm theo kết quả lọc, tìm kiếm và sắp xếp
@@ -759,15 +769,6 @@ namespace _3_GUI_PresentationLayer.Views
                     _sanPhams = _sanPhams.OrderByDescending(c => c.Vers.Select(d => d.SoLuong).Sum()).ToList();
                     break;
             }
-        }
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

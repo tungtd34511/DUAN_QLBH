@@ -14,10 +14,13 @@ namespace _2_BUS_BusinessLayer.IServices
         void GetLstSanPhamsFormDAL();
         void SaveTemporaryOrder(List<HoaDon> list);
         void ReadTemporaryOrder();
-        string ThanhToan(HoaDon hoaDon);
+        bool ThanhToan(HoaDon hoaDon);
         List<HoaDon> GetHoaDons();
         List<ThuongHieu> GetThuongHieus();
         List<Catergory> GetCatergories();
         bool GetKQLoc(SanPham item);
+        bool DatHang(Ver ver, int soluong);
+        List<Ver> GerVers();
+        bool GetKQLoc(SanPham item, List<bool> listCBox);
     }
 }

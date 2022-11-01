@@ -25,7 +25,7 @@ namespace _1_DAL_DataAcessLayer.Services
         }
         public void GetLstOrderDetailsFormDb()
         {
-            _lstOrderDetails = new List<OrderDetail>();
+            //_lstOrderDetails = new List<OrderDetail>();
             _lstOrderDetails = _qlbhContext.OrderDetails.ToList();
         }
         public string Add(OrderDetail orderDetail)
